@@ -11,8 +11,14 @@
 
     <modules>
         <module>proff21_examples</module>
+        <module>vladimir_morochko</module>
+        <module>alexandr_lapada</module>
+        <module>Stanislav_Bondar</module>
+        <module>eugen_chyvuchyn</module>
+        <module>Yaroslav_Syrota</module>
+        <module>illia_naumov</module>
         <module>sergey_tsimbalyuk</module>
-
+        <module>Tanya_Gensitskaya</module>
     </modules>
 
     <properties>
