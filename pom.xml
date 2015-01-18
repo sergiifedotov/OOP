@@ -10,7 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
+
         <module>proff21_examples</module>
+        <module>Yaroslav_Syrota</module>
+
     </modules>
 
     <properties>
