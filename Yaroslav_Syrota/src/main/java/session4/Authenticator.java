@@ -17,8 +17,8 @@ public class Authenticator {
 
 
 
-    public boolean auth(String l, String p) {
-        if(users.containsKey(l) && users.containsValue(p)) return true;
+    public boolean auth(String login, String password) {
+        if(users.containsKey(login) && users.containsValue(password)) return true;
         else return false;
     }
 }
