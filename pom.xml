@@ -11,6 +11,7 @@
 
     <modules>
         <module>proff21_examples</module>
+        <module>eugen_chyvuchyn</module>
     </modules>
 
     <properties>
