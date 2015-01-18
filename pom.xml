@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>sergey_tsimbalyuk</module>
         <module>proff21_examples</module>
     </modules>
 
