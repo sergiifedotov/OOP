@@ -6,6 +6,7 @@ package session2;
  * Date: 17.01.15
  */
 public class User {
+    private String teststring;
     private String login;
     private String pass;
 
