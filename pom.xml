@@ -10,13 +10,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>sergey_tsimbalyuk</module>
         <module>proff21_examples</module>
+        <module>alexandr_lapada</module>
         <module>Stanislav_Bondar</module>
         <module>eugen_chyvuchyn</module>
         <module>Yaroslav_Syrota</module>
 
-        <module>Tanya_Gensitskaya</module>
     </modules>
 
     <properties>
