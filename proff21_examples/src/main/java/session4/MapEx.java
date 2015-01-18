@@ -3,7 +3,6 @@ package session4;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,8 +18,11 @@ public class MapEx {
         map.put(3, "2");
         map.put(4, "1");
 
-        Set<Map.Entry<Integer, String>> entries = map.entrySet();
-        Iterator<Map.Entry<Integer, String>> iterator = entries.iterator();
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getValue());
+        }
+
+        Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next().getValue());
         }
