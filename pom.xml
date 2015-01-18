@@ -11,7 +11,9 @@
 
     <modules>
         <module>proff21_examples</module>
+        <module>alexandr_lapada</module>
     </modules>
+
 
     <properties>
         <junit.version>4.8.2</junit.version>
