@@ -6,11 +6,13 @@
 
     <groupId>proff21</groupId>
     <artifactId>proff21</artifactId>
+
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>proff21_examples</module>
+        <module>vladimir_morochko</module>
     </modules>
 
     <properties>
