@@ -10,7 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>illia_naumov</module>
+        <module>proff21_examples</module>
+        <module>eugen_chyvuchyn</module>
+        <module>Yaroslav_Syrota</module>
+
     </modules>
 
     <properties>
