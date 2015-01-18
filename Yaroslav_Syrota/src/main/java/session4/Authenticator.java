@@ -5,7 +5,7 @@ import session2.*;
 import java.util.HashMap;
 
 /**
- * Created by Admin on 18.01.2015.
+ * Created by Yaroslav_Syrota on 18.01.2015.
  */
 public class Authenticator {
     private HashMap<String, String> users = new HashMap<String, String>();
