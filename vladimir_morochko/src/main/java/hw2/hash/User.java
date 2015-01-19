@@ -35,11 +35,10 @@ public class User {
         sex = gender.MALE;
     }
 
-    public User(String login, String pass) {
+    public User(String login, String password) {
         this();
         this.login = login;
-        this.password = pass;
-        //
+        this.password = password;
     }
 
     public String getLogin() {
@@ -51,11 +50,11 @@ public class User {
     }
 
     public String getPass() {
-        return pass;
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public GregorianCalendar getRegDate() {
@@ -127,4 +126,5 @@ public class User {
     public String toString() {
         return "User{login=" + login + "password=" + password + "}";
     }
+
 }
