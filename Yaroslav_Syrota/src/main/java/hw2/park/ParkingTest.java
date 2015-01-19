@@ -14,10 +14,13 @@ public class ParkingTest {
         int m1 = parking.park(car1);
         int m2 = parking.park(car2);
         int m3 = parking.park(new Car());
+        int m4 = parking.park(car3);
 
         Car res1 = parking.leave(1);
         Car res2 = parking.leave(3);
         Car res3 = parking.leave(8);
         Car res4 = parking.leave(52);
+
+
     }
 }

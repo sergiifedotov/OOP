@@ -20,7 +20,7 @@ public class Parking {
                 }
             }
         } catch(ParkFullException e) {
-            System.out.println(e);
+            System.out.println("парковка полна, простите");
         }
         return  number;
     }
@@ -42,6 +42,6 @@ class ParkFullException extends ArrayIndexOutOfBoundsException {
 
     @Override
     public String toString() {
-        return "вы ввели неверный парковочный номер";
+        return "парковка полна, простите";
     }
 }
