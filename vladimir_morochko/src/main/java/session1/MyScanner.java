@@ -1,4 +1,4 @@
-package OOP.homework16;
+package session1;
 
 import java.io.StringReader;
 import java.util.Scanner;
