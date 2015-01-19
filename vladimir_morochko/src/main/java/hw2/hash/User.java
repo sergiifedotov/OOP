@@ -39,6 +39,7 @@ public class User {
         this();
         this.login = login;
         this.password = pass;
+        //
     }
 
     public String getLogin() {
