@@ -9,6 +9,8 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * User: al1
  * Date: 17.01.15
+ *
+ *
  */
 public class Authenticator {
     private Map<String, String> users;
