@@ -5,7 +5,7 @@ import session2.*;
 import java.util.HashMap;
 
 /**
- * Created by Admin on 18.01.2015.
+ * Created by Yaroslav_Syrota on 18.01.2015.
  */
 public class Authenticator {
     private HashMap<String, String> users = new HashMap<String, String>();
@@ -17,8 +17,8 @@ public class Authenticator {
 
 
 
-    public boolean auth(String l, String p) {
-        if(users.containsKey(l) && users.containsValue(p)) return true;
+    public boolean auth(String login, String password) {
+        if(users.containsKey(login) && users.get(login).equals(password)) return true;
         else return false;
     }
 }
