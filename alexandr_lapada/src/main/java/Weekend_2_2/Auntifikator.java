@@ -11,6 +11,7 @@ public class Auntifikator {
     public Auntifikator(){
         users.put("sanya","123456");
         users.put("alex","123");
+
     }
 
     public boolean aunt(String loggin, String password){
