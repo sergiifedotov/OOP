@@ -99,5 +99,97 @@ public class Freq {
         return hashSetOut;
     }
 
+    public Set<String> getWordsByFrequencyMoreThan(int frequency) throws IOException{
+        HashSet<String> hashSet = new HashSet<String>();
+        HashSet<String> hashSetOut = new HashSet<String>();
 
+        in = new Scanner(fileRandom);
+        while(in.hasNext()){ hashSet.add(in.next());}
+        in.close();
+
+        Iterator<String> iter = hashSet.iterator();
+
+        while(iter.hasNext()){
+            int freq = 0;
+            in = new Scanner(fileRandom);
+            String string = iter.next();
+            while(in.hasNext()){
+                if(string.equals(in.next())){
+                    freq++;
+                }
+            }
+            if(freq > frequency){hashSetOut.add(string);}
+            in.close();
+        }
+        return hashSetOut;
+    }
+
+    public void printAcs() throws IOException {
+        HashSet<String> hashSet = new HashSet<String>();
+        TreeMap<String,Integer> treeMap = new TreeMap<String,Integer>((fr2, fr1) -> fr2.compareTo(fr1));
+
+        in = new Scanner(file);
+        while (in.hasNext()) {
+            hashSet.add(in.next());
+        }
+        in.close();
+        Iterator<String> iter = hashSet.iterator();
+        while (iter.hasNext()) {
+            int freq = 0;
+            in = new Scanner(file);
+            String string = iter.next();
+            while (in.hasNext()) {
+                if (string.equals(in.next())) {
+                    freq++;
+                }
+            }
+            treeMap.put(string,freq);
+           // System.out.println("string = "+string+" freq = "+freq);
+            in.close();
+        }
+        System.out.println(treeMap);
+
+    }
+
+    public void printDesc() throws IOException {
+        HashSet<String> hashSet = new HashSet<String>();
+        TreeMap<String,Integer> treeMap = new TreeMap<String,Integer>((fr1, fr2) -> fr2.compareTo(fr1));
+
+        in = new Scanner(file);
+        while (in.hasNext()) {
+            hashSet.add(in.next());
+        }
+        in.close();
+        Iterator<String> iter = hashSet.iterator();
+        while (iter.hasNext()) {
+            int freq = 0;
+            in = new Scanner(file);
+            String string = iter.next();
+            while (in.hasNext()) {
+                if (string.equals(in.next())) {
+                    freq++;
+                }
+            }
+            treeMap.put(string,freq);
+            // System.out.println("string = "+string+" freq = "+freq);
+            in.close();
+        }
+        System.out.println(treeMap);
+
+    }
+
+    /*public void printAcs() throws IOException{
+        inputStream = new FileInputStream(file);
+        int data = inputStream.read();
+        String string = "";
+        while(data != -1){
+            if ((char)data != ' '){
+                string = string +(char)data;
+            } else {
+                System.out.println(string);
+                string = "";
+            }
+            data = inputStream.read();
+        }
+    }*/
 }

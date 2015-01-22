@@ -15,12 +15,14 @@ public class FreqTest {
 
             //Set<String> hashSet = freq.getWordsByFrequency(3);
 
-            Set<String> hashSet = freq.getWordsByFrequencyLessThan(5);
+           /* Set<String> hashSet = freq.getWordsByFrequencyMoreThan(10);
             Iterator<String> iter = hashSet.iterator();
             //System.out.println("size = "+hashSet.size());
             while(iter.hasNext()){
                 System.out.println(iter.next());
-            }
+            }*/
+            freq.printAcs();
+            freq.printDesc();
 
 
         }catch(IOException e){
