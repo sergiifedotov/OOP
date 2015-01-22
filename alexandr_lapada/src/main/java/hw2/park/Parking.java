@@ -16,10 +16,10 @@ public class Parking {
     public int park(Car car) throws ParkFullException{
        if(freePlaces<1){ throw new ParkFullException("Мест нет"); }
 
-        numberOfPlace = 1+(int)(Math.random()*10);
+        numberOfPlace = 1+(int)(Math.random()*9);
 
         while (parking.get(numberOfPlace)!=null) {
-            numberOfPlace = 1+(int)(Math.random()*10);
+            numberOfPlace = 1+(int)(Math.random()*9);
         }
 
         parking.put(numberOfPlace, car);
