@@ -126,7 +126,7 @@ public class Freq {
 
     public void printAcs() throws IOException {
         HashSet<String> hashSet = new HashSet<String>();
-        TreeMap<String,Integer> treeMap = new TreeMap<String,Integer>((fr2, fr1) -> fr2.compareTo(fr1));
+        TreeMap<Integer,String> treeMap = new TreeMap<Integer,String>((fr1, fr2) -> -fr2.compareTo(fr1));
 
         in = new Scanner(file);
         while (in.hasNext()) {
@@ -143,7 +143,7 @@ public class Freq {
                     freq++;
                 }
             }
-            treeMap.put(string,freq);
+            treeMap.put(freq,string);
            // System.out.println("string = "+string+" freq = "+freq);
             in.close();
         }
@@ -153,7 +153,7 @@ public class Freq {
 
     public void printDesc() throws IOException {
         HashSet<String> hashSet = new HashSet<String>();
-        TreeMap<String,Integer> treeMap = new TreeMap<String,Integer>((fr1, fr2) -> fr2.compareTo(fr1));
+        TreeMap<Integer,String> treeMap = new TreeMap<Integer,String>((fr1, fr2) -> fr2.compareTo(fr1));
 
         in = new Scanner(file);
         while (in.hasNext()) {
@@ -170,7 +170,7 @@ public class Freq {
                     freq++;
                 }
             }
-            treeMap.put(string,freq);
+            treeMap.put(freq,string);
             // System.out.println("string = "+string+" freq = "+freq);
             in.close();
         }
