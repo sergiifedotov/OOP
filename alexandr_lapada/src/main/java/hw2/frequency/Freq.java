@@ -49,8 +49,6 @@ public class Freq {
         return string;
     }
 
-
-
     public Set<String> getWordsByFrequency(int frequency) throws IOException {
         HashSet<String> hashSet = new HashSet<String>();
         HashSet<String> hashSetOut = new HashSet<String>();
@@ -59,18 +57,12 @@ public class Freq {
         while(in.hasNext()){ hashSet.add(in.next());}
         in.close();
 
-        /*for(String e: hashSet){
-            System.out.println(e);
-        }*/
         Iterator<String> iter = hashSet.iterator();
 
         while(iter.hasNext()){
             int freq = 0;
-
             in = new Scanner(file);
-            //Thread.sleep(500);
             String string = iter.next();
-            //System.out.println(string);
             while(in.hasNext()){
                 if(string.equals(in.next())){
                     freq++;
@@ -78,11 +70,33 @@ public class Freq {
             }
             if(freq == frequency){hashSetOut.add(string);}
             in.close();
-            //Thread.sleep(500);
         }
-
         return hashSetOut;
+    }
 
+    public Set<String> getWordsByFrequencyLessThan(int frequency) throws IOException{
+        HashSet<String> hashSet = new HashSet<String>();
+        HashSet<String> hashSetOut = new HashSet<String>();
+
+        in = new Scanner(file);
+        while(in.hasNext()){ hashSet.add(in.next());}
+        in.close();
+
+        Iterator<String> iter = hashSet.iterator();
+
+        while(iter.hasNext()){
+            int freq = 0;
+            in = new Scanner(file);
+            String string = iter.next();
+            while(in.hasNext()){
+                if(string.equals(in.next())){
+                    freq++;
+                }
+            }
+            if(freq < frequency){hashSetOut.add(string);}
+            in.close();
+        }
+        return hashSetOut;
     }
 
 

@@ -13,7 +13,9 @@ public class FreqTest {
            // System.out.println(freq.setTextFromFile("freqFile.txt"));
             //System.out.println(freq.generateRandomText(25));
 
-            Set<String> hashSet = freq.getWordsByFrequency(3);
+            //Set<String> hashSet = freq.getWordsByFrequency(3);
+
+            Set<String> hashSet = freq.getWordsByFrequencyLessThan(5);
             Iterator<String> iter = hashSet.iterator();
             //System.out.println("size = "+hashSet.size());
             while(iter.hasNext()){
