@@ -5,43 +5,43 @@ package hw2.park;
  */
 public class ParkingTest {
     public static void main(String[] args) {
-        Parking myParking = new Parking();
+        Parking parking = new Parking();
 
 
         try {
-            myParking.park(new Car("Honda", "red"));
-            myParking.park(new Car("Toyota", "blue"));
-            myParking.park(new Car("Nissan", "black"));
+            parking.park(new Car("Honda", "red"));
+            parking.park(new Car("Toyota", "blue"));
+            parking.park(new Car("Nissan", "black"));
         } catch (Parking.ParkFullException e) {
             System.out.println(e);
         }
-        System.out.println(myParking);
+        System.out.println(parking);
 
         try {
-            myParking.park(new Car("Mercedes", "grey"));
-            myParking.park(new Car("BMW", "white"));
-            myParking.park(new Car("Opel", "yellow"));
-            myParking.park(new Car("Ford", "green"));
-            myParking.park(new Car("Chrysler", "black"));
-            myParking.park(new Car("Fiat", "blue"));
-            myParking.park(new Car("Bentley", "british racing green"));
-            myParking.park(new Car("Ferrari", "red"));
-            myParking.park(new Car("Tesla", "red"));
-            myParking.park(new Car("Zapor", "red"));
+            parking.park(new Car("Mercedes", "grey"));
+            parking.park(new Car("BMW", "white"));
+            parking.park(new Car("Opel", "yellow"));
+            parking.park(new Car("Ford", "green"));
+            parking.park(new Car("Chrysler", "black"));
+            parking.park(new Car("Fiat", "blue"));
+            parking.park(new Car("Bentley", "british racing green"));
+            parking.park(new Car("Ferrari", "red"));
+            parking.park(new Car("Tesla", "red"));
+            parking.park(new Car("Zapor", "red"));
         } catch (Parking.ParkFullException e) {
             System.out.println(e);
         }
-        System.out.println(myParking);
+        System.out.println(parking);
 
         try {
-            System.out.println(myParking.leave(1) + " has left");
+            System.out.println(parking.leave(1) + " has left");
         } catch (Parking.IndexOutOfBoundsException e) {
             System.out.println(e);
         }
-        System.out.println(myParking);
+        System.out.println(parking);
 
         try {
-            myParking.leave(1);
+            parking.leave(1);
         } catch (Parking.IndexOutOfBoundsException e) {
             System.out.println(e);
         }
