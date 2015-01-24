@@ -36,7 +36,7 @@ public class Parking {
         this.parkingCapacity = parkingCapacity;
     }
 
-    int park(Car car) throws ParkFullException{
+    public int park(Car car) throws ParkFullException{
         if (parking.size() == parkingCapacity) {
             throw new ParkFullException();
         } else {
@@ -49,7 +49,7 @@ public class Parking {
         }
     }
 
-    Car leave(int placeNumber) throws IndexOutOfBoundsException {
+    public Car leave(int placeNumber) throws IndexOutOfBoundsException {
         Car carToGet = parking.get(placeNumber);
         if (carToGet == null) {
             throw new IndexOutOfBoundsException();
