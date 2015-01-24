@@ -135,11 +135,11 @@ public class Freq {
                 return o1.getValue().compareTo(o2.getValue());
             }
         };
-        ArrayList<Map.Entry<String, Integer>> sortedWords = new ArrayList<>();
-        Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            sortedWords.add(iterator.next());
-        }
+        ArrayList<Map.Entry<String, Integer>> sortedWords = new ArrayList<>(wordMap.entrySet());
+//        Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
+//        while (iterator.hasNext()) {
+//            sortedWords.add(iterator.next());
+//        }
         Collections.sort(sortedWords, comparator);
         System.out.println(sortedWords);
     }
@@ -152,11 +152,11 @@ public class Freq {
                 return - o1.getValue().compareTo(o2.getValue());
             }
         };
-        ArrayList<Map.Entry<String, Integer>> sortedWords = new ArrayList<>();
-        Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            sortedWords.add(iterator.next());
-        }
+        ArrayList<Map.Entry<String, Integer>> sortedWords = new ArrayList<>(wordMap.entrySet());
+//        Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
+//        while (iterator.hasNext()) {
+//            sortedWords.add(iterator.next());
+//        }
         Collections.sort(sortedWords, comparator);
         System.out.println(sortedWords);
     }
