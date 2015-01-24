@@ -4,7 +4,7 @@ import session2.Authenticator;
 
 import java.util.Map;
 
-/**
+/**t
  * Created by tsv on 18.01.15.
  */
 public class UserAuth {
