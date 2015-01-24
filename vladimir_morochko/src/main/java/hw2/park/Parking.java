@@ -36,7 +36,7 @@ public class Parking {
         this.parkingCapacity = parkingCapacity;
     }
 
-    public int park(Car car) throws ParkFullException{
+    public int park(Car car) throws ParkFullException {
         if (parking.size() == parkingCapacity) {
             throw new ParkFullException();
         } else {
