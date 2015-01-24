@@ -126,7 +126,8 @@ public class Freq {
 
     public void printAcs() throws IOException {
         HashSet<String> hashSet = new HashSet<String>();
-        TreeMap<Integer,String> treeMap = new TreeMap<Integer,String>((fr1, fr2) -> -fr2.compareTo(fr1));
+        HashMap<String,Integer> hashMap = new HashMap<String,Integer>();
+        List<Words> list = new ArrayList<Words>();
 
         in = new Scanner(file);
         while (in.hasNext()) {
@@ -143,17 +144,24 @@ public class Freq {
                     freq++;
                 }
             }
-            treeMap.put(freq,string);
+            hashMap.put(string,freq);
            // System.out.println("string = "+string+" freq = "+freq);
             in.close();
         }
-        System.out.println(treeMap);
+        for(Map.Entry<String, Integer> e: hashMap.entrySet()){
+            list.add(new Words(e.getKey(),e.getValue()));
+        }
+        Collections.sort(list, new WordSorted(true));
+        for (Words e: list){
+            System.out.println("word = "+e.getWord()+" freq = "+e.getFrequency());
+        }
 
     }
 
     public void printDesc() throws IOException {
         HashSet<String> hashSet = new HashSet<String>();
-        TreeMap<Integer,String> treeMap = new TreeMap<Integer,String>((fr1, fr2) -> fr2.compareTo(fr1));
+        HashMap<String,Integer> hashMap = new HashMap<String,Integer>();
+        List<Words> list = new ArrayList<Words>();
 
         in = new Scanner(file);
         while (in.hasNext()) {
@@ -170,12 +178,17 @@ public class Freq {
                     freq++;
                 }
             }
-            treeMap.put(freq,string);
+            hashMap.put(string,freq);
             // System.out.println("string = "+string+" freq = "+freq);
             in.close();
         }
-        System.out.println(treeMap);
-
+        for(Map.Entry<String, Integer> e: hashMap.entrySet()){
+            list.add(new Words(e.getKey(),e.getValue()));
+        }
+        Collections.sort(list, new WordSorted(false));
+        for (Words e: list){
+            System.out.println("word = "+e.getWord()+" freq = "+e.getFrequency());
+        }
     }
 
     /*public void printAcs() throws IOException{

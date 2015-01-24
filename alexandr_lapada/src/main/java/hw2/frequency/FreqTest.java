@@ -22,6 +22,7 @@ public class FreqTest {
                 System.out.println(iter.next());
             }*/
             freq.printAcs();
+            System.out.println("-------------------------");
             freq.printDesc();
 
 
