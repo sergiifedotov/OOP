@@ -44,13 +44,14 @@ public class User {
         User user = (User)obj;
         if (this.getLogin().equals(user.getLogin())
                 && this.getPassword().equals(user.getPassword())
-                && this.getPol().equals(user.getPol())){rez = true;}
+                && this.getPol().equals(user.getPol())
+                && this.getRating().equals(user.getRating())){rez = true;}
         return rez;
     }
 
     @Override
     public int hashCode(){
-       return (this.getPassword().hashCode() + this.getLogin().hashCode() + this.getPol().hashCode());
+       return (this.getPassword().hashCode() + this.getLogin().hashCode() + this.getPol().hashCode() + this.getRating())%31;
     }
 
 

@@ -3,43 +3,90 @@ import java.util.*;
 /**
  * Created by sanya on 21.01.2015.
  */
-public class HashMap implements Map{
-    @Override
-    public int size() {return 0;}
+public class HashMap {
+    private int[] key;
+    private User[] value;
+    private final int ARRAYLENGTH = 2;
 
-    @Override
-    public boolean isEmpty() {return false; }
+    public HashMap(){
+        key = new int[ARRAYLENGTH];
+        value = new User[ARRAYLENGTH];
+    }
 
-    @Override
-    public boolean containsKey(Object key) {return false;}
 
-    @Override
-    public boolean containsValue(Object value) {return false;}
+    public boolean put(User elem){
+        boolean out = false;
+        //System.out.println(key.length);
+        int hash = elem.hashCode();
+       if (hash<0){hash = hash*-1;}
+        while(hash >= value.length){resize();}
+        //System.out.println(key.length);
+        if(value[hash] == null){
+            value[hash] = elem;
+            key[hash] = hash;
+            out =true;
+        }else{
+            value[hash] = elem;
+            out = false;
+        }
+        return out;
+    }
 
-    @Override
-    public Object get(Object key) {return null;}
+    public int size(){return value.length;}
 
-    @Override
-    public Object remove(Object key) {return null;}
+    private void resize(){
+        int[] keyOld = key;
+        User[] valueOld = value;
+        key = new int[keyOld.length*2];
+        value = new User[valueOld.length*2];
+        int i = 0;
+        for(int e: keyOld){
+            key[i] = e;
+            i++;
+        }
+        i = 0;
+        for(User e: valueOld){
+            value[i] = e;
+            i++;
+        }
+    }
 
-    @Override
-    public void putAll(Map m) { }
+    public boolean remove(User elem){
+        boolean out = false;
+        int hash = elem.hashCode();
+        if (value[hash] == null){
+            out = false;
+        }else{
+            value[hash] = null;
+            key[hash] = 0;
+            out = true;
+        }
+        return out;
+    }
 
-    @Override
-    public void clear() {}
+    public boolean contains(User elem){
+        boolean out = false;
+        for(int i = 0; i < value.length; i++){
+            if(value[i] != null && elem != null) {
+                if (elem.equals(value[i])) {
+                    out = true;
+                }
+            }
+        }
+        return out;
+    }
 
-    @Override
-    public Set keySet() {return null;}
+    public void iterator(){
+        for( int i = 0; i < key.length; i++){
+            if (key[i] !=0 ){
+                System.out.println("key="+key[i]+" value="+value[i].getLogin());
+            }
+        }
 
-    @Override
-    public Collection values() {  return null;}
+    }
 
-    @Override
-    public Set<Entry> entrySet() {return null;}
 
-    @Override
-    public Object put(Object key, Object value) {return null; }
 
-    public boolean put(int key, User value){return false;}
+
 
 }
