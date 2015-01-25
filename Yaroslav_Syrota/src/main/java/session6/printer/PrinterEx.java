@@ -15,8 +15,9 @@ public class PrinterEx extends Thread {
 
     @Override
     public void run() {
+        Printer printer = new Printer();
         for (int i=0; i < 20; i++) {
-            Printer.print(getName());
+            printer.print(getName());
         }
     }
 }
