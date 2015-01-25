@@ -18,13 +18,14 @@ public class PrinterEx extends Thread {
     @Override
     public void run() {
         for (int i=0; i < 20; i++) {
-            Printer.print(getName());
+            Printer printer = new Printer();
+            printer.print(getName());
         }
     }
 }
 
 class Printer {
-    public static void print(String str) {
+    public void print(String str) {
         System.out.println("[");
         sleep();
         System.out.println(str);
@@ -32,7 +33,7 @@ class Printer {
         System.out.println("]");
     }
 
-    public static void sleep() {
+    public void sleep() {
         try {
             Thread.sleep(1);
         } catch (InterruptedException e) {
