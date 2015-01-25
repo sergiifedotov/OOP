@@ -10,6 +10,6 @@ public class Provider {
     private Provider() {}
 
     public void put() {
-        if(shelf.getValue()==0) shelf.setValue((int) Math.random()*200);
+        // if(shelf.getValue()==0) shelf.setValue((int) Math.random()*200);
     }
 }
