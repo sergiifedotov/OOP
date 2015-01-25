@@ -1,7 +1,7 @@
 package session6.printer;
 
 /**
- * Created by Admin on 25.01.2015.
+ * Created by Yaroslav_Syrota on 25.01.2015.
  */
 public class PrinterEx extends Thread {
     public static void main(String[] args) {
