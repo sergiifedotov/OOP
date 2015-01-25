@@ -4,7 +4,7 @@ package hw2.park;
  * Created by sanya on 19.01.2015.
  */
 public class ParkingTest {
-        public static void main(String[] args) throws  Parking.IndexOutOfBoundsException {
+        public static void main(String[] args)  {
             Parking park = new Parking();
 
             Car car1 = new Car("Kia","Black","2121");
@@ -18,7 +18,13 @@ public class ParkingTest {
             Car car9 = new Car("Lexus","Black","2988");
             Car car10 = new Car("Toyota","Yellow","1313");
 
+            try{
+                Car carLeave = park.leave(1);
+            }catch(IndexOutOfBoundsException e){
+                System.out.println("ss");
+            }
 
+            //System.out.println(park.leave(num5).getMarka()+ " Выехала 5-я с номером -" +num5);
             int num1 = 0;
             try {
                 num1 = park.park(car1);

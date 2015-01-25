@@ -14,12 +14,12 @@ public class Parking {
     }
 
     public int park(Car car) throws ParkFullException{
-       if(freePlaces<1){ throw new ParkFullException(); }
+       if(freePlaces<1){ throw new ParkFullException("Мест нет"); }
 
-        numberOfPlace = 1+(int)(Math.random()*10);
+        numberOfPlace = 1+(int)(Math.random()*9);
 
         while (parking.get(numberOfPlace)!=null) {
-            numberOfPlace = 1+(int)(Math.random()*10);
+            numberOfPlace = 1+(int)(Math.random()*9);
         }
 
         parking.put(numberOfPlace, car);
@@ -27,20 +27,19 @@ public class Parking {
         return (numberOfPlace);
     }
 
-    public Car leave(int placeNumber) throws IndexOutOfBoundsException{
+    public Car leave(int placeNumber){
         Car car = parking.get(placeNumber);
-        if(car == null){ throw new IndexOutOfBoundsException();}
         parking.remove(placeNumber);
         freePlaces++;
         return(car);
     }
-    public class IndexOutOfBoundsException extends Exception{}
+
     public class ParkFullException extends Exception {
 
-        @Override
-        public String toString() {
-            return "мест нет";
-        }
+    public ParkFullException(String message) {
+        super(message);
+    }
+
 
     }
 
