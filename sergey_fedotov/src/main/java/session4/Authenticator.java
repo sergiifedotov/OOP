@@ -18,7 +18,7 @@ public class Authenticator {
     }
 
     public boolean auth(String login, String pass){
-       return memberList.containsKey(login)&&memberList.containsValue(pass);
+       return memberList.containsKey(login)&&memberList.get(login).equals(pass);
     }
 
 }
