@@ -52,7 +52,7 @@ public class MyHashMap implements Iterable {
     private void resizeEntriesListIfNeeded() {
         if (currentSize > (int) defaultSize * loadFactor) {
             defaultSize *= 2;
-//            System.out.println("resizing to " + defaultSize);
+            System.out.println("resizing to " + defaultSize);
             List<Entry>[] newEntries = new List[defaultSize];
             for (int i = 0; i < newEntries.length; i++) {
                 newEntries[i] = new LinkedList<>();
@@ -67,10 +67,9 @@ public class MyHashMap implements Iterable {
                     entriesIndex++;
                     listIndex = 0;
                 } else {
-                    List<Entry> list = newEntries[entries[entriesIndex].get(listIndex).getKey() % newEntries.length];
-                    Entry entryToAdd = new Entry(entries[entriesIndex].get(listIndex).getKey(),
-                            entries[entriesIndex].get(listIndex).getUser());
-                    list.add(entryToAdd);
+                    int newKey = entries[entriesIndex].get(listIndex).getKey();
+                    List<Entry> list = newEntries[newKey % newEntries.length];
+                    list.add(entries[entriesIndex].get(listIndex));
                     currentEntryIndex++;
                     listIndex++;
                 }
