@@ -14,7 +14,7 @@ package session5;
 class Printer extends Thread {
     private static Printer instance;
 
-    public Printer() {}
+    private Printer() {}
 
     public synchronized static Printer getInstance() {
         if (instance == null) {
@@ -23,7 +23,7 @@ class Printer extends Thread {
         return instance;
     }
 
-    public synchronized void print(String string) {
+    public void print(String string) {
 
         synchronized (this) { // синхронизируемся на синглтоне
             System.out.print("[");
