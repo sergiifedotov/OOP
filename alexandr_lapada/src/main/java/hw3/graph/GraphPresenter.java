@@ -16,8 +16,7 @@ public class GraphPresenter extends Thread {
         this.hold = hold;
     }
 
-    @Override
-    public void run() {
+    public void print(){
         double i = 0;
         while (i < 15) {
             if (hold.getValue()) {
@@ -38,5 +37,11 @@ public class GraphPresenter extends Thread {
                 i += 1;
             }
         }
+
+    }
+
+    @Override
+    public void run() {
+        print();
     }
 }
