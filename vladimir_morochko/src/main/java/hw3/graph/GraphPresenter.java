@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
  * hw3.graph.GraphPresenterTest
  */
 
-public class GraphPresenter {
+class GraphPresenter {
     BufferedReader bufferedReader;
     InputStreamReader inputStreamReader;
     PrintingThread printingThread;
