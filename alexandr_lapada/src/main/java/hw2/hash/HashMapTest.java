@@ -3,23 +3,7 @@ package hw2.hash;
 /**
  * Created by sanya on 21.01.2015.
  */
- /*Написать собственную реализацию "Хэш карты".
- Карта должна хранить объекты класса "Пользователь" из первого задания.
 
- Реализовать методы:
-
- 1. boolean put(int key, User elem)
- 2. User get(int key)
- 3. int size()
- 4. boolean remove(int key)
- 5. Iterator<User> iterator()
-
- Классы задания:
- hw2.hash.HashMap
- hw2.hash.User
-
- Класс теста hw2.hash.HashMapTest
- */
 public class HashMapTest {
     public static void main(String[] args) {
         HashMap map = new HashMap();
