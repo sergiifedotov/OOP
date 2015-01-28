@@ -1,4 +1,4 @@
-package hw4.parallel;
+package hw4.parallel.parallel;
 
 import java.util.ArrayList;
 
