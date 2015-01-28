@@ -1,4 +1,4 @@
-package Home.Week2.hw3.parallel;
+package Home.Week2.hw4.parallel;
 
 /**
  * Created by user on 28.01.2015.
