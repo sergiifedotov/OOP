@@ -1,6 +1,4 @@
-package hw3.parallel;
-
-import java.util.ArrayList;
+package hw4.parallel;
 
 /**
  * Created by warit on 28.01.2015.
