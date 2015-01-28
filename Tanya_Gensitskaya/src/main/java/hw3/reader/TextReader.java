@@ -15,7 +15,9 @@ import java.io.IOException;
  */
 public class TextReader {
 
+
     static class Reader implements Runnable {
+        private String strFile;
         private Thread thread1;
         private ConsoleViewing cons;
 
@@ -26,7 +28,7 @@ public class TextReader {
 
         @Override
         public void run() {
-            String strFile = setTextFromFile("Tanya_Gensitskaya/src/main/java/hw3/reader/hello");
+            read ();
             String[] arrayStr = strFile.split("\n");
             for (String i : arrayStr) {
                 try {
@@ -39,10 +41,10 @@ public class TextReader {
         }
 
         //добавляет текст из указанного по имени файла в строку
-        private String setTextFromFile(String fileName) {
+        private void read () {
             StringBuilder sb = new StringBuilder();
             try {
-                BufferedReader in = new BufferedReader(new FileReader(new File(fileName).getAbsoluteFile()));
+                BufferedReader in = new BufferedReader(new FileReader(new File("Tanya_Gensitskaya/src/main/java/hw3/reader/hello").getAbsoluteFile()));
                 try {
                     String str;
                     while ((str = in.readLine()) != null) {
@@ -55,7 +57,7 @@ public class TextReader {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            return sb.toString();
+            strFile =  sb.toString();
         }
 
         public void sleep() {
