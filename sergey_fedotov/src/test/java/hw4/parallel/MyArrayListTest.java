@@ -1,6 +1,5 @@
 package hw4.parallel;
 
-import hw4.parallel.parallel.MyArrayList;
 import org.junit.Test;
 import static junit.framework.Assert.*;
 
@@ -15,7 +14,7 @@ import static junit.framework.Assert.*;
  - существующего элемента в массиве с одним элементом
  - элемента со значением null
  */
-public class MyArrayListTest3 {
+public class MyArrayListTest {
 
     @Test
     public void testSearchExisting(){

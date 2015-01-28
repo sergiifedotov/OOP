@@ -1,4 +1,4 @@
-package hw4.parallel.parallel;
+package hw4.parallel;
 
 /**
  * Created by warit on 28.01.2015.
