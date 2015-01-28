@@ -1,5 +1,9 @@
 package parallel;
 
+import hw4.parallel.MyArrayList;
+import org.junit.Test;
+import static junit.framework.Assert.*;
+
 /**
  * Реализовать в классе MyArrayList метод
  public int parallelIndexOf(E e), выполняющий линейный многопоточный поиск в списке.
@@ -13,7 +17,8 @@ package parallel;
  */
 public class MyArrayListTest {
 
-    public static void testSearchExisting(){
+    @Test
+    public void testSearchExisting(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
@@ -23,17 +28,12 @@ public class MyArrayListTest {
         myArrayList.add(7);
         myArrayList.add(1);
 
-        String nameTest = "Test1. SearchExisting: ";
-
-        if(myArrayList.parallelIndexOf(1)==4){
-            System.out.println(nameTest.concat("ok"));
-        }else{
-            System.err.println(nameTest.concat("error"));
-        }
+        assertEquals(myArrayList.parallelIndexOf(1),4);
 
     }
 
-    public static void testSearchNonexistent(){
+    @Test
+    public void testSearchNonexistent(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
@@ -43,59 +43,41 @@ public class MyArrayListTest {
         myArrayList.add(7);
         myArrayList.add(1);
 
-        String nameTest = "Test2. SearchNonexistent: ";
-
-        if(myArrayList.parallelIndexOf(4)==-1){
-            System.out.println(nameTest.concat("ok"));
-        }else{
-            System.err.println(nameTest.concat("error"));
-        }
+        assertEquals(myArrayList.parallelIndexOf(4),-1);
 
     }
 
-    public static void testSearchNonexistentInEmptyArray(){
+    @Test
+    public void testSearchNonexistentInEmptyArray(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
-        String nameTest = "Test3. SearchNonexistentInEmptyArray: ";
-
-        if(myArrayList.parallelIndexOf(4)==-1){
-            System.out.println(nameTest.concat("ok"));
-        }else{
-            System.err.println(nameTest.concat("error"));
-        }
+        assertEquals(myArrayList.parallelIndexOf(4),-1);
 
     }
 
-    public static void testSearchNonexistentInArrayOneElement(){
+    @Test
+    public void testSearchNonexistentInArrayOneElement(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
         myArrayList.add(56);
-        String nameTest = "Test4. SearchNonexistentInArrayOneElement: ";
 
-        if(myArrayList.parallelIndexOf(4)==-1){
-            System.out.println(nameTest.concat("ok"));
-        }else{
-            System.err.println(nameTest.concat("error"));
-        }
+        assertEquals(myArrayList.parallelIndexOf(4),-1);
 
     }
 
-    public static void testSearchExistingInArrayOneElement(){
+    @Test
+    public void testSearchExistingInArrayOneElement(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
         myArrayList.add(56);
-        String nameTest = "Test5. SearchExistingInArrayOneElement: ";
 
-        if(myArrayList.parallelIndexOf(56)==0){
-            System.out.println(nameTest.concat("ok"));
-        }else{
-            System.err.println(nameTest.concat("error"));
-        }
+        assertEquals(myArrayList.parallelIndexOf(56),0);
 
     }
 
-    public static void testSearchElementNull(){
+    @Test
+    public void testSearchElementNull(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
@@ -105,24 +87,7 @@ public class MyArrayListTest {
         myArrayList.add(null);
         myArrayList.add(1);
 
-        String nameTest = "Test6. SearchElementNull: ";
-
-        if(myArrayList.parallelIndexOf(null)==3){
-            System.out.println(nameTest.concat("ok"));
-        }else{
-            System.err.println(nameTest.concat("error"));
-        }
-
-    }
-
-    public static void main(String[] args) {
-
-        testSearchExisting();
-        testSearchNonexistent();
-        testSearchNonexistentInEmptyArray();
-        testSearchNonexistentInArrayOneElement();
-        testSearchExistingInArrayOneElement();
-        testSearchElementNull();
+        assertEquals(myArrayList.parallelIndexOf(null),3);
 
     }
 
