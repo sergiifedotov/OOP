@@ -1,4 +1,4 @@
-package Home.Week2.hw4.parallel.graph;
+package Home.Week2.hw3.parallel.graph;
 
 
 import java.io.BufferedReader;
@@ -17,10 +17,10 @@ import java.io.InputStreamReader;
  пока пользователь не нажмет ентер.
 
  Класс задания:
- hw4.graph.GraphPresenter
+ hw3.graph.GraphPresenter
 
  Класс теста:
- hw4.graph.GraphPresenterTest
+ hw3.graph.GraphPresenterTest
  */
 public class GraphPresenter {
     boolean suspendFlag = false;

@@ -1,4 +1,4 @@
-package Home.Week2.hw4.parallel;
+package Home.Week2.hw3.parallel;
 
 import java.util.ArrayList;
 
@@ -16,10 +16,10 @@ import java.util.ArrayList;
  - элемента со значением null
 
  Класс задания:
- hw4.parallel.MyArrayList
+ hw3.parallel.MyArrayList
 
  Класс теста:
- hw4.parallel.MyArrayListTest
+ hw3.parallel.MyArrayListTest
  */
 public class MyArrayList<E> {
 
