@@ -11,7 +11,7 @@ package hw4.parallel;
  - существующего элемента в массиве с одним элементом
  - элемента со значением null
  */
-public class MyArrayListTest {
+public class MyArrayListTest2 {
 
     public static void testSearchExisting(){
 

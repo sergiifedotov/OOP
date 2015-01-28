@@ -1,4 +1,4 @@
-package parallel;
+package hw4.parallel;
 
 import hw4.parallel.MyArrayList;
 import org.junit.Test;
