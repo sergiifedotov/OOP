@@ -80,7 +80,8 @@ public class MyArrayList<E> {
 
     public int indexOf(E e) {
         for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i].equals(e)) {
+            if ((e == null && myArray[i] == null) ||
+                    myArray[i].equals(e)) {
                 return i;
             }
         }
