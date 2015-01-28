@@ -24,7 +24,7 @@ public class GraphPresenter extends Thread {
                     x = i;
                     y = x * x;
                     for (double ox = 0; ox < x; ox += 1) {
-                        System.out.println(" ");
+                        System.out.println("");
                         for (double oy = 0; oy < y; oy += 1) {
                             System.out.print(" ");
                         }

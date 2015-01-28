@@ -33,6 +33,10 @@ public class PressEnter extends Thread {
                         i = 0;
                     }
                 }
+                if (ch == 'q'){
+                    System.exit(0);
+                }
+
             }
         } catch (IOException e) {
             e.printStackTrace();
