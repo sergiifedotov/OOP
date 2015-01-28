@@ -5,11 +5,8 @@ package hw3.reader;
  */
 public class TextReaderTest {
     public static void main(String[] args) {
-        TextReader.ConsoleViewing concView = new TextReader.ConsoleViewing();
-        TextReader.Reader r = new  TextReader.Reader(concView);
-        r.start();
-        TextReader.Console cons = new  TextReader.Console(concView);
-        cons.start();
+        TextReader tr = new TextReader();
+        tr.read();
     }
 }
 
