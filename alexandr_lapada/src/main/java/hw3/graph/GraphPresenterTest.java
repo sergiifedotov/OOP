@@ -18,17 +18,34 @@ import java.io.IOException;
 public class GraphPresenterTest {
 
     public static void main(String[] args) {
-        Holder hold = new Holder();
+        final GraphPresenter graph = new GraphPresenter();
 
-        GraphPresenter thr1 = new GraphPresenter(hold);
-        thr1.start();
-        PressEnter thr2 =new PressEnter(hold);
-        thr2.start();
+        Thread readEnter = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int code;
+                boolean wait = false;
+                try {
+                    while (-1 != (code = System.in.read())) {
+                        if (code == 10) {
+                            wait = !wait;
+                            graph.setWait(wait);
+                            System.out.println(wait);
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        readEnter.start();
 
-
+        graph.print();
 
     }
+
 }
+
 
 
 

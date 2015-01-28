@@ -3,28 +3,32 @@ package hw3.graph;
 /**
  * Created by sanya on 25.01.2015.
  */
-public class GraphPresenter extends Thread {
+public class GraphPresenter {
     private double x;
     private double y;
-    private Holder hold;
+    private boolean wait = false;
 
     public GraphPresenter() {
 
     }
 
-    public GraphPresenter(Holder hold) {
-        this.hold = hold;
+    public synchronized void setWait(boolean wait) {
+        this.wait = wait;
     }
 
-    public void print(){
+    public synchronized boolean getWait() {
+        return wait;
+    }
+
+    public void print() {
         double i = 0;
-        while (i < 15) {
-            if (hold.getValue()) {
+        while (i < 10) {
+            if (getWait()) {
                 try {
                     x = i;
                     y = x * x;
                     for (double ox = 0; ox < x; ox += 1) {
-                        System.out.println(" ");
+                        System.out.println("");
                         for (double oy = 0; oy < y; oy += 1) {
                             System.out.print(" ");
                         }
@@ -36,12 +40,8 @@ public class GraphPresenter extends Thread {
                 }
                 i += 1;
             }
+
         }
 
-    }
-
-    @Override
-    public void run() {
-        print();
     }
 }

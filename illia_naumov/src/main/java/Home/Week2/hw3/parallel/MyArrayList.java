@@ -22,28 +22,21 @@ import java.util.ArrayList;
  hw3.parallel.MyArrayListTest
  */
 public class MyArrayList<E> {
+
     public static void main(String[] args) throws InterruptedException {
         MyArrayList<Integer> listik = new MyArrayList<>();
         listik.add(1);
         listik.add(2);
         listik.add(3);
-        listik.add(4);
-        listik.add(5);
-        listik.add(6);
-        listik.add(7);
-        listik.add(8);
-        listik.add(9);
-        listik.add(10);
-        listik.add(11);
-        listik.add(12);
-        listik.add(13);
+
         System.out.println(listik.parallelIndexOf(22));
     }
+
     ArrayList<E> list;
     public int keyRight;
     public int keyLeft;
     public boolean isFound = false;
-    public int searchingElement = -1;
+    public int searchingElement;
 
 
     public MyArrayList(){
@@ -53,6 +46,7 @@ public class MyArrayList<E> {
     public void add(E e){
         list.add(e);
     }
+
     public void setElement(Integer e){
         searchingElement = e;
     }
@@ -61,14 +55,12 @@ public class MyArrayList<E> {
         RightSearch rs = new RightSearch(e);
         ls.start();
         rs.start();
-        ls.join();
-        rs.join();
-        //Thread.sleep(1000);
-        if(isFound = true){
+        if(isFound){
             return searchingElement;
-        } else{
+        } else {
             return -1;
         }
+
 
     }
     class LeftSearch extends Thread{
@@ -77,17 +69,18 @@ public class MyArrayList<E> {
             this.e = e;
         }
         @Override
-        public void  run(){
+        public synchronized void  run(){
             keyLeft = 0;
             for(int i = keyLeft; i < list.size()-1; i++){
                 keyLeft++;
-                if(keyLeft == keyRight){
-                    Thread.interrupted();
+                if(keyLeft >= keyRight ){
+                    return;
                 }
                 if(list.get(i).equals(e)){
                     setElement(i);
                     isFound = true;
-                    Thread.interrupted();
+                    return;
+
                 }
             }
         }
@@ -103,13 +96,13 @@ public class MyArrayList<E> {
             keyRight = list.size()-1;
             for(int i = keyRight; i > 0; i-- ){
                 keyRight--;
-                if(keyLeft == keyRight){
-                    Thread.interrupted();
+                if(keyLeft >= keyRight ){
+                    return;
                 }
                 if(list.get(i).equals(e)){
-                    searchingElement = i;
+                    setElement(i);
                     isFound = true;
-                    Thread.interrupted();
+                    return;
                 }
             }
         }
