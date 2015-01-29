@@ -1,4 +1,6 @@
-package hw4.parallel;
+package parallel;
+
+import hw4.parallel.MyArrayList;
 
 /**
  * Реализовать в классе MyArrayList метод
