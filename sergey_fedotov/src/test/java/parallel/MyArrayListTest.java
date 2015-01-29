@@ -11,7 +11,7 @@ package parallel;
  - существующего элемента в массиве с одним элементом
  - элемента со значением null
  */
-public class MyArrayListTest2 {
+public class MyArrayListTest {
 
     public static void testSearchExisting(){
 
