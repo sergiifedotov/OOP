@@ -1,4 +1,4 @@
-package hw4.graph;
+package hw3.graph;
 
 import org.junit.Test;
 import static junit.framework.Assert.*;

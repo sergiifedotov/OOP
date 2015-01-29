@@ -1,6 +1,4 @@
-package hw4.graph;
-
-import java.util.Scanner;
+package hw3.graph;
 
 public class GraphPresenter {
 
