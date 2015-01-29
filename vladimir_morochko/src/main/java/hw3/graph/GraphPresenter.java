@@ -24,11 +24,11 @@ import java.io.InputStreamReader;
  */
 
 class GraphPresenter {
-    BufferedReader bufferedReader;
-    InputStreamReader inputStreamReader;
-    PrintingThread printingThread;
-    KeyboardWatchThread keyboardWatchThread;
-    Strategy strategy;
+    private BufferedReader bufferedReader;
+    private InputStreamReader inputStreamReader;
+    private PrintingThread printingThread;
+    private KeyboardWatchThread keyboardWatchThread;
+    private Strategy strategy;
 
     public GraphPresenter() {
         inputStreamReader = new InputStreamReader(System.in);
@@ -63,6 +63,9 @@ class GraphPresenter {
 
         keyboardWatchThread.start();
         printingThread.start();
+
+        keyboardWatchThread.join();
+        printingThread.join();
     }
 
     private class PrintingThread implements Runnable {
@@ -78,6 +81,14 @@ class GraphPresenter {
 
         public void interrupt() {
             thread.interrupt();
+        }
+
+        public void join() {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -120,12 +131,20 @@ class GraphPresenter {
             thread.interrupt();
         }
 
+        public void join() {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         @Override
         public void run() {
             try {
                 if (bufferedReader.readLine().equals("")) {
                     printingThread.interrupt();
-                    //this.interrupt();
+                    this.interrupt();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
