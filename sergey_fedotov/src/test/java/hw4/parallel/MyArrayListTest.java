@@ -1,8 +1,5 @@
 package hw4.parallel;
 
-import org.junit.Test;
-import static junit.framework.Assert.*;
-
 /**
  * Реализовать в классе MyArrayList метод
  public int parallelIndexOf(E e), выполняющий линейный многопоточный поиск в списке.
@@ -16,8 +13,7 @@ import static junit.framework.Assert.*;
  */
 public class MyArrayListTest {
 
-    @Test
-    public void testSearchExisting(){
+    public static void testSearchExisting(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
@@ -27,12 +23,17 @@ public class MyArrayListTest {
         myArrayList.add(7);
         myArrayList.add(1);
 
-        assertEquals(myArrayList.parallelIndexOf(1),4);
+        String nameTest = "Test1. SearchExisting: ";
+
+        if(myArrayList.parallelIndexOf(1)==4){
+            System.out.println(nameTest.concat("ok"));
+        }else{
+            System.err.println(nameTest.concat("error"));
+        }
 
     }
 
-    @Test
-    public void testSearchNonexistent(){
+    public static void testSearchNonexistent(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
@@ -42,41 +43,59 @@ public class MyArrayListTest {
         myArrayList.add(7);
         myArrayList.add(1);
 
-        assertEquals(myArrayList.parallelIndexOf(4),-1);
+        String nameTest = "Test2. SearchNonexistent: ";
+
+        if(myArrayList.parallelIndexOf(4)==-1){
+            System.out.println(nameTest.concat("ok"));
+        }else{
+            System.err.println(nameTest.concat("error"));
+        }
 
     }
 
-    @Test
-    public void testSearchNonexistentInEmptyArray(){
+    public static void testSearchNonexistentInEmptyArray(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
-        assertEquals(myArrayList.parallelIndexOf(4),-1);
+        String nameTest = "Test3. SearchNonexistentInEmptyArray: ";
+
+        if(myArrayList.parallelIndexOf(4)==-1){
+            System.out.println(nameTest.concat("ok"));
+        }else{
+            System.err.println(nameTest.concat("error"));
+        }
 
     }
 
-    @Test
-    public void testSearchNonexistentInArrayOneElement(){
+    public static void testSearchNonexistentInArrayOneElement(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
         myArrayList.add(56);
+        String nameTest = "Test4. SearchNonexistentInArrayOneElement: ";
 
-        assertEquals(myArrayList.parallelIndexOf(4),-1);
+        if(myArrayList.parallelIndexOf(4)==-1){
+            System.out.println(nameTest.concat("ok"));
+        }else{
+            System.err.println(nameTest.concat("error"));
+        }
 
     }
 
-    @Test
-    public void testSearchExistingInArrayOneElement(){
+    public static void testSearchExistingInArrayOneElement(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
         myArrayList.add(56);
+        String nameTest = "Test5. SearchExistingInArrayOneElement: ";
 
-        assertEquals(myArrayList.parallelIndexOf(56),0);
+        if(myArrayList.parallelIndexOf(56)==0){
+            System.out.println(nameTest.concat("ok"));
+        }else{
+            System.err.println(nameTest.concat("error"));
+        }
 
     }
 
-    @Test
-    public void testSearchElementNull(){
+    public static void testSearchElementNull(){
 
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
 
@@ -86,7 +105,24 @@ public class MyArrayListTest {
         myArrayList.add(null);
         myArrayList.add(1);
 
-        assertEquals(myArrayList.parallelIndexOf(null),3);
+        String nameTest = "Test6. SearchElementNull: ";
+
+        if(myArrayList.parallelIndexOf(null)==3){
+            System.out.println(nameTest.concat("ok"));
+        }else{
+            System.err.println(nameTest.concat("error"));
+        }
+
+    }
+
+    public static void main(String[] args) {
+
+        testSearchExisting();
+        testSearchNonexistent();
+        testSearchNonexistentInEmptyArray();
+        testSearchNonexistentInArrayOneElement();
+        testSearchExistingInArrayOneElement();
+        testSearchElementNull();
 
     }
 
