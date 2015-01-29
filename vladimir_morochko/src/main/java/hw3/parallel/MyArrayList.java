@@ -1,6 +1,5 @@
 package hw3.parallel;
 
-
 import java.lang.reflect.Array;
 
 /**
@@ -32,7 +31,7 @@ public class MyArrayList<E> {
     private E[] myArray;
     private final int threadCount = 4;
     private SearchThread[] threadPool;
-    int searchResult;
+    private int searchResult;
 
     @SuppressWarnings("unchecked")
     public MyArrayList() {
@@ -166,7 +165,6 @@ public class MyArrayList<E> {
             this.searchArray = searchArray;
             this.startIndex = startIndex;
             this.endIndex = endIndex;
-            this.searchValue = searchValue;
         }
 
         public void start() {
