@@ -46,7 +46,7 @@ public class GraphPresenter {
                                 presentGraph2();
                                 break;
                             case "3":
-                                presentGraph1();
+                                presentGraph3();
                                 break;
                             default:
 
@@ -117,7 +117,5 @@ public class GraphPresenter {
             }
         }
     }
-    public ArrayList<String> getListFromConsole() {
-        return listFromConsole;
-    }
+
 }
