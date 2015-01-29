@@ -1,7 +1,5 @@
 package parallel;
 
-import hw4.parallel.MyArrayList;
-
 /**
  * Реализовать в классе MyArrayList метод
  public int parallelIndexOf(E e), выполняющий линейный многопоточный поиск в списке.
@@ -13,7 +11,7 @@ import hw4.parallel.MyArrayList;
  - существующего элемента в массиве с одним элементом
  - элемента со значением null
  */
-public class MyArrayListTest {
+public class MyArrayListTest2 {
 
     public static void testSearchExisting(){
 
