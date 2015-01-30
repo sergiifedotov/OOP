@@ -142,7 +142,7 @@ class GraphPresenter {
         @Override
         public void run() {
             try {
-                if (bufferedReader.readLine().equals("")) {
+                if (bufferedReader.readLine().length() >= 0) {
                     printingThread.interrupt();
                     this.interrupt();
                 }

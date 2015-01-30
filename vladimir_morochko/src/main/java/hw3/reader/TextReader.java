@@ -88,7 +88,7 @@ public class TextReader {
 
         @Override
         public void run() {
-            while (!(thread.isInterrupted() && scanFile.hasNextLine())) {
+            while (!thread.isInterrupted() && scanFile.hasNextLine()) {
                 System.out.println(scanFile.nextLine());
 
                 try {
@@ -127,7 +127,7 @@ public class TextReader {
         @Override
         public void run() {
             try {
-                if (bufferedKeyboardReader.readLine().equals("")) {
+                if (bufferedKeyboardReader.readLine().length() >= 0) {
                     printingThread.interrupt();
                     //this.interrupt();
                 }
