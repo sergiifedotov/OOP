@@ -21,16 +21,14 @@ public class GraphPresenterTest {
         final GraphPresenter graph = new GraphPresenter();
 
         Thread readEnter = new Thread(new Runnable() {
+
             @Override
             public void run() {
                 int code;
-                boolean wait = false;
                 try {
                     while (-1 != (code = System.in.read())) {
                         if (code == 10) {
-                            wait = !wait;
-                            graph.setWait(wait);
-                            System.out.println(wait);
+                            graph.setWait(!graph.getWait());
                         }
                     }
                 } catch (IOException e) {
@@ -41,7 +39,7 @@ public class GraphPresenterTest {
         readEnter.start();
 
         graph.print();
-
+        readEnter.stop();
     }
 
 }

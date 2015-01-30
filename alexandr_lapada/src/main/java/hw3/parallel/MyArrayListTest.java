@@ -1,5 +1,5 @@
 package hw3.parallel;
-
+import java.util.*;
 /**
  Реализовать в классе MyArrayList метод
  public int parallelIndexOf(E e), выполняющий линейный многопоточный поиск в списке.
@@ -18,4 +18,29 @@ package hw3.parallel;
  hw3.parallel.MyArrayListTest
  */
 public class MyArrayListTest {
+    public static void main(String[] args) {
+
+        MyArrayList<Integer> list = new MyArrayList<Integer>();
+
+        for(int i = 0; i < 30; i++) {
+            list.add(list.size()/2, i + 2);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+        System.out.println();
+
+        System.out.println(list.parallelIndexOf(0));
+        System.out.println(list.parallelIndexOf(null));
+        System.out.println(list.parallelIndexOf(3));
+        System.out.println(list.parallelIndexOf(2));
+        System.out.println(list.parallelIndexOf(1));
+
+
+
+
+
+
+
+    }
 }
