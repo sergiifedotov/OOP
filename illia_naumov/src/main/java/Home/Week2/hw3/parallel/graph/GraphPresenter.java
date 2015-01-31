@@ -49,8 +49,8 @@ public class GraphPresenter {
         buffer = new BufferedReader(new InputStreamReader(System.in));
         int userChoice = Integer.parseInt(buffer.readLine());
         System.out.println("Type ENTER to stop");
-        switch (userChoice) {
-            case (1):
+            switch (userChoice) {
+                case (1):
                 printer(1);
                 break;
             case (2):
@@ -64,19 +64,22 @@ public class GraphPresenter {
     } catch (IOException e) {
         e.printStackTrace();
     } catch (InterruptedException e) {
-        e.printStackTrace();
+        //e.printStackTrace();
     }
 }
 
-     @Override
+/*     @Override
      public void interrupt() {
          Thread.currentThread().interrupt();
-     }
+     }*/
 
      public  void printer(int function) throws InterruptedException {
 
             String indents;
             for (int x = 0; x < 6; x++) {
+                if (isInterrupted()) {
+                    return;
+                }
                 indents = "";
                 double y = 0;
                 if (function == 1) {
