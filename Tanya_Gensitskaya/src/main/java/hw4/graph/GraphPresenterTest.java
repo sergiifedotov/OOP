@@ -1,4 +1,4 @@
-package hw3.graph;
+package hw4.graph;
 
 /**
  * Created by Tanya on 29.01.2015.
@@ -7,5 +7,7 @@ public class GraphPresenterTest {
     public static void main(String[] args) {
         GraphPresenter g = new GraphPresenter();
         g.present();
+
+
     }
 }
