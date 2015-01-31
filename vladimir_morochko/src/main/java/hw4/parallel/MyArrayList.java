@@ -1,4 +1,4 @@
-package hw3.parallel;
+package hw4.parallel;
 
 import java.lang.reflect.Array;
 
