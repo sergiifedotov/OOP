@@ -93,7 +93,7 @@ public class MyArrayList<E> {
         }
         @Override
         public  void run(){
-            keyRight = list.size()-1;
+            keyRight = list.size()/2;
             for(int i = keyRight; i > 0; i-- ){
                 keyRight--;
                 if(keyLeft >= keyRight ){

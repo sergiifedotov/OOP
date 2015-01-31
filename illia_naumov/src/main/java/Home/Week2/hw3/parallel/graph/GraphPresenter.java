@@ -22,129 +22,107 @@ import java.io.InputStreamReader;
  Класс теста:
  hw3.graph.GraphPresenterTest
  */
+
 public class GraphPresenter {
-    boolean suspendFlag = false;
-
     public static void main(String[] args) throws InterruptedException, IOException {
-        GraphPresenter graph = new GraphPresenter();
-        graph.print();
-    }
-
-    public void print() throws InterruptedException, IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        KeyListenerTester breaker = new KeyListenerTester();
-
-        System.out.println("Choose which graphical function you want to print");
-        System.out.println("Type 1 for x*x");
-        System.out.println("Type 2 for 10*sin(x/5)");
-        System.out.println("Type 3 for x");
-        String cho = bf.readLine();
-        int choice = Integer.parseInt(cho);
+        Printer printer = new Printer();
+        printer.start();
+        KeyListener breaker = new KeyListener(printer);
         breaker.start();
+        printer.join();
+        breaker.join();
 
-        switch (choice) {
+
+    }
+}
+ class Printer extends Thread {
+        BufferedReader buffer;
+
+    @Override
+    public   void run()  {
+    System.out.println("Choose which graphical function you want to print");
+    System.out.println("Type 1 for x*x");
+    System.out.println("Type 2 for 10*sin(x/5)");
+    System.out.println("Type 3 for x");
+
+    try {
+        buffer = new BufferedReader(new InputStreamReader(System.in));
+        int userChoice = Integer.parseInt(buffer.readLine());
+        System.out.println("Type ENTER to stop");
+        switch (userChoice) {
             case (1):
-                printXX();
+                printer(1);
                 break;
             case (2):
-                printSin();
+                printer(2);
                 break;
             case (3):
-                printX();
+                printer(3);
                 break;
         }
-        breaker.join();
+        buffer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
     }
+}
 
-    public void printXX() throws InterruptedException {
-        String indents;
-        for (int x = 0; x < 6; x++) {
-            indents = "";
-            for (int j = 0; j < x * x; j++) {
-                indents += " ";
-            }
-            synchronized (this) {
-                while (suspendFlag) {
-                    Thread.interrupted();
+     @Override
+     public void interrupt() {
+         Thread.currentThread().interrupt();
+     }
+
+     public  void printer(int function) throws InterruptedException {
+
+            String indents;
+            for (int x = 0; x < 6; x++) {
+                indents = "";
+                double y = 0;
+                if (function == 1) {
+                    y = x * x;
+                } else if (function == 2) {
+                    y = 10 * Math.sin(x * 0.2);
+                } else if (function == 3) {
+                    y = x;
                 }
-            }
-            System.out.println(indents + "*");
-            Thread.sleep(500);
-        }
-    }
-
-    public void printSin() throws InterruptedException {
-        String indents;
-        for (int x = 0; x < 6; x++) {
-            indents = "";
-            for (int j = 0; j < 10 * Math.sin(x * 0.2); j++) {
-                indents += " ";
-            }
-            synchronized (this) {
-                while (suspendFlag) {
-                    Thread.interrupted();
+                for (int j = 0; j < y; j++) {
+                    indents += " ";
                 }
+                System.out.println(indents + "*");
+                Thread.sleep(500);
             }
-            System.out.println(indents + "*");
-            Thread.sleep(500);
+
         }
-    }
 
-    public void printX() throws InterruptedException {
-        String indents;
-        for (int x = 0; x < 6; x++) {
-            indents = "";
-            for (int j = 0; j < x; j++) {
-                indents += " ";
-            }
-            synchronized (this) {
-                while (suspendFlag) {
-                    Thread.interrupted();
-                }
-            }
-            System.out.println(indents + "*");
-            Thread.sleep(500);
+
+
+
+}
+class KeyListener extends Thread {
+    Thread printer;
+        KeyListener(Thread thread){
+            printer = thread;
         }
-    }
-
-    synchronized void mysuspend() {
-        suspendFlag = true;
-    }
-
-    class KeyListenerTester extends Thread {
-
         @Override
-
         public void run() {
-            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-            while (true) {
-                try {
+            BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                while(printer.isAlive()){
+                    String i = buffer.readLine();
 
-                    String str = bf.readLine();
-                    if (str.contains("\n")) {
-                        mysuspend();
+                    if (i.equals("a")) {
+
+                            printer.interrupt();
+
                     }
-                    }catch(IOException e){
-                        e.printStackTrace();
-                    }
-                /**JTextField function = new JTextField(8);
-                 function.addActionListener(new ActionListener() {
-
-                 public void actionPerformed(ActionEvent e) {
-
-                 //statements!!!
-                 int key = e.getID();
-                 if(key == KeyEvent.VK_ENTER){
-                 mysuspend();
-                 }
-
-                 }
-                 });*/
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
+
         }
-    }
-
-
+            }
 
