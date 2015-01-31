@@ -13,7 +13,7 @@ import java.util.Scanner;
  * Класс теста:
  * GraphPresenterTest
  */
-public class GraphPresenter {
+class GraphPresenter {
     private final ArrayList <String> listFromConsole = new ArrayList<>();
     private Thread thread1;
 
