@@ -9,10 +9,12 @@ public class TextReader {
 
     private boolean wait = false;
     public synchronized void setWait(boolean wait) {
+
         this.wait = wait;
     }
 
     public synchronized boolean getWait() {
+
         return wait;
     }
 
