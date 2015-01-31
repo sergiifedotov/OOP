@@ -22,7 +22,7 @@ public class GraphPresenter {
 
     public void print() {
         double i = 0;
-        while (i < 10) {
+        while (i < 5) {
             if (getWait()) {
                 try {
                     x = i;
