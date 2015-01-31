@@ -123,6 +123,13 @@ public class DynamicSorter extends Application  { //extends Application
         }
     }
 
+    void sort() {
+        strategy.initialize(Config.getInstance());
+        loadDataFromFile(fileName);
+        strategy.sort();
+        saveDataToFile(fileName);
+    }
+
     private class SortingThread implements Runnable {
         private Thread thread;
 
