@@ -31,7 +31,6 @@ public class MyArrayList<E> extends ArrayList {
                                     System.out.println("thread1 ");
                                     setIndex(i);
                                 }
-
                             }
                         }
                     } else {
@@ -42,7 +41,6 @@ public class MyArrayList<E> extends ArrayList {
                                     System.out.print("thread1 ");
                                     setIndex(i);
                                 }
-
                             }
                         }
                     }
@@ -62,7 +60,6 @@ public class MyArrayList<E> extends ArrayList {
                                    System.out.print("thread2 ");
                                    setIndex(i);
                                }
-
                            }
                        }
                    } else {
