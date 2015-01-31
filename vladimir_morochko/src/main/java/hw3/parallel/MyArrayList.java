@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 /**
  * Created by vladimir on 27.01.2015.
  *
- * Реализовать в классе MyArrayList метод
+ * Реализовать в классе MyArrayList  метод
  * public int parallelIndexOf(E e), выполняющий линейный
  * многопоточный поиск в списке.
  *
