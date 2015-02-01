@@ -15,7 +15,7 @@ public class Task1 {
         authenticator.addMemberList("Катя","4");
 
         System.out.println(authenticator.auth("Иван","1"));
-        System.out.println(authenticator.auth("Оля","1"));
+        System.out.println(authenticator.auth("Иван","2"));
         System.out.println(authenticator.auth("Катя","4"));
     }
 
