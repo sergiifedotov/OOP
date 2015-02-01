@@ -1,4 +1,4 @@
-package hw3.graph;
+package hw4.graph;
 
 import java.util.Scanner;
 import static java.lang.Math.sin;
@@ -13,7 +13,7 @@ import static java.lang.Math.sin;
  *
  *  Плавно строить график заданной функции (задержка в 0.5 секунды) пока пользователь не нажмет ентер.
  *  Класс задания:
- *  hw3.graph.GraphPresenter
+ *  GraphPresenter
  *
  *  Класс теста:
  *  hw3.graph.GraphPresenterTest
