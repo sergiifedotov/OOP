@@ -1,4 +1,4 @@
-package hw3.parallel;
+package hw4.parallel;
 
 import java.util.ArrayList;
 
@@ -14,10 +14,10 @@ import java.util.ArrayList;
  * - элемента со значением null
  * <p/>
  * Класс задания:
- * hw3.parallel.MyArrayList
+ * hw4.parallel.MyArrayList
  * <p/>
  * Класс теста:
- * hw3.parallel.MyArrayListTest
+ * hw4.parallel.MyArrayListTest
  */
 public class MyArrayList {
     private ArrayList<Integer> list = new ArrayList<>();
