@@ -1,4 +1,4 @@
-package hw4.graph;
+package hw3.graph;
 
 import java.util.Scanner;
 import static java.lang.Math.sin;
