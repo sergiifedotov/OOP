@@ -123,7 +123,7 @@ public class DynamicSorter extends Application  { //extends Application
         }
     }
 
-    void sort() {
+    public void sort() {
         strategy.initialize(Config.getInstance());
         loadDataFromFile(fileName);
         strategy.sort();
