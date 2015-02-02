@@ -9,11 +9,11 @@ import java.util.Scanner;
  * <p/>
  * Плавно строить график заданной функции (задержка в 0.5 секунды) пока пользователь не нажмет ентер.
  * Класс задания:
- * hw3.graph.GraphPresenter
+ * GraphPresenter
  * Класс теста:
- * hw3.graph.GraphPresenterTest
+ * GraphPresenterTest
  */
-public class GraphPresenter {
+class GraphPresenter {
     private final ArrayList <String> listFromConsole = new ArrayList<>();
     private Thread thread1;
 

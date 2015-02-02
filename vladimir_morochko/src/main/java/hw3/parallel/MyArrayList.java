@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 /**
  * Created by vladimir on 27.01.2015.
  *
- * Реализовать в классе MyArrayList метод
+ * Реализовать в классе MyArrayList  метод
  * public int parallelIndexOf(E e), выполняющий линейный
  * многопоточный поиск в списке.
  *
@@ -193,6 +193,10 @@ public class MyArrayList<E> {
                         searchArray[i].equals(searchValue)) {
                     searchResult = i;
                     interruptAllThreads();
+
+                    // можно сделать другой механизм, когда один объект
+                    // создает множество потоков и сам засыпает
+                    // первый нашедший его будит и тогда он прибивает всех
                     break;
                 }
             }
