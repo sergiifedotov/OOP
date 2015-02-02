@@ -1,4 +1,4 @@
-package hw4.parallel;
+package hw3.parallel;
 
 /**
  * Реализовать в классе MyArrayList метод
