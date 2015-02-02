@@ -19,6 +19,9 @@ package hw4.sql;
  */
 public class Queries {
 
+    public Queries(){
+    }
+
     //1) Получить одну колонку из таблицы employees
     /*
     SELECT first_name FROM employees;
