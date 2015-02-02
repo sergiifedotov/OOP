@@ -1,4 +1,4 @@
-package hw4.chat;
+package hw3.chat;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -12,29 +12,30 @@ import java.util.Scanner;
  * выводить и отсылать сообщения в любом порядке.
  */
 
-public class AsyncChatConsole {
+public class AsyncChatServer {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        int receivePort = 30000;
-        String address = "localhost";
-
-        AsyncChatConsole asyncChatConsole = new AsyncChatConsole(address, receivePort);
-        asyncChatConsole.go();
-
-        int sendPort = 30001;
-        Socket socket = null;
+        int sendPort = 30000;
+        Socket socket;
         PrintWriter printWriter = null;
 
         try {
+            System.out.println("waiting on port " + sendPort);
             socket = new ServerSocket(sendPort).accept();
-            printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
             System.out.println("opened port " + sendPort);
+            printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        int receivePort = 30001;
+        String address = "localhost";
+
+        AsyncChatServer asyncChat = new AsyncChatServer(address, receivePort);
+        asyncChat.go();
+
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             printWriter.println(scanner.nextLine());
             printWriter.flush();
@@ -44,10 +45,10 @@ public class AsyncChatConsole {
 
     ChatReceiver chatReceiver;
 
-    public AsyncChatConsole() {
+    public AsyncChatServer() {
     }
 
-    public AsyncChatConsole(String address, int receivePort) {
+    public AsyncChatServer(String address, int receivePort) {
         chatReceiver = new ChatReceiver(address, receivePort);
     }
 
@@ -91,7 +92,7 @@ public class AsyncChatConsole {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-             }
+            }
         }
     }
 
