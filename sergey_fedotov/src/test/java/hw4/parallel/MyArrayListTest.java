@@ -1,5 +1,7 @@
 package hw4.parallel;
 
+import hw3.parallel.MyArrayList;
+
 /**
  * Реализовать в классе MyArrayList метод
  public int parallelIndexOf(E e), выполняющий линейный многопоточный поиск в списке.
