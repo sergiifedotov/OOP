@@ -1,6 +1,7 @@
 package hw3.chat;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
 import javafx.event.EventHandler;
@@ -77,7 +78,13 @@ public class AsyncChatJFX extends Application {
                         break;
                     }
                     System.out.println(message);
-                    chatArea.appendText("incoming: " + message);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            chatArea.appendText("incoming: " + message);
+                        }
+                    });
+
                     //TODO что здесь?
                 }
 
