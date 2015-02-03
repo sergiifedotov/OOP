@@ -4,66 +4,56 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * Created by tsv on 31.01.15.
+ * Created by Tsimbalyuk Sergey
+ * 2/3/2015.
  */
-
 public class AsyncChat {
-    public static void main(String[] args) throws IOException {
+
+    public AsyncChat() throws IOException {
+        process();
+    }
+
+
+    public void process() {
+        Socket socket = null;
         try {
-            Socket socket = new Socket("127.0.0.1", 30000);
-            AsyncRead asyncRead = new AsyncRead(socket);
-            AsyncWrite asyncWrite = new AsyncWrite(socket);
-
-            asyncWrite.start();
-            asyncRead.start();
-
+            socket = new Socket("127.0.0.1", 30000);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-}
 
-class AsyncRead extends Thread {
-    private BufferedReader br;
-    private Socket sock;
-
-    public AsyncRead(Socket sock) throws IOException {
-        this.sock = sock;
-        br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-    }
-
-    @Override
-    public void run() {
+        BufferedReader in = null;
         try {
-            while (!sock.isClosed()) {
-                System.out.println(br.readLine());
-            }
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-}
-
-class AsyncWrite extends Thread {
-    private PrintWriter pw;
-    private BufferedReader br;
-    private Socket socket;
-
-    public AsyncWrite(Socket socket) throws IOException {
-        this.socket = socket;
-        pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-        br = new BufferedReader(new InputStreamReader(System.in));
-    }
-
-    @Override
-    public void run() {
+        PrintWriter out = null;
         try {
-            while (!socket.isClosed()) {
-                pw.println(br.readLine());
-                pw.flush();
-            }
+            out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        final BufferedReader finalIn = in;
+        new Thread(() -> {
+            while (true) {
+                try {
+                    System.out.println(finalIn.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        BufferedReader brConsole = new BufferedReader(new InputStreamReader(System.in));
+        while (true) {
+            try {
+                out.println(brConsole.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            out.flush();
         }
     }
 }

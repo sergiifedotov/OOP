@@ -1,7 +1,6 @@
 package hw3.chat;
 
-import java.io.*;
-import java.net.Socket;
+import java.io.IOException;
 
 /**
  * Created by Tsimbalyuk Sergey
@@ -9,8 +8,7 @@ import java.net.Socket;
  */
 public class AsyncChatTest {
     public static void main(String[] args) throws IOException {
-        AsyncChat asyncChat = new AsyncChat();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Socket socket = new Socket("127.0.0.1", 30000);
+        AsyncChat chat = new AsyncChat();
+        chat.process();
     }
 }
