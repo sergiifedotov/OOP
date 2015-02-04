@@ -88,7 +88,11 @@ public class AsyncChat {
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 System.out.println("connected to port " + port + " on " + address);
                 while (!thread.isInterrupted()) {
-                    System.out.println(bufferedReader.readLine());
+                    String message = bufferedReader.readLine();
+                    if (message == null) {
+                        break;
+                    }
+                    System.out.println("incoming: " + message);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
