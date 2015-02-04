@@ -52,9 +52,9 @@ public class FileFinder {
         @Override
         public void run() {
             try {
-                Stream<Path> entries = Files.list(Paths.get(path));
+                Stream<Path> stream = Files.list(Paths.get(path));
 
-                Iterator<Path> iterator = entries.iterator();
+                Iterator<Path> iterator = stream.iterator();
                 while (iterator.hasNext()) {
                     Path currentPath = iterator.next();
                     if (Files.isDirectory(currentPath)) {
