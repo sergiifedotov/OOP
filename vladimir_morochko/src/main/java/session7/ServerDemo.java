@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 public class ServerDemo {
     public static void main(String[] args) throws IOException {
+        System.out.println("server running...");
         ServerSocket serverSocket = new ServerSocket(30000);
         Socket socket = serverSocket.accept();
         System.out.println("accepted");

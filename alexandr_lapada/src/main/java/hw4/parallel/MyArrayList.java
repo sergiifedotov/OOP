@@ -1,6 +1,7 @@
-package hw3.parallel;
-import java.io.IOException;
-import java.util.*;
+package hw4.parallel;
+
+import java.util.ArrayList;
+
 /**
  * Created by sanya on 25.01.2015.
  */
