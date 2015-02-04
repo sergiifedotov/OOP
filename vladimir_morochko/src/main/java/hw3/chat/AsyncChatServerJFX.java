@@ -3,9 +3,7 @@ package hw3.chat;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-
 import javafx.event.EventHandler;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -28,7 +26,7 @@ import java.net.Socket;
  * выводить и отсылать сообщения в любом порядке.
  */
 
-public class AsyncChatJFX extends Application {
+public class AsyncChatServerJFX extends Application {
 
     ChatReceiver chatReceiver;
 
@@ -36,7 +34,7 @@ public class AsyncChatJFX extends Application {
     PrintWriter printWriter = null;
     Socket sendSocket = null;
 
-    public AsyncChatJFX() {
+    public AsyncChatServerJFX() {
         chatArea = new TextArea();
     }
 
@@ -74,7 +72,6 @@ public class AsyncChatJFX extends Application {
                 bufferedReader = new BufferedReader(new InputStreamReader(receiveSocket.getInputStream()));
                 System.out.println("connected to port " + port + " on " + address);
                 while (!thread.isInterrupted()) {
-
                     String message = bufferedReader.readLine();
                     if (message == null) {
                         break;
@@ -105,16 +102,12 @@ public class AsyncChatJFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        int receivePort = 30000;
-        String address = "localhost";
-        chatReceiver = new ChatReceiver(address, receivePort);
-        chatReceiver.start();
-
-        int sendPort = 30001;
+        int sendPort = 30000;
+        System.out.println("waiting on port " + sendPort);
         try {
             sendSocket = new ServerSocket(sendPort).accept();
             printWriter = new PrintWriter(new OutputStreamWriter(sendSocket.getOutputStream()));
-            printWriter.println("hello server");
+            printWriter.println("hello client");
             printWriter.flush();
             System.out.println("opened port " + sendPort);
         } catch (IOException e) {
@@ -176,7 +169,7 @@ public class AsyncChatJFX extends Application {
 
         Scene scene = new Scene(borderPane, sceneWidth, sceneHeight);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("AsyncChatJFX client");
+        primaryStage.setTitle("AsyncChatJFX server");
         primaryStage.setResizable(false);
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -194,5 +187,11 @@ public class AsyncChatJFX extends Application {
             }
         });
         primaryStage.show();
+
+        int receivePort = 30001;
+        String address = "localhost";
+        chatReceiver = new ChatReceiver(address, receivePort);
+        chatReceiver.start();
+
     }
 }
