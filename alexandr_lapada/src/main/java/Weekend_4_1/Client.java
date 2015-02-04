@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Client {
     public static void main(String[] args) {
         try {
-            Socket sock = new Socket("192.168.1.161", 30000);
+            Socket sock = new Socket("localhost", 30000);
             PrintWriter pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
             BufferedReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
             Scanner in = new Scanner(System.in);
