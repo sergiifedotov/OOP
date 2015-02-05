@@ -38,7 +38,7 @@ public class Queries {
 
     6) Получить имена сотрудников с зарплатой и кодом руководителя,
     для которых этот код принимает одно из значений 114, 121, 205
-    SELECT first_name, salary, manager_id FROM employees WHERE manager_id=114 OR manager_id=121 OR manager_id=205
+    SELECT first_name, salary, manager_id FROM employees WHERE manager_id IN (114, 121, 205)
 
     7) Получить имена сотрудников, у которых в имени
     вторая буква = m, а предпоследняя буква = t
@@ -46,7 +46,7 @@ public class Queries {
 
     8) Получить имя, должность сотрудников, должность которых
     не входит в список: 'ST_CLERK','IT_PROG','MK_MAN'
-    SELECT first_name, job_id FROM employees WHERE job_id<>'ST_CLERK' AND job_id<>'IT_PROG' AND job_id<>'MK_MAN'
+    SELECT first_name, job_id FROM employees WHERE job_id NOT IN ('ST_CLERK','IT_PROG','MK_MAN')
 
     9) Получить сотрудников в порядке возрастания дат зачисления на работу
     SELECT * FROM employees ORDER BY hire_date
