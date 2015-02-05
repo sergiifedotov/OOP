@@ -20,21 +20,64 @@ package hw4.parallel;
  */
 
 public class FileFinderTest {
+
+    public static void printArray (String[] arrayToPrint) {
+        for (int i = 0; i < arrayToPrint.length; i++) {
+            System.out.println(arrayToPrint[i]);
+        }
+    }
+
     public static void main(String[] args) {
         FileFinder fileFinder = new FileFinder();
         // по существующему пути, 3х существующих файлов на разных уровнях (1,2,3)
-        fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "jdk.conf");
-        fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide", "jdk.conf");
-        fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper", "jdk.conf");
+
+        boolean actual;
+        boolean expected;
+        String[] testArray;
+
+        System.out.println("по существующему пути, 3х существующих файлов на разных уровнях (1,2,3)");
+        System.out.println(1);
+        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "jdk.conf").length > 0;
+        expected = true;
+        if (actual == expected) {System.out.println("test passed");}
+        else {System.out.println("test failed");}
+
+        System.out.println(2);
+        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide", "jdk.conf").length > 0;
+        expected = true;
+        if (actual == expected) {System.out.println("test passed");}
+        else {System.out.println("test failed");}
+
+        System.out.println(3);
+        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper", "jdk.conf").length > 0;
+        expected = true;
+        if (actual == expected) {System.out.println("test passed");}
+        else {System.out.println("test failed");}
+        System.out.println();
 
         // по существующему пути, несуществующего файла
-        fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "qwerty.asdf");
+        System.out.println("по существующему пути, несуществующего файла");
+        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "qwerty.asdf").length == 0;
+        expected = true;
+        if (actual == expected) {System.out.println("test passed");}
+        else {System.out.println("test failed");}
+        System.out.println();
 
         // по несуществующему пути, несуществующего файла
-        fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\zxcvbn", "qwerty.asdf");
+        System.out.println("по несуществующему пути, несуществующего файла");
+        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\zxcvbn", "qwerty.asdf").length == 0;
+        expected = true;
+        if (actual == expected) {System.out.println("test passed");}
+        else {System.out.println("test failed");}
+        System.out.println();
 
         // единственного существующего файла в единственном каталоге
-        fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\sqlj\\lib", "runtime12.jar");
+        System.out.println("единственного существующего файла в единственном каталоге");
+        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\sqlj\\lib", "runtime12.jar").length > 0;
+        expected = true;
+        if (actual == expected) {System.out.println("test passed");}
+        else {System.out.println("test failed");}
+        System.out.println();
 
     }
 }
