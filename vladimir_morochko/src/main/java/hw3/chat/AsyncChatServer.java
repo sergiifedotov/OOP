@@ -40,7 +40,6 @@ public class AsyncChatServer {
             printWriter.println(scanner.nextLine());
             printWriter.flush();
         }
-
     }
 
     ChatReceiver chatReceiver;
