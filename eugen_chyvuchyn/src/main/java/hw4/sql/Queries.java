@@ -1,8 +1,5 @@
 package hw4.sql;
 
-import java.sql.*;
-import java.util.Locale;
-
 /**
  * Created by Chuvychin on 04.02.2015.
  * С помощью язка запросов SQL написать следующие запросы:
@@ -18,30 +15,19 @@ import java.util.Locale;
  а предпоследняя буква = t
  8) Получить имя, должность сотрудников, должность которых не входит в список: 'ST_CLERK','IT_PROG','MK_MAN'
  9) Получить сотрудников в порядке возрастания дат зачисления на работу
-
  */
 public class Queries {
-    public static void main(String[] args) {
-        Locale.setDefault(Locale.ENGLISH);
-        String url = "jdbc:oracle:thin:@localhost:1521:XE";
 
-        Connection conn = null;
-
-
-        try {
-            conn = DriverManager.getConnection(url, "hr", "hr");
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("Select first_name FROM employees");
-            while(rs.next()){
-                String name = rs.getString(1);
-                System.out.println(name);
-            }
-            conn.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    //1) SELECT hire_date FROM employees;
+    //2) SELECT salary FROM employees GROUP BY salary; SELECT DISTINCT first_name from EMPLOYEES;
+    //3) SELECT salary*0.1 from employees;
+    //4) SELECT first_name, last_name, hire_date FROM employees WHERE hire_date > '01.01.1982';
+    //5) SELECT first_name FROM employees WHERE salary < commission_pct;
+    //
+    //6) select first_name, last_name, salary, manager_id from employees where manager_id = 114 or MANAGER_ID=121 or MANAGER_ID = 205;
+    //7) select first_name from EMPLOYEES WHERE FIRST_NAME like '_m%t_'
+    //8) select first_name, job_id from EMPLOYEES WHERE job_id not in ('ST_CLERK','IT_PROG','MK_MAN');
+    //9)) select first_name, last_name, hire_date from EMPLOYEES ORDER BY HIRE_DATE ASC;
 
 
 }
