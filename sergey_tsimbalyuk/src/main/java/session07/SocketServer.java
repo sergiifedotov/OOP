@@ -10,7 +10,7 @@ import java.net.Socket;
 public class SocketServer {
 
     public static void main(String[] args) throws IOException {
-        ServerSocket ss = new ServerSocket(30000);
+        ServerSocket ss = new ServerSocket(30100);
         Socket server = ss.accept();
 
         BufferedReader brServer = new BufferedReader(new InputStreamReader(server.getInputStream()));
