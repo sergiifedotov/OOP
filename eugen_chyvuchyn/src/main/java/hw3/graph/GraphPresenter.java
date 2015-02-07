@@ -86,8 +86,8 @@ class GraphPresenterThread implements Runnable {
   try {
    for (int x = 0; x < 50; x++) {
     System.out.println(getLineByX(x));
-    Thread.sleep(500);
-   }
+   Thread.sleep(500);
+  }
   } catch (InterruptedException e) {
    System.out.println("Прервано пользователем.");
   }
