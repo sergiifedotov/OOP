@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Created by @CAT_Caterpiller on 31.01.2015.
  */
 
-public class AsyncServer {
+public  class AsyncServer {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(30000);
         Socket socket = serverSocket.accept();
