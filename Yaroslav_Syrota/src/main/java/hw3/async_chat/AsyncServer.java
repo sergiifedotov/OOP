@@ -1,16 +1,18 @@
-package session7;
+package hw3.async_chat;
 
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * Created by Yaroslav_Syrota on 31.01.2015.
+ * Created by @CAT_Caterpiller on 31.01.2015.
  */
 
-public class Messenger {
+public class AsyncServer {
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("192.168.1.2", 30000);
+        ServerSocket serverSocket = new ServerSocket(30000);
+        Socket socket = serverSocket.accept();
 
         PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -26,10 +28,13 @@ public class Messenger {
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            //System.out.println(bufferedReader.readLine());
             printWriter.println(scanner.nextLine());
             printWriter.flush();
-            //System.out.println(bufferedReader.readLine());
-
         }
+
+
     }
+
+
 }

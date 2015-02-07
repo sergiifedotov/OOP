@@ -1,14 +1,14 @@
-package session7;
+package hw3.async_chat;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * Created by Yaroslav_Syrota on 31.01.2015.
+ * Created by @CAT_Caterpiller on 31.01.2015.
  */
 
-public class Messenger {
+public class AsyncMessanger {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket("192.168.1.2", 30000);
 
