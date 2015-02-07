@@ -22,10 +22,18 @@ public class TreeEx {
         map.put(new User("3", "1"), null);
         map.put(new User("4", "1"), null);
 
-        // TODO set ascending order
         System.out.println(map);
 
-        // TODO set descending order
+        map = new TreeMap<>(new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return 0 - o1.getLogin().compareTo(o2.getLogin());
+            }
+        });
+        map.put(new User("1", "1"), null);
+        map.put(new User("2", "1"), null);
+        map.put(new User("3", "1"), null);
+        map.put(new User("4", "1"), null);
         System.out.println(map);
     }
 }

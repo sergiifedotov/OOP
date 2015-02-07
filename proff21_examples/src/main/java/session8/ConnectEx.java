@@ -23,19 +23,11 @@ public class ConnectEx {
         }
         System.out.println("JDBC driver is loaded!");
 
-        Connection conn = null;
         String url = "jdbc:oracle:thin:@localhost:1521:XE";
-        try {
-            conn = DriverManager.getConnection(url, "hr", "hr");
+        try (Connection conn = DriverManager.getConnection(url, "hr", "hr");){
+
         } catch (SQLException e) {
-            System.out.println("Connection failed");
             e.printStackTrace();
-        } finally {
-            if(conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {}
-            }
         }
     }
 }
