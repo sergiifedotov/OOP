@@ -1,11 +1,9 @@
-package hw3.chat;
+package hw4.parallel;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-
 import javafx.event.EventHandler;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -28,7 +26,7 @@ import java.net.Socket;
  * выводить и отсылать сообщения в любом порядке.
  */
 
-public class AsyncChatJFX extends Application {
+public class ChatClientFX extends Application {
 
     ChatReceiver chatReceiver;
 
@@ -36,7 +34,7 @@ public class AsyncChatJFX extends Application {
     PrintWriter printWriter = null;
     Socket sendSocket = null;
 
-    public AsyncChatJFX() {
+    public ChatClientFX() {
         chatArea = new TextArea();
     }
 

@@ -21,7 +21,7 @@ public class AsyncChat {
         String address = "localhost";
 
         AsyncChat asyncChat = new AsyncChat(address, receivePort);
-        asyncChat.go();
+        asyncChat.process();
 
         int sendPort = 30001;
         Socket socket = null;
@@ -44,6 +44,10 @@ public class AsyncChat {
 
     ChatReceiver chatReceiver;
 
+    public void process() {
+        chatReceiver.start();
+    }
+
     public AsyncChat() {
     }
 
@@ -51,9 +55,6 @@ public class AsyncChat {
         chatReceiver = new ChatReceiver(address, receivePort);
     }
 
-    public void go() {
-        chatReceiver.start();
-    }
 
     private class ChatReceiver implements Runnable {
         private Thread thread;
@@ -87,7 +88,11 @@ public class AsyncChat {
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 System.out.println("connected to port " + port + " on " + address);
                 while (!thread.isInterrupted()) {
-                    System.out.println(bufferedReader.readLine());
+                    String message = bufferedReader.readLine();
+                    if (message == null) {
+                        break;
+                    }
+                    System.out.println("incoming: " + message);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

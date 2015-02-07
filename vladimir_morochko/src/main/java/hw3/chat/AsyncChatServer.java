@@ -33,14 +33,13 @@ public class AsyncChatServer {
         String address = "localhost";
 
         AsyncChatServer asyncChat = new AsyncChatServer(address, receivePort);
-        asyncChat.go();
+        asyncChat.process();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
             printWriter.println(scanner.nextLine());
             printWriter.flush();
         }
-
     }
 
     ChatReceiver chatReceiver;
@@ -52,7 +51,7 @@ public class AsyncChatServer {
         chatReceiver = new ChatReceiver(address, receivePort);
     }
 
-    public void go() {
+    public void process() {
         chatReceiver.start();
     }
 
@@ -88,7 +87,11 @@ public class AsyncChatServer {
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 System.out.println("connected to port " + port + " on " + address);
                 while (!thread.isInterrupted()) {
-                    System.out.println(bufferedReader.readLine());
+                    String message = bufferedReader.readLine();
+                    if (message == null) {
+                        break;
+                    }
+                    System.out.println("incoming: " + message);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

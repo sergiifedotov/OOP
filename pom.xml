@@ -1,46 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE project [
-        <!ELEMENT project (modelVersion|groupId|artifactId|version|packaging|modules|properties|dependencies|build)*>
-        <!ATTLIST project
-                xmlns CDATA #REQUIRED
-                xmlns:xsi CDATA #REQUIRED
-                xsi:schemaLocation CDATA #REQUIRED>
-        <!ELEMENT modelVersion (#PCDATA)>
-        <!ELEMENT groupId (#PCDATA)>
-        <!ELEMENT artifactId (#PCDATA)>
-        <!ELEMENT version (#PCDATA)>
-        <!ELEMENT packaging (#PCDATA)>
-        <!ELEMENT modules (module)*>
-        <!ELEMENT module (#PCDATA)>
-        <!ELEMENT properties (junit.version|maven-compiler-plugin.version|jdk.version|log4j.version|slf4j.version|spring.version|hibernate.version|mysql.connector.version|platform.version|ehcache.version|project.build.sourceEncoding|project.reporting.outputEncoding)*>
-        <!ELEMENT junit.version (#PCDATA)>
-        <!ELEMENT maven-compiler-plugin.version (#PCDATA)>
-        <!ELEMENT jdk.version (#PCDATA)>
-        <!ELEMENT log4j.version (#PCDATA)>
-        <!ELEMENT slf4j.version (#PCDATA)>
-        <!ELEMENT spring.version (#PCDATA)>
-        <!ELEMENT hibernate.version (#PCDATA)>
-        <!ELEMENT mysql.connector.version (#PCDATA)>
-        <!ELEMENT platform.version (#PCDATA)>
-        <!ELEMENT ehcache.version (#PCDATA)>
-        <!ELEMENT project.build.sourceEncoding (#PCDATA)>
-        <!ELEMENT project.reporting.outputEncoding (#PCDATA)>
-        <!ELEMENT dependencies (dependency)*>
-        <!ELEMENT dependency (groupId|artifactId|version|scope|exclusions)*>
-        <!ELEMENT scope (#PCDATA)>
-        <!ELEMENT exclusions (exclusion)*>
-        <!ELEMENT exclusion (artifactId|groupId)*>
-        <!ELEMENT build (plugins)*>
-        <!ELEMENT plugins (plugin)*>
-        <!ELEMENT plugin (groupId|artifactId|version|configuration|executions)*>
-        <!ELEMENT configuration (source|target)*>
-        <!ELEMENT source (#PCDATA)>
-        <!ELEMENT target (#PCDATA)>
-        <!ELEMENT executions (execution)*>
-        <!ELEMENT execution (goals)*>
-        <!ELEMENT goals (goal)*>
-        <!ELEMENT goal (#PCDATA)>
-        ]>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -115,7 +73,7 @@
 
         2) Set up maven
         // For Windows
-        set PATH=%PATH%;C:\Java\apache-maven-3.2.5\bin
+        set PATH=%PATH%;D:\Робота\Прога\apache-maven-3.2.3-bin\apache-maven-3.2.3\bin
         // For Linux
         export PATH=$PATH:/home/user/install/apache-maven-3.2.1/bin
 
