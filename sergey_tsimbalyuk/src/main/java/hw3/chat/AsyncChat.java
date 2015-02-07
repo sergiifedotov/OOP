@@ -20,26 +20,13 @@ public class AsyncChat {
     }
 
 
-    public void process() {
+    public void process() throws IOException {
         Socket socket = null;
-        try {
-            socket = new Socket("127.0.0.1", 30000);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        socket = new Socket("127.0.0.1", 30100);
         BufferedReader in = null;
-        try {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter out = null;
-        try {
-            out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 
         final BufferedReader finalIn = in;
         new Thread(() -> {
