@@ -87,23 +87,6 @@ public class Client {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        session10.dentist.domain.Client client = (session10.dentist.domain.Client) o;
-
-        if (id != null ? !id.equals(client.id) : client.id != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
-
-    @Override
     public String toString() {
         return "Client{" +
                 "id=" + id +
