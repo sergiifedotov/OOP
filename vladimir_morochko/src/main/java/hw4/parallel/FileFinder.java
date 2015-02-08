@@ -26,13 +26,24 @@ import java.util.stream.Stream;
  * <p/>
  * Класс теста:
  * hw4.parallel.FileFinderTest
+ * как вариант джойнить каждый вновь созданный поток в головном потоке
  */
 
 public class FileFinder {
     public int finderCount = 0;
     LinkedList<String> results;
 
-    public String[] parallelFind(String path, String fileName) {
+    public void parallelFind (String path, String fileName) {
+        printArray(parallelFindString(path, fileName));
+    }
+
+    public static void printArray (String[] arrayToPrint) {
+        for (int i = 0; i < arrayToPrint.length; i++) {
+            System.out.println(arrayToPrint[i]);
+        }
+    }
+
+    public String[] parallelFindString(String path, String fileName) {
         results = new LinkedList<>();
         Finder finder = new Finder();
         finder.find(path, fileName);
