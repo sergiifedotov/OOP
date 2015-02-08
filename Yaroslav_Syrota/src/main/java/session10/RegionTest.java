@@ -1,5 +1,6 @@
 package session10;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +15,8 @@ import java.util.Locale;
  * Created by Admin on 08.02.2015.
  */
 public class RegionTest {
+
+    private static Logger log = Logger.getLogger(HiberConnect.class);
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -23,26 +26,8 @@ public class RegionTest {
         SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
         log.info("Reference to SessionFactory " + factory);
 
-        Session session = null;
-        try {
-            session = factory.openSession();
-            session9.Region region = new session9.Region();
-            region.setName("Australia");
-            session.beginTransaction();
-            session.save(region);
-            session.getTransaction().commit();
+        RegionHibernateDaoImpl dao = new RegionHibernateDaoImpl(factory);
 
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
+        dao.delete(dao.read(new Long(5)));
     }
 }
