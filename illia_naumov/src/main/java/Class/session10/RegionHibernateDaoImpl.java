@@ -1,11 +1,10 @@
-package session10;
+package Class.session10;
 
+import Class.session9.Region;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -47,9 +46,13 @@ public class RegionHibernateDaoImpl implements RegionDao {
         Session session = null;
         try {
             session = factory.openSession();
-            return (Region) session.get(Region.class, id);
+            session.beginTransaction();
+            Region reg = (Region) session.get(Region.class, id);
+            session.getTransaction().commit();
+            return reg;
         } catch (HibernateException e) {
             log.error("Open session failed", e);
+            session.getTransaction().rollback();
         } finally {
             if(session != null) {
                 session.close();
@@ -60,38 +63,47 @@ public class RegionHibernateDaoImpl implements RegionDao {
 
     @Override
     public void update(Region region) {
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            session.update(region);
+            session.getTransaction().commit();
 
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
     }
 
     @Override
     public void delete(Region region) {
-
-    }
-
-    public Long rowsCount() {
-        Session session = factory.openSession();
+        Session session = null;
         try {
-            return (Long)session.createCriteria(Region.class)
-                    .setProjection(Projections.rowCount())
-                    .uniqueResult();
+            session = factory.openSession();
+            session.beginTransaction();
+            Region reg = read(region.getId());
+            session.delete(reg);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
         } finally {
             if(session != null) {
                 session.close();
             }
         }
     }
+
     @Override
     public List<Region> findAll() {
-        Session session = factory.openSession();
-        try {
-            return session.createCriteria(Region.class)
-                    .add(Restrictions.eq("id", 3))
-                    .add(Restrictions.like("name", "%e%"))
-                    .list();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
+        // NO implementation
+        return null;
     }
+
+
 }
