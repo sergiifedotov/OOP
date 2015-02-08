@@ -1,4 +1,4 @@
-package hw4.sql.parallel;
+package hw4.parallel;
 
 /**
  * Реализовать в классе MyArrayList метод
