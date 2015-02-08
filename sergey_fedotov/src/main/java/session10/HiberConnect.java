@@ -1,4 +1,4 @@
-package session9;
+package session10;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import session9.Region;
 
 import java.util.Locale;
 
@@ -25,32 +26,15 @@ public class HiberConnect {
         SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
         log.info("Reference to SessionFactory " + factory);
 
-        Session session = null;
-        try {
-            session = factory.openSession();
-            Region rl = new Region("Australia");
-            session.beginTransaction();
-            session.save(rl);
-            session.getTransaction().commit();
+        RegionHibernateDaoImpl regionHibernateDao = new RegionHibernateDaoImpl(factory);
 
-           /* session = factory.openSession();
-            rl = (Region) session.get(Region(),"5");
-            session.beginTransaction();
-            session.save(rl);
-            session.getTransaction().commit();*/
+        //regionHibernateDao.update(new Region(5L,"Antarctica"));
 
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
+        regionHibernateDao.delete(new Region(5L,"Antarctica"));
+
+        if (factory != null) {
+            factory.close();
         }
-        log.info(session);
     }
 }
 
