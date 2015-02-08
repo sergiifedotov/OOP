@@ -66,8 +66,8 @@ public class ChatServer {
                 try {
                     line = br.readLine();
                 } catch (IOException e) {
-                    e.printStackTrace();
-                    close();
+                        e.printStackTrace();
+                        close();
                 }
                 if ("fuckOff".equals(line)){
                     close();
