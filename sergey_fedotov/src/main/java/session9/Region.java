@@ -24,6 +24,11 @@ public class Region {
         this.regionName = regionName;
     }
 
+    public Region(Long id, String regionName) {
+        this.regionName = regionName;
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
