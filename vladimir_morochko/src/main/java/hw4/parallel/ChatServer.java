@@ -20,4 +20,7 @@ package hw4.parallel;
  * hw4.parallel.ChatServerTest
  */
 public class ChatServer {
+    public void listenConnections() {
+
+    }
 }

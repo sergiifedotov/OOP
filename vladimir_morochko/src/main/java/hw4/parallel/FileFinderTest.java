@@ -37,19 +37,19 @@ public class FileFinderTest {
 
         System.out.println("по существующему пути, 3х существующих файлов на разных уровнях (1,2,3)");
         System.out.println(1);
-        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "jdk.conf").length > 0;
+        actual = fileFinder.parallelFindString("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "jdk.conf").length > 0;
         expected = true;
         if (actual == expected) {System.out.println("test passed");}
         else {System.out.println("test failed");}
 
         System.out.println(2);
-        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide", "jdk.conf").length > 0;
+        actual = fileFinder.parallelFindString("C:\\Program Files\\Java\\sqldeveloper\\ide", "jdk.conf").length > 0;
         expected = true;
         if (actual == expected) {System.out.println("test passed");}
         else {System.out.println("test failed");}
 
         System.out.println(3);
-        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper", "jdk.conf").length > 0;
+        actual = fileFinder.parallelFindString("C:\\Program Files\\Java\\sqldeveloper", "jdk.conf").length > 0;
         expected = true;
         if (actual == expected) {System.out.println("test passed");}
         else {System.out.println("test failed");}
@@ -57,7 +57,7 @@ public class FileFinderTest {
 
         // по существующему пути, несуществующего файла
         System.out.println("по существующему пути, несуществующего файла");
-        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "qwerty.asdf").length == 0;
+        actual = fileFinder.parallelFindString("C:\\Program Files\\Java\\sqldeveloper\\ide\\bin", "qwerty.asdf").length == 0;
         expected = true;
         if (actual == expected) {System.out.println("test passed");}
         else {System.out.println("test failed");}
@@ -65,7 +65,7 @@ public class FileFinderTest {
 
         // по несуществующему пути, несуществующего файла
         System.out.println("по несуществующему пути, несуществующего файла");
-        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\ide\\zxcvbn", "qwerty.asdf").length == 0;
+        actual = fileFinder.parallelFindString("C:\\Program Files\\Java\\sqldeveloper\\ide\\zxcvbn", "qwerty.asdf").length == 0;
         expected = true;
         if (actual == expected) {System.out.println("test passed");}
         else {System.out.println("test failed");}
@@ -73,7 +73,7 @@ public class FileFinderTest {
 
         // единственного существующего файла в единственном каталоге
         System.out.println("единственного существующего файла в единственном каталоге");
-        actual = fileFinder.parallelFind("C:\\Program Files\\Java\\sqldeveloper\\sqlj\\lib", "runtime12.jar").length > 0;
+        actual = fileFinder.parallelFindString("C:\\Program Files\\Java\\sqldeveloper\\sqlj\\lib", "runtime12.jar").length > 0;
         expected = true;
         if (actual == expected) {System.out.println("test passed");}
         else {System.out.println("test failed");}
