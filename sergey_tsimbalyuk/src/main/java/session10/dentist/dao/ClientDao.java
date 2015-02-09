@@ -12,10 +12,10 @@ import java.util.List;
  * Date: 4/7/13
  */
 public interface ClientDao {
-    void create(Client user);
+ /*   void create(Client user);
     Client read(Long id);
     void update(Client client);
     void delete(Client client);
     List<Client> findAll();
-    List<Client> findMonyGT(long amount);
+    List<Client> findMonyGT(long amount);*/
 }

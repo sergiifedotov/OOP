@@ -13,7 +13,7 @@ import java.util.Scanner;
  * User: al1
  * Date: 4/7/13
  */
-public class Menu {
+public class Menu {/*
     private static final int SHOW_ALL_USERS_ITEM = 1;
     private static final int EXIT_ITEM = 0;
     private static final int ADD_NEW_USER_ITEM = 2;
@@ -126,5 +126,5 @@ public class Menu {
         System.out.println("1. Show all users");
         System.out.println("2. Add new user");
         System.out.println("0. Exit");
-    }
+    }*/
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * User: al1
  * Date: 4/7/13
  */
-public class ClientServiceImpl implements ClientService {
+public class ClientServiceImpl implements ClientService {/*
     private ClientDao userDao;
 
     public ClientServiceImpl(ClientDao dao) {
@@ -26,5 +26,5 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void addNewUser(Client user) {
         userDao.create(user);
-    }
+    }*/
 }

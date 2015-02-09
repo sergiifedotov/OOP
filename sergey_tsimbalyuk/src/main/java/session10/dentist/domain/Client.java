@@ -8,6 +8,10 @@ import java.util.Date;
  * User: al1
  * Date: 4/7/13
  */
+public class Client {
+
+}
+/*
 @Entity
 @Table(name="CLIENTS")
 public class Client {
@@ -113,3 +117,4 @@ public class Client {
                 '}';
     }
 }
+*/

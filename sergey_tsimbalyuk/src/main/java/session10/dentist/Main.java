@@ -19,7 +19,7 @@ import java.util.Locale;
  * Date: 4/7/13
  */
 public class Main {
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         // !! IMPORTANT !! this is only example of structure
         Locale.setDefault(Locale.ENGLISH);
         Configuration cfg = new Configuration().configure("session10/hibernate.cfg.xml");
@@ -33,5 +33,5 @@ public class Main {
 
         Menu menu = new Menu(clientService);
         menu.main();
-    }
+    }*/
 }

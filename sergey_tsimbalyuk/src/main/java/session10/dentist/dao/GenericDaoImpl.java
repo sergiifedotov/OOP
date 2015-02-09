@@ -1,20 +1,25 @@
 package session10.dentist.dao;
 
+import javafx.scene.canvas.GraphicsContext;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 import java.io.Serializable;
 import java.util.List;
-
-import static session10.dentist.utils.HibernateUtil.getSession;
 
 /**
  * Created with IntelliJ IDEA.
  * User: al1
  * Date: 8/18/13
  */
+public class GenericDaoImpl {
+
+}
+/*
 public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 
     private Class<T> type;
+    private Session session;
 
     public GenericDaoImpl(Class<T> type) {
 
@@ -50,4 +55,11 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
 
     }
 
-}
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+}*/

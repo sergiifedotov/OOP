@@ -11,7 +11,7 @@ import java.util.List;
  * User: al1
  * Date: 25.05.13
  */
-public interface ClientService {
+public interface ClientService {/*
     List<Client> getAllUsers();
-    void addNewUser(Client user);
+    void addNewUser(Client user)*/;
 }
