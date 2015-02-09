@@ -23,12 +23,12 @@ public class NotebookHibernateDaoImpl implements NotebookDao {
     }
 
     @Override
-    public Long create(Notebook ntbk) {
+    public Long create(Notebook ntb) {
         Session session = null;
         try {
             session = (Session) factory.openSession();
             session.beginTransaction();
-            Long id = (Long)session.save(ntbk);
+            Long id = (Long)session.save(ntb);
             session.getTransaction().commit();
             return id;
         } catch (HibernateException e) {
