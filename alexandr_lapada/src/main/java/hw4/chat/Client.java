@@ -12,7 +12,7 @@ public class Client {
 
 
     public static void main(String[] args) throws IOException{
-        Socket socket = new Socket("127.0.0.1", 15000);
+        Socket socket = new Socket("127.0.0.1", 1515);
         String dataIn = "";
         Scanner in = new Scanner(System.in);
         PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));

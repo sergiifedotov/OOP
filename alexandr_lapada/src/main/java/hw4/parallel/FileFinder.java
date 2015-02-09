@@ -7,11 +7,15 @@ import java.util.Scanner;
  * Created by sanya on 02.02.2015.
  */
 public class FileFinder extends Thread {
+    public void parallelFind(){
+
+    }
     @Override
     public void run() {
         Scanner input = new Scanner(System.in);
         File f;
-        String path, file;
+        String path;
+        String file;
         boolean result = false;
         System.out.println("Enter the required path for search: ");
         path = input.nextLine();
