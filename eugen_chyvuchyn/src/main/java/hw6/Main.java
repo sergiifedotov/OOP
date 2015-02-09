@@ -1,6 +1,6 @@
 package hw6;
 
-import hw6.dao.NotebookDaoImpl;
+import hw6.notes.dao.NotebookDaoImpl;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;

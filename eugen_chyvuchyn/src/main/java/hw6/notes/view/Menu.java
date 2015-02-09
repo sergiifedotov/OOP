@@ -1,4 +1,4 @@
-package hw6.view;
+package hw6.notes.view;
 
 /**
  * Created by Chuvychin on 09.02.2015.

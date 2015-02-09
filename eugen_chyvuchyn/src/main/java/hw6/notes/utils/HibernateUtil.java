@@ -1,4 +1,4 @@
-package hw6.utils;
+package hw6.notes.utils;
 
 /**
  * Created by Chuvychin on 09.02.2015.
