@@ -16,5 +16,6 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping class="session09.Client"/>
         <mapping class="session09.Region"/>
+        <mapping class="hw6.notes.dao.NotebookHibernateDaoImpl" />
     </session-factory>
 </hibernate-configuration>

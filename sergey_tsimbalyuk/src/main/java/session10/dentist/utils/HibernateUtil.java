@@ -11,7 +11,7 @@ import java.util.Locale;
  * User: al1
  * Date: 5/12/13
  */
-public class HibernateUtil {
+public class HibernateUtil {/*
     private static final SessionFactory sessionFactory = buildSessionFactory();
     private static SessionFactory buildSessionFactory() {
         try {
@@ -29,5 +29,5 @@ public class HibernateUtil {
 
     public static Session getSession() {
         return sessionFactory.openSession();
-    }
+    }*/
 }
