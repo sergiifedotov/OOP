@@ -1,6 +1,4 @@
-package hw3;
-
-import hw3.MyArrayList;
+package hw4.parallel;
 
 /**
  * Created by Tsimbalyuk Sergey

@@ -1,4 +1,4 @@
-package hw3;
+package hw4.parallel;
 
 import java.util.Arrays;
 
