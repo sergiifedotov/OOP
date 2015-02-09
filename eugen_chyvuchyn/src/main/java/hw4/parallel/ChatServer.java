@@ -24,6 +24,10 @@ public class ChatServer {
     private int port;
     BlockingQueue<SocketProcessor> q = new LinkedBlockingQueue<>();
 
+    public ChatServer(){
+
+    }
+
     public ChatServer(int port) throws IOException {
         serverSocket = new ServerSocket(port);
         this.port = port;
