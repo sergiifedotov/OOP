@@ -11,6 +11,10 @@ package session05;
  * Created by tsv on 24.01.15.
  */
 public class ThreetonTest {
+    /*
+    woot
+     */
+
 //    //логика
 //    private ThreetonLazy instance;
 //
