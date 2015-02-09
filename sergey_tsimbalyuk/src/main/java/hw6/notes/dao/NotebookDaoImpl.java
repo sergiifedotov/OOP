@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
@@ -14,11 +13,11 @@ import java.util.List;
 /**
  * Created by tsv on 09.02.15.
  */
-public class NotebookHibernateDaoImpl implements NotebookDao {
+public class NotebookDaoImpl implements NotebookDao {
     private static SessionFactory factory;
-    private static Logger log = Logger.getLogger(NotebookHibernateDaoImpl.class);
+    private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
     private List<Notebook> notebookList = new ArrayList<Notebook>();
-    public NotebookHibernateDaoImpl(SessionFactory factory) {
+    public NotebookDaoImpl(SessionFactory factory) {
         this.factory = factory;
     }
 
