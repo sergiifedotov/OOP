@@ -1,7 +1,6 @@
-package session5;
+package session05;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;

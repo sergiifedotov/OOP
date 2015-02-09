@@ -1,4 +1,4 @@
-package session4;
+package session04;
 
 /**
  * Created by Tsimbalyuk Sergey

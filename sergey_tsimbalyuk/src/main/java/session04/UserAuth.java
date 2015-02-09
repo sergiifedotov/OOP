@@ -1,8 +1,4 @@
-package session4;
-
-import session2.Authenticator;
-
-import java.util.Map;
+package session04;
 
 /**t
  * Created by tsv on 18.01.15.

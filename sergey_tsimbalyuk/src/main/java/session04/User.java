@@ -1,4 +1,4 @@
-package session4;
+package session04;
 
 /**
  * Created by tsv on 18.01.15.
@@ -11,6 +11,10 @@ public class User {
         this.age = age;
         this.name = name;
     }
+
+//    public User(String s, String name) {
+//
+//    }
 
     public int getAge() {
         return age;

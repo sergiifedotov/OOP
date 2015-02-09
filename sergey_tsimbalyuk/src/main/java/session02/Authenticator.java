@@ -1,8 +1,4 @@
-package session2;
-
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+package session02;
 
 /**
  * Created with IntelliJ IDEA.

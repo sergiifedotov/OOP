@@ -10,21 +10,22 @@ import java.util.Scanner;
 public class SyncChatClient {public static void main(String[] args) throws IOException {
     Socket sock = new Socket("127.0.0.1", 30000);
     Scanner scan = new Scanner(System.in);
-    String message2 = "";
-    String str="";
+    String clientText = "";
+    String serverText="";
 
     BufferedReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
     PrintWriter pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
 
 
 
-    while ((str.compareTo("exit")!=0)|(message2.compareTo("exit")!=0)) {
+    while (!serverText.equals("exit")){
+//            |(clientText.compareTo("exit")!=0)
 
-        message2 = scan.nextLine();
-        pw.println(message2);
+        clientText = scan.nextLine();
+        pw.println(clientText);
         pw.flush();
-        str = br.readLine();
-        System.out.println(str);
+        serverText = br.readLine();
+        System.out.println(serverText);
 
     };
 }
