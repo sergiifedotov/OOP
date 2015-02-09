@@ -1,4 +1,4 @@
-package session9;
+package Weekend_5_1;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -30,13 +30,9 @@ public class HiberConnect {
         Session session = null;
         try {
             session = factory.openSession();
-            Region region = new Region("Australia");
+            Region region = new Region("Australiaaaaa");
             session.beginTransaction();
-            Long id = (Long) session.save(region);
-//            region = session.get(Region.class, 24);
-
-
-//            session.delete(region);
+            session.save(region);
             session.getTransaction().commit();
 
         } catch (HibernateException e) {

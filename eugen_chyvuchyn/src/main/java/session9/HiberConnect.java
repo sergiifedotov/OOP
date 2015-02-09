@@ -11,9 +11,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.Locale;
 
 /**
- * Created with IntelliJ IDEA.
- * User: al1
- * Date: 20.09.14
+ * Created by Chuvychin on 07.02.2015.
  */
 public class HiberConnect {
     private static Logger log = Logger.getLogger(HiberConnect.class);
@@ -30,15 +28,6 @@ public class HiberConnect {
         Session session = null;
         try {
             session = factory.openSession();
-            Region region = new Region("Australia");
-            session.beginTransaction();
-            Long id = (Long) session.save(region);
-//            region = session.get(Region.class, 24);
-
-
-//            session.delete(region);
-            session.getTransaction().commit();
-
         } catch (HibernateException e) {
             log.error("Open session failed", e);
             session.getTransaction().rollback();
@@ -53,4 +42,3 @@ public class HiberConnect {
         log.info(session);
     }
 }
-

@@ -1,4 +1,4 @@
-package session5_6_dz;
+package hw3.parallel;
 
 import java.util.ArrayList;
 

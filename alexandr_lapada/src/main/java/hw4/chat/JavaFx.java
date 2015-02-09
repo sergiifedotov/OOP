@@ -87,7 +87,7 @@ public class JavaFx extends Application {
         pane.getChildren().add(buttonConnect);
         primaryStage.setScene(new Scene(pane, 300, 300));
         primaryStage.show();
-        while (socket == null) {
+        /*while (socket == null) {
             try {
                 clientRead.start();
             } catch (NullPointerException e) {
@@ -95,6 +95,7 @@ public class JavaFx extends Application {
             }
         }
 
+    }*/
     }
 }
 class ClientRead extends Thread{
