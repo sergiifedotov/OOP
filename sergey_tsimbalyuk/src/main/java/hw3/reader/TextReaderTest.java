@@ -1,4 +1,4 @@
-package hw3;
+package hw3.reader;
 
 /**
  * Created by Tsimbalyuk Sergey on 31.01.15.

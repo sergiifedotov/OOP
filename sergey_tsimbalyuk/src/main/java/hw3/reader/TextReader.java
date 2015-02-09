@@ -1,4 +1,4 @@
-package hw3;
+package hw3.reader;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
