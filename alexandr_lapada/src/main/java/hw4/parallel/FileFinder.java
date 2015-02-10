@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Created by sanya on 02.02.2015.
  */
 public class FileFinder extends Thread {
-    public void parallelFind(){
+    public void parallelFind(String str1, String str2){
 
     }
     @Override
