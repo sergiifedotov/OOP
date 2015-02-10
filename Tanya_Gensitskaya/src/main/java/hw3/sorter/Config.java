@@ -37,7 +37,8 @@ public class Config {
 
     public static void main(String[] args) throws IOException {
         String fre = Config.getInstance().getProperty("SOME_INT_FREQUENCY");
-        System.out.println(fre);
+        long frequency = Long.parseLong(fre);
+        System.out.println(frequency);
     }
 
 

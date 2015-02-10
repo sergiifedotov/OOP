@@ -29,36 +29,54 @@ public class DynamicSorter {
 
     }
 
-
     public void start(String fileName) {
-            thread1 = new Thread(new Runnable() {
-                @Override
-                public void run() {
+        thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
                     writeFileDesc(fileName);
+                    try {
+                        try {
+                            Thread.sleep(Long.parseLong(Config.getInstance().getProperty("SOME_INT_FREQUENCY")));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("sort file");
                 }
-            });
-            thread1.start();
+            }
+        });
+        thread1.start();
     }
 
 
     private String readfile(String fileName) {
         StringBuilder sb = new StringBuilder();
+        BufferedReader in = null;
         try {
-            try (BufferedReader in = new BufferedReader(new FileReader(new File(fileName)))) {
-                String s;
-                while ((s = in.readLine()) != null) {
-                    sb.append(s);
-                    sb.append("\n");
-                }
+            in = new BufferedReader(new FileReader(new File(fileName)));
+            String s;
+            while ((s = in.readLine()) != null) {
+                sb.append(s);
+                sb.append("\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
         return sb.toString();
     }
 
 
-    private void writeFileDesc(String fileName){
+    private void writeFileDesc(String fileName) {
         String str = readfile(fileName);
         String[] strN = str.split("\\s+");
         Arrays.sort(strN, Collections.reverseOrder());
@@ -74,8 +92,9 @@ public class DynamicSorter {
             fw.flush();
         } catch (IOException e) {
             System.out.println("IOException");
-        }finally {
+        } finally {
             try {
+
                 fw.close();
             } catch (IOException e) {
                 e.printStackTrace();
