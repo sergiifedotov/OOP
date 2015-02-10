@@ -58,7 +58,7 @@ public class DynamicSorter {
     }
 
 
-    private void writeFileDesc(String fileName) {
+    private void writeFileDesc(String fileName){
         String str = readfile(fileName);
         String[] strN = str.split("\\s+");
         Arrays.sort(strN, Collections.reverseOrder());
@@ -67,12 +67,19 @@ public class DynamicSorter {
             strSort = strSort + i + " ";
         }
         File flt = new File(fileName);
+        FileWriter fw = null;
         try {
-            FileWriter fw = new FileWriter(flt);
+            fw = new FileWriter(flt);
             fw.write(strSort);
             fw.flush();
-            fw.close();
         } catch (IOException e) {
+            System.out.println("IOException");
+        }finally {
+            try {
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
