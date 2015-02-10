@@ -22,6 +22,7 @@ public class AsyncChat {
     public static final String EXIT = "exit";
     public static final String EMPTY_STRING = "";
 
+
     public static void main(String[] args) {
         if (args.length > 0) {
             if (CLIENT.equals(args[0])) {
@@ -36,7 +37,7 @@ public class AsyncChat {
             } else if (SERVER.equals(args[0])) {
                 System.out.println(SERVER);
                 Server server = new Server();
-                server.process();
+                server.go();
             } else {
                 System.out.println("Incorrect chat role: " + args[0]);
             }
@@ -93,7 +94,7 @@ public class AsyncChat {
     }
 
     static class Server {
-        public void process(  ) {
+        public void go() {
 
             try {
                 ServerSocket serverSocket = new ServerSocket(2006);
@@ -168,5 +169,7 @@ public class AsyncChat {
                 System.out.println(e);
             }
         }
+    }
+    public void process(){
     }
 }
