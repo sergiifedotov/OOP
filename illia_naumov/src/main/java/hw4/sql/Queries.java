@@ -1,4 +1,4 @@
-package Home.hw4.sql;
+package hw4.sql;
 
 /**
  * Created by illia_naumov on 02.02.2015.

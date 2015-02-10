@@ -1,25 +1,25 @@
-package Home.Week2.hw3.parallel;
+package hw3.parallel;
 
 import java.util.ArrayList;
 
 /**
  * Created by illia_naumov on 26.01.2015.
- *
+ * <p/>
  * Реализовать в классе MyArrayList метод
- public int parallelIndexOf(E e), выполняющий линейный многопоточный поиск в списке.
- В тестах проверить поиск:
- - существующего элемента
- - не существующего элемента
- - не существующего элемента в пустом массиве
- - не существующего элемента в массиве с одним элементом
- - существующего элемента в массиве с одним элементом
- - элемента со значением null
-
- Класс задания:
- hw3.parallel.MyArrayList
-
- Класс теста:
- hw3.parallel.MyArrayListTest
+ * public int parallelIndexOf(E e), выполняющий линейный многопоточный поиск в списке.
+ * В тестах проверить поиск:
+ * - существующего элемента
+ * - не существующего элемента
+ * - не существующего элемента в пустом массиве
+ * - не существующего элемента в массиве с одним элементом
+ * - существующего элемента в массиве с одним элементом
+ * - элемента со значением null
+ * <p/>
+ * Класс задания:
+ * hw3.parallel.MyArrayList
+ * <p/>
+ * Класс теста:
+ * hw3.parallel.MyArrayListTest
  */
 public class MyArrayList<E> {
 
@@ -39,23 +39,24 @@ public class MyArrayList<E> {
     public int searchingElement;
 
 
-    public MyArrayList(){
+    public MyArrayList() {
         list = new ArrayList<E>();
     }
 
-    public void add(E e){
+    public void add(E e) {
         list.add(e);
     }
 
-    public void setElement(Integer e){
+    public void setElement(Integer e) {
         searchingElement = e;
     }
+
     public int parallelIndexOf(E e) throws InterruptedException {
         LeftSearch ls = new LeftSearch(e);
         RightSearch rs = new RightSearch(e);
         ls.start();
         rs.start();
-        if(isFound){
+        if (isFound) {
             return searchingElement;
         } else {
             return -1;
@@ -63,20 +64,23 @@ public class MyArrayList<E> {
 
 
     }
-    class LeftSearch extends Thread{
+
+    class LeftSearch extends Thread {
         E e;
-        public LeftSearch(E e){
+
+        public LeftSearch(E e) {
             this.e = e;
         }
+
         @Override
-        public synchronized void  run(){
+        public synchronized void run() {
             keyLeft = 0;
-            for(int i = keyLeft; i < list.size()-1; i++){
+            for (int i = keyLeft; i < list.size() - 1; i++) {
                 keyLeft++;
-                if(keyLeft >= keyRight ){
+                if (keyLeft >= keyRight) {
                     return;
                 }
-                if(list.get(i).equals(e)){
+                if (list.get(i).equals(e)) {
                     setElement(i);
                     isFound = true;
                     return;
@@ -86,20 +90,22 @@ public class MyArrayList<E> {
         }
     }
 
-    class RightSearch extends Thread{
+    class RightSearch extends Thread {
         E e;
-        public RightSearch(E e){
+
+        public RightSearch(E e) {
             this.e = e;
         }
+
         @Override
-        public  void run(){
-            keyRight = list.size()/2;
-            for(int i = keyRight; i > 0; i-- ){
+        public void run() {
+            keyRight = list.size() / 2;
+            for (int i = keyRight; i > 0; i--) {
                 keyRight--;
-                if(keyLeft >= keyRight ){
+                if (keyLeft >= keyRight) {
                     return;
                 }
-                if(list.get(i).equals(e)){
+                if (list.get(i).equals(e)) {
                     setElement(i);
                     isFound = true;
                     return;

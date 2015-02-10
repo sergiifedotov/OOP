@@ -1,4 +1,4 @@
-package Home.Week2.hw3.parallel.graph;
+package hw3.parallel.graph;
 
 
 import java.io.BufferedReader;

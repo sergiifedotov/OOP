@@ -1,9 +1,7 @@
-package Home.hw4.chat;
+package hw4.chat;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 /**
  * Created by illia_naumov

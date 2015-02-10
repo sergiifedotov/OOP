@@ -1,4 +1,4 @@
-package Home.hw4.parallel;
+package hw4.parallel;
 
 import java.io.IOException;
 

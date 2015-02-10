@@ -1,10 +1,8 @@
-package Home.hw4.parallel;
+package hw4.parallel;
 
-import javax.validation.constraints.Null;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  * Created by illia_naumov

@@ -1,4 +1,4 @@
-package Home.hw4.chat;
+package hw4.chat;
 
 import java.io.*;
 import java.net.ServerSocket;
