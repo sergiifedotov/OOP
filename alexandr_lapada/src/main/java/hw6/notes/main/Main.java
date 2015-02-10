@@ -1,5 +1,7 @@
-package Weekend_5_1;
+package hw6.notes.main;
 
+
+import hw6.notes.domain.Notebook;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -11,12 +13,22 @@ import org.hibernate.cfg.Configuration;
 import java.util.Locale;
 
 /**
- * Created with IntelliJ IDEA.
- * User: al1
- * Date: 20.09.14
+ Создать DAO для таблицы ноутбуки
+ Таблица ноутбуки имеет следующую структуру
+ (id, serial, vendor, model, manufacture date, price)
+ domain
+ hw6.notes.domain.Notebook
+ dao
+ hw6.notes.dao.NotebookDao
+ Long create(Notebook ntb)
+ Notebook read(Long ig)
+ boolean update(Notebook ntb)
+ boolean delete(Notebook ntb)
+ List<Notebook> findAll()
+ hw6.notes.dao.NotebookDaoImpl
  */
-public class HiberConnect {
-    private static Logger log = Logger.getLogger(HiberConnect.class);
+public class Main {
+    private static Logger log = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
@@ -30,9 +42,10 @@ public class HiberConnect {
         Session session = null;
         try {
             session = factory.openSession();
-            Region region = new Region();
+            //Date date = new Date(2012-01-02);
+            Notebook notebook = new Notebook((long)3,(long)245622,"Acer","TraveMate",399.0);
             session.beginTransaction();
-            session.save(region);
+            session.save(notebook);
             session.getTransaction().commit();
 
         } catch (HibernateException e) {
@@ -49,4 +62,3 @@ public class HiberConnect {
         log.info(session);
     }
 }
-

@@ -16,6 +16,7 @@ public class Region {
     @Id
     @Column(name = "REGION_ID")
     private Long id;
+
     @Column(name = "REGION_NAME")
     private String name;
 

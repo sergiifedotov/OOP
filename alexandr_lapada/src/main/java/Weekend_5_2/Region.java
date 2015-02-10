@@ -24,18 +24,22 @@ public class Region {
     }
 
     public Region(String region){
+
         this.region = region;
     }
 
     public Long getId() {
+
         return id;
     }
 
     public String getName() {
+
         return region;
     }
 
     public void setId(Long id){
+
         this.id = id;
     }
 }

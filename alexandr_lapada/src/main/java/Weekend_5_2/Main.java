@@ -24,9 +24,9 @@ public class Main {
         log.info("Reference to SessionFactory " + factory);
 
         RegionHibernateDaoImpl regionDao = new RegionHibernateDaoImpl(factory);
-        Region region = new Region();
-        region.setId((long) 10);
-
+        Region region = new Region("Sas");
+        //region.setId((long) 12);
+        regionDao.create(region);
         factory.close();
 
 
