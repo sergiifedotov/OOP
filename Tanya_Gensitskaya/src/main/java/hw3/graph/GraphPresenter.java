@@ -17,6 +17,8 @@ class GraphPresenter {
     private final ArrayList <String> listFromConsole = new ArrayList<>();
     private Thread thread1;
 
+    public GraphPresenter() {
+    }
 
     public void present() {
         Scanner scan = new Scanner(System.in);
