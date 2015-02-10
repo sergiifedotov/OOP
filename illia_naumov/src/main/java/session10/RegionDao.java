@@ -1,6 +1,6 @@
-package Class.session10;
+package session10;
 
-import Class.session9.Region;
+import session9.Region;
 
 import java.util.List;
 

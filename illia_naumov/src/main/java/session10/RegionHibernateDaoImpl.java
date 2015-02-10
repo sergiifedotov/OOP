@@ -1,10 +1,11 @@
-package Class.session10;
+package session10;
 
-import Class.session9.Region;
+import session9.Region;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -102,6 +103,40 @@ public class RegionHibernateDaoImpl implements RegionDao {
     @Override
     public List<Region> findAll() {
         // NO implementation
+        Session session = null;
+
+        try {
+            session = factory.openSession();
+            return session.createCriteria(Region.class)
+                    .add(Restrictions.eq("id", 3))
+                    .add(Restrictions.like("name", "%e%"))
+                    .list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    public List<Region> findAllRegionsWithName(){
+        Session session = factory.openSession();
+
+        try {
+            return session.createCriteria(Region.class)
+                    .add(Restrictions.isNotNull("region_name"))
+                    .list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
         return null;
     }
 
