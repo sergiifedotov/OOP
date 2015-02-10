@@ -63,19 +63,62 @@ public class NotebookDaoImpl implements NotebookDao{
 
     @Override
     public boolean update(Notebook ntb) {
-        return false;
+        Session session = null;
+        boolean rez = false;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            session.update(ntb);
+            session.getTransaction().commit();
+            rez = true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+
+        return rez;
     }
 
     @Override
     public boolean delete(Notebook ntb) {
         Session session = null;
-        session = factory.openSession();
-        session.delete(ntb);
-        return false;
+        boolean rez = false;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            session.delete(ntb);
+            session.getTransaction().commit();
+            rez = true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return rez;
     }
 
     @Override
     public List<Notebook> findAll() {
-        return null;
+        List<Notebook> list = null;
+        Session session = null;
+        try{
+            session = factory.openSession();
+            list = session.createCriteria(Notebook.class).list();
+        }catch(HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return list;
     }
 }

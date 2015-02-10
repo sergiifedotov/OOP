@@ -12,7 +12,9 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 
 /**
@@ -43,9 +45,17 @@ public class Main {
         log.info("Reference to SessionFactory " + factory);
 
         NotebookDaoImpl ntbImpl = new NotebookDaoImpl(factory);
-        Notebook notebook = new Notebook((long)10,(long)666999,"Dell","Latitude",null,899.0);
-        System.out.println(ntbImpl.create(notebook));
-        System.out.println(ntbImpl.read((long)5).getSerial());
+        Notebook notebook = new Notebook((long)7,(long)666999,"Dell","Latie",null,899.0);
+        //System.out.println(ntbImpl.create(notebook));
+        System.out.println(ntbImpl.read((long)1).getSerial());
+        //System.out.println(ntbImpl.delete(notebook));
+        System.out.println("---***"+ntbImpl.update(notebook));
+        ArrayList<Notebook> list = (ArrayList<Notebook>) ntbImpl.findAll();
+        Iterator iter = list.iterator();
+        while(iter.hasNext()) {
+            Notebook not = (Notebook) iter.next();
+            System.err.println(not.getModel());
+        }
 
         factory.close();
     }
