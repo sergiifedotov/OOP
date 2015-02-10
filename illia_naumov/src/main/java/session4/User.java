@@ -1,4 +1,4 @@
-package session2;
+package session4;
 
 /**
  * Created with IntelliJ IDEA.
@@ -59,5 +59,12 @@ public class User {
         int result = login.hashCode();
         result = 31 * result + pass.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                '}';
     }
 }

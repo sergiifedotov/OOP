@@ -1,7 +1,6 @@
 package hw6.notes.dao;
 
 import hw6.notes.domain.Notebook;
-import session9.Region;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
