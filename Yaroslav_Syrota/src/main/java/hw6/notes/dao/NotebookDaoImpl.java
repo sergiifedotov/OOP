@@ -1,13 +1,12 @@
 package hw6.notes.dao;
 
 import hw6.notes.domain.Notebook;
-import net.sf.ehcache.hibernate.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
-import java.util.logging.Logger;
+// import java.util.logging.Logger;
 
 /**
  * Created by @CAT_Caterpiller on 10.02.2015.
