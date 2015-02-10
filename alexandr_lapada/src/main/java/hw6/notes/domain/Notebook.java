@@ -6,10 +6,11 @@ import java.util.Date;
 /**
  * Created by sanya on 10.02.2015.
  */
+@Entity
 public class Notebook {
 
     @SequenceGenerator(name = "sequence", sequenceName = "SEQ_NOTEBOOK_ID",
-    allocationSize = 2, initialValue = 1)
+    allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
     @Column(name = "NOTEBOOK_ID")
@@ -29,7 +30,7 @@ public class Notebook {
 
     }
 
-    public Notebook(Long id, Long serial, String vendor, String model/*, Date date*/, Double price){
+    public Notebook(Long id, Long serial, String vendor, String model, Date date, Double price){
         this.id = id;
         this.serial = serial;
         this.vendor = vendor;

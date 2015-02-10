@@ -1,6 +1,8 @@
 package hw6.notes.main;
 
 
+
+import hw6.notes.dao.NotebookDaoImpl;
 import hw6.notes.domain.Notebook;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -10,6 +12,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -39,26 +42,12 @@ public class Main {
         SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
         log.info("Reference to SessionFactory " + factory);
 
-        Session session = null;
-        try {
-            session = factory.openSession();
-            //Date date = new Date(2012-01-02);
-            Notebook notebook = new Notebook((long)3,(long)245622,"Acer","TraveMate",399.0);
-            session.beginTransaction();
-            session.save(notebook);
-            session.getTransaction().commit();
+        NotebookDaoImpl ntbImpl = new NotebookDaoImpl(factory);
+        Notebook notebook = new Notebook((long)10,(long)666999,"Dell","Latitude",null,899.0);
+        System.out.println(ntbImpl.create(notebook));
+        System.out.println(ntbImpl.read((long)5).getSerial());
 
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
+        factory.close();
     }
+
 }

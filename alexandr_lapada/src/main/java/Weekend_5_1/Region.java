@@ -23,7 +23,7 @@ public class Region {
     private Integer id =  6;
 
     @Column(name="REGION_NAME")
-    private String region = "SSSSiaaaaa";
+    private String region = "XXXX";
 
 
 }

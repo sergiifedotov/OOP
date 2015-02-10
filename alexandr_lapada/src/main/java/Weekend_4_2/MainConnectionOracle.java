@@ -22,10 +22,10 @@ public class MainConnectionOracle {
                 Long id = rs.getLong(1);
                 String name = rs.getString(3);
                 String model = rs.getString(4);
-               // Long depId = rs.getLong(11);
-                Date date = rs.getDate(5);
-                double salary = rs.getDouble(6);
-                System.out.println(id+"  "+name+" "+model+" "+salary+" d "+date);
+                Long depId = rs.getLong(2);
+                //Date date = rs.getDate(5);
+                double salary = rs.getDouble(5);
+                System.out.println(id+"  "+depId+" "+name+" "+model+" "+salary);
 
             }
 

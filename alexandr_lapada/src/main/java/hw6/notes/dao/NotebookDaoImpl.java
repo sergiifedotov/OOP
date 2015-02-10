@@ -1,9 +1,13 @@
 package hw6.notes.dao;
 
+
 import hw6.notes.domain.Notebook;
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,12 +24,41 @@ public class NotebookDaoImpl implements NotebookDao{
 
     @Override
     public Long create(Notebook ntb) {
-        return null;
+        Session session = null;
+        Long id = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            id = (long) session.save(ntb);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        log.info(session);
+        return id;
     }
 
     @Override
     public Notebook read(Long id) {
-        return null;
+        Notebook notebook = null;
+        Session session = null;
+        try {
+            session = factory.openSession();
+            notebook = (Notebook) session.get(Notebook.class, id);
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return notebook;
     }
 
     @Override
@@ -35,6 +68,9 @@ public class NotebookDaoImpl implements NotebookDao{
 
     @Override
     public boolean delete(Notebook ntb) {
+        Session session = null;
+        session = factory.openSession();
+        session.delete(ntb);
         return false;
     }
 
