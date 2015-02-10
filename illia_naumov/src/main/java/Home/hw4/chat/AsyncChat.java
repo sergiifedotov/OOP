@@ -9,22 +9,21 @@ import java.util.Scanner;
  * Created by illia_naumov
  */
 public class AsyncChat {
-    public void process(){
+    public void process() {
         Client client = new Client("Iskusitel'");
 
     }
 }
 
 
-
-class Client implements Runnable{
+class Client implements Runnable {
     Thread client;
     String name;
     Socket sock;
     PrintWriter pw;
     BufferedReader bf;
 
-    public Client(String name){
+    public Client(String name) {
         this.name = name;
         client = new Thread(this, name);
         client.start();
@@ -38,12 +37,11 @@ class Client implements Runnable{
             pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
 
 
-
-            Thread sender = new Thread(){
+            Thread sender = new Thread() {
                 @Override
-            public void run(){
+                public void run() {
                     BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));
-                    while(true){
+                    while (true) {
                         String message = null;
                         try {
                             message = bufer.readLine();
@@ -56,11 +54,11 @@ class Client implements Runnable{
                 }
             };
             sender.start();
-            Thread printer = new Thread(){
+            Thread printer = new Thread() {
                 @Override
-            public void run(){
+                public void run() {
                     try {
-                        while(true) {
+                        while (true) {
                             String message = bf.readLine();
                             System.out.println(message);
                         }
