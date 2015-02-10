@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import session10.Region;
 
 import java.util.Locale;
 
@@ -30,12 +31,12 @@ public class HiberConnect {
         Session session = null;
         try {
             session = factory.openSession();
-            Client cl = new Client();
+            Region reg = new Region("Australia");
             session.beginTransaction();
-            session.delete(cl);
+            session.save(reg);
             session.getTransaction().commit();
 
-            Client client = (Client)session.get(Client.class, 1);
+            //Region region = (Region)session.get(Region.class, 1);
         } catch (HibernateException e) {
             log.error("Open session failed", e);
             session.getTransaction().rollback();
@@ -50,4 +51,3 @@ public class HiberConnect {
         log.info(session);
     }
 }
-
