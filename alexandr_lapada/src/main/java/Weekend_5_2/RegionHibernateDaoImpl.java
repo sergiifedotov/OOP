@@ -17,6 +17,7 @@ public class RegionHibernateDaoImpl implements RegionDao {
     private SessionFactory factory;
 
     public RegionHibernateDaoImpl(SessionFactory factory) {
+
         this.factory = factory;
     }
 

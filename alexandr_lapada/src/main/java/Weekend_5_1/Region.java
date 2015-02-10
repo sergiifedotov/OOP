@@ -11,19 +11,19 @@ import javax.persistence.*;
 @Table(name="REGIONS")
 public class Region {
 
-    public Region(String australiaaaaa){
+    public Region(){
 
     }
 
     @Id
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_CLIENTS_ID",
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_REGION_ID",
             allocationSize = 5, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Column(name="REGION_ID")
-    private Long id;
+    private Integer id =  6;
 
     @Column(name="REGION_NAME")
-    private String region = "Australiaaaaa";
+    private String region = "SSSSiaaaaa";
 
 
 }
