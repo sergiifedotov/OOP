@@ -19,6 +19,7 @@ public class NotebookDaoImpl implements NotebookDao {
     public NotebookDaoImpl() {}
 
     public NotebookDaoImpl(SessionFactory sessionFactory) {
+        super();
         this.sessionFactory = sessionFactory;
     }
 
