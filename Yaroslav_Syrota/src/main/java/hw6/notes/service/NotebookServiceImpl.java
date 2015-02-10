@@ -6,7 +6,7 @@ import hw6.notes.domain.Notebook;
 import java.util.List;
 
 /**
- * Created by Admin on 11.02.2015.
+ * Created by @CAT_Caterpiller on 11.02.2015.
  */
 public class NotebookServiceImpl implements NotebookService {
     private NotebookDaoImpl notebookDao;
