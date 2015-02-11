@@ -22,8 +22,9 @@ public class Menu {
             e.printStackTrace();
         }
 
-        id = notebookService.add(new Notebook("Macbook", "Apple",(double)  2500, date));
-        id = notebookService.add(new Notebook("Macbook", "Apple", (double) 2500, date));
+        id = notebookService.add(new Notebook("Macbook", "Apple",(double)  2500, date, "12345"));
+        id = notebookService.add(new Notebook("Pavilion", "HP", (double) 1500, date, "54321"));
         System.out.println(notebookService.findAll());
+        notebookService.close();
     }
 }

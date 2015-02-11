@@ -35,8 +35,9 @@ public class Notebook {
     public Notebook() {
     }
 
-    public Notebook (String model, String vendor, Double price, Date date) {
+    public Notebook (String model, String vendor, Double price, Date date, String serial) {
         this.model = model;
+        this.serial = serial;
         this.vendor = vendor;
         this.price = price;
         this.date = date;
@@ -97,6 +98,7 @@ public class Notebook {
                 + "', vendor='" + vendor
                 + "', price=" + price
                 + ", date=" + String.format("%tF", date)
-                + "}";
+                + ", serial='" + serial
+                + "'}";
     }
 }
