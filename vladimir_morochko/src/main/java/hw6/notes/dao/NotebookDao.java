@@ -28,4 +28,6 @@ public interface NotebookDao {
     boolean update(Notebook notebook);
     boolean delete(Notebook notebook);
     List<Notebook> findAll();
+
+    public void close();
 }

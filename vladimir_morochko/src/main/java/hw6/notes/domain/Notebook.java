@@ -11,14 +11,6 @@ import java.util.Date;
  (id, serial, vendor, model, manufacture date, price)
  domain
  hw6.notes.domain.Notebook
- dao
- hw6.notes.dao.NotebookDao
- Long create(Notebook ntb)
- Notebook read(Long ig)
- boolean update(Notebook ntb)
- boolean delete(Notebook ntb)
- List<Notebook> findAll()
- hw6.notes.dao.NotebookDaoImpl
  */
 
 @Entity
@@ -43,8 +35,9 @@ public class Notebook {
     public Notebook() {
     }
 
-    public Notebook (String model, String vendor, Double price, Date date) {
+    public Notebook (String model, String vendor, Double price, Date date, String serial) {
         this.model = model;
+        this.serial = serial;
         this.vendor = vendor;
         this.price = price;
         this.date = date;
@@ -105,6 +98,7 @@ public class Notebook {
                 + "', vendor='" + vendor
                 + "', price=" + price
                 + ", date=" + String.format("%tF", date)
-                + "}";
+                + ", serial='" + serial
+                + "'}";
     }
 }
