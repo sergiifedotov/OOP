@@ -32,6 +32,13 @@ public class HiberConnect {
             session.beginTransaction();
             session.save(rl);
             session.getTransaction().commit();
+
+           /* session = factory.openSession();
+            rl = (Region) session.get(Region(),"5");
+            session.beginTransaction();
+            session.save(rl);
+            session.getTransaction().commit();*/
+
         } catch (HibernateException e) {
             log.error("Open session failed", e);
             session.getTransaction().rollback();

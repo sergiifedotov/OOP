@@ -44,6 +44,17 @@ public class RegionHibernateDaoImpl implements RegionDao {
 
     @Override
     public Region read(Long id) {
+        Session session = null;
+        try {
+            session = factory.openSession();
+            return (Region) session.get(Region.class, id);
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
         return null;
     }
 
@@ -57,11 +68,30 @@ public class RegionHibernateDaoImpl implements RegionDao {
 
     }
 
+    public Long rowsCount() {
+        Session session = factory.openSession();
+        try {
+            return (Long)session.createCriteria(Region.class)
+                    .setProjection(Projections.rowCount())
+                    .uniqueResult();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+    }
     @Override
     public List<Region> findAll() {
-        // NO implementation
-        return null;
+        Session session = factory.openSession();
+        try {
+            return session.createCriteria(Region.class)
+                    .add(Restrictions.eq("id", 3))
+                    .add(Restrictions.like("name", "%e%"))
+                    .list();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
     }
-
-
 }

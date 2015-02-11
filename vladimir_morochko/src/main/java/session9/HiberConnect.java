@@ -30,10 +30,13 @@ public class HiberConnect {
         Session session = null;
         try {
             session = factory.openSession();
-            Region region = new Region();
-            region.setName("Australia");
+            Region region = new Region("Australia");
             session.beginTransaction();
-            session.save(region);
+            Long id = (Long) session.save(region);
+//            region = session.get(Region.class, 24);
+
+
+//            session.delete(region);
             session.getTransaction().commit();
 
         } catch (HibernateException e) {

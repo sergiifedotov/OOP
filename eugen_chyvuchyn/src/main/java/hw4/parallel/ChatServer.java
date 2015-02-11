@@ -24,6 +24,10 @@ public class ChatServer {
     private int port;
     BlockingQueue<SocketProcessor> q = new LinkedBlockingQueue<>();
 
+    public ChatServer(){
+
+    }
+
     public ChatServer(int port) throws IOException {
         serverSocket = new ServerSocket(port);
         this.port = port;
@@ -66,8 +70,8 @@ public class ChatServer {
                 try {
                     line = br.readLine();
                 } catch (IOException e) {
-                    e.printStackTrace();
-                    close();
+                        e.printStackTrace();
+                        close();
                 }
                 if ("fuckOff".equals(line)){
                     close();
