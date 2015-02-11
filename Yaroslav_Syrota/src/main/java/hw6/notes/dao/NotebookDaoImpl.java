@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+import java.util.logging.Logger;
 // import java.util.logging.Logger;
 
 /**
@@ -13,7 +14,6 @@ import java.util.List;
  */
 
 public class NotebookDaoImpl implements NotebookDao {
-    // private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
     private SessionFactory sessionFactory;
 
     public NotebookDaoImpl() {}
