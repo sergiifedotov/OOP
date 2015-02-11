@@ -11,14 +11,6 @@ import java.util.Date;
  (id, serial, vendor, model, manufacture date, price)
  domain
  hw6.notes.domain.Notebook
- dao
- hw6.notes.dao.NotebookDao
- Long create(Notebook ntb)
- Notebook read(Long ig)
- boolean update(Notebook ntb)
- boolean delete(Notebook ntb)
- List<Notebook> findAll()
- hw6.notes.dao.NotebookDaoImpl
  */
 
 @Entity

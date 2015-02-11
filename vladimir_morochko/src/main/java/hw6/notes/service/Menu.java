@@ -1,0 +1,29 @@
+package hw6.notes.service;
+
+import hw6.notes.domain.Notebook;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * Created by vladimir on 11.02.2015.
+ */
+public class Menu {
+    public static void main(String[] args) {
+        NotebookServiceImpl notebookService = new NotebookServiceImpl();
+        Long id;
+        DateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
+        Date date = null;
+        try {
+            date = dateFormat.parse("01.08.2010");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        id = notebookService.add(new Notebook("Macbook", "Apple",(double)  2500, date));
+        id = notebookService.add(new Notebook("Macbook", "Apple", (double) 2500, date));
+        System.out.println(notebookService.findAll());
+    }
+}

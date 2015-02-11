@@ -1,6 +1,7 @@
 package hw6.notes.dao;
 
 import hw6.notes.domain.Notebook;
+import hw6.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.*;
 
@@ -10,10 +11,6 @@ import java.util.List;
  * Created by vladimir on 11.02.2015.
  *
  *  Создать DAO для таблицы ноутбуки
- Таблица ноутбуки имеет следующую структуру
- (id, serial, vendor, model, manufacture date, price)
- domain
- hw6.notes.domain.Notebook
  dao
  hw6.notes.dao.NotebookDao
  Long create(Notebook ntb)
@@ -24,24 +21,28 @@ import java.util.List;
  hw6.notes.dao.NotebookDaoImpl
  */
 public class NotebookDaoImpl implements NotebookDao{
-    private SessionFactory factory;
-    private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
 
-    public NotebookDaoImpl(SessionFactory factory) {
-        this.factory = factory;
+    public NotebookDaoImpl() {
+    }
+
+    public NotebookDaoImpl(SessionFactory sessionFactory) {
+        this();
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
     public Long create(Notebook notebook) {
         Session session = null;
         try {
-            session = factory.openSession();
+            session = sessionFactory.openSession();
             session.beginTransaction();
             Long id = (Long)session.save(notebook);
             session.getTransaction().commit();
             return id;
         } catch (HibernateException e) {
-            log.error("Open session failed", e);
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
             if(session != null) {
@@ -55,11 +56,11 @@ public class NotebookDaoImpl implements NotebookDao{
     public Notebook read(Long id) {
         Session session = null;
         try {
-            session = factory.openSession();
+            session = sessionFactory.openSession();
             session.beginTransaction();
             return (Notebook) session.get(Notebook.class, id);
         } catch (HibernateException e) {
-            log.error("Open session failed", e);
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
             if(session != null) {
@@ -73,13 +74,13 @@ public class NotebookDaoImpl implements NotebookDao{
     public boolean update(Notebook notebook) {
         Session session = null;
         try {
-            session = factory.openSession();
+            session = sessionFactory.openSession();
             session.beginTransaction();
             session.update(notebook);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
-            log.error("Open session failed", e);
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
             if(session != null) {
@@ -93,13 +94,13 @@ public class NotebookDaoImpl implements NotebookDao{
     public boolean delete(Notebook notebook) {
         Session session = null;
         try {
-            session = factory.openSession();
+            session = sessionFactory.openSession();
             session.beginTransaction();
             session.delete(notebook);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
-            log.error("Open session failed", e);
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
             if(session != null) {
@@ -113,11 +114,11 @@ public class NotebookDaoImpl implements NotebookDao{
     public List<Notebook> findAll() {
         Session session = null;
         try {
-            session = factory.openSession();
+            session = sessionFactory.openSession();
             Criteria criteria = session.createCriteria(Notebook.class);
             return criteria.list();
         } catch (HibernateException e) {
-            log.error("Open session failed", e);
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
             if(session != null) {
@@ -125,5 +126,10 @@ public class NotebookDaoImpl implements NotebookDao{
             }
         }
         return null;
+    }
+
+    @Override
+    public void close() {
+        sessionFactory.close();
     }
 }
