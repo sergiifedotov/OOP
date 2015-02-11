@@ -12,12 +12,12 @@ import java.util.Date;
  */
 public class Menu {
     public static void main(String[] args) {
-        NotebookServiceImpl notebookService = new NotebookServiceImpl();
+        NotebookService notebookService = new NotebookServiceImpl();
         Long id;
-        DateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
         try {
-            date = dateFormat.parse("01.08.2010");
+            date = dateFormat.parse("01/08/2010");
         } catch (ParseException e) {
             e.printStackTrace();
         }

@@ -16,4 +16,6 @@ import java.util.List;
 public interface NotebookService {
     Long add(Notebook notebook);
     List<Notebook> findAll();
+
+    void close();
 }
