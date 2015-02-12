@@ -43,13 +43,13 @@ public class Notebook {
     private Date manufactureDate;
 
     @Column(name="PRICE")
-    private Long price;
+    private Double price;
 
 
     public Notebook() {
     }
 
-    public Notebook(Long price, String serial, String vendor, String model, Date manufactureDate) {
+    public Notebook(Double price, String serial, String vendor, String model, Date manufactureDate) {
         this.price = price;
         this.serial = serial;
         this.vendor = vendor;
@@ -60,7 +60,7 @@ public class Notebook {
 
     @Override
     public String toString() {
-        return "Notebook  " +
+        return "Notebook" +
                 "id=" + id +
                 ", serial='" + serial+
                 ", vendor='" + vendor+
@@ -110,11 +110,11 @@ public class Notebook {
         this.manufactureDate = manufactureDate;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }
