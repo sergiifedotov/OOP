@@ -1,6 +1,7 @@
 package hw6.notes.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by illia_naumov
@@ -24,16 +25,16 @@ public class Notebook {
     private String model;
 
     @Column(name = "MANUFACTURE_DATE")
-    private String manufactureDate;
+    private Date manufactureDate;
 
     @Column
-    private int price;
+    private double price;
 
     public Notebook(){
         
     }
 
-    public Notebook( String serial, String vendor, String model, String manufactureDate, int price){
+    public Notebook( String serial, String vendor, String model, Date manufactureDate, double price){
         //this.id = id;
         this.serial = serial;
         this.vendor = vendor;
@@ -43,11 +44,11 @@ public class Notebook {
     }
 
     //<editor-fold desc="Setters">
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public void setManufactureDate(String manufactureDate) {
+    public void setManufactureDate(Date manufactureDate) {
         this.manufactureDate = manufactureDate;
     }
 
@@ -69,11 +70,11 @@ public class Notebook {
     //</editor-fold>
 
     //<editor-fold desc="Getters">
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public String getManufactureDate() {
+    public Date getManufactureDate() {
         return manufactureDate;
     }
 

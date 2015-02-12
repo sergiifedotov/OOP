@@ -1,18 +1,18 @@
-package hw6.notes.view;
+package hw6.notes;
 
 import hw6.notes.dao.NotebookDaoImpl;
 import hw6.notes.domain.Notebook;
 import hw6.notes.service.NotebookServiceImpl;
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import session10.dentist.service.ClientService;
-import session10.dentist.service.ClientServiceImpl;
-import session10.dentist.view.Menu;
+import session10.dentist.utils.HibernateUtil;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -31,7 +31,6 @@ public class Main {
         NotebookDaoImpl notebookDao = new NotebookDaoImpl(factory);
         NotebookServiceImpl notebookService = new NotebookServiceImpl(notebookDao);
 
-        Notebook note = new Notebook("1111", "China", "white", "10.10.2012", 25000);
-        notebookService.add(note);
+
     }
 }
