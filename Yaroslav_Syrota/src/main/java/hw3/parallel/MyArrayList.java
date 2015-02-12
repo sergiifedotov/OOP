@@ -1,5 +1,6 @@
 package hw3.parallel;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -19,135 +20,92 @@ import java.util.Objects;
  - E remove(int index)
  */
 
-public class MyArrayList<E> implements Runnable{
-    private int size;
-    private E[] array;
+public class MyArrayList<E> extends ArrayList {
+    private E obj;
+    private int index = -1;
 
-
-    public MyArrayList () {
-        array = (E[]) new Object[10];
+    public synchronized int getIndex(){
+        return index;
     }
 
-    public MyArrayList (int ensureCapacityNum) {
-        array = (E[]) new Object[ensureCapacityNum];
-    }
-
-
-    public void run() {
-
-    }
-
-    public void add(E e) {
-        add(size, e);
-    }
-
-    public boolean add(int index, E e) {
-        if (index != size) {
-            checkIndex(index);
-        }
-
-        if(array.length == size) {
-            arraySizeExtender();
-        }
-
-        if (index == size) {
-            System.arraycopy(array, index, array, index+1, size - index);
-        }
-
-        array[index] = e;
-        size++;
-        return true;
-    }
-
-    public E get(int index) {
-        checkIndex(index);
-        return array[index];
-    }
-
-    public boolean set(int index, E t) {
-        checkIndex(index);
-        array[index] = t;
-        return true;
-    }
-
-    public E remove(int index) {
-        checkIndex(index);
-        @SuppressWarnings("unchecked")
-        E temp = array[index];
-        System.arraycopy(array, index+1, array, index, size-index-1);
-        array[size-1] = null;
-        size--;
-        return temp;
-    }
-
-    public int indexOf(E e) {
-        for (int i = 0; i < size; i++) {
-            if (e.equals(array[i])) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public int size() {
-        return size;
-    }
-
-
-    // Resizing inner array
-    private void arraySizeExtender() {
-        E[] temp = array.clone();
-        Object[] obj = new Object[array.length*3/2+1];
-        array = (E[]) obj;
-        System.arraycopy(temp, 0, array, 0, temp.length);
-    }
-
-    // Checks if out of bounds
-    private void checkIndex(int index) {
-        if(size == 0 || index < 0 || index > size-1) {
-            throw new IndexOutOfBoundsException();
-        }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder build = new StringBuilder();
-        for(int i = 0; i < size; i++) {
-            build.append(array[i] + " ");
-        }
-        return build.toString();
+    public synchronized  void setIndex(int index){
+        this.index = index;
     }
 
     public int parallelIndexOf(E e) {
-        int result = -1;
-        return result;
-    }
+        index = -1;
 
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (getIndex() == -1) {
+                    if (e == null) {
+                        for (int i = 0; i < size(); i++) {
+                            if (getIndex() == -1) {
+                                obj = (E) get(i);
+                                if (obj == null) {
+                                    System.out.println("thread1 ");
+                                    setIndex(i);
+                                }
+                            }
+                        }
+                    } else {
+                        for (int i = 0; i < size(); i++) {
+                            if (getIndex() == -1) {
+                                obj = (E) get(i);
+                                if (e.equals(obj)) {
+                                    System.out.print("thread1 ");
+                                    setIndex(i);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (getIndex() == -1) {
+                    if (e == null) {
+                        for (int i = size() - 1; i >= 0; i--) {
+                            if (getIndex() == -1) {
+                                obj = (E) get(i);
+                                if (obj == null) {
+                                    System.out.print("thread2 ");
+                                    setIndex(i);
+                                }
+                            }
+                        }
+                    } else {
+                        for (int i = size() - 1; i >= 0; i--) {
+                            if (getIndex() == -1) {
+                                obj = (E) get(i);
+                                if (e.equals(obj)) {
+                                    System.out.print("thread2 ");
+                                    setIndex(i);
+                                }
 
-    class parallelThread extends Thread {
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
-    }
+        thread1.start();
+        thread2.start();
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
 
-
-
-
-
-
-
-
-
-
-    public Object[] getArray() {
-        return array;
-    }
-    public void setArray(Object[] myArray) {
-        this.array = array;
-    }
-    public int getSize() {
-        return size;
-    }
-    public void setSize(int size) {
-        this.size = size;
+        return index;
     }
 }
+
+
+
