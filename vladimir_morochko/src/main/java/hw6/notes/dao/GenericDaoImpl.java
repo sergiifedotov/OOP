@@ -5,13 +5,17 @@ import org.hibernate.Criteria;
 import java.io.Serializable;
 import java.util.List;
 
-import static session10.dentist.utils.HibernateUtil.getSession;
+//import static session10.dentist.utils.HibernateUtil.getSession;
+import static hw6.notes.util.HibernateUtil.getSession;
 
 /**
  * Created with IntelliJ IDEA.
  * User: al1
  * Date: 8/18/13
  */
+
+
+
 public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 
     private Class<T> type;
@@ -20,6 +24,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
 
         this.type = type;
     }
+
+
 
     @Override
     public PK create(T o) {

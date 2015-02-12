@@ -18,11 +18,22 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by ZaR on 08.02.15.
+ Создать DAO для таблицы ноутбуки
+ Таблица ноутбуки имеет следующую структуру
+ (id, serial, vendor, model, manufacture date, price)
+ domain
+ hw6.notes.domain.Notebook
+ dao
+ hw6.notes.dao.NotebookDao
+ Long create(Notebook ntb)
+ Notebook read(Long ig)
+ boolean update(Notebook ntb)
+ boolean delete(Notebook ntb)
+ List<Notebook> findAll()
+ hw6.notes.dao.NotebookDaoImpl
  */
 public class MainDao {
     private static Logger log = Logger.getLogger(HiberConnect.class);
-
     public static void main(String[] args) {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -51,7 +62,7 @@ public class MainDao {
 //            Notebook notebook = n.read(2L);
 //            System.out.println(notebook);
 // create
-            Notebook notebook = new Notebook(500L, "Dell11", "Lg", "GH455", date);
+            Notebook notebook = new Notebook(500.0, "Dell11", "Lg", "GH455", date);
             Long id = n.create(notebook);
             System.out.println(id);
 // update
@@ -81,4 +92,8 @@ public class MainDao {
 
         log.info(session);
     }
+
+
+
+
 }
