@@ -4,6 +4,8 @@ package hw6.notes.main;
 
 import hw6.notes.dao.NotebookDaoImpl;
 import hw6.notes.domain.Notebook;
+import hw6.notes.service.NotebookServiceImpl;
+import hw6.notes.view.Menu;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -44,7 +46,10 @@ public class Main {
         SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
         log.info("Reference to SessionFactory " + factory);
 
-        NotebookDaoImpl ntbImpl = new NotebookDaoImpl(factory);
+        NotebookDaoImpl ntbDaoImpl = new NotebookDaoImpl(factory);
+        NotebookServiceImpl notebookService = new NotebookServiceImpl(ntbDaoImpl);
+
+        /*
         Notebook notebook = new Notebook((long)7,(long)666999,"Dell","Latie",null,899.0);
         //System.out.println(ntbImpl.create(notebook));
         System.out.println(ntbImpl.read((long)1).getSerial());
@@ -56,7 +61,10 @@ public class Main {
             Notebook not = (Notebook) iter.next();
             System.err.println(not.getModel());
         }
+        */
 
+        Menu menu = new Menu(notebookService);
+        menu.main();
         factory.close();
     }
 

@@ -69,32 +69,32 @@ public class Notebook {
         return price;
     }
 
-    public void setId(){
+    public void setId(Long id){
 
         this.id = id;
     }
 
-    public void setSerial(){
+    public void setSerial(Long serial){
 
         this.serial = serial;
     }
 
-    public void setVendor(){
+    public void setVendor(String vendor){
 
         this.vendor = vendor;
     }
 
-    public void setModel(){
+    public void setModel(String model){
 
         this.model = model;
     }
 
-    public void setManufactureDate(){
+    public void setManufactureDate(Date manufactureDate){
 
         this.manufactureDate = manufactureDate;
     }
 
-    public void setPrice(){
+    public void setPrice(Double price){
 
         this.price = price;
     }
