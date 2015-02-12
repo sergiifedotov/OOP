@@ -16,7 +16,7 @@ public class Notebook {
     @Column(name = "NOTEBOOK_ID")
     private Long id;
     @Column(name = "SERIAL")
-    private Long serial;
+    private String serial;
     @Column(name = "VENDOR")
     private String vendor;
     @Column(name = "MODEL")
@@ -30,7 +30,7 @@ public class Notebook {
 
     }
 
-    public Notebook(Long id, Long serial, String vendor, String model, Date date, Double price){
+    public Notebook(Long id, String serial, String vendor, String model, Date date, Double price){
         this.id = id;
         this.serial = serial;
         this.vendor = vendor;
@@ -44,7 +44,7 @@ public class Notebook {
         return id;
     }
 
-    public Long getSerial(){
+    public String getSerial(){
 
         return serial;
     }
@@ -74,7 +74,7 @@ public class Notebook {
         this.id = id;
     }
 
-    public void setSerial(Long serial){
+    public void setSerial(String serial){
 
         this.serial = serial;
     }
