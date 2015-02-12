@@ -2,10 +2,13 @@ package hw4.parallel;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -151,26 +154,69 @@ public class ChatClientFX extends Application {
             }
         });
 
+        TextField serverAddressField = new TextField();
+        serverAddressField.setText("localhost");
+
+        Button btnConnect = new Button("Connect");
+        btnConnect.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                // TODO connect
+//                printWriter.println(inputField.getText());
+//                printWriter.flush();
+//                chatArea.appendText(inputField.getText() + "\n");
+//                inputField.setText("");
+            }
+        });
+
+        ComboBox<String> addressComboBox = new ComboBox<>();
+        addressComboBox.getItems().addAll(
+                // TODO address list
+                "Ascending",
+                "Descending"
+        );
+        addressComboBox.setValue("Ascending");
+//        addressComboBox.valueProperty().addListener(new ChangeListener<String>() {
+//            @Override
+//            public void changed(ObservableValue ov, String t, String t1) {
+//                config.setSortOrder(t1);
+//            }
+//        });
+
         int sceneWidth = 600;
         int sceneHeight = 400;
         int inputFieldHeight = sceneHeight / 10;
+        int buttonWidth = sceneWidth / 6;
 
-        btnSend.setMinWidth(sceneWidth / 6);
         btnSend.setMinHeight(inputFieldHeight);
-
-        inputField.setMinWidth(sceneWidth - btnSend.getMinWidth());
+        btnConnect.setMinHeight(inputFieldHeight);
+        addressComboBox.setMinHeight(inputFieldHeight);
+        serverAddressField.setMinHeight(inputFieldHeight);
         inputField.setMinHeight(inputFieldHeight);
-        chatArea.setMinHeight(sceneHeight - inputFieldHeight);
+
+        btnSend.setMinWidth(buttonWidth);
+        inputField.setMinWidth(sceneWidth - btnSend.getMinWidth());
+
+        btnConnect.setMinWidth(buttonWidth);
+        serverAddressField.setMinWidth(sceneWidth / 3);
+        addressComboBox.setMinWidth(sceneWidth - btnConnect.getMinWidth() - serverAddressField.getMinWidth());
+
+        chatArea.setMinHeight(sceneHeight - inputFieldHeight - inputFieldHeight);
         chatArea.setWrapText(true);
         chatArea.setEditable(false);
 
-        GridPane gridPane = new GridPane();
-        gridPane.add(btnSend, 1, 0);
-        gridPane.add(inputField, 0, 0);
+        GridPane upperGridPane = new GridPane();
+        upperGridPane.add(serverAddressField, 0, 0);
+        upperGridPane.add(btnConnect, 1, 0);
+        upperGridPane.add(addressComboBox, 2, 0);
+
+        GridPane lowerGridPane = new GridPane();
+        lowerGridPane.add(btnSend, 1, 0);
+        lowerGridPane.add(inputField, 0, 0);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(chatArea);
-        borderPane.setBottom(gridPane);
+        borderPane.setBottom(lowerGridPane);
 
         Scene scene = new Scene(borderPane, sceneWidth, sceneHeight);
         primaryStage.setScene(scene);
