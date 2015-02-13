@@ -63,9 +63,12 @@ public class Main {
         }
         */
 
+
         Menu menu = new Menu(notebookService);
         menu.main();
-        factory.close();
+
+        //factory.close();
+
     }
 
 }
