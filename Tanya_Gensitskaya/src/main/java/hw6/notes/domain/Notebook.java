@@ -60,15 +60,17 @@ public class Notebook {
 
     @Override
     public String toString() {
-        return "Notebook" +
-                "id=" + id +
-                ", serial='" + serial+
-                ", vendor='" + vendor+
-                ", model='" + model+
-                ", manufactureDate='" + manufactureDate +
-                ", price='" + price+
-                '}';
+            return "Notebook  " +
+            "id=" + id +
+            ", serial='" + serial+
+            ", vendor='" + vendor+
+            ", model='" + model+
+            ", manufactureDate='" + manufactureDate +
+            ", price='" + price+
+            '}';
     }
+
+
 
     public Long getId() {
         return id;
