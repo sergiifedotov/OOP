@@ -5,8 +5,10 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +40,7 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public Long create(Notebook ntb){
+    public Long create(Notebook ntb) {
         Session session = null;
         try {
             session = factory.openSession();
@@ -58,7 +60,7 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public Notebook read(Long ig){
+    public Notebook read(Long ig) {
         Session session = null;
         Notebook notebook = new Notebook();
         try {
@@ -76,8 +78,9 @@ public class NotebookDaoImpl implements NotebookDao {
         }
         return notebook;
     }
+
     @Override
-    public boolean update(Notebook ntb){
+    public boolean update(Notebook ntb) {
         Session session = null;
         try {
             session = factory.openSession();
@@ -95,8 +98,9 @@ public class NotebookDaoImpl implements NotebookDao {
         }
         return false;
     }
+
     @Override
-    public boolean delete(Notebook ntb){
+    public boolean delete(Notebook ntb) {
         Session session = null;
         try {
             session = factory.openSession();
@@ -114,8 +118,9 @@ public class NotebookDaoImpl implements NotebookDao {
         }
         return false;
     }
+
     @Override
-    public List<Notebook> findAll(){
+    public List<Notebook> findAll() {
         List<Notebook> list = new ArrayList<>();
 
         Session session = null;
@@ -134,4 +139,85 @@ public class NotebookDaoImpl implements NotebookDao {
         }
         return list;
     }
+
+    @Override
+    public List<Notebook> findByModel(String model) {
+        List<Notebook> list = new ArrayList<>();
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            list = session.createCriteria(Notebook.class).add(Restrictions.eq("model", model)).list();
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return list;
+    }
+
+    public List<Notebook> findByVendor(String vendor) {
+        List<Notebook> list = new ArrayList<>();
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            list = session.createCriteria(Notebook.class).add(Restrictions.eq("vendor", vendor)).list();
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return list;
+    }
+
+    public List<Notebook> findByPriceManufDate(Double price, Date date) {
+        List<Notebook> list = new ArrayList<>();
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            list = session.createCriteria(Notebook.class).add(Restrictions.and(Restrictions.eq("price", price), Restrictions.eq("manufactureDate", date))).list();
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return list;
+    }
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+        List<Notebook> list = new ArrayList<>();
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            list = session.createCriteria(Notebook.class).add(Restrictions.and(Restrictions.between("price", priceFrom, priceTo),Restrictions.eq("vendor", vendor), Restrictions.lt("manufactureDate", date) )).list();
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return list;
+    }
+
+//    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+//        List<Notebook> list = new ArrayList<>();
+//        return list;
+//    }
 }

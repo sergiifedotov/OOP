@@ -190,6 +190,129 @@ public class NotebookServiceImpl implements NotebookService {
         log.info(session);
         }
 
+    @Override
+    public boolean deleteByModel(String model){
+        Locale.setDefault(Locale.ENGLISH);
+        SessionFactory factory = connectionHibernet();
+        log.info("Reference to SessionFactory " + factory);
+        Session session = null;
+
+        try {
+            session = factory.openSession();
+            NotebookDaoImpl n = new NotebookDaoImpl(factory);
+            List<Notebook> list = n.findByModel(model);
+            for(Notebook i: list){
+                n.delete(i);
+            }
+            return true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            if (factory != null) {
+                factory.close();
+            }
+        }
+        log.info(session);
+        return false;
+    }
+
+    @Override
+    public List<Notebook> findByVendor(String vendor){
+        Locale.setDefault(Locale.ENGLISH);
+        SessionFactory factory = connectionHibernet();
+        log.info("Reference to SessionFactory " + factory);
+
+        List<Notebook> list = new ArrayList<>();
+        Session session = null;
+
+        try {
+            session = factory.openSession();
+            NotebookDaoImpl n = new NotebookDaoImpl(factory);
+            list = n.findByVendor(vendor);
+
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            if (factory != null) {
+                factory.close();
+            }
+        }
+        log.info(session);
+        return list;
+    }
+
+    @Override
+    public List<Notebook> findByPriceManufDate(Double price, Date date){
+        Locale.setDefault(Locale.ENGLISH);
+        SessionFactory factory = connectionHibernet();
+        log.info("Reference to SessionFactory " + factory);
+
+        List<Notebook> list = new ArrayList<>();
+        Session session = null;
+
+        try {
+            session = factory.openSession();
+            NotebookDaoImpl n = new NotebookDaoImpl(factory);
+            list = n.findByPriceManufDate(price, date);
+
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            if (factory != null) {
+                factory.close();
+            }
+        }
+        log.info(session);
+        return list;
+    }
+    @Override
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor){
+        Locale.setDefault(Locale.ENGLISH);
+        SessionFactory factory = connectionHibernet();
+        log.info("Reference to SessionFactory " + factory);
+
+        List<Notebook> list = new ArrayList<>();
+        Session session = null;
+
+        try {
+            session = factory.openSession();
+            NotebookDaoImpl n = new NotebookDaoImpl(factory);
+            list = n.findBetweenPriceLtDateByVendor(priceFrom, priceTo, date, vendor);
+
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            if (factory != null) {
+                factory.close();
+            }
+        }
+        log.info(session);
+        return list;
+    }
+
+//    @Override
+//    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor){
+//        List<Notebook> list = new ArrayList<>();
+//        return list;
+//    }
+
+
 
     public SessionFactory connectionHibernet (){
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
