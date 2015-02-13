@@ -1,4 +1,4 @@
-package hw3.chat.reader;
+package hw3.reader;
 
 import java.io.*;
 import java.util.ArrayList;

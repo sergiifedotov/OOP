@@ -14,16 +14,18 @@ public class MainConnectionOracle {
 
         try {
             String url = "jdbc:oracle:thin:@localhost:1521:XE";
-            Connection conn = DriverManager.getConnection(url, "hr", "hr");
+            Connection conn = DriverManager.getConnection(url, "notebook", "notebook");
             Statement stmt =  conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM employees WHERE salary = 300");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM notebook");
 
             while(rs.next()){
                 Long id = rs.getLong(1);
-                String name = rs.getString(2);
-                Long depId = rs.getLong(11);
-                double salary = rs.getDouble(8);
-                System.out.println(id+"  "+name+"  "+depId+"  "+salary);
+                String name = rs.getString(3);
+                String model = rs.getString(4);
+                Long depId = rs.getLong(2);
+                //Date date = rs.getDate(5);
+                double salary = rs.getDouble(5);
+                System.out.println(id+"  "+depId+" "+name+" "+model+" "+salary);
 
             }
 

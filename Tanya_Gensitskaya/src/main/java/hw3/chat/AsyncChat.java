@@ -22,6 +22,7 @@ public class AsyncChat {
     public static final String EXIT = "exit";
     public static final String EMPTY_STRING = "";
 
+
     public static void main(String[] args) {
         if (args.length > 0) {
             if (CLIENT.equals(args[0])) {
@@ -168,5 +169,7 @@ public class AsyncChat {
                 System.out.println(e);
             }
         }
+    }
+    public void process(){
     }
 }

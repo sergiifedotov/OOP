@@ -23,13 +23,16 @@ public class AsyncChat {
     final BufferedWriter socketWriter; //ввод с консоли
 
 
+
     public AsyncChat(String host, int port) throws IOException {
+
         serverSocket = new Socket(host,port);
         socketReader = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
         socketWriter = new BufferedWriter(new OutputStreamWriter(serverSocket.getOutputStream()));
         userInput = new BufferedReader(new InputStreamReader(System.in));
         new Thread(new Receiver()).start();
     }
+
 
     public void run(){
         while(true){

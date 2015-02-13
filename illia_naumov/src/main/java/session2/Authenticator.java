@@ -1,58 +1,33 @@
 package session2;
 
 import java.util.HashSet;
-/*import java.util.Iterator;
-import java.util.Set;*/
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Yaroslav_Syrota
+ * User: al1
  * Date: 17.01.15
  */
 public class Authenticator {
-    private HashSet<User> users = new HashSet<User>();
+    private Set<User> users;
 
-    private static final Authenticator AUTHENTICATOR = new Authenticator();
-
-    public Authenticator(){}
-
-
-    public void addUser(String l, String p) {
-        users.add(new User(l, p));
+    public Authenticator() {
+        users = new HashSet<>();
+        users.add(new User("1", "1"));
+        users.add(new User("2", "2"));
+        users.add(new User("3", "3"));
     }
 
-    public User getUser(String l) {
-        User u = new User();
-        for(User x : users) {
-            if(x.getLogin().equals(l)) u = x;
+    public boolean auth (String login, String pass) {
+        Iterator<User> itr = users.iterator();
+        while (itr.hasNext()) {
+            User user = itr.next();
+            if (user.getLogin().equals(login) && user.getPass().equals(pass)) {
+                return true;
+            }
         }
-        return u;
+        return false;
+//        return users.contains(new User(login, pass));
     }
-
-    public boolean auth(User u, String p) {
-        if(u.getPass().equals(p)) return true;
-        else return false;
-    }
-
-    public boolean auth(String l, String p) {
-        boolean s = false;
-        for(User x : users) {
-            if(x.getLogin().equals(l) && x.getPass().equals(p)) s = true;
-        }
-        return s;
-    }
-
 }
-/*
-private HashSet<User> users = new HashSet<User>();
-
-	public static final Authon AUTHON = new Authon();
-
-	private Authon(){}
-
-
-
-
-
-
- */
