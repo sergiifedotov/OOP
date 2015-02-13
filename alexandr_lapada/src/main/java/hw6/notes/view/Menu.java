@@ -29,6 +29,10 @@ public class Menu {
         System.out.println("3 - Delete notebook by id");
         System.out.println("4 - Change price notebook by id");
         System.out.println("5 - Change serial and vendor by id");
+        System.out.println("6 - Delete notebook by model");
+        System.out.println("7 - Show all notebooks by vendor");
+        System.out.println("8 - Show all notebooks by price and date");
+        System.out.println("9 - Show all notebooks by price from to, date and vendor");
         System.out.println("0 - Exit");
         System.out.println("-----------------------");
         while (true) {
@@ -37,10 +41,8 @@ public class Menu {
                 System.out.println("Close...");
                 System.exit(0);
             } else if (choose == 1) {
-                System.out.println("You enter 1");
                 addNotebook();
             } else if (choose == 2) {
-                System.out.println("You enter 2");
                 findAll();
             } else if (choose == 3) {
                 deleteNtb();
@@ -48,6 +50,14 @@ public class Menu {
                 changePrice();
             } else if (choose == 5) {
                 changeSerialVendor();
+            } else if (choose == 6) {
+                deleteByModel();
+            } else if (choose == 7) {
+                findByVendor();
+            } else if (choose == 8) {
+                findByPriceManufDate();
+            } else if (choose == 9) {
+                findBetweenPriceLtDateByVendor();
             } else {
                 System.err.println("Wrong choice");
             }
@@ -98,6 +108,76 @@ public class Menu {
     }
 
     private void changeSerialVendor() {
+        Long id = null;
+        String serial = null;
+        String vendor = null;
+        System.out.print("Enter id - ");
+        id = scan.nextLong();
+        System.out.print("Enter new serial - ");
+        serial = scan.next();
+        System.out.print("Enter new vendor - ");
+        vendor = scan.next();
+        notebookService.changeSerialVendor(id, serial, vendor);
+    }
 
+    private void deleteByModel() {
+
+    }
+
+    private void findByVendor() {
+        String vendor = null;
+        int id = 0;
+        System.out.print("Enter vendor");
+        vendor = scan.next();
+        list = (ArrayList<Notebook>) notebookService.findByVendor(vendor);
+        System.out.println(" № " + " Id  " + "  Model " + " Price ");
+        Iterator iter = list.iterator();
+        while (iter.hasNext()) {
+            Notebook not = (Notebook) iter.next();
+            System.err.println(" " + id + "   " + not.getId() + "   " + not.getModel() + "  " + not.getPrice());
+            id++;
+        }
+    }
+
+    private void findByPriceManufDate() {
+        Date date = null;
+        Double price = null;
+        int id = 0;
+        System.out.print("Enter price");
+        price = scan.nextDouble();
+        System.out.print("Enter date");
+        String dateString = scan.next();
+        list = (ArrayList<Notebook>) notebookService.findByPriceManufDate(price,date);
+        System.out.println(" № " + " Id  " + "  Model " + " Price ");
+        Iterator iter = list.iterator();
+        while (iter.hasNext()) {
+            Notebook not = (Notebook) iter.next();
+            System.err.println(" " + id + "   " + not.getId() + "   " + not.getModel() + "  " + not.getPrice());
+            id++;
+        }
+    }
+
+    private void findBetweenPriceLtDateByVendor() {
+        Date date = null;
+        Double priceFrom = null;
+        Double priceTo = null;
+        String vendor = null;
+        int id = 0;
+        System.out.print("Enter price from");
+        priceFrom = scan.nextDouble();
+        System.out.print("Enter price to");
+        priceTo = scan.nextDouble();
+        System.out.print("Enter date");
+        String dateString = scan.next();
+        System.out.print("Enter vendor");
+        vendor = scan.next();
+        list = (ArrayList<Notebook>) notebookService.findBetweenPriceLtDateByVendor(priceFrom,priceTo,date,vendor);
+        System.out.println(" № " + " Id  " + "  Model " + " Price ");
+        Iterator iter = list.iterator();
+        while (iter.hasNext()) {
+            Notebook not = (Notebook) iter.next();
+            System.err.println(" " + id + "   " + not.getId() + "   " + not.getModel() + "  " + not.getPrice());
+            id++;
+        }
     }
 }

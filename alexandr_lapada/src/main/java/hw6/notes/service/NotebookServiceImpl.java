@@ -3,6 +3,9 @@ package hw6.notes.service;
 import hw6.notes.dao.NotebookDaoImpl;
 import hw6.notes.domain.Notebook;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -64,5 +67,34 @@ public class NotebookServiceImpl implements NotebookService{
             return false;
         }
 
+    }
+
+    @Override
+    public boolean deleteByModel(String model) {
+        Notebook notebook = null;
+        boolean rez= false;
+        ArrayList<Notebook> list = (ArrayList<Notebook>) notebookDaoImpl.findByModel(model);
+        Iterator iter = list.iterator();
+        while(iter.hasNext()){
+            notebook = (Notebook)iter.next();
+            System.out.println(notebook.getSerial());
+            rez = notebookDaoImpl.delete(notebook);
+        }
+        return rez;
+    }
+
+    @Override
+    public List<Notebook> findByVendor(String vendor) {
+        return notebookDaoImpl.findByVendor(vendor);
+    }
+
+    @Override
+    public List<Notebook> findByPriceManufDate(Double price, Date date) {
+        return notebookDaoImpl.findByPriceManufDate(price,date);
+    }
+
+    @Override
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+        return notebookDaoImpl.findBetweenPriceLtDateByVendor(priceFrom,priceTo,date,vendor);
     }
 }

@@ -49,25 +49,12 @@ public class Main {
         NotebookDaoImpl ntbDaoImpl = new NotebookDaoImpl(factory);
         NotebookServiceImpl notebookService = new NotebookServiceImpl(ntbDaoImpl);
 
-        /*
-        Notebook notebook = new Notebook((long)7,(long)666999,"Dell","Latie",null,899.0);
-        //System.out.println(ntbImpl.create(notebook));
-        System.out.println(ntbImpl.read((long)1).getSerial());
-        //System.out.println(ntbImpl.delete(notebook));
-        System.out.println("---***"+ntbImpl.update(notebook));
-        ArrayList<Notebook> list = (ArrayList<Notebook>) ntbImpl.findAll();
-        Iterator iter = list.iterator();
-        while(iter.hasNext()) {
-            Notebook not = (Notebook) iter.next();
-            System.err.println(not.getModel());
-        }
-        */
 
 
         Menu menu = new Menu(notebookService);
         menu.main();
 
-        //factory.close();
+        factory.close();
 
     }
 
