@@ -1,10 +1,14 @@
 package hw6.notes.dao;
 
 import hw6.notes.domain.Notebook;
+import hw6.notes.util.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 // import java.util.logging.Logger;
@@ -14,80 +18,192 @@ import java.util.logging.Logger;
  */
 
 public class NotebookDaoImpl implements NotebookDao {
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(NotebookDaoImpl.class);
 
-    public NotebookDaoImpl() {}
+    public NotebookDaoImpl() {
+    }
 
     public NotebookDaoImpl(SessionFactory sessionFactory) {
-        super();
+        this();
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public Long create(Notebook ntb) {
-        Session session = sessionFactory.openSession();
+    public Long create(Notebook notebook) {
+        Session session = null;
         try {
+            session = sessionFactory.openSession();
             session.beginTransaction();
-            Long id = (Long)session.save(ntb);
+            Long id = (Long)session.save(notebook);
             session.getTransaction().commit();
             return id;
-        } catch(HibernateException e) {
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
-            session.close();
+            if(session != null) {
+                session.close();
+            }
         }
         return null;
     }
 
     @Override
     public Notebook read(Long id) {
-        Session session = sessionFactory.openSession();
+        Session session = null;
         try {
+            session = sessionFactory.openSession();
             session.beginTransaction();
-            Notebook notebook = (Notebook) session.get(Notebook.class, id);
-            return notebook;
-        } catch(HibernateException e) {
+            return (Notebook) session.get(Notebook.class, id);
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
-            session.close();
+            if(session != null) {
+                session.close();
+            }
         }
         return null;
     }
 
     @Override
-    public boolean update(Notebook ntb) {
-        Session session = sessionFactory.openSession();
+    public boolean update(Notebook notebook) {
+        Session session = null;
         try {
+            session = sessionFactory.openSession();
             session.beginTransaction();
-            session.update(ntb);
+            session.update(notebook);
             session.getTransaction().commit();
             return true;
-        } catch(HibernateException e) {
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
-            session.close();
+            if(session != null) {
+                session.close();
+            }
         }
         return false;
     }
 
     @Override
-    public boolean delete(Notebook ntb) {
-        Session session = sessionFactory.openSession();
+    public boolean delete(Notebook notebook) {
+        Session session = null;
         try {
+            session = sessionFactory.openSession();
             session.beginTransaction();
-            session.delete(ntb);
+            session.delete(notebook);
             session.getTransaction().commit();
             return true;
-        } catch(HibernateException e) {
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
-            session.close();
+            if(session != null) {
+                session.close();
+            }
         }
         return false;
     }
 
     @Override
     public List<Notebook> findAll() {
-        return sessionFactory.openSession().createCriteria(Notebook.class).list();
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Notebook.class);
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByModel(String model) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Notebook.class, model);
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByVendor(String vendor) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Notebook.class, vendor);
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByPriceManufDate(Double price, Date date) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Notebook.class)
+                    .add(Restrictions.eq("price", price))
+                    .add(Restrictions.eq("date", date));
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Notebook.class)
+                    .add(Restrictions.between("price", priceFrom, priceTo))
+                    .add(Restrictions.le("date", date))
+                    .add(Restrictions.eq("vendor", vendor));
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void close() {
+        sessionFactory.close();
     }
 }

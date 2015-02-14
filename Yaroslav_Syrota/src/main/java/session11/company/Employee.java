@@ -27,4 +27,14 @@ public class Employee {
         this.name = name;
         this.company = company;
     }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+
 }
