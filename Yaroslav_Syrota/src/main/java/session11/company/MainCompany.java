@@ -7,6 +7,11 @@ import java.util.Set;
  * Created by @CAT_Caterpiller on 14.02.2015.
  */
 
+/*
+task1 - создать класс компания, в которой работает класс сотрудник. один сотрудник может работать в одной компании.
+        создать 2 компании и 5 сотрудников. трудоустроить сотрудников равномерно в компании
+*/
+
 public class MainCompany {
     public static void main(String[] args) {
         Company comp1 = new Company("Sony");
