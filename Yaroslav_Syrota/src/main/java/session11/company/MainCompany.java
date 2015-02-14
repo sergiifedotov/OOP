@@ -23,9 +23,16 @@ task1 - создать класс компания, в которой работ
 */
 
 public class MainCompany {
-    private static Logger log = Logger.getLogger(HiberConnect.class);
-
     public static void main(String[] args) {
+
+        Locale.setDefault(Locale.ENGLISH);
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
+        sb.applySettings(cfg.getProperties());
+        StandardServiceRegistry standardServiceRegistry = sb.build();
+        SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
+        Session session = factory.openSession();
+
         Company comp1 = new Company("Sony");
         Company comp2 = new Company("Toshiba");
         Set<Employee> compSet1 = new HashSet<Employee>();
@@ -39,52 +46,8 @@ public class MainCompany {
         comp2.setEmployeeSet(compSet2);
 
 
-        Locale.setDefault(Locale.ENGLISH);
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
-        sb.applySettings(cfg.getProperties());
-        StandardServiceRegistry standardServiceRegistry = sb.build();
-        SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
-        log.info("Reference to SessionFactory " + factory);
 
-        Session session = null;
-        try {
-            session = factory.openSession();
-            session.beginTransaction();
-            session.save(comp1);
-            session.getTransaction().commit();
 
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
-
-        try {
-            session = factory.openSession();
-            session.beginTransaction();
-            session.save(comp2);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
 
 
     }
