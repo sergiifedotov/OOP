@@ -6,7 +6,9 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -102,6 +104,79 @@ public class NotebookDaoImpl implements NotebookDao {
             session = factory.openSession();
             session.beginTransaction();
             return (List<Notebook>)session.createCriteria(Notebook.class).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByModel(String model) {
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            return (List<Notebook>)session.createCriteria(Notebook.class).add(Restrictions.eq("model", model)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByVendor(String vendor) {
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            return (List<Notebook>)session.createCriteria(Notebook.class).add(Restrictions.eq("vendor",vendor)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByPriceManufDate(Double price, Date date) {
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            return (List<Notebook>)session.createCriteria(Notebook.class).add(Restrictions.eq("price", price)).add(Restrictions.eq("MANUFACTURE_DATE",date)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override //- Получить ноутбуки по цене в указанном диапазоне, меньше указанной даты выпуска и указанного производителя
+
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            return (List<Notebook>)session.createCriteria(Notebook.class).add(Restrictions.between("price", priceFrom, priceTo)).add(Restrictions.lt("MANUFACTURE_DATE",date)).add(Restrictions.eq("vendor",vendor)).list();
         } catch (HibernateException e) {
             log.error("Open session failed", e);
             session.getTransaction().rollback();
