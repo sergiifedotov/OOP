@@ -8,6 +8,9 @@ import java.util.Scanner;
  * Created by sanya on 02.02.2015.
  */
 public class AsyncChat {
+    public void process(){
+
+    };
 
 
     public static void main(String[] args) {

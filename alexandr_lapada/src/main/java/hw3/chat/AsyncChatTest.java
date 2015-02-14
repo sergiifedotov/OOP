@@ -13,9 +13,7 @@ import java.util.Scanner;
  Класс теста hw3.chat.AsyncChatTest
  */
 public class AsyncChatTest {
-    public void process(){
 
-    };
     public static void main(String[] args) {
 
         String dataOut = "";

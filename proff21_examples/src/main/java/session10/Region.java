@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * Created with IntelliJ IDEA.
  * User: al1
- * Date: 5/12/13
+ * Date: 4/7/13
  */
 @Entity
 @Table(name = "REGIONS")

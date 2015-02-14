@@ -25,7 +25,7 @@ public class FileFinder implements Runnable{
     private String fileName;
     private List<String> list = new ArrayList<String>();
 
-    private FileFinder() {
+    public FileFinder() {
 
     }
 
