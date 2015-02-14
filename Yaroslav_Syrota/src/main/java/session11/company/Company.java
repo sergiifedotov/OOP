@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table
 public class Company {
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Employee> employeeSet;
 
     @Id
