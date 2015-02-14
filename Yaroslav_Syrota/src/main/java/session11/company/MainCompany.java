@@ -24,7 +24,6 @@ task1 - создать класс компания, в которой работ
 
 public class MainCompany {
     public static void main(String[] args) {
-
         Locale.setDefault(Locale.ENGLISH);
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
@@ -45,9 +44,17 @@ public class MainCompany {
         comp1.setEmployeeSet(compSet1);
         comp2.setEmployeeSet(compSet2);
 
+        session.beginTransaction();
+        session.save(comp1);
+        session.save(comp2);
+        for(Employee x : comp1.getEmployeeSet()) {
+            session.save(x);
+        }
+        for(Employee x : comp2.getEmployeeSet()) {
+            session.save(x);
+        }
 
-
-
+        session.getTransaction().commit();
 
 
     }
