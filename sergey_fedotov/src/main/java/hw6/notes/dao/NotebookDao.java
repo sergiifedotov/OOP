@@ -20,9 +20,9 @@ import java.util.List;
  hw6.notes.dao.NotebookDaoImpl
  */
 public interface NotebookDao {
-    Long create(Notebook region);
+    Long create(Notebook notebook);
     Notebook read(Long id);
-    boolean update(Notebook region);
-    boolean delete(Notebook region);
+    boolean update(Notebook notebook);
+    boolean delete(Notebook notebook);
     List<Notebook> findAll();
 }

@@ -1,7 +1,7 @@
 package hw6.notes.domain;
 
 import javax.persistence.*;
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 /**
  *Создать DAO для таблицы ноутбуки
@@ -38,7 +38,7 @@ public class Notebook {
     private String model;
 
     @Column(name="MANUFACTURE_DATE")
-    private GregorianCalendar manufacture_date;
+    private Date manufacture_date;
 
     @Column(name="PRICE")
     private Double price;
@@ -46,7 +46,7 @@ public class Notebook {
     public Notebook() {
     }
 
-    public Notebook(String serial, String vendor, String model, GregorianCalendar manufacture_date, Double price) {
+    public Notebook(String serial, String vendor, String model, Date manufacture_date, Double price) {
         this.serial = serial;
         this.vendor = vendor;
         this.model = model;
@@ -86,11 +86,11 @@ public class Notebook {
         this.model = model;
     }
 
-    public GregorianCalendar getManufacture_date() {
+    public Date getManufacture_date() {
         return manufacture_date;
     }
 
-    public void setManufacture_date(GregorianCalendar manufacture_date) {
+    public void setManufacture_date(Date manufacture_date) {
         this.manufacture_date = manufacture_date;
     }
 
