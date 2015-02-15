@@ -1,4 +1,4 @@
-package session9;
+package main.java.session9;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;

@@ -1,4 +1,4 @@
-package session10.dentist.view;
+package main.java.session10.dentist.view;
 
 import session10.dentist.domain.Client;
 import session10.dentist.service.ClientService;

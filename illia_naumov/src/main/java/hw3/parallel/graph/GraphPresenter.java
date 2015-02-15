@@ -1,4 +1,4 @@
-package hw3.parallel.graph;
+package main.java.hw3.parallel.graph;
 
 
 import java.io.BufferedReader;

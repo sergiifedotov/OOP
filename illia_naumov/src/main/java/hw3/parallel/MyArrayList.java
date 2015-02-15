@@ -1,4 +1,4 @@
-package hw3.parallel;
+package main.java.hw3.parallel;
 
 import java.util.ArrayList;
 

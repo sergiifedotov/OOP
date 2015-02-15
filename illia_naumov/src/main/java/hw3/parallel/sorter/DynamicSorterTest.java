@@ -1,4 +1,4 @@
-package hw3.parallel.sorter;
+package main.java.hw3.parallel.sorter;
 
 /**
  * Created by user on 29.01.2015.

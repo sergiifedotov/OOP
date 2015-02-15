@@ -1,4 +1,4 @@
-package session2;
+package main.java.session2;
 
 import java.util.HashSet;
 import java.util.Iterator;

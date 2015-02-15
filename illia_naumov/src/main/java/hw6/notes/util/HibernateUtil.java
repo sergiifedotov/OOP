@@ -1,4 +1,4 @@
-package hw6.notes.util;
+package main.java.hw6.notes.util;
 
 
 import org.hibernate.SessionFactory;

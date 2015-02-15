@@ -1,4 +1,4 @@
-package session10.dentist.service;
+package main.java.session10.dentist.service;
 
 
 

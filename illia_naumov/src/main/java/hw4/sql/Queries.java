@@ -1,4 +1,4 @@
-package hw4.sql;
+package main.java.hw4.sql;
 
 /**
  * Created by illia_naumov on 02.02.2015.

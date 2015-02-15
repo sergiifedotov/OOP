@@ -1,4 +1,4 @@
-package session10.dentist;
+package main.java.session10.dentist;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;

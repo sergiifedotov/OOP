@@ -1,9 +1,9 @@
-package hw2.park;
+package main.java.hw2.park;
 
 /**
  * Created by user on 20.01.2015.
  */
-class Car {
+public class Car {
     private final String companyName;
     private final String model;
 

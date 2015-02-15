@@ -1,4 +1,4 @@
-package session2;
+package main.java.session2;
 
 /**
  * Created with IntelliJ IDEA.

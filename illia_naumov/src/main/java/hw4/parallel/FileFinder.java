@@ -1,4 +1,4 @@
-package hw4.parallel;
+package main.java.hw4.parallel;
 
 import java.io.BufferedReader;
 import java.io.File;

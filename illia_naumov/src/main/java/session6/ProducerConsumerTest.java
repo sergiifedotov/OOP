@@ -1,4 +1,4 @@
-package session6;
+package main.java.session6;
 public class ProducerConsumerTest {
     public static void main(String[] args) {
         CubbyHole c = new CubbyHole();

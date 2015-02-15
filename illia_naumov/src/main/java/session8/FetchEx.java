@@ -1,4 +1,4 @@
-package session8;
+package main.java.session8;
 
 import java.sql.*;
 import java.util.Locale;

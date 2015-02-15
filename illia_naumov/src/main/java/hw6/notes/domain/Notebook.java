@@ -1,7 +1,5 @@
 package main.java.hw6.notes.domain;
 
-import android.provider.ContactsContract;
-
 import javax.persistence.*;
 import java.util.Date;
 

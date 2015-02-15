@@ -1,4 +1,4 @@
-package session10;
+package main.java.session10;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package session10.dentist.dao;
+package main.java.session10.dentist.dao;
 
 import org.hibernate.Criteria;
 

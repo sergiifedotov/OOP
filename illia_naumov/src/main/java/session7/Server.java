@@ -1,4 +1,4 @@
-package session7;
+package main.java.session7;
 
 import java.io.*;
 import java.net.ServerSocket;
