@@ -1,4 +1,4 @@
-package main.java.hw2.authentication;
+package hw2.authentication;
 
 
 

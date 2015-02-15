@@ -1,4 +1,4 @@
-package main.java.hw3.reader;
+package hw3.reader;
 
 /**
  * Created by illia_naumov

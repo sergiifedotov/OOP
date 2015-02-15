@@ -1,4 +1,4 @@
-package main.java.session10.dentist.dao;
+package session10.dentist.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;

@@ -1,4 +1,4 @@
-package main.java.session6;
+package session6;
 
 /**
  * ЗАДАНИЕ: Поставщик сгенерировал 200 чисел от 0 до 10,

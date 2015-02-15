@@ -1,4 +1,4 @@
-package main.java.session5;
+package session5;
 
 import java.util.AbstractMap;
 import java.util.LinkedList;

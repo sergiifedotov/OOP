@@ -1,4 +1,4 @@
-package main.java.session10.dentist.utils;
+package session10.dentist.utils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

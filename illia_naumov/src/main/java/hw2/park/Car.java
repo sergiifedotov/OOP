@@ -1,4 +1,4 @@
-package main.java.hw2.park;
+package hw2.park;
 
 /**
  * Created by user on 20.01.2015.

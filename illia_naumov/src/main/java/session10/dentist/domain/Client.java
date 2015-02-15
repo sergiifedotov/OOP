@@ -1,4 +1,4 @@
-package main.java.session10.dentist.domain;
+package session10.dentist.domain;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package main.java.hw2.frequency;
+package hw2.frequency;
 
 import java.io.*;
 import java.util.*;

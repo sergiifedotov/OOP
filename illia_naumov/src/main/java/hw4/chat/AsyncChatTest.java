@@ -1,4 +1,4 @@
-package main.java.hw4.chat;
+package hw4.chat;
 
 /**
  * Created by illia_naumov

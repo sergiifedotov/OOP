@@ -1,4 +1,4 @@
-package main.java.hw6.notes.service;
+package hw6.notes.service;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;

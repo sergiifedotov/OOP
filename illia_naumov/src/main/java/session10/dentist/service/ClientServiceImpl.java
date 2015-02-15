@@ -1,4 +1,4 @@
-package main.java.session10.dentist.service;
+package session10.dentist.service;
 
 
 import session10.dentist.dao.ClientDao;

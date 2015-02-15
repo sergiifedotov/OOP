@@ -1,4 +1,4 @@
-package main.java.session8;
+package session8;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

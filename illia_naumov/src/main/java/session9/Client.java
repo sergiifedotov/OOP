@@ -1,4 +1,4 @@
-package main.java.session9;
+package session9;
 
 import javax.persistence.*;
 import java.util.Date;

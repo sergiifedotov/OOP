@@ -1,4 +1,4 @@
-package main.java.hw2;
+package hw2;
 
 /**
  * Created by user on 20.01.2015.

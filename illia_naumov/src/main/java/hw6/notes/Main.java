@@ -1,4 +1,4 @@
-package main.java.hw6.notes;
+package hw6.notes;
 
 import hw6.notes.dao.NotebookDaoImpl;
 import hw6.notes.domain.Notebook;
