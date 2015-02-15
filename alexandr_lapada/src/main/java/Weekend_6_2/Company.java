@@ -1,5 +1,8 @@
 package Weekend_6_2;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,18 +20,21 @@ public class Company {
     private Long id;
     @Column(name = "NAME")
     private String name;
+    @Column
+    private Double fond;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company",cascade = CascadeType.PERSIST)
+    @Fetch(FetchMode.SELECT)
     private Set<Employee> employees = new HashSet<Employee>();
 
     public Company(){
 
     }
 
-    public Company(String name, Long id){
+    public Company(String name, Long id, Double fond){
         this.name = name;
         this.id = id;
-
+        this.fond = fond;
     }
 
     public void addEmployee(Employee empl) {

@@ -9,10 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by sanya on 14.02.2015.
@@ -29,28 +26,38 @@ public class Main {
         SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
         log.info("Reference to SessionFactory " + factory);
 
-        /*
-        Employee employee1 = new Employee("Sasha", "La", 23, (long) 1);
-        Employee employee2 = new Employee("Al", "Der", 28, (long) 2);
-        Employee employee3 = new Employee("Eg", "GG", 13, (long) 3);
-        Employee employee4 = new Employee("Ro", "Ftu", 24, (long) 4);
-        Employee employee5 = new Employee("Pit", "Add", 33, (long) 5);
+        EmployeeDaoImpl emplDaoImpl = new EmployeeDaoImpl(factory);
 
-        Company company1 = new Company("ItCentre", (long) 1);
-        Company company2 = new Company("W&H", (long) 2);
+        ArrayList<Employee> list = (ArrayList<Employee>) emplDaoImpl.selectEmplByAge("Apple",24);
+        Iterator<Employee> iter = list.iterator();
+        while(iter.hasNext()) {
+            System.out.println(iter.next().getName());
+        }
 
-        company1.addEmployee(employee1);
+
+
+/*
+        Employee employee1 = new Employee("Bob", "Bob", 23, (long) 1);
+        Employee employee2 = new Employee("Alex", "Alex", 28, (long) 2);
+        Employee employee3 = new Employee("Jon", "Jon", 13, (long) 3);
+        Employee employee4 = new Employee("Den", "Den", 24, (long) 4);
+        Employee employee5 = new Employee("Pit", "Pit", 33, (long) 5);
+
+        Company company1 = new Company("Samsung", (long) 1,100000.0);
+        Company company2 = new Company("Apple", (long) 2,333366.0);
+
+        company1.getEmployees().add(employee1);
         employee1.setCompany(company1);
         company1.addEmployee(employee2);
         employee2.setCompany(company1);
         company1.addEmployee(employee3);
         employee3.setCompany(company1);
-
+//
         company2.addEmployee(employee4);
         employee4.setCompany(company2);
         company2.addEmployee(employee5);
         employee5.setCompany(company2);
-
+//
         Session session = null;
 
         try {
@@ -65,7 +72,8 @@ public class Main {
             session.save(employee2);
             session.getTransaction().commit();
         } catch (HibernateException e) {
-            System.err.println("Conn BE");
+            log.error(e);
+            log.info(session);
             session.getTransaction().rollback();
         } finally {
             if (session != null) {
@@ -74,45 +82,9 @@ public class Main {
             }
         }
         log.info(session);
+
+factory.close();
 */
-        Session session = null;
-        Long id;
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter id company");
-        id = scan.nextLong();
-
-        List<Notebook> list = null;
-        Company company = null;
-        try {
-            session = factory.openSession();
-            company = (Company)session.get(Company.class,id);
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-
-            }
-        }
-        Iterator<Employee> iter = company.getEmployees().iterator();
-        while(iter.hasNext()){
-            System.out.println(iter.next().getName());
-        }
-        try {
-            session = factory.openSession();
-            session.beginTransaction();
-            session.delete(company);
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-                factory.close();
-            }
-        }
 
     }
 

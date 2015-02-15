@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface EmployeeDao {
     List<Employee> selectEmplFondGT(Double fond);
+
+    List<Employee> selectEmplByAge(String nameCompany, Integer age);
 }

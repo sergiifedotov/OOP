@@ -3,6 +3,7 @@ package Weekend_6_2;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -19,11 +20,39 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public List<Employee> selectEmplFondGT(Double fond) {
         Session session = null;
+        List<Employee> list = null;
         try{
             session = factory.openSession();
+            session.beginTransaction();
+            list = session.createCriteria(Employee.class).createCriteria("company").add(Restrictions.gt("fond",fond)).list();
         } catch(HibernateException e){
-
+            System.err.println("Session faild");
+        } finally{
+            if(session != null){
+                session.close();
+                factory.close();
+            }
         }
-        return null;
+        return list;
     }
+
+    @Override
+    public List<Employee> selectEmplByAge(String nameCompany, Integer age) {
+        Session session = null;
+        List<Employee> list = null;
+        try{
+            session = factory.openSession();
+            session.beginTransaction();
+            list = session.createCriteria(Employee.class).add(Restrictions.eq("age",age)).createCriteria("company").add(Restrictions.eq("name",nameCompany)).list();
+        } catch(HibernateException e){
+            System.err.println("Session faild");
+        } finally{
+            if(session != null){
+                session.close();
+                factory.close();
+            }
+        }
+        return list;
+    }
+
 }
