@@ -27,7 +27,7 @@ public class Notebook {
     @Column (name = "MANUFACTURE_DATE")
     private Date manufactureDate;
 
-    private int price;
+    private double price;
 
     public Notebook(){
 
@@ -78,11 +78,11 @@ public class Notebook {
         this.manufactureDate = manufactureDate;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

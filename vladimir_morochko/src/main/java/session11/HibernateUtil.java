@@ -1,4 +1,4 @@
-package hw6.notes.util;
+package session11;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -9,11 +9,9 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Locale;
 
-
 /**
- * Created by @CAT_Caterpiller on 11.02.2015.
+ * Created by vladimir on 11.02.2015.
  */
-
 public class HibernateUtil {
     private static Logger logger = Logger.getLogger(HibernateUtil.class);
     private static final SessionFactory sessionFactory = buildSessionFactory();
