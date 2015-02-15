@@ -25,7 +25,7 @@ task1 - создать класс компания, в которой работ
 public class MainCompany {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration().configure("session11/hibernate.cfg.xml");
         StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
         sb.applySettings(cfg.getProperties());
         StandardServiceRegistry standardServiceRegistry = sb.build();
