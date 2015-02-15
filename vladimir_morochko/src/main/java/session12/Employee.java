@@ -1,4 +1,4 @@
-package session11;
+package session12;
 
 import javax.persistence.*;
 
@@ -21,13 +21,15 @@ public class Employee {
     @ManyToOne
     private Company company;
     private Double salary;
+    private Integer age;
 
     public Employee() {
     }
 
-    public Employee(String name, Double salary) {
+    public Employee(String name, Double salary, Integer age) {
         this.name = name;
         this.salary = salary;
+        this.age = age;
     }
 
     public Long getId() {

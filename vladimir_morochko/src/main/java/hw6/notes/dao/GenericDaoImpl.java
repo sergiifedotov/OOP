@@ -14,7 +14,7 @@ import static hw6.notes.util.HibernateUtil.getSession;
  * Date: 8/18/13
  */
 
-
+/*
 
 public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 
@@ -37,8 +37,8 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
     }
 
     public List<T> getAll() {
-        Criteria crit = getSession().createCriteria(type);
-        return crit.list();
+        Criteria criteria = getSession().createCriteria(type);
+        return criteria.list();
     }
 
     @Override
@@ -57,3 +57,5 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
     }
 
 }
+
+*/
