@@ -1,4 +1,7 @@
-package session11;
+package session12;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.LinkedList;
@@ -17,6 +20,7 @@ public class Company {
     @Column (name = "COMPANY_ID")
     private Long id;
 
+    private Long authorizedCapital;
     private String name;
 //    @OneToMany
     @OneToMany(
@@ -24,6 +28,7 @@ public class Company {
             mappedBy = "company", // включить двунаправленность
             cascade = CascadeType.ALL // каскадирование на сотрудников
     )
+    @Fetch(FetchMode.SELECT)
     private List<Employee> employees = new LinkedList<>();
 
     public Company() {
@@ -62,11 +67,20 @@ public class Company {
         this.name = name;
     }
 
+    public Long getAuthorizedCapital() {
+        return authorizedCapital;
+    }
+
+    public void setAuthorizedCapital(Long authorizedCapital) {
+        this.authorizedCapital = authorizedCapital;
+    }
+
     @Override
     public String toString() {
         return "Company{id=" + id
                 + ", name='" + name
-                + "', employees=" + employees
+                + "', capital=" + authorizedCapital
+                + ", employees=" + employees
                 + "}";
     }
 }
