@@ -28,9 +28,15 @@ public class HiberConnect {
 
         RegionHibernateDaoImpl regionHibernateDao = new RegionHibernateDaoImpl(factory);
 
-        //regionHibernateDao.update(new Region(5L,"Antarctica"));
+        /*regionHibernateDao.create(new Region(5L,"Antarctica"));
 
-        regionHibernateDao.delete(new Region(5L,"Antarctica"));
+        regionHibernateDao.update(new Region(5L,"Antarctica"));
+
+        regionHibernateDao.delete(new Region(5L,"Antarctica"));*/
+
+        //regionHibernateDao.create(new Region(""));
+        System.out.println(regionHibernateDao.findAll().toString());
+        System.out.println(regionHibernateDao.FindAllRegionsWithName().toString());
 
         if (factory != null) {
             factory.close();
