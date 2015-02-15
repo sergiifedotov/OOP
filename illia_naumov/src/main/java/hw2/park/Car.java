@@ -3,7 +3,7 @@ package hw2.park;
 /**
  * Created by user on 20.01.2015.
  */
-public class Car {
+class Car {
     private final String companyName;
     private final String model;
 
