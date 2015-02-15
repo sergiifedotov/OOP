@@ -9,7 +9,8 @@ public interface EmployeeDao {
     boolean update(Employee employee);
     boolean delete(Employee employee);
     List<Employee> findAll();
-    List<Employee> findEmployeesByCapital(long capital);
+    List<Employee> findEmployeesByCapital(Long capital);
+    List<Employee> findEmployeesByCompanyAndAge(String companyName, Integer age);
 
     public void close();
 }

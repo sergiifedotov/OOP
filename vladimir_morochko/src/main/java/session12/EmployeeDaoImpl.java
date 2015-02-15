@@ -115,13 +115,33 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List<Employee> findEmployeesByCapital(long capital) {
+    public List<Employee> findEmployeesByCapital(Long capital) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             Criteria criteria = session.createCriteria(Employee.class)
                     .createCriteria("company")
                     .add(Restrictions.ge("authorizedCapital", capital));
+            return criteria.list();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Employee> findEmployeesByCompanyAndAge(String companyName, Integer age) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Employee.class)
+                    .add(Restrictions.eq("age", age))
+                    .createCriteria("company")
+                    .add(Restrictions.ge("name", companyName));
             return criteria.list();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
