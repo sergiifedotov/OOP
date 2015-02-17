@@ -1,5 +1,8 @@
 package session12;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 
 /**
@@ -56,11 +59,20 @@ public class Employee {
         this.company = company;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Employee{id=" + id
                 + ", name='" + name
-                + "', salary=" + salary
+                + "', age=" + age
+                + ", salary=" + salary
                 + ", company=" + company.getName() // чтобы оборвать рекурсию
                 + "}";
     }
