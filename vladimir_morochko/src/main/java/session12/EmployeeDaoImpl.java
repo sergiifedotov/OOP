@@ -4,6 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -142,6 +143,43 @@ public class EmployeeDaoImpl implements EmployeeDao {
                     .add(Restrictions.eq("age", age))
                     .createCriteria("company")
                     .add(Restrictions.ge("name", companyName));
+            return criteria.list();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Long rowCount() {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Employee.class)
+                    .setProjection(Projections.rowCount());
+            return (Long) criteria.uniqueResult();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Employee> getPortion(int firstResult, int maxResults) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Employee.class)
+                    .setFirstResult(firstResult)
+                    .setMaxResults(maxResults);
             return criteria.list();
         } catch (HibernateException e) {
             session.getTransaction().rollback();

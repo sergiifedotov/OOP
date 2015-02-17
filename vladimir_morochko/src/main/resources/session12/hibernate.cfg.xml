@@ -19,12 +19,6 @@
         <!--<mapping class="session11.Employee"/>-->
         <mapping class="session12.Company"/>
         <mapping class="session12.Employee"/>
-        <mapping class="hw7.notes.domain.CPU"/>
-        <mapping class="hw7.notes.domain.Memory"/>
-        <mapping class="hw7.notes.domain.Notebook"/>
-        <mapping class="hw7.notes.domain.Sales"/>
-        <mapping class="hw7.notes.domain.Store"/>
-        <mapping class="hw7.notes.domain.Vendor"/>
 
         <!--<mapping class="session11.Region"/>-->
     </session-factory>

@@ -11,6 +11,8 @@ public interface EmployeeDao {
     List<Employee> findAll();
     List<Employee> findEmployeesByCapital(Long capital);
     List<Employee> findEmployeesByCompanyAndAge(String companyName, Integer age);
+    Long rowCount();
+    List<Employee> getPortion(int firstResult, int maxResults);
 
     public void close();
 }
