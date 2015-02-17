@@ -3,6 +3,8 @@ package Weekend_6_2;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -30,7 +32,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         } finally{
             if(session != null){
                 session.close();
-                factory.close();
+
             }
         }
         return list;
@@ -43,16 +45,54 @@ public class EmployeeDaoImpl implements EmployeeDao {
         try{
             session = factory.openSession();
             session.beginTransaction();
-            list = session.createCriteria(Employee.class).add(Restrictions.eq("age",age)).createCriteria("company").add(Restrictions.eq("name",nameCompany)).list();
+            list = session.createCriteria(Employee.class).add(Restrictions.eq("age",age)).createCriteria("company").add(Restrictions.eq("name", nameCompany)).list();
         } catch(HibernateException e){
             System.err.println("Session faild");
         } finally{
             if(session != null){
                 session.close();
-                factory.close();
+
             }
         }
         return list;
+    }
+
+    @Override
+    public List<Employee> getPortion(Integer first, Integer result) {
+        Session session = null;
+        List<Employee> list = null;
+        Long size = null;
+        try{
+            session = factory.openSession();
+            session.beginTransaction();
+            list = session.createCriteria(Employee.class).setFirstResult(first).setMaxResults(result).list();
+        } catch(HibernateException e){
+            System.err.println("Session faild");
+        } finally{
+            if(session != null){
+                session.close();
+
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public Long rowCount(){
+        Session session = null;
+        Long size = null;
+        try{
+            session = factory.openSession();
+            size = (long)session.createCriteria(Employee.class).setProjection(Projections.rowCount()).uniqueResult();
+        } catch(HibernateException e){
+            System.err.println("Session faild");
+        } finally{
+            if(session != null){
+                session.close();
+
+            }
+        }
+        return size;
     }
 
 }

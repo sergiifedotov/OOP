@@ -27,14 +27,15 @@ public class Main {
         log.info("Reference to SessionFactory " + factory);
 
         EmployeeDaoImpl emplDaoImpl = new EmployeeDaoImpl(factory);
+        System.out.println(emplDaoImpl.rowCount());
 
-        ArrayList<Employee> list = (ArrayList<Employee>) emplDaoImpl.selectEmplByAge("Apple",24);
+        ArrayList<Employee> list = (ArrayList<Employee>) emplDaoImpl.getPortion(0,5);
         Iterator<Employee> iter = list.iterator();
         while(iter.hasNext()) {
             System.out.println(iter.next().getName());
         }
 
-
+        factory.close();
 
 /*
         Employee employee1 = new Employee("Bob", "Bob", 23, (long) 1);
