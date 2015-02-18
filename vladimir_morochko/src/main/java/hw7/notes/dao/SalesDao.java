@@ -8,10 +8,11 @@ import java.util.List;
  * Created by vladimir on 17.02.2015.
  */
 public interface SalesDao {
-    Long create(Sales store);
+    Long create(Sales sales);
     Sales read(Long ig);
-    boolean update(Sales store);
-    boolean delete(Sales store);
+    boolean update(Sales sales);
+    boolean delete(Sales sales);
     List<Sales> findAll();
 
+    void close();
 }

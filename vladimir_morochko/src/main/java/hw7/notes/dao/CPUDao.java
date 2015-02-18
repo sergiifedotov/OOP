@@ -13,4 +13,6 @@ public interface CPUDao {
     boolean update(CPU cpu);
     boolean delete(CPU cpu);
     List<CPU> findAll();
+
+    void close();
 }

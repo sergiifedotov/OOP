@@ -33,7 +33,7 @@ public class Sales {
     @Column (name = "SALE_ID")
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Store store;
 
     @Temporal(TemporalType.DATE)

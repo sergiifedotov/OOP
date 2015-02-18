@@ -1,5 +1,7 @@
 package hw7.notes.service;
 
+import hw7.notes.dao.NotebookDao;
+import hw7.notes.dao.NotebookDaoImpl;
 import hw7.notes.domain.*;
 
 import java.util.List;
@@ -9,6 +11,16 @@ import java.util.Map;
  * Created by vladimir on 17.02.2015.
  */
 public class NotebookServiceImpl implements NotebookService {
+    private NotebookDao notebookDao = new NotebookDaoImpl();
+
+    public NotebookServiceImpl() {
+    }
+
+    public NotebookServiceImpl(NotebookDaoImpl notebookDaoImpl) {
+        this.notebookDao = notebookDaoImpl;
+    }
+
+
     @Override
     public Long receive(Long notebookId, int amount, double price) {
         return null;

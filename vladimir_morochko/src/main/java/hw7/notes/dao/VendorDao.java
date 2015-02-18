@@ -13,4 +13,6 @@ public interface VendorDao {
     boolean update(Vendor vendor);
     boolean delete(Vendor vendor);
     List<Vendor> findAll();
+
+    void close();
 }

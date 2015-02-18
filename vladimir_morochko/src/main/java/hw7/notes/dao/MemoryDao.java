@@ -13,4 +13,6 @@ public interface MemoryDao {
     boolean update(Memory memory);
     boolean delete(Memory memory);
     List<Memory> findAll();
+
+    void close();
 }
