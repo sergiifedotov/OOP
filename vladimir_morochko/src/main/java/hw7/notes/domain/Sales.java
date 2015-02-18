@@ -39,8 +39,16 @@ public class Sales {
     @Temporal(TemporalType.DATE)
     @Column (name = "SALE_DATE")
     private Date date;
-
     private Integer amount;
+
+    public Sales() {
+    }
+
+    public Sales(Store store, Date date, Integer amount) {
+        this.store = store;
+        this.date = date;
+        this.amount = amount;
+    }
 
     public Long getId() {
         return id;

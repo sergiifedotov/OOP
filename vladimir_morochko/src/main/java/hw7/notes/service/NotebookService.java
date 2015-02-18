@@ -9,6 +9,11 @@ import java.util.Map;
  * Created by vladimir on 17.02.2015.
  */
 public interface NotebookService {
+    Long add(CPU cpu);
+    Long add(Memory memory);
+    Long add(Vendor vendor);
+    Long add(Notebook notebook);
+
     Long receive(Long notebookId, int amount, double price);
     Long sale(Long storeId, int amount);
 
