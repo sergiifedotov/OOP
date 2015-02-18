@@ -1,7 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.notes.domain.Notebook;
-
+import hw7.notes.domain.Sales;
 import java.util.List;
 
 /**
@@ -73,10 +72,10 @@ import java.util.List;
  hw7.notes.service.Menu
  main()
  */
-public interface NotebookDao {
-    Long create(Notebook notebook);
-    Notebook read(Long id);
-    boolean update(Notebook notebook);
-    boolean delete(Notebook notebook);
-    List<Notebook> findAll();
+public interface SalesDao {
+    Long create(Sales sales);
+    Sales read(Long id);
+    boolean update(Sales sales);
+    boolean delete(Sales sales);
+    List<Sales> findAll();
 }

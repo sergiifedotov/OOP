@@ -39,6 +39,8 @@ public class CPU {
 
     @ManyToOne
     @Column(name="VENDOR")
+    @JoinColumn(name = "ID")
+    //@JoinTable(name = "VENDOR", joinColumns = @JoinColumn(name = "ID_BOOK"), inverseJoinColumns = @JoinColumn(name = "ID_STUDENT"))
     private Vendor vendor;
 
     @Fetch(FetchMode.SELECT)
