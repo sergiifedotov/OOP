@@ -22,13 +22,13 @@ import java.util.*;
  *
  * Класс теста hw2.hash.HashMapTest
  */
-public class MyHashMap implements Iterable {
+public class HashMap implements Iterable {
     private List<Entry>[] entries;
     private int defaultSize = 16;
     private final double loadFactor = 0.75;
     private int currentSize;
 
-    public MyHashMap() {
+    public HashMap() {
         currentSize = 0;
         entries = new List[defaultSize];
         for (int i = 0; i < entries.length; i++) {

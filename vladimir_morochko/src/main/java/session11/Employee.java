@@ -1,7 +1,6 @@
 package session11;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by vladimir on 14.02.2015.

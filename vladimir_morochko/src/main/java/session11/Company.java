@@ -1,7 +1,6 @@
 package session11;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class Company {
     private String name;
 //    @OneToMany
     @OneToMany(
-            fetch = FetchType.EAGER, // подргужать все сразу
+            fetch = FetchType.EAGER, // подгружать все сразу
             mappedBy = "company", // включить двунаправленность
             cascade = CascadeType.ALL // каскадирование на сотрудников
     )
