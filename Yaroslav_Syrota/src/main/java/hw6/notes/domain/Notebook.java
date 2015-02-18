@@ -4,93 +4,101 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by @CAT_Caterpiller on 10.02.2015.
+ * Created by vladimir on 11.02.2015.
+ *
+ *  Создать DAO для таблицы ноутбуки
+ Таблица ноутбуки имеет следующую структуру
+ (id, serial, vendor, model, manufacture date, price)
+ domain
+ hw6.notes.domain.Notebook
  */
 
 @Entity
-@Table(name = "NOTEBOOKS")
+@Table (name = "NOTEBOOKS")
 public class Notebook {
-    @SequenceGenerator(name="sequance",  sequenceName = "SEQ_NOTEBOOKS_ID", allocationSize = 1, initialValue = 1)
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_NOTEBOOKS_ID",
+            allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-
     @Id
-    @Column(name = "id")
+    @Column (name = "NOTEBOOK_ID")
     private Long id;
 
-    @Column(name = "serial")
-    private String serial;
+    String serial;
+    String model;
+    String vendor;
+    Double price;
 
-    @Column(name = "vendor")
-    private String vendor;
+    @Temporal(TemporalType.DATE)
+    @Column (name = "MANUFACTURE_DATE")
+    Date date;
 
-    @Column(name = "model")
-    private String model;
+    public Notebook() {
+    }
 
-    @Column(name = "manufacture_date")
-    private Date manufactureDate;
-
-    @Column(name = "price")
-    private Double price;
-
-
-    public Notebook() {}
-
-    public Notebook(String serial, String vendor, String model, Date manufactureDate, Double price) {
-        super();
+    public Notebook(String model, String vendor, Double price, Date date, String serial) {
+        this.model = model;
         this.serial = serial;
         this.vendor = vendor;
-        this.model = model;
-        this.manufactureDate = manufactureDate;
         this.price = price;
+        this.date = date;
     }
-
-
-
-    @Override
-    public String toString() {
-        return "id: " + getId() + " serial: " + getSerial() + " vendor: " + getVendor() + " model: " + getModel()
-                + " manufacture date: " + getManufactureDate() + " Price: " + getPrice();
-    }
-
-
-
-
-
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getSerial() {
         return serial;
     }
+
     public void setSerial(String serial) {
         this.serial = serial;
     }
-    public String getVendor() {
-        return vendor;
-    }
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
+
     public String getModel() {
         return model;
     }
+
     public void setModel(String model) {
         this.model = model;
     }
-    public Date getManufactureDate() {
-        return manufactureDate;
+
+    public String getVendor() {
+        return vendor;
     }
-    public void setManufactureDate(Date manufactureDate) {
-        this.manufactureDate = manufactureDate;
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
     }
+
     public Double getPrice() {
         return price;
     }
+
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Notebook{id=" + id
+                + ", model='" + model
+                + "', vendor='" + vendor
+                + "', price=" + price
+                + ", date=" + String.format("%tF", date)
+                + ", serial='" + serial
+                + "'}";
     }
 }

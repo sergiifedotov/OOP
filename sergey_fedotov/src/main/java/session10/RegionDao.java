@@ -15,4 +15,5 @@ public interface RegionDao {
     void update(Region region);
     void delete(Region region);
     List<Region> findAll();
+    List<Region> FindAllRegionsWithName();
 }
