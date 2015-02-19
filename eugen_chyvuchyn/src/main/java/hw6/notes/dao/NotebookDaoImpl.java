@@ -100,17 +100,17 @@ public class NotebookDaoImpl implements NotebookDao {
     @Override
     public List<Notebook> findAll() {
         Session session = null;
-        try {
-            session = factory.openSession();
-            session.beginTransaction();
-            return (List<Notebook>)session.createCriteria(Notebook.class).list();
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            try {
+                session = factory.openSession();
+                session.beginTransaction();
+                return (List<Notebook>)session.createCriteria(Notebook.class).list();
+            } catch (HibernateException e) {
+                log.error("Open session failed", e);
+                session.getTransaction().rollback();
+            } finally {
+                if(session != null) {
+                    session.close();
+                }
         }
         return null;
     }
@@ -156,7 +156,9 @@ public class NotebookDaoImpl implements NotebookDao {
         Session session = null;
         try {
             session = factory.openSession();
+
             session.beginTransaction();
+
             return (List<Notebook>)session.createCriteria(Notebook.class).add(Restrictions.eq("price", price)).add(Restrictions.eq("MANUFACTURE_DATE",date)).list();
         } catch (HibernateException e) {
             log.error("Open session failed", e);
