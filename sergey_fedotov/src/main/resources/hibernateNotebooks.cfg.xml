@@ -15,6 +15,8 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="hw6.notes.domain.Notebook"/>
+        <mapping class="session12.company.domain.Company"/>
+        <mapping class="session12.company.domain.Employee"/>
         <!--<mapping class="session11.Region"/>-->
     </session-factory>
 </hibernate-configuration>
