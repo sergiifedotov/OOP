@@ -1,12 +1,15 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
+import hw7.notes.domain.Vendor;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -120,6 +123,48 @@ public class NotebookDaoImpl implements NotebookDao {
         }
         return null;
     }
+
+    @Override
+    public List<Notebook> getNotebooksByPortion(int size) {
+        int firstResult = 0;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Notebook.class)
+                    .setFirstResult(firstResult)
+                    .setMaxResults(size);
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Notebook.class)
+                    .createCriteria("cpu")
+                    .add(Restrictions.eq("vendor", cpuVendor));
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public void close() {

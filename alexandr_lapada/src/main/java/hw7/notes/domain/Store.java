@@ -18,8 +18,8 @@ public class Store {
     @Id
     private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "store",cascade = CascadeType.PERSIST)
-    @Fetch(FetchMode.SELECT)
+    @ManyToMany
+    @JoinTable(name = "notebook_store")
     private Set<Notebook> notebooks = new HashSet<Notebook>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "store",cascade = CascadeType.PERSIST)
@@ -37,17 +37,17 @@ public class Store {
     }
 
     public Store(Notebook notebook, Integer quantity, Double price) {
-        notebooks.add(notebook);
+        this.notebooks.add(notebook);
         this.quantity = quantity;
         this.price = price;
     }
 
-    public void setNotebook(Notebook notebook) {
+    public void setNotebook(Notebook notebook){
         this.notebooks.add(notebook);
     }
 
-    public void setSales(Sales sales) {
-        this.sales.add(sales);
+    public Set<Notebook> getNotebook(){
+        return notebooks;
     }
 
     public void setQuantity(Integer quantity) {
@@ -56,10 +56,6 @@ public class Store {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public Set<Notebook> getNotebook() {
-        return notebooks;
     }
 
     public Double getPrice() {
@@ -78,11 +74,5 @@ public class Store {
         this.id = id;
     }
 
-    public Set<Notebook> getNotebooks() {
-        return notebooks;
-    }
 
-    public void setNotebooks(Set<Notebook> notebooks) {
-        this.notebooks = notebooks;
-    }
 }

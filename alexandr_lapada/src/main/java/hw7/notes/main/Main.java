@@ -1,14 +1,16 @@
 package hw7.notes.main;
 
+import hw7.notes.dao.*;
+import hw7.notes.service.NotebookServiceImpl;
+import hw7.notes.view.Menu;
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.util.Locale;
+
 
 /**
  * Created by sanya on 17.02.2015.
@@ -25,20 +27,21 @@ public class Main {
         SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
         log.info("Reference to SessionFactory " + factory);
 
-        Session session = null;
-        try{
-            session = factory.openSession();
-            session.beginTransaction();
-            session.getTransaction().commit();
-        }catch(HibernateException e){
-            log.error(e);
-            log.info(session);
-            session.getTransaction().rollback();
-        }finally {
-            if(session != null){
-                session.close();
-            }
-        }
+        CPUDaoImpl cpuDao = new CPUDaoImpl(factory);
+        MemoryDaoImpl memoryDao = new MemoryDaoImpl(factory);
+        VendorDaoImpl vendorDao = new VendorDaoImpl(factory);
+        NotebookDaoImpl notebookDao = new NotebookDaoImpl(factory);
+        StoreDaoImpl storeDao = new StoreDaoImpl(factory);
+        SalesDaoImpl salesDao = new SalesDaoImpl(factory);
+
+        NotebookServiceImpl notebookService = new NotebookServiceImpl(cpuDao, memoryDao, vendorDao,
+                notebookDao, storeDao, salesDao);
+
+        Menu menu = new Menu(notebookService);
+        menu.main();
+
+
+
         factory.close();
     }
 }

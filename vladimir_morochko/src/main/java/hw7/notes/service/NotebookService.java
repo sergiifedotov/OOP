@@ -29,4 +29,6 @@ public interface NotebookService {
     List<Notebook> getNotebooksFromStore();
     List<Notebook> getNotebooksStorePresent();
     Map<Notebook, Integer> getSalesByDays();
+
+    void close();
 }
