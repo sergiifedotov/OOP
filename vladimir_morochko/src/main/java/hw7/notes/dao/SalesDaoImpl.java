@@ -9,6 +9,8 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
 
 import java.util.*;
 
@@ -129,7 +131,8 @@ public class SalesDaoImpl implements SalesDao {
         try {
             session = sessionFactory.openSession();
             Map<Notebook, Integer> map = new HashMap<>();
-            Criteria criteria = session.createCriteria(Sales.class);
+            Criteria criteria = session.createCriteria(Sales.class)
+                    .addOrder(Order.asc("date"));
             List list = criteria.list();
             if (list != null) {
                 Iterator<Sales> iterator = list.iterator();
