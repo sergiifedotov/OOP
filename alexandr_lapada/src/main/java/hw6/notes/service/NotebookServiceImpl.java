@@ -37,7 +37,7 @@ public class NotebookServiceImpl implements NotebookService{
             notebookDaoImpl.update(notebook);
         } catch (NullPointerException e) {
             System.out.println("Wrong ID!!!!");
-        };
+        }
 
     }
 

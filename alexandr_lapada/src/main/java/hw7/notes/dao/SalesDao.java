@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface SalesDao {
 
-    Long create(Sales store);
+    Long create(Sales sales);
 
     Sales read(Long id);
 
