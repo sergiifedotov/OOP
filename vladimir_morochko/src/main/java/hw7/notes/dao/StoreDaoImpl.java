@@ -8,6 +8,8 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -110,6 +112,66 @@ public class StoreDaoImpl implements StoreDao {
         try {
             session = sessionFactory.openSession();
             Criteria criteria = session.createCriteria(Store.class);
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksGtAmount(int amount) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Store.class)
+                    .add(Restrictions.gt("amount",(long) amount))
+                    .setProjection(Projections.property("notebook"));
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksFromStore() {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Store.class)
+                    .setProjection(Projections.property("notebook"));
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksStorePresent() {
+        Long amount = (long) 0;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Store.class)
+                    .add(Restrictions.gt("amount", amount))
+                    .setProjection(Projections.property("notebook"));
             return criteria.list();
         } catch (HibernateException e) {
             logger.error("Open session failed", e);

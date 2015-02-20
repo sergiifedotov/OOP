@@ -142,7 +142,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             Criteria criteria = session.createCriteria(Employee.class)
                     .add(Restrictions.eq("age", age))
                     .createCriteria("company")
-                    .add(Restrictions.ge("name", companyName));
+                    .add(Restrictions.eq("name", companyName));
             return criteria.list();
         } catch (HibernateException e) {
             session.getTransaction().rollback();

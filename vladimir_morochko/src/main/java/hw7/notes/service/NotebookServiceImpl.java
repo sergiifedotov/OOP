@@ -29,7 +29,7 @@ import java.util.Map;
  Изменить память
  Изменить имя производителя
  Изменить тип ноутбука
- Списать со склад ноутбуки (ключ, количество)
+ Списать со склада ноутбуки (ключ, количество)
 
  service
  hw7.notes.service.NotebookService
@@ -38,6 +38,24 @@ import java.util.Map;
  boolean updateVendor(Vendor vendor)
  boolean updateNotebook(Notebook notebook)
  boolean removeFromStore(Store store, int amount)
+ hw7.notes.service.NotebookServiceImpl
+
+ 4. Добавить в приложение ноутбуков следующие функции:
+ Показать все ноутбуки на складе (пользователь указывает размер порции)
+ Показать все ноутбуки которых больше указанного количества
+ Показать все ноутбуки по указанному имени производителя процессора
+ Показать все ноутбуки на складе
+ Показать типы ноутбуков, оставшиеся на складе по каждому производителю
+ Получить объем продаж ноутбуков по каждому дню
+
+ service
+ hw7.notes.service.NotebookService
+ List<Notebook> getNotebooksByPortion(int size)
+ List<Notebook> getNotebooksGtAmount(int amount)
+ List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor)
+ List<Notebook> getNotebooksFromStore()
+ List<Notebook> getNotebooksStorePresent()
+ Map<Notebook, int> getSalesByDays()
  hw7.notes.service.NotebookServiceImpl
  */
 
@@ -58,7 +76,8 @@ public class NotebookServiceImpl implements NotebookService {
                                NotebookDao notebookDao,
                                StoreDao storeDao,
                                SalesDao salesDao
-                               ) {
+                               )
+    {
         this.cpuDao = cpuDao;
         this.memoryDao = memoryDao;
         this.vendorDao = vendorDao;
@@ -67,27 +86,31 @@ public class NotebookServiceImpl implements NotebookService {
         this.salesDao = salesDao;
     }
 
-
+    // Создать процессор
     @Override
     public Long add(CPU cpu) {
         return cpuDao.create(cpu);
     }
 
+    // Создать память
     @Override
     public Long add(Memory memory) {
         return memoryDao.create(memory);
     }
 
+    // Создать производителя
     @Override
     public Long add(Vendor vendor) {
         return vendorDao.create(vendor);
     }
 
+    // Создать тип ноутбука
     @Override
     public Long add(Notebook notebook) {
         return notebookDao.create(notebook);
     }
 
+    // Принять на склад партию ноутбуков (тип ноутбука, количество, цена)
     @Override
     public Long receive(Long notebookId, int amount, double price) {
         Notebook notebook = notebookDao.read(notebookId);
@@ -95,6 +118,7 @@ public class NotebookServiceImpl implements NotebookService {
         return storeDao.create(store);
     }
 
+    // Продать указанное количество ноутбуков со склада(id склада, количество)
     @Override
     public Long sale(Long storeId, int amount) {
         Store store = storeDao.read(storeId);
@@ -105,59 +129,81 @@ public class NotebookServiceImpl implements NotebookService {
         return salesDao.create(sales);
     }
 
+    // Изменить процессор
     @Override
     public boolean updateCPU(CPU cpu) {
         return cpuDao.update(cpu);
     }
 
+    // Изменить память
     @Override
     public boolean updateMemory(Memory memory) {
         return memoryDao.update(memory);
     }
 
+    // Изменить имя производителя
     @Override
     public boolean updateVendor(Vendor vendor) {
         return vendorDao.update(vendor);
     }
 
+    // Изменить тип ноутбука
     @Override
     public boolean updateNotebook(Notebook notebook) {
         return notebookDao.update(notebook);
     }
 
+    // Списать со склада ноутбуки (ключ, количество)
     @Override
     public boolean removeFromStore(Store store, int amount) {
         store.setAmount(store.getAmount() - (store.getAmount().compareTo(amount) < 0 ? store.getAmount() : amount));
         return storeDao.update(store);
     }
 
+    // Показать все ноутбуки на складе (пользователь указывает размер порции)
     @Override
     public List<Notebook> getNotebooksByPortion(int size) {
-        return null;
+        return notebookDao.getNotebooksByPortion(size);
     }
 
+    // Показать все ноутбуки, которых больше указанного количества
     @Override
     public List<Notebook> getNotebooksGtAmount(int amount) {
-        return null;
+        return storeDao.getNotebooksGtAmount(amount);
     }
 
+    // Показать все ноутбуки по указанному имени производителя процессора
     @Override
     public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
-        return null;
+        return notebookDao.getNotebooksByCpuVendor(cpuVendor);
     }
 
+    // Показать все ноутбуки на складе
     @Override
     public List<Notebook> getNotebooksFromStore() {
-        return null;
+        return storeDao.getNotebooksFromStore();
     }
 
+    // Показать типы ноутбуков, оставшиеся на складе по каждому производителю
     @Override
     public List<Notebook> getNotebooksStorePresent() {
-        return null;
+        //TODO Map?
+        return storeDao.getNotebooksStorePresent();
+    }
+
+    // Получить объем продаж ноутбуков по каждому дню
+    @Override
+    public Map<Notebook, Integer> getSalesByDays() {
+        return salesDao.getSalesByDays();
     }
 
     @Override
-    public Map<Notebook, Integer> getSalesByDays() {
-        return null;
+    public void close() {
+        cpuDao.close();
+        memoryDao.close();
+        vendorDao.close();
+        notebookDao.close();
+        storeDao.close();
+        salesDao.close();
     }
 }
