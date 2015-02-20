@@ -35,7 +35,7 @@ public class Vendor {
 
     @Column(name="NAME")
     private String name;
-/*
+
     @Fetch(FetchMode.SELECT)
     @OneToMany
             (
@@ -61,7 +61,7 @@ public class Vendor {
                     mappedBy = "vendor", // включить двунаправленность
                     cascade = CascadeType.ALL // каскадирование
             )
-    private List<Memory> memories = new LinkedList<>();*/
+    private List<Memory> memories = new LinkedList<>();
 
     public Vendor() {
     }
@@ -69,7 +69,7 @@ public class Vendor {
     public Vendor(String name) {
         this.name = name;
     }
-/*
+
     public void addNotebooks (Notebook notebook) {
         notebook.setVendor(this);
         notebooks.add(notebook);
@@ -84,7 +84,7 @@ public class Vendor {
         memory.setVendor(this);
         memories.add(memory);
     }
-*/
+
     public Long getId() {
         return id;
     }

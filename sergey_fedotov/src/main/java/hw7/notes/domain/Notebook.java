@@ -36,7 +36,7 @@ public class Notebook {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="VENDOR")
+    //@JoinColumn(name="VENDOR")
     private Vendor vendor;
 
     @Column(name="MODEL")
@@ -46,11 +46,11 @@ public class Notebook {
     private Date manufacture_date;
 
     @ManyToOne
-    @JoinColumn(name="CPU")
+    //@JoinColumn(name="CPU")
     private CPU cpu;
 
     @ManyToOne
-    @JoinColumn(name="MEMORY")
+    //@JoinColumn(name="MEMORY_ID")
     private Memory memory;
 
 

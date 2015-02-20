@@ -39,7 +39,7 @@ public class CPU {
 
     @ManyToOne
     //@Column(name="VENDOR")
-    @JoinColumn(name="VENDOR")
+    //@JoinColumn(name="VENDOR")
     //@JoinTable(name = "VENDOR", joinColumns = @JoinColumn(name = "ID_BOOK"), inverseJoinColumns = @JoinColumn(name = "ID_STUDENT"))
     private Vendor vendor;
 

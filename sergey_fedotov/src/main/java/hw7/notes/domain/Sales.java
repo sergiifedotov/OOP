@@ -31,7 +31,7 @@ public class Sales {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="STORE")
+    //@JoinColumn(name="STORE")
     private Store store;
 
     @Column(name="SALES_DATE")

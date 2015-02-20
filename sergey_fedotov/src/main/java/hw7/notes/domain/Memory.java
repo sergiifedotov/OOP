@@ -34,14 +34,14 @@ public class Memory {
     @Column(name="MEMORY_ID")
     private Long id;
 
-    @Column(name="SIZE")
-    private Double size;
+    @Column(name="AMOUNT")
+    private Double amount;
 
     @ManyToOne
     //@JoinColumn(name="VENDOR_ID")
     private Vendor vendor;
 
-    /*
+
     @Fetch(FetchMode.SELECT)
     @OneToMany
             (
@@ -49,19 +49,19 @@ public class Memory {
                     mappedBy = "memory", // включить двунаправленность
                     cascade = CascadeType.ALL // каскадирование
             )
-    private List<Notebook> notebooks = new LinkedList<>();*/
+    private List<Notebook> notebooks = new LinkedList<>();
 
     public Memory() {
     }
 
-    public Memory(Double size) {
-        this.size = size;
+    public Memory(Double amount) {
+        this.amount = amount;
     }
-/*
+
     public void addNotebooks (Notebook notebook) {
         notebook.setMemory(this);
         notebooks.add(notebook);
-    }*/
+    }
 
     public Long getId() {
         return id;
@@ -71,12 +71,12 @@ public class Memory {
         this.id = id;
     }
 
-    public Double getSize() {
-        return size;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setSize(Double size) {
-        this.size = size;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public Vendor getVendor() {
@@ -91,7 +91,7 @@ public class Memory {
     public String toString() {
         return "Memory{" +
                 "id=" + id +
-                ", size=" + size +
+                ", amount=" + amount +
                 ", vendor=" + vendor +
                // ", notebooks=" + notebooks +
                 '}';

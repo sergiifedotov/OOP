@@ -35,7 +35,7 @@ public class Store {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="NOTEBOOK")
+    //@JoinColumn(name="NOTEBOOK")
     private Notebook notebook;
 
     @Column(name="AMOUNT")
