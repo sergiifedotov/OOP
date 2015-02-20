@@ -30,17 +30,17 @@ public class Vendor {
     @Id
     @SequenceGenerator(name = "auto", sequenceName = "SEQ_VENDOR_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
-    @Column(name="ID")
+    @Column(name="VENDOR_ID")
     private Long id;
 
     @Column(name="NAME")
     private String name;
-
+/*
     @Fetch(FetchMode.SELECT)
     @OneToMany
             (
                     fetch = FetchType.EAGER, // подргужать все сразу
-                    mappedBy = "CPU", // включить двунаправленность
+                    mappedBy = "vendor", // включить двунаправленность
                     cascade = CascadeType.ALL // каскадирование
             )
     private List<Notebook> notebooks = new LinkedList<>();
@@ -54,6 +54,14 @@ public class Vendor {
             )
     private List<CPU> cpus = new LinkedList<>();
 
+    @Fetch(FetchMode.SELECT)
+    @OneToMany
+            (
+                    fetch = FetchType.EAGER, // подргужать все сразу
+                    mappedBy = "vendor", // включить двунаправленность
+                    cascade = CascadeType.ALL // каскадирование
+            )
+    private List<Memory> memories = new LinkedList<>();*/
 
     public Vendor() {
     }
@@ -61,7 +69,7 @@ public class Vendor {
     public Vendor(String name) {
         this.name = name;
     }
-
+/*
     public void addNotebooks (Notebook notebook) {
         notebook.setVendor(this);
         notebooks.add(notebook);
@@ -72,6 +80,11 @@ public class Vendor {
         cpus.add(cpu);
     }
 
+    public void addMemory (Memory memory) {
+        memory.setVendor(this);
+        memories.add(memory);
+    }
+*/
     public Long getId() {
         return id;
     }

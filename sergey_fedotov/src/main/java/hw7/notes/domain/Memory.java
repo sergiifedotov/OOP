@@ -31,16 +31,17 @@ public class Memory {
     @Id
     @SequenceGenerator(name = "auto", sequenceName = "SEQ_MEMORY_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
-    @Column(name="ID")
+    @Column(name="MEMORY_ID")
     private Long id;
 
     @Column(name="SIZE")
     private Double size;
 
     @ManyToOne
-    @Column(name="VENDOR")
+    //@JoinColumn(name="VENDOR_ID")
     private Vendor vendor;
 
+    /*
     @Fetch(FetchMode.SELECT)
     @OneToMany
             (
@@ -48,7 +49,7 @@ public class Memory {
                     mappedBy = "memory", // включить двунаправленность
                     cascade = CascadeType.ALL // каскадирование
             )
-    private List<Notebook> notebooks = new LinkedList<>();
+    private List<Notebook> notebooks = new LinkedList<>();*/
 
     public Memory() {
     }
@@ -56,11 +57,11 @@ public class Memory {
     public Memory(Double size) {
         this.size = size;
     }
-
+/*
     public void addNotebooks (Notebook notebook) {
         notebook.setMemory(this);
         notebooks.add(notebook);
-    }
+    }*/
 
     public Long getId() {
         return id;
@@ -92,7 +93,7 @@ public class Memory {
                 "id=" + id +
                 ", size=" + size +
                 ", vendor=" + vendor +
-                ", notebooks=" + notebooks +
+               // ", notebooks=" + notebooks +
                 '}';
     }
 

@@ -5,6 +5,7 @@ import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -56,6 +57,10 @@ public class NotebookDaoImpl implements NotebookDao {
             if(session != null) {
                 session.close();
             }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
         }
         return null;
     }
@@ -71,6 +76,10 @@ public class NotebookDaoImpl implements NotebookDao {
         } finally {
             if(session != null) {
                 session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
             }
         }
         return null;
@@ -92,6 +101,10 @@ public class NotebookDaoImpl implements NotebookDao {
             if(session != null) {
                 session.close();
             }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
         }
     }
 
@@ -111,6 +124,10 @@ public class NotebookDaoImpl implements NotebookDao {
             if(session != null) {
                 session.close();
             }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
         }
     }
 
@@ -124,6 +141,10 @@ public class NotebookDaoImpl implements NotebookDao {
         } finally {
             if (session != null) {
                 session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
             }
         }
         return null;
