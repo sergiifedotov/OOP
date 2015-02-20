@@ -130,7 +130,7 @@ public class StoreDaoImpl implements StoreDao {
         try {
             session = sessionFactory.openSession();
             Criteria criteria = session.createCriteria(Store.class)
-                    .add(Restrictions.gt("amount",(long) amount))
+                    .add(Restrictions.gt("amount", amount))
                     .setProjection(Projections.property("notebook"));
             return criteria.list();
         } catch (HibernateException e) {
@@ -165,7 +165,7 @@ public class StoreDaoImpl implements StoreDao {
 
     @Override
     public List<Notebook> getNotebooksStorePresent() {
-        Long amount = (long) 0;
+        int amount = 0;
         Session session = null;
         try {
             session = sessionFactory.openSession();

@@ -2,19 +2,15 @@ package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
 import hw7.notes.domain.Sales;
+import hw7.notes.domain.Store;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vladimir on 17.02.2015.
@@ -133,20 +129,17 @@ public class SalesDaoImpl implements SalesDao {
         try {
             session = sessionFactory.openSession();
             Map<Notebook, Integer> map = new HashMap<>();
-            List<Date> list = session.createCriteria(Sales.class)
-                    .setProjection(Projections.property("date")).list();
-            for (Date date : list) {
-                Notebook notebook = (Notebook)
-                        session.createCriteria(Sales.class)
-                        .add(Restrictions.eq("date", date))
-                        .setProjection(Projections.property("store"))
-                        .setProjection(Projections.property("notebook"))
-                        .uniqueResult();
-                Integer amount = (Integer) session.createCriteria(Sales.class)
-                        .add(Restrictions.gt("date", date))
-                        .setProjection(Projections.sum("amount"))
-                        .uniqueResult();
-                map.put(notebook, amount);
+            Criteria criteria = session.createCriteria(Sales.class);
+            List list = criteria.list();
+            if (list != null) {
+                Iterator<Sales> iterator = list.iterator();
+                while (iterator.hasNext()) {
+                    Sales sales = iterator.next();
+                    Integer amount = sales.getAmount();
+                    Store store = sales.getStore();
+                    Notebook notebook = store.getNotebook();
+                    map.put(notebook, amount);
+                }
             }
             return map;
         } catch (HibernateException e) {
