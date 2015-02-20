@@ -34,6 +34,7 @@ public class Main {
 
         System.err.println(main.employeeDao.findEmployeesByCapital((long) 10500));
         System.err.println(main.employeeDao.findEmployeesByCompanyAndAge("Рога и Копыта", 31));
+        System.err.println(main.employeeDao.getPortion(0, 5));
 
         if(main.companyDao != null) {
             main.companyDao.close();

@@ -73,8 +73,8 @@ public class Employee {
                 + ", name='" + name
                 + "', age=" + age
                 + ", salary=" + salary
-                + ", company=" + company.getName() // чтобы оборвать рекурсию
-                + "}";
+                + ", company='" + company.getName() // чтобы оборвать рекурсию
+                + "'}";
     }
 
 }
