@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="man1" class="session13.task1.Man">
+        <constructor-arg value="40"/>
+        <constructor-arg value="Alexandr"/>
+    </bean>
+    <bean id="car1" class="session13.task1.Car">
+        <constructor-arg value="BMW"/>
+        <constructor-arg ref="man1"/>
+    </bean>
+
+    <bean id="company1" class="session13.task1.Company">
+        <constructor-arg value="COMPANY_TEST"/>
+        <constructor-arg ref="car1"/>
+    </bean>
+
+</beans>
