@@ -68,6 +68,20 @@ public class RegionHibernateDaoImpl implements RegionDao {
 
     }
 
+    public List<Region> getPortion(int firstResult, int maxResults) {
+        Session session = factory.openSession();
+        try {
+            return session.createCriteria(Region.class)
+                    .setMaxResults(maxResults)
+                    .setFirstResult(firstResult)
+                    .list();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+    }
+
     public Long rowsCount() {
         Session session = factory.openSession();
         try {
@@ -80,6 +94,7 @@ public class RegionHibernateDaoImpl implements RegionDao {
             }
         }
     }
+
     @Override
     public List<Region> findAll() {
         Session session = factory.openSession();
