@@ -5,6 +5,7 @@ package session13.task1;
  */
 public class Car {
     private String name;
+    private String color;
     private Man driver;
 
     public Car() {
@@ -16,6 +17,12 @@ public class Car {
 
     public Car(String name, Man driver) {
         this.name = name;
+        this.driver = driver;
+    }
+
+    public Car(String name, String color, Man driver) {
+        this.name = name;
+        this.color = color;
         this.driver = driver;
     }
 
@@ -35,10 +42,19 @@ public class Car {
         this.name = name;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
                 "name='" + name + '\'' +
+                ", color='" + color + '\'' +
                 ", driver=" + driver +
                 '}';
     }

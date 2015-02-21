@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd">
+http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <cont
+    <context:property-placeholder location="classpath:session13/conf.properties"/>
 
     <bean id="man1" class="session13.Man">
         <constructor-arg value="3"/>
@@ -12,7 +13,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
     </bean>
     <bean id="man2" class="session13.Man">
         <constructor-arg value="7"/>
-        <constructor-arg value="Veniamin"/>
+        <constructor-arg value="${metalo}"/>
         <property name="age" value="12"/>
     </bean>
 
