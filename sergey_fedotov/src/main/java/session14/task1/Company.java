@@ -1,10 +1,14 @@
-package session13.task1;
+package session14.task1;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by warit on 21.02.2015.
  */
+@Component("company1")
 public class Company {
-
+    @Value("Yakob")
     private String name;
     private Double charterCapital;
     private Car car;
