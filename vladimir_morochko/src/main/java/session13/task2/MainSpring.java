@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
+import java.util.Locale;
 
 /**
  * Created by vladimir on 22.02.2015.
@@ -15,6 +16,7 @@ public class MainSpring {
     SessionFactory sessionFactory = applicationContext.getBean("sessionFactory", SessionFactory.class);
 
     public static void main(String[] args) {
+        Locale.setDefault(Locale.ENGLISH); // не забывать про локаль!
         MainSpring main = new MainSpring();
 
         Session session = null;
