@@ -1,6 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.notes.domain.Sales;
+import hw7.notes.Sales;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package hw7.notes.domain;
+package hw7.notes;
 
 import javax.persistence.*;
 
@@ -14,12 +14,12 @@ import javax.persistence.*;
  Продажи(склад ноутбуков, дата продажи, количество)
 
  domain
- hw7.notes.domain.Notebook
- hw7.notes.domain.Vendor
- hw7.notes.domain.CPU
- hw7.notes.domain.Memory
- hw7.notes.domain.Store
- hw7.notes.domain.Sales
+ Notebook
+ Vendor
+ CPU
+ Memory
+ Store
+ Sales
  */
 @Entity
 @Table(name = "MEMORY")

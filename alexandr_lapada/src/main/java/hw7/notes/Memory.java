@@ -1,6 +1,5 @@
-package hw7.notes.domain;
+package hw7.notes;
 
-import Weekend_6_2.Employee;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -12,8 +11,8 @@ import java.util.Set;
  * Created by sanya on 17.02.2015.
  */
 @Entity
-public class CPU {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_CPU_ID",
+public class Memory {
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_MEMORY_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
@@ -23,44 +22,33 @@ public class CPU {
     private String vendor;
 
     @Column
-    private Integer frequency;
+    private Integer memorySize;
 
-    @Column
-    private String model;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cpu",cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "memory",cascade = CascadeType.PERSIST)
     @Fetch(FetchMode.SELECT)
     private Set<Notebook> notebooks = new HashSet<Notebook>();
 
-    public CPU(){
+    public Memory(){
 
     }
 
-    public CPU(String vendor, Integer frequency, String model){
+    public Memory(String vendor, Integer size){
         this.vendor = vendor;
-        this.frequency = frequency;
-        this.model = model;
+        this.memorySize = size;
     }
 
     public void setVendor(String vendor){
         this.vendor = vendor;
     }
-        public String getVendor() {
+        public String getVendor(){
             return vendor;
         }
 
-    public void setFrequency(Integer frequency){
-        this.frequency = frequency;
+    public void setSize(Integer size){
+        this.memorySize = size;
     }
-        public Integer getFrequency(){
-            return frequency;
-        }
-
-    public void setModel(String model){
-        this.model = model;
-    }
-        public String getModel(){
-            return model;
+        public Integer getSize(){
+            return memorySize;
         }
 
     public Long getId() {
@@ -70,5 +58,4 @@ public class CPU {
     public void setId(Long id) {
         this.id = id;
     }
-
 }

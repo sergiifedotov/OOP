@@ -1,4 +1,4 @@
-package hw7.notes.domain;
+package hw7.notes;
 
 import javax.persistence.*;
 
@@ -14,30 +14,36 @@ import javax.persistence.*;
  Продажи(склад ноутбуков, дата продажи, количество)
 
  domain
- hw7.notes.domain.Notebook
- hw7.notes.domain.Vendor
- hw7.notes.domain.CPU
- hw7.notes.domain.Memory
- hw7.notes.domain.Store
- hw7.notes.domain.Sales
+ Notebook
+ Vendor
+ CPU
+ Memory
+ Store
+ Sales
  */
+
 @Entity
-@Table(name = "VENDORS")
-public class Vendor {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_VENDOR_ID",
+@Table(name = "CPU")
+public class CPU {
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_CPU_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
-    @Column (name = "VENDOR_ID")
+    @Column (name = "CPU_ID")
     private Long id;
 
-    private String name;
+    @ManyToOne
+    private Vendor vendor;
+    private Long speed;
+    private String model;
 
-    public Vendor() {
+    public CPU() {
     }
 
-    public Vendor(String name) {
-        this.name = name;
+    public CPU(Vendor vendor, Long speed, String model) {
+        this.vendor = vendor;
+        this.speed = speed;
+        this.model = model;
     }
 
     public Long getId() {
@@ -48,18 +54,36 @@ public class Vendor {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
+    }
+
+    public Long getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Long speed) {
+        this.speed = speed;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     @Override
     public String toString() {
-        return "Vendor{id=" + id
-                + ", name='" + name
+        return "CPU{id=" + id
+                + ", vendor=" + vendor
+                + ", speed=" + speed
+                + ", model='" + model
                 + "'}";
     }
 }

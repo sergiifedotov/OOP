@@ -1,5 +1,6 @@
 package hw7.notes.service;
 
+import hw7.notes.*;
 import hw7.notes.domain.*;
 
 import java.util.List;

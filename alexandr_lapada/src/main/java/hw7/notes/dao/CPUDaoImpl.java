@@ -1,6 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.notes.domain.CPU;
+import hw7.notes.CPU;
 
 import java.util.List;
 

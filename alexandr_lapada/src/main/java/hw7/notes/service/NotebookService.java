@@ -1,7 +1,7 @@
 package hw7.notes.service;
 
-import hw7.notes.domain.Notebook;
-import hw7.notes.domain.Store;
+import hw7.notes.Notebook;
+import hw7.notes.Store;
 
 /**
  * Created by sanya on 17.02.2015.

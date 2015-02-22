@@ -1,4 +1,4 @@
-package hw7.notes.domain;
+package hw7.notes;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -11,8 +11,8 @@ import java.util.Set;
  * Created by sanya on 17.02.2015.
  */
 @Entity
-public class Memory {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_MEMORY_ID",
+public class CPU {
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_CPU_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
@@ -22,33 +22,44 @@ public class Memory {
     private String vendor;
 
     @Column
-    private Integer memorySize;
+    private Integer frequency;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "memory",cascade = CascadeType.PERSIST)
+    @Column
+    private String model;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cpu",cascade = CascadeType.PERSIST)
     @Fetch(FetchMode.SELECT)
     private Set<Notebook> notebooks = new HashSet<Notebook>();
 
-    public Memory(){
+    public CPU(){
 
     }
 
-    public Memory(String vendor, Integer size){
+    public CPU(String vendor, Integer frequency, String model){
         this.vendor = vendor;
-        this.memorySize = size;
+        this.frequency = frequency;
+        this.model = model;
     }
 
     public void setVendor(String vendor){
         this.vendor = vendor;
     }
-        public String getVendor(){
+        public String getVendor() {
             return vendor;
         }
 
-    public void setSize(Integer size){
-        this.memorySize = size;
+    public void setFrequency(Integer frequency){
+        this.frequency = frequency;
     }
-        public Integer getSize(){
-            return memorySize;
+        public Integer getFrequency(){
+            return frequency;
+        }
+
+    public void setModel(String model){
+        this.model = model;
+    }
+        public String getModel(){
+            return model;
         }
 
     public Long getId() {
@@ -58,4 +69,5 @@ public class Memory {
     public void setId(Long id) {
         this.id = id;
     }
+
 }
