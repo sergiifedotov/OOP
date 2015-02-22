@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id = "car" class="session13.Car">
+        <property name="human" ref="human"/>
+        <property name="model" value="Volvo"/>
+        <property name="serial" value="431"/>
+    </bean>
+
+    <bean id = "human" class="session13.Human">
+        <property name="car" ref="car"/>
+        <property name="age" value="34"/>
+        <property name="name" value="John"/>
+    </bean>
+
+    <bean id="Company" class="session13.Company">
+    <!--<bean id="Company" class = "java.lang.String">-->
+        <!--<constructor-arg name="value"/>-->
+        <property name="name" ref="car"/>
+        <property name="director" ref="human"/>
+    </bean>
+</beans>

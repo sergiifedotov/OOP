@@ -3,6 +3,7 @@ package hw7.notes.service;
 import hw7.notes.dao.*;
 import hw7.notes.domain.*;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -77,6 +78,36 @@ public class NotebookServiceImpl implements NotebookService {
     public boolean removeFromStore(Store store, int amount) {
         store.setAmount(amount);
         return storeDao.update(store);
+    }
+
+    @Override
+    public List<Notebook> getNotebooksByPortion(int size) {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksGtAmount(int amount) {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksFromStore() {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksStorePresent() {
+        return null;
+    }
+
+    @Override
+    public Map<Notebook, Integer> getSalesByDays() {
+        return null;
     }
 
 
