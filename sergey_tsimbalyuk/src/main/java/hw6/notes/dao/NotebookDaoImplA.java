@@ -13,6 +13,10 @@ import java.util.List;
 /**
  * Created by tsv on 09.02.15.
  */
+class NotebookDaoImplA {
+
+}
+/*
 public class NotebookDaoImplA implements NotebookDao {
     private static SessionFactory factory;
     private static Logger log = Logger.getLogger(NotebookDaoImplA.class);
@@ -109,4 +113,4 @@ public class NotebookDaoImplA implements NotebookDao {
         }
     }
 
-}
+}*/
