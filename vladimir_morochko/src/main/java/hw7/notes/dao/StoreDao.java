@@ -1,6 +1,7 @@
 package hw7.notes.dao;
 
-import hw7.notes.Store;
+import hw7.notes.domain.Notebook;
+import hw7.notes.domain.Store;
 
 import java.util.List;
 
@@ -13,6 +14,9 @@ public interface StoreDao {
     boolean update(Store store);
     boolean delete(Store store);
     List<Store> findAll();
+    List<Notebook> getNotebooksGtAmount(int amount);
+    List<Notebook> getNotebooksFromStore();
+    List<Notebook> getNotebooksStorePresent();
 
     void close();
 }

@@ -31,11 +31,11 @@ public class Store {
     @Id
     @SequenceGenerator(name = "auto", sequenceName = "SEQ_STORE_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
-    @Column(name="ID")
+    @Column(name="STORE_ID")
     private Long id;
 
     @ManyToOne
-    @Column(name="NOTEBOOK")
+    //@JoinColumn(name="NOTEBOOK")
     private Notebook notebook;
 
     @Column(name="AMOUNT")

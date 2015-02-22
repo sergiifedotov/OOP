@@ -78,5 +78,8 @@ public interface NotebookDao {
     Notebook read(Long id);
     boolean update(Notebook notebook);
     boolean delete(Notebook notebook);
+
+    List<Notebook> getNotebooksByPortion(int size);
+
     List<Notebook> findAll();
 }

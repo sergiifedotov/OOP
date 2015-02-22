@@ -32,11 +32,11 @@ public class Notebook {
     @Id
     @SequenceGenerator(name = "auto", sequenceName = "SEQ_NOTEBOOKS_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
-    @Column(name="ID")
+    @Column(name="NOTEBOOKS_ID")
     private Long id;
 
     @ManyToOne
-    @Column(name="VENDOR")
+    //@JoinColumn(name="VENDOR")
     private Vendor vendor;
 
     @Column(name="MODEL")
@@ -46,11 +46,11 @@ public class Notebook {
     private Date manufacture_date;
 
     @ManyToOne
-    @Column(name="CPU")
+    //@JoinColumn(name="CPU")
     private CPU cpu;
 
     @ManyToOne
-    @Column(name="MEMORY")
+    //@JoinColumn(name="MEMORY_ID")
     private Memory memory;
 
 

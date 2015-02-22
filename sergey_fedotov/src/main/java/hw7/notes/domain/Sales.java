@@ -27,11 +27,11 @@ public class Sales {
     @Id
     @SequenceGenerator(name = "auto", sequenceName = "SEQ_SALES_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
-    @Column(name="ID")
+    @Column(name="SALES_ID")
     private Long id;
 
     @ManyToOne
-    @Column(name="STORE")
+    //@JoinColumn(name="STORE")
     private Store store;
 
     @Column(name="SALES_DATE")

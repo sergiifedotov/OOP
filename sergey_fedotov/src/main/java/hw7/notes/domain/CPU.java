@@ -31,15 +31,15 @@ public class CPU {
     @Id
     @SequenceGenerator(name = "auto", sequenceName = "SEQ_CPU_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
-    @Column(name="ID")
+    @Column(name="CPU_ID")
     private Long id;
 
     @Column(name="MODEL")
     private String model;
 
     @ManyToOne
-    @Column(name="VENDOR")
-    @JoinColumn(name = "ID")
+    //@Column(name="VENDOR")
+    //@JoinColumn(name="VENDOR")
     //@JoinTable(name = "VENDOR", joinColumns = @JoinColumn(name = "ID_BOOK"), inverseJoinColumns = @JoinColumn(name = "ID_STUDENT"))
     private Vendor vendor;
 

@@ -675,3 +675,148 @@ org.hibernate.MappingException: Unknown entity: session09.Region
 2015-02-08 18:01:04,614 [main] INFO  org.hibernate.tool.hbm2ddl.TableMetadata - HHH000126: Indexes: [reg_id_pk]
 2015-02-08 18:01:04,615 [main] INFO  org.hibernate.tool.hbm2ddl.SchemaUpdate - HHH000232: Schema update complete
 2015-02-08 18:01:04,631 [main] INFO  session09.RegionHibernateDaoImpl - Reference to SessionFactory org.hibernate.internal.SessionFactoryImpl@5aac4250
+2015-02-14 16:22:05,930 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-14 16:22:05,990 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-14 16:22:06,014 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-14 16:22:06,026 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-14 16:22:06,101 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-14 16:22:06,102 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-14 16:22:06,270 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-14 17:10:49,398 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-14 17:10:49,501 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-14 17:10:49,514 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-14 17:10:49,527 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-14 17:10:49,711 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-14 17:10:49,712 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-14 17:10:50,670 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-14 17:12:44,965 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-14 17:12:44,984 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-14 17:12:44,987 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-14 17:12:44,991 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-14 17:12:45,040 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-14 17:12:45,040 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-14 17:12:45,152 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-14 17:20:48,315 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-14 17:20:48,450 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-14 17:20:48,516 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-14 17:20:48,536 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-14 17:20:48,691 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-14 17:20:48,692 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-14 17:20:49,076 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-14 17:21:21,390 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-14 17:21:21,413 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-14 17:21:21,420 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-14 17:21:21,425 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-14 17:21:21,468 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-14 17:21:21,468 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-14 17:21:21,576 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-14 17:21:43,379 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-14 17:21:43,399 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-14 17:21:43,404 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-14 17:21:43,408 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-14 17:21:43,468 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-14 17:21:43,468 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-14 17:21:43,577 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-15 17:14:09,779 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-15 17:14:09,854 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-15 17:14:09,859 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-15 17:14:09,868 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-15 17:14:09,996 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-15 17:14:09,996 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-15 17:14:10,282 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-15 17:15:18,081 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-15 17:15:18,102 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-15 17:15:18,107 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-15 17:15:18,121 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-15 17:15:18,173 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.cfg.xml
+2015-02-15 17:15:18,174 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.cfg.xml
+2015-02-15 17:15:18,278 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-15 17:15:48,159 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-15 17:15:48,178 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-15 17:15:48,187 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-15 17:15:48,197 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-15 17:15:48,260 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: session11/hibernate.cfg.xml
+2015-02-15 17:15:48,261 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: session11/hibernate.cfg.xml
+2015-02-15 17:15:48,400 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-15 17:15:48,481 [main] INFO  org.hibernate.cfg.Configuration - HHH000041: Configured SessionFactory: null
+2015-02-15 17:15:48,716 [main] WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-02-15 17:15:49,154 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000401: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@193.110.76.55:1521:XE]
+2015-02-15 17:15:49,158 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=hr, password=****}
+2015-02-15 17:15:49,158 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+2015-02-15 17:15:49,168 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1 (min=1)
+2015-02-15 17:19:05,204 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2015-02-15 17:19:05,282 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.3.6.Final}
+2015-02-15 17:19:05,301 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2015-02-15 17:19:05,309 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2015-02-15 17:19:05,491 [main] INFO  org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: session11/hibernate.cfg.xml
+2015-02-15 17:19:05,491 [main] INFO  org.hibernate.cfg.Configuration - HHH000040: Configuration resource: session11/hibernate.cfg.xml
+2015-02-15 17:19:06,018 [main] WARN  org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2015-02-15 17:19:06,183 [main] INFO  org.hibernate.cfg.Configuration - HHH000041: Configured SessionFactory: null
+2015-02-15 17:19:07,203 [main] WARN  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2015-02-15 17:19:09,797 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000401: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@193.110.76.55:1521:XE]
+2015-02-15 17:19:09,797 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {user=hr, password=****}
+2015-02-15 17:19:09,798 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+2015-02-15 17:19:09,821 [main] INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1 (min=1)
+2015-02-21 15:58:23,166 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 15:58:23 EET 2015]; root of context hierarchy
+2015-02-21 15:58:23,503 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/content.xml]
+2015-02-21 15:58:43,602 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 15:58:43 EET 2015]; root of context hierarchy
+2015-02-21 15:58:43,826 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:00:14,930 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:00:14 EET 2015]; root of context hierarchy
+2015-02-21 16:00:15,062 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:02:43,692 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:02:43 EET 2015]; root of context hierarchy
+2015-02-21 16:02:43,806 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:03:17,521 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:03:17 EET 2015]; root of context hierarchy
+2015-02-21 16:03:17,650 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:04:51,244 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:04:51 EET 2015]; root of context hierarchy
+2015-02-21 16:04:51,395 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:07:57,879 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:07:57 EET 2015]; root of context hierarchy
+2015-02-21 16:07:58,045 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:08:17,688 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:08:17 EET 2015]; root of context hierarchy
+2015-02-21 16:08:17,805 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:09:10,252 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:09:10 EET 2015]; root of context hierarchy
+2015-02-21 16:09:10,359 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:09:22,493 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:09:22 EET 2015]; root of context hierarchy
+2015-02-21 16:09:22,619 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:15:13,021 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:15:13 EET 2015]; root of context hierarchy
+2015-02-21 16:15:13,152 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:19:12,850 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:19:12 EET 2015]; root of context hierarchy
+2015-02-21 16:19:12,985 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:19:39,039 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:19:39 EET 2015]; root of context hierarchy
+2015-02-21 16:19:39,173 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:19:57,568 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:19:57 EET 2015]; root of context hierarchy
+2015-02-21 16:19:57,698 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context.xml]
+2015-02-21 16:20:22,756 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:20:22 EET 2015]; root of context hierarchy
+2015-02-21 16:20:22,897 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/c.xml]
+2015-02-21 16:20:33,147 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2a33fae0: startup date [Sat Feb 21 16:20:33 EET 2015]; root of context hierarchy
+2015-02-21 16:20:33,299 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/c.xml]
+2015-02-21 16:22:09,373 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:22:09 EET 2015]; root of context hierarchy
+2015-02-21 16:22:09,514 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/c.xml]
+2015-02-21 16:51:25,522 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:51:25 EET 2015]; root of context hierarchy
+2015-02-21 16:51:25,728 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/fContext.xml]
+2015-02-21 16:52:00,252 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:52:00 EET 2015]; root of context hierarchy
+2015-02-21 16:52:00,422 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [home/tsv/IdeaProjects/proff21/sergey_tsimbalyuk/src/main/resources/session13/fContext.xml]
+2015-02-21 16:52:56,242 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:52:56 EET 2015]; root of context hierarchy
+2015-02-21 16:52:56,377 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [home/tsv/IdeaProjects/proff21/sergey_tsimbalyuk/src/main/resources/session13/fContext.xml]
+2015-02-21 16:53:57,818 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:53:57 EET 2015]; root of context hierarchy
+2015-02-21 16:53:57,950 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/fContext.xml]
+2015-02-21 16:56:30,861 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:56:30 EET 2015]; root of context hierarchy
+2015-02-21 16:56:31,010 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/fContext.xml]
+2015-02-21 16:59:57,371 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 16:59:57 EET 2015]; root of context hierarchy
+2015-02-21 16:59:57,513 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/fContext.xml]
+2015-02-21 17:05:01,742 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 17:05:01 EET 2015]; root of context hierarchy
+2015-02-21 17:05:01,856 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/c.xml]
+2015-02-21 17:05:39,754 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 17:05:39 EET 2015]; root of context hierarchy
+2015-02-21 17:05:39,876 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/c.xml]
+2015-02-21 17:11:31,003 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 17:11:30 EET 2015]; root of context hierarchy
+2015-02-21 17:11:31,118 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/c.xml]
+2015-02-21 17:57:22,491 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 17:57:22 EET 2015]; root of context hierarchy
+2015-02-21 17:57:22,715 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [../resources/session13/context-db.xml]
+2015-02-21 17:57:46,564 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 17:57:46 EET 2015]; root of context hierarchy
+2015-02-21 17:57:46,712 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [session13/context-db.xml]
+2015-02-21 17:57:47,521 [main] INFO  org.springframework.beans.factory.config.PropertyPlaceholderConfigurer - Loading properties file from class path resource [../resources/session13/conf.properties]
+2015-02-21 18:02:44,890 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 18:02:44 EET 2015]; root of context hierarchy
+2015-02-21 18:02:45,014 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [resources/session13/context-db.xml]
+2015-02-21 18:03:00,945 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 18:03:00 EET 2015]; root of context hierarchy
+2015-02-21 18:03:01,050 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [../resources/session13/context-db.xml]
+2015-02-21 18:03:27,301 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@11028347: startup date [Sat Feb 21 18:03:27 EET 2015]; root of context hierarchy
+2015-02-21 18:03:27,445 [main] INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [../../../resources/session13/context-db.xml]

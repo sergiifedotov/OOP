@@ -31,15 +31,16 @@ public class Memory {
     @Id
     @SequenceGenerator(name = "auto", sequenceName = "SEQ_MEMORY_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
-    @Column(name="ID")
+    @Column(name="MEMORY_ID")
     private Long id;
 
-    @Column(name="SIZE")
-    private Double size;
+    @Column(name="AMOUNT")
+    private Double amount;
 
     @ManyToOne
-    @Column(name="VENDOR")
+    //@JoinColumn(name="VENDOR_ID")
     private Vendor vendor;
+
 
     @Fetch(FetchMode.SELECT)
     @OneToMany
@@ -53,8 +54,8 @@ public class Memory {
     public Memory() {
     }
 
-    public Memory(Double size) {
-        this.size = size;
+    public Memory(Double amount) {
+        this.amount = amount;
     }
 
     public void addNotebooks (Notebook notebook) {
@@ -70,12 +71,12 @@ public class Memory {
         this.id = id;
     }
 
-    public Double getSize() {
-        return size;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setSize(Double size) {
-        this.size = size;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public Vendor getVendor() {
@@ -90,9 +91,9 @@ public class Memory {
     public String toString() {
         return "Memory{" +
                 "id=" + id +
-                ", size=" + size +
+                ", amount=" + amount +
                 ", vendor=" + vendor +
-                ", notebooks=" + notebooks +
+               // ", notebooks=" + notebooks +
                 '}';
     }
 

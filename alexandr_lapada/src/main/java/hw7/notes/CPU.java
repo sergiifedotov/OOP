@@ -22,7 +22,7 @@ public class CPU {
     private String vendor;
 
     @Column
-    private Integer frequency;
+    private Double frequency;
 
     @Column
     private String model;
@@ -35,7 +35,7 @@ public class CPU {
 
     }
 
-    public CPU(String vendor, Integer frequency, String model){
+    public CPU(String vendor, Double frequency, String model){
         this.vendor = vendor;
         this.frequency = frequency;
         this.model = model;
@@ -48,10 +48,10 @@ public class CPU {
             return vendor;
         }
 
-    public void setFrequency(Integer frequency){
+    public void setFrequency(Double frequency){
         this.frequency = frequency;
     }
-        public Integer getFrequency(){
+        public Double getFrequency(){
             return frequency;
         }
 
@@ -68,6 +68,14 @@ public class CPU {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Set<Notebook> getNotebooks() {
+        return notebooks;
+    }
+
+    public void setNotebooks(Notebook notebook) {
+        notebooks.add(notebook);
     }
 
 }

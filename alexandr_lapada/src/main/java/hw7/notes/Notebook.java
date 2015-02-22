@@ -1,6 +1,10 @@
-package hw7.notes;
+package hw7.notes.domain;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by sanya on 17.02.2015.
@@ -8,28 +12,29 @@ import java.util.Date;
 @Entity
 public class Notebook {
     @SequenceGenerator(name = "sequence", sequenceName = "SEQ_NOTEBOOK_ID",
-            allocationSize = 1, initialValue = 1)
+            allocationSize = 2, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
     private Long id;
 
     @ManyToOne
-    private Vendor vendor;
+    private Vendor vendor = null;
 
     @Column
-    private String model;
+    private String model = null;
 
     @Column
-    private Date manufactureDate;
+    private Date manufactureDate= null;
 
     @ManyToOne
-    private CPU cpu;
+    private CPU cpu = null;
 
     @ManyToOne
-    private Memory memory;
+    private Memory memory = null;
 
-    @ManyToOne
-    private Store store;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "notebooks",cascade = CascadeType.PERSIST)
+    @Fetch(FetchMode.SELECT)
+    private Set<Store> stores = null;
 
     public Notebook(){
 
@@ -42,6 +47,8 @@ public class Notebook {
         this.cpu = cpu;
         this.memory = memory;
     }
+
+
 
     public Vendor getVendor() {
         return vendor;
@@ -89,5 +96,13 @@ public class Notebook {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setStore(Store store){
+        stores.add(store);
+    }
+
+    public Set<Store> getStores(){
+        return stores;
     }
 }
