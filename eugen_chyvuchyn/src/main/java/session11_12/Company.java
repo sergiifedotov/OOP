@@ -62,6 +62,15 @@ public class Company {
         this.charterCapital = charterCapital;
     }
 
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", employers=" + employers +
+                ", name='" + name + '\'' +
+                ", charterCapital=" + charterCapital +
+                '}';
+    }
 //    @Override
 //    public String toString(){
 //        return id+" / "+ name + " / "+charterCapital;
