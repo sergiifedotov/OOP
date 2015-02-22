@@ -1,11 +1,14 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
+import hw7.notes.domain.Store;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -129,6 +132,28 @@ public class NotebookDaoImpl implements NotebookDao {
                 sessionFactory.close();
             }
         }
+    }
+
+    @Override
+    public List<Notebook> getNotebooksByPortion(int size) {
+        Session session = HibernateUtil.getSession();
+        try {
+            return null;/*
+                    (List) session.createCriteria(Store.class)
+                    .add(Restrictions.eq("amount", size))
+                    .setProjection(Projections.distinct("notebook")).list();*/
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
     @Override
