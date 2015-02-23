@@ -101,10 +101,15 @@ private static final ConcurrentSkipListSet<Path> result = new ConcurrentSkipList
         }
     }
 
-    static void parallelFind() {
+    static void showResults() {
         for (Path s : result) {
             System.out.println(s.toString());
         }
+    }
+
+
+    // метод не используется
+    public void parallelFind(String path, String fileName) {
     }
 
     public static void main(String[] args) throws IOException {
@@ -134,6 +139,6 @@ private static final ConcurrentSkipListSet<Path> result = new ConcurrentSkipList
         while (executor.isTerminated()){
         }
         System.out.println("Finished all threads");
-        parallelFind();
+        showResults();
     }
 }
