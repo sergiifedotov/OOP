@@ -35,7 +35,7 @@ service
         List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor)
 
 view
-        hw6.notes.view.Menu
+        hw6.notes.service.Menu
         main()
                Реализовать функции:
                         - Добавить новый ноутбук

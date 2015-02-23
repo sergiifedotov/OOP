@@ -39,7 +39,7 @@
             List<Notebook> findAll()
         hw6.notes.service.NotebookServiceImpl
      view
-        hw6.notes.view.Menu
+        hw6.notes.service.Menu
             main()
 
 
@@ -71,7 +71,7 @@
                     boolean delete(Long id)
              hw6.notes.service.NotebookServiceImpl
              view
-                hw6.notes.view.Menu
+                hw6.notes.service.Menu
                     main()
                     void deleteNtb(Notebook notebook)
                     void changePrice(Notebook notebook)
@@ -104,7 +104,7 @@
                             List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor)
                         hw6.notes.service.NotebookServiceImpl
                      view
-                        hw6.notes.view.Menu
+                        hw6.notes.service.Menu
                             main()
                             void deleteByModel()
                             void showByVendor()
