@@ -12,7 +12,7 @@ public interface NotebookService {
 
     Long receive(Long id, int amount, double price);
 
-    Long sale(Long id, Integer amount);
+    Long sale(Long id, int amount);
 
     boolean removeFromStore(Store store, int amount);
 

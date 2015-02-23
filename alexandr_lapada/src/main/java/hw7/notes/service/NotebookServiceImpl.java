@@ -45,7 +45,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long sale(Long id, Integer amount) {
+    public Long sale(Long id, int amount) {
         Long idSale = null;
         Store store = storeDao.read(id);
         Integer quantity = store.getQuantity();
