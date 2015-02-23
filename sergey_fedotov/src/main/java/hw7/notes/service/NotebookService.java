@@ -22,7 +22,7 @@ import java.util.Map;
  Получить объем продаж ноутбуков по каждому дню
  */
 public interface NotebookService {
-    Long receive(long notebookId, int amount, double price);
+    Long receive(Long notebookId, int amount, double price);
     Long sale(long storeId, int amount);
     boolean updateCPU(CPU cpu);
     boolean updateMemory(Memory memory);
