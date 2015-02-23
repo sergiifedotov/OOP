@@ -48,7 +48,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long sale(long storeId, int amount) {
+    public Long sale(Long storeId, int amount) {
         Store store = storeDao.read(storeId);
         Sales sales = new Sales(store,java.util.Calendar.getInstance().getTime(),amount);
         return salesDao.create(sales);
