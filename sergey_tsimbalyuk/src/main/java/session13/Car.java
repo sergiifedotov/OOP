@@ -11,6 +11,7 @@ public class Car {
     private String model;
     private String  nameCar;
     private Human director;
+    private String carName;
 
     public Human getDirector() {
         return director;
@@ -44,5 +45,9 @@ public class Car {
 
     public String getModel() {
         return model;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 }

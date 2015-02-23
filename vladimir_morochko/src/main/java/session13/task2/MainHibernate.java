@@ -9,15 +9,15 @@ import org.hibernate.SessionFactory;
 /**
  * Created by vladimir on 14.02.2015.
  */
-public class Main {
+public class MainHibernate {
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     public static void main(String[] args) {
-        Main main = new Main();
+        MainHibernate mainHibernate = new MainHibernate();
 
         Session session = null;
         try {
-            session = main.sessionFactory.openSession();
+            session = mainHibernate.sessionFactory.openSession();
             session.beginTransaction();
             Criteria criteria = session.createCriteria(Company.class);
             System.err.println(criteria.list());
@@ -28,7 +28,7 @@ public class Main {
         } finally {
             if(session != null) {
                 session.close();
-                main.sessionFactory.close();
+                mainHibernate.sessionFactory.close();
             }
         }
 
