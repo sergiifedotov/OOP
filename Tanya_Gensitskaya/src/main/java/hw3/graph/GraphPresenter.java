@@ -20,7 +20,7 @@ class GraphPresenter {
     public GraphPresenter() {
     }
 
-    public void present() {
+    public void print() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Сделайте выбор № графика для презентации: \n" +
                 "1. у = x*x \n" +

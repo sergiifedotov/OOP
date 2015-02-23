@@ -6,7 +6,7 @@ package hw3.graph;
 class GraphPresenterTest {
     public static void main(String[] args) {
         GraphPresenter g = new GraphPresenter();
-        g.present();
+        g.print();
 
 
     }
