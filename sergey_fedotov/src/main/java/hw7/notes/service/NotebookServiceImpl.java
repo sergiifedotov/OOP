@@ -40,6 +40,9 @@ public class NotebookServiceImpl implements NotebookService {
         this.salesDao = salesDao;
     }
 
+    public NotebookServiceImpl() {
+    }
+
     @Override
     public Long receive(Long notebookId, int amount, double price) {
         Notebook notebook = notebookDao.read(notebookId);
