@@ -20,7 +20,7 @@ public interface NotebookService {
 
     List<Notebook> getNotebooksGtAmount(int amount);
 
-    List<Notebook> getNotebooksByCpuVendor(String cpuVendor);
+    List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
 
     List<Notebook> getNotebooksStorePresent();
 

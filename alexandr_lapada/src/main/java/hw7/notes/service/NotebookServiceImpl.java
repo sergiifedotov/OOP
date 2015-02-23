@@ -89,7 +89,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public List<Notebook> getNotebooksByCpuVendor(String cpuVendor) {
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
         return notebookDao.getNotebooksByCpuVendor(cpuVendor);
     }
 

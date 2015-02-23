@@ -1,6 +1,7 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
+import hw7.notes.domain.Vendor;
 
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public interface NotebookDao {
 
     List<Notebook> getNotebooksGtAmount(int amount);
 
-    List<Notebook> getNotebooksByCpuVendor(String cpuVendor);
+    List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
 
     List<Notebook> getNotebooksStorePresent();
 

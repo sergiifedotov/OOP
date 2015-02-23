@@ -1,6 +1,7 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
+import hw7.notes.domain.Vendor;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -159,12 +160,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> getNotebooksByCpuVendor(String cpuVendor) {
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
         Session session = null;
         List<Notebook> list = null;
         try{
             session = factory.openSession();
-            list = session.createCriteria(Notebook.class).createCriteria("cpu").add(Restrictions.eq("vendor", cpuVendor)).list();
+            list = session.createCriteria(Notebook.class).createCriteria("cpu").add(Restrictions.eq(cpuVendor.getName(), cpuVendor)).list();
         } catch (HibernateException e){
             log.error(e);
         } finally {

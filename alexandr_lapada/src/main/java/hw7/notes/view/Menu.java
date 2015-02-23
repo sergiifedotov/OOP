@@ -158,8 +158,9 @@ public class Menu {
     }
 
     private void showAllNotebookByCPUVendor(){
-        System.out.print("Enter vendor please - ");
-        ArrayList<Notebook> list = (ArrayList<Notebook>)notebookService.getNotebooksByCpuVendor(scan.next());
+        showAllVendors();
+        System.out.println("Enter vendor id please - ");
+        ArrayList<Notebook> list = (ArrayList<Notebook>)notebookService.getNotebooksByCpuVendor(notebookService.readVendor(scan.nextLong()));
         System.err.println(" ID "+" Vendor "+" Model "+"Date"+" CPU "+" Memory ");
         for (int i = 0; i < list.size(); i++){
             Notebook notebook = list.get(i);
