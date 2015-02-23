@@ -101,7 +101,7 @@ private static final ConcurrentSkipListSet<Path> result = new ConcurrentSkipList
         }
     }
 
-    static void showResults() {
+    static void parallelFind() {
         for (Path s : result) {
             System.out.println(s.toString());
         }
@@ -134,6 +134,6 @@ private static final ConcurrentSkipListSet<Path> result = new ConcurrentSkipList
         while (executor.isTerminated()){
         }
         System.out.println("Finished all threads");
-        showResults();
+        parallelFind();
     }
 }
