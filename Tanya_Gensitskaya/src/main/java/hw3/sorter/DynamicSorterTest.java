@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public class DynamicSorterTest {
     public static void main(String[] args) throws IOException {
-        new DynamicSorter().sort("Tanya_Gensitskaya/src/main/java/hw3/sorter/hello");
+        new DynamicSorter().sort();
 
     }
 
