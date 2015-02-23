@@ -14,6 +14,10 @@ import java.util.List;
 public class NotebookServiceImpl implements NotebookService{
     private NotebookDaoImpl notebookDaoImpl;
 
+    public NotebookServiceImpl(){
+
+    }
+
     public NotebookServiceImpl(NotebookDaoImpl notebookDao){
         this.notebookDaoImpl = notebookDao;
     }
