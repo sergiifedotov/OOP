@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public interface NotebookService {
 
-    Long receive(Long id, int amount, Double price);
+    Long receive(Long id, int amount, double price);
 
     Long sale(Long id, Integer amount);
 
