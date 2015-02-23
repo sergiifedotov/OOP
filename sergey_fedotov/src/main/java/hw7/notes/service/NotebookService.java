@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public interface NotebookService {
     Long receive(Long notebookId, int amount, double price);
-    Long sale(long storeId, int amount);
+    Long sale(Long storeId, int amount);
     boolean updateCPU(CPU cpu);
     boolean updateMemory(Memory memory);
     boolean updateVendor(Vendor vendor);
