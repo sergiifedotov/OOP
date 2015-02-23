@@ -16,6 +16,10 @@ public class CPUDaoImpl implements CPUDao {
     private Logger log = Logger.getLogger(CPUDaoImpl.class);
     private SessionFactory factory;
 
+    public CPUDaoImpl(){
+
+    }
+
     public CPUDaoImpl(SessionFactory factory) {
         this.factory = factory;
     }
