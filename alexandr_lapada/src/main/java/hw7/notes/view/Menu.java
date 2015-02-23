@@ -158,8 +158,9 @@ public class Menu {
     }
 
     private void showAllNotebookByCPUVendor(){
-        System.out.print("Enter vendor please - ");
-        ArrayList<Notebook> list = (ArrayList<Notebook>)notebookService.getNotebooksByCpuVendor(scan.next());
+        showAllVendors();
+        System.out.println("Enter vendor id please - ");
+        ArrayList<Notebook> list = (ArrayList<Notebook>)notebookService.getNotebooksByCpuVendor(notebookService.readVendor(scan.nextLong()));
         System.err.println(" ID "+" Vendor "+" Model "+"Date"+" CPU "+" Memory ");
         for (int i = 0; i < list.size(); i++){
             Notebook notebook = list.get(i);
@@ -249,7 +250,7 @@ public class Menu {
         Integer quantity = scan.nextInt();
         System.out.print("Enter price for notebook - ");
         Double price = scan.nextDouble();
-        notebookService.receive(notebook, quantity, price);
+        notebookService.receive(notebook.getId(), quantity, price);
         viewMenu();
     }
 
@@ -406,7 +407,7 @@ public class Menu {
     }
 
     private void showAllStore(){
-        ArrayList<Store> list = (ArrayList<Store>) notebookService.findeAllStore();
+        ArrayList<Store> list = (ArrayList<Store>) notebookService.findAllStore();
         System.err.println("---------Notebook---------");
         System.err.println(" ID "+" Quantity ");
         for (int i = 0; i < list.size(); i++){

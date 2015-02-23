@@ -11,18 +11,17 @@ import java.util.Set;
  */
 
 @Entity
-@Table
+@Table (name = "COMPANYEES")
 public class Company{
-    @OneToMany(fetch = FetchType.EAGER)
-    private Set<Employee> employeeSet;
-
-    @Id
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_COMPANY_ID",
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_COMPANIES_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-    @Column(name="CLIENT_ID")
+    @Id
+    @Column (name = "COMPANY_ID")
     private Long id;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Employee> employeeSet;
     private String name;
     private int fond;
 

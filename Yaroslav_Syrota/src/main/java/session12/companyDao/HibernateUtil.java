@@ -8,16 +8,15 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.util.Locale;
-import java.util.Set;
 
 /**
- * Created by Admin on 15.02.2015.
+ * Created by @CAT_Caterpiller on 15.02.2015.
  */
-public class CompanyHibernateDao implements CompanyDao {
-    private static Logger logger = Logger.getLogger(CompanyHibernateDao.class);
+public class HibernateUtil {
+    private static Logger logger = Logger.getLogger(HibernateUtil.class);
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
-    public CompanyHibernateDao() {
+    public HibernateUtil() {
     }
 
     private static SessionFactory buildSessionFactory() {
@@ -41,20 +40,5 @@ public class CompanyHibernateDao implements CompanyDao {
 
     public static Session getSession() {
         return sessionFactory.openSession();
-    }
-
-    @Override
-    public void setFond(int fond) {
-
-    }
-
-    @Override
-    public int getFond() {
-        return 0;
-    }
-
-    @Override
-    public Set<Employee> returnAll() {
-        return null;
     }
 }

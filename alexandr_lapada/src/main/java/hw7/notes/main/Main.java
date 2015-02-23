@@ -2,7 +2,7 @@ package hw7.notes.main;
 
 import hw7.notes.dao.*;
 import hw7.notes.service.NotebookServiceImpl;
-import hw7.notes.view.Menu;
+import hw7.notes.service.Menu;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;

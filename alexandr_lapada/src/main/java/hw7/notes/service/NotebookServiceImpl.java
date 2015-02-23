@@ -36,7 +36,8 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long receive(Notebook notebook, Integer amount, Double price) {
+    public Long receive(Long id, int amount, double price) {
+        Notebook notebook = notebookDao.read(id);
         Store store = new Store(notebook, amount, price);
         notebook.setStore(store);
         notebookDao.update(notebook);
@@ -44,7 +45,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long sale(Long id, Integer amount) {
+    public Long sale(Long id, int amount) {
         Long idSale = null;
         Store store = storeDao.read(id);
         Integer quantity = store.getQuantity();
@@ -88,7 +89,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public List<Notebook> getNotebooksByCpuVendor(String cpuVendor) {
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
         return notebookDao.getNotebooksByCpuVendor(cpuVendor);
     }
 
@@ -100,6 +101,11 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public Map<Notebook, Integer> getSalesByDays() {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksFromStore() {
         return null;
     }
 
@@ -234,8 +240,8 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public List<Store> findeAllStore() {
-        return storeDao.findeAll();
+    public List<Store> findAllStore() {
+        return storeDao.findAll();
     }
 
     //-------------SALES------------
