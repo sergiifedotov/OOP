@@ -1,13 +1,12 @@
-package session14.task2;
+package session14.task2.dao;
 
 
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import session14.task2.domain.Employee;
 
 import java.util.List;
 
@@ -15,8 +14,11 @@ import java.util.List;
  *
  */
 @Repository
+@Transactional
 public class EmployeeDaoImpl implements EmployeeDao {
     private static Logger log = Logger.getLogger(EmployeeDaoImpl.class);
+
+    @Autowired
     private SessionFactory factory;
 
     public EmployeeDaoImpl(SessionFactory factory) {
@@ -27,21 +29,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Employee> findAll() {
-        Session session = null;
-        try {
-            session = factory.openSession();
-            return (List) session.createCriteria(Employee.class).list();
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-
-        }
-        return null;
-
+        return (List)factory.getCurrentSession().createCriteria(Employee.class).list();
     }
 
     public SessionFactory getFactory() {
@@ -51,4 +41,5 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public void setFactory(SessionFactory factory) {
         this.factory = factory;
     }
+
 }
