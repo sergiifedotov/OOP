@@ -104,6 +104,11 @@ public class NotebookServiceImpl implements NotebookService {
         return null;
     }
 
+    @Override
+    public List<Notebook> getNotebooksFromStore() {
+        return null;
+    }
+
     //-----------CPU-----
 
     @Override

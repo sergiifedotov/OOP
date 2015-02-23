@@ -26,6 +26,8 @@ public interface NotebookService {
 
     Map<Notebook, Integer> getSalesByDays();
 
+    List<Notebook> getNotebooksFromStore();
+
     //---------CPU
 
     Long createCPU(CPU cpu);
