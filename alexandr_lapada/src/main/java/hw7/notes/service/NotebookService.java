@@ -10,9 +10,9 @@ import java.util.Map;
  */
 public interface NotebookService {
 
-    Long receive(Notebook notebook, Integer amount, Double price);
+    Long receive(Long id, int amount, double price);
 
-    Long sale(Long id, Integer amount);
+    Long sale(Long id, int amount);
 
     boolean removeFromStore(Store store, int amount);
 
@@ -20,11 +20,13 @@ public interface NotebookService {
 
     List<Notebook> getNotebooksGtAmount(int amount);
 
-    List<Notebook> getNotebooksByCpuVendor(String cpuVendor);
+    List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
 
     List<Notebook> getNotebooksStorePresent();
 
     Map<Notebook, Integer> getSalesByDays();
+
+    List<Notebook> getNotebooksFromStore();
 
     //---------CPU
 
@@ -84,7 +86,7 @@ public interface NotebookService {
 
     boolean deleteStore(Store store);
 
-    List<Store> findeAllStore();
+    List<Store> findAllStore();
 
     //-----------SALES
 

@@ -1,6 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.notes.domain.Store;
+import hw7.notes.Store;
 
 import java.util.List;
 
@@ -17,5 +17,5 @@ public interface StoreDao {
 
     boolean delete(Store store);
 
-    List<Store> findeAll();
+    List<Store> findAll();
 }

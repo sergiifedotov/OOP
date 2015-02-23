@@ -28,7 +28,8 @@ public class MyArrayList {
     private Thread thread4;
 
 
-    public int parallelIndexOf(Integer e) {
+    public int parallelIndexOf(Object el) {
+        Integer e = (Integer)el;
         index[0] = -1;
         int minStep = list.size() / 4;
 

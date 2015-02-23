@@ -3,20 +3,13 @@ package hw6.notes.main;
 
 
 import hw6.notes.dao.NotebookDaoImpl;
-import hw6.notes.domain.Notebook;
 import hw6.notes.service.NotebookServiceImpl;
-import hw6.notes.view.Menu;
+import hw6.notes.service.Menu;
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.Locale;
 
 /**

@@ -1,6 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.notes.domain.CPU;
+import hw7.notes.CPU;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -15,6 +15,10 @@ import java.util.List;
 public class CPUDaoImpl implements CPUDao {
     private Logger log = Logger.getLogger(CPUDaoImpl.class);
     private SessionFactory factory;
+
+    public CPUDaoImpl(){
+
+    }
 
     public CPUDaoImpl(SessionFactory factory) {
         this.factory = factory;
