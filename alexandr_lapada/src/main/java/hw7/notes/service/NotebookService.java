@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public interface NotebookService {
 
-    Long receive(Notebook notebook, Integer amount, Double price);
+    Long receive(Long id, int amount, Double price);
 
     Long sale(Long id, Integer amount);
 
@@ -84,7 +84,7 @@ public interface NotebookService {
 
     boolean deleteStore(Store store);
 
-    List<Store> findeAllStore();
+    List<Store> findAllStore();
 
     //-----------SALES
 

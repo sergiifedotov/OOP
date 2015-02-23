@@ -36,7 +36,8 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long receive(Notebook notebook, Integer amount, Double price) {
+    public Long receive(Long id, int amount, Double price) {
+        Notebook notebook = notebookDao.read(id);
         Store store = new Store(notebook, amount, price);
         notebook.setStore(store);
         notebookDao.update(notebook);
@@ -234,8 +235,8 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public List<Store> findeAllStore() {
-        return storeDao.findeAll();
+    public List<Store> findAllStore() {
+        return storeDao.findAll();
     }
 
     //-------------SALES------------

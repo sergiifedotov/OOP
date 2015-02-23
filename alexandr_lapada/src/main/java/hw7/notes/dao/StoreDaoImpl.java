@@ -104,7 +104,7 @@ public class StoreDaoImpl implements StoreDao {
     }
 
     @Override
-    public List<Store> findeAll() {
+    public List<Store> findAll() {
         Session session = null;
         List<Store> list = null;
         try{

@@ -249,7 +249,7 @@ public class Menu {
         Integer quantity = scan.nextInt();
         System.out.print("Enter price for notebook - ");
         Double price = scan.nextDouble();
-        notebookService.receive(notebook, quantity, price);
+        notebookService.receive(notebook.getId(), quantity, price);
         viewMenu();
     }
 
@@ -406,7 +406,7 @@ public class Menu {
     }
 
     private void showAllStore(){
-        ArrayList<Store> list = (ArrayList<Store>) notebookService.findeAllStore();
+        ArrayList<Store> list = (ArrayList<Store>) notebookService.findAllStore();
         System.err.println("---------Notebook---------");
         System.err.println(" ID "+" Quantity ");
         for (int i = 0; i < list.size(); i++){
