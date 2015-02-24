@@ -40,6 +40,10 @@ public class FileFinder {
         new Searcher(path, filename);
 
     }
+
+    void parallelFind(String i, String j){
+
+    }
 }
 
 class Searcher implements Runnable {
