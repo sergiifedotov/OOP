@@ -15,9 +15,13 @@ import java.util.List;
 /**
  * Created by illia_naumov
  */
+
 public class NotebookDaoImpl implements NotebookDao {
     private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
     private SessionFactory factory;
+
+    public NotebookDaoImpl() {
+    }
 
     public NotebookDaoImpl(SessionFactory factory) {
         this.factory = factory;
@@ -156,8 +160,10 @@ public class NotebookDaoImpl implements NotebookDao {
         return null;
     }
 
+
+
     @Override
-    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, /**Date date,*/ String vendor) {
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             return session.createCriteria(Notebook.class)
