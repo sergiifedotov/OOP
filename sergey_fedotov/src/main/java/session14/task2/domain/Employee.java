@@ -1,4 +1,4 @@
-package session14.task2;
+package session14.task2.domain;
 
 import javax.persistence.*;
 

@@ -1,4 +1,6 @@
-package session14.task2;
+package session14.task2.dao;
+
+import session14.task2.domain.Employee;
 
 import java.util.List;
 

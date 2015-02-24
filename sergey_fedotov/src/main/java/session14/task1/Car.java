@@ -1,5 +1,6 @@
 package session14.task1;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("car1")
 public class Car {
+    @Value("BMW")
     private String name;
     private String color;
     private Man driver;

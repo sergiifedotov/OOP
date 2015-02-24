@@ -40,6 +40,9 @@ public class NotebookServiceImpl implements NotebookService {
         notebookDao = dao;
     }
 
+    public NotebookServiceImpl() {
+    }
+
     @Override
     public List<Notebook> findAll() {
         return notebookDao.findAll();
