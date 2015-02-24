@@ -26,6 +26,9 @@ public class FileFinder {
     String path;
     String filename;
 
+    public FileFinder() {
+    }
+
     public FileFinder(String path, String filename) throws IOException {
         this.path = path;
         this.filename = filename;
