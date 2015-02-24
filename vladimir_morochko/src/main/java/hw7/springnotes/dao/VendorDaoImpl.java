@@ -5,6 +5,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +17,9 @@ import java.util.List;
 @Repository
 @Transactional
 public class VendorDaoImpl implements VendorDao {
+    @Qualifier("mySessionFactoryHW7")
     @Autowired(required = true)
-    SessionFactory sessionFactory; // фабрика берется из контекста
+    private SessionFactory sessionFactory; // фабрика берется из контекста
 
     public VendorDaoImpl() {
     }
@@ -34,15 +36,13 @@ public class VendorDaoImpl implements VendorDao {
     }
 
     @Override
-    public boolean update(Vendor vendor) {
+    public void update(Vendor vendor) {
         sessionFactory.getCurrentSession().update(vendor);
-        return true;
     }
 
     @Override
-    public boolean delete(Vendor vendor) {
+    public void delete(Vendor vendor) {
         sessionFactory.getCurrentSession().delete(vendor);
-        return true;
     }
 
     @Override

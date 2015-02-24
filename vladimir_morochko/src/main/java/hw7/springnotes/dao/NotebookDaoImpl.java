@@ -20,7 +20,7 @@ import java.util.List;
 public class NotebookDaoImpl implements NotebookDao {
     @Qualifier("mySessionFactoryHW7")
     @Autowired(required = true)
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public NotebookDaoImpl() {
     }
@@ -37,15 +37,13 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public boolean update(Notebook notebook) {
+    public void update(Notebook notebook) {
         sessionFactory.getCurrentSession().update(notebook);
-        return true;
     }
 
     @Override
-    public boolean delete(Notebook notebook) {
+    public void delete(Notebook notebook) {
         sessionFactory.getCurrentSession().delete(notebook);
-        return true;
     }
 
     @Override

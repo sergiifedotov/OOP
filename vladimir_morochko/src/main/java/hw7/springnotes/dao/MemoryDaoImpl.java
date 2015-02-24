@@ -5,6 +5,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +17,9 @@ import java.util.List;
 @Repository
 @Transactional
 public class MemoryDaoImpl implements MemoryDao {
+    @Qualifier("mySessionFactoryHW7")
     @Autowired(required = true)
-    SessionFactory sessionFactory; // фабрика берется из контекста
+    private SessionFactory sessionFactory; // фабрика берется из контекста
 
     public MemoryDaoImpl() {
     }
@@ -34,15 +36,13 @@ public class MemoryDaoImpl implements MemoryDao {
     }
 
     @Override
-    public boolean update(Memory memory) {
+    public void update(Memory memory) {
         sessionFactory.getCurrentSession().update(memory);
-        return true;
     }
 
     @Override
-    public boolean delete(Memory memory) {
+    public void delete(Memory memory) {
         sessionFactory.getCurrentSession().delete(memory);
-        return true;
     }
 
     @Override

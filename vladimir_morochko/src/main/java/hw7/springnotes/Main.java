@@ -2,10 +2,8 @@ package hw7.springnotes;
 
 import hw7.springnotes.service.NotebookService;
 import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
+
 
 import java.util.Locale;
 
@@ -24,5 +22,7 @@ public class Main {
         Main main = new Main();
 
         System.err.println(main.notebookService.getNotebooks());
+
+        main.notebookService.close();
     }
 }

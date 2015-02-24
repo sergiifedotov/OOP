@@ -5,6 +5,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +17,9 @@ import java.util.List;
 @Repository
 @Transactional
 public class CPUDaoImpl implements CPUDao {
+    @Qualifier("mySessionFactoryHW7")
     @Autowired(required = true)
-    SessionFactory sessionFactory; // фабрика берется из контекста
+    private SessionFactory sessionFactory;
 
     public CPUDaoImpl() {
     }
@@ -34,15 +36,13 @@ public class CPUDaoImpl implements CPUDao {
     }
 
     @Override
-    public boolean update(CPU cpu) {
+    public void update(CPU cpu) {
         sessionFactory.getCurrentSession().update(cpu);
-        return true;
     }
 
     @Override
-    public boolean delete(CPU cpu) {
+    public void delete(CPU cpu) {
         sessionFactory.getCurrentSession().delete(cpu);
-        return true;
     }
 
     @Override

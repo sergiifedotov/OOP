@@ -10,7 +10,7 @@ import java.util.List;
 public interface SalesDao {
     Long create(Sales sales);
     Sales read(Long id);
-    boolean update(Sales sales);
-    boolean delete(Sales sales);
+    void update(Sales sales);
+    void delete(Sales sales);
     List<Sales> findAll();
 }
