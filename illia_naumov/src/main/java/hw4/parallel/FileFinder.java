@@ -41,7 +41,7 @@ public class FileFinder {
 
     }
 
-    void parallelFind(String i, String j){
+    public void parallelFind(String i, String j){
 
     }
 }
