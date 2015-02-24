@@ -1,7 +1,6 @@
-package hw7.notes;
+package hw7.notes.domain;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by vladimir on 17.02.2015.
@@ -15,39 +14,33 @@ import java.util.Date;
  Продажи(склад ноутбуков, дата продажи, количество)
 
  domain
- Notebook
- Vendor
- CPU
- Memory
- Store
- Sales
+ hw7.notes.domain.Notebook
+ hw7.notes.domain.Vendor
+ hw7.notes.domain.CPU
+ hw7.notes.domain.Memory
+ hw7.notes.domain.Store
+ hw7.notes.domain.Sales
  */
-
 @Entity
-@Table(name = "SALES")
-public class Sales {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_SALE_ID",
+@Table(name = "MEMORY")
+public class Memory {
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_MEMORY_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
-    @Column (name = "SALE_ID")
+    @Column (name = "MEMORY_ID")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Store store;
+    @ManyToOne
+    private Vendor vendor;
+    private long capacity;
 
-    @Temporal(TemporalType.DATE)
-    @Column (name = "SALE_DATE")
-    private Date date;
-    private Integer amount;
-
-    public Sales() {
+    public Memory() {
     }
 
-    public Sales(Store store, Date date, Integer amount) {
-        this.store = store;
-        this.date = date;
-        this.amount = amount;
+    public Memory(Vendor vendor, long capacity) {
+        this.vendor = vendor;
+        this.capacity = capacity;
     }
 
     public Long getId() {
@@ -58,35 +51,27 @@ public class Sales {
         this.id = id;
     }
 
-    public Store getStore() {
-        return store;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 
-    public Date getDate() {
-        return date;
+    public long getCapacity() {
+        return capacity;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setCapacity(long size) {
+        this.capacity = size;
     }
 
     @Override
     public String toString() {
-        return "Sale{id=" + id
-                + ", store=" + store
-                + ", amount=" + amount
+        return "Memory{id=" + id
+                + ", vendor=" + vendor
+                + ", capacity=" + capacity
                 + "}";
     }
 }

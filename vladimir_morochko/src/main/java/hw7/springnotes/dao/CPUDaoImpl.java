@@ -1,35 +1,55 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.CPU;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by vladimir on 23.02.2015.
  */
+@Repository
+@Transactional
 public class CPUDaoImpl implements CPUDao {
-    @Override
-    public Long create(CPU cpu) {
-        return null;
+    @Autowired(required = true)
+    SessionFactory sessionFactory; // фабрика берется из контекста
+
+    public CPUDaoImpl() {
     }
 
     @Override
-    public CPU read(Long ig) {
-        return null;
+    public Long create(CPU cpu) {
+        return (Long) sessionFactory.getCurrentSession().save(cpu);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public CPU read(Long id) {
+        return (CPU) sessionFactory.getCurrentSession().get(CPU.class, id);
     }
 
     @Override
     public boolean update(CPU cpu) {
-        return false;
+        sessionFactory.getCurrentSession().update(cpu);
+        return true;
     }
 
     @Override
     public boolean delete(CPU cpu) {
-        return false;
+        sessionFactory.getCurrentSession().delete(cpu);
+        return true;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CPU> findAll() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(CPU.class);
+        return (List<CPU>) criteria.list();
     }
 }

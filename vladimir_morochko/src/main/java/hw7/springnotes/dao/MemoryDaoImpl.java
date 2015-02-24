@@ -1,35 +1,55 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Memory;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by vladimir on 23.02.2015.
  */
+@Repository
+@Transactional
 public class MemoryDaoImpl implements MemoryDao {
-    @Override
-    public Long create(Memory memory) {
-        return null;
+    @Autowired(required = true)
+    SessionFactory sessionFactory; // фабрика берется из контекста
+
+    public MemoryDaoImpl() {
     }
 
     @Override
-    public Memory read(Long ig) {
-        return null;
+    public Long create(Memory memory) {
+        return (Long) sessionFactory.getCurrentSession().save(memory);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Memory read(Long id) {
+        return (Memory) sessionFactory.getCurrentSession().get(Memory.class, id);
     }
 
     @Override
     public boolean update(Memory memory) {
-        return false;
+        sessionFactory.getCurrentSession().update(memory);
+        return true;
     }
 
     @Override
     public boolean delete(Memory memory) {
-        return false;
+        sessionFactory.getCurrentSession().delete(memory);
+        return true;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Memory> findAll() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Memory.class);
+        return (List<Memory>) criteria.list();
     }
 }

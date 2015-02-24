@@ -1,35 +1,55 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Notebook;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by vladimir on 23.02.2015.
  */
+@Repository
+@Transactional
 public class NotebookDaoImpl implements NotebookDao {
-    @Override
-    public Long create(Notebook notebook) {
-        return null;
+    @Autowired(required = true)
+    SessionFactory sessionFactory; // фабрика берется из контекста
+
+    public NotebookDaoImpl() {
     }
 
     @Override
-    public Notebook read(Long ig) {
-        return null;
+    public Long create(Notebook notebook) {
+        return (Long) sessionFactory.getCurrentSession().save(notebook);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Notebook read(Long id) {
+        return (Notebook) sessionFactory.getCurrentSession().get(Notebook.class, id);
     }
 
     @Override
     public boolean update(Notebook notebook) {
-        return false;
+        sessionFactory.getCurrentSession().update(notebook);
+        return true;
     }
 
     @Override
     public boolean delete(Notebook notebook) {
-        return false;
+        sessionFactory.getCurrentSession().delete(notebook);
+        return true;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Notebook> findAll() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Notebook.class);
+        return (List<Notebook>) criteria.list();
     }
 }

@@ -1,35 +1,55 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Store;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by vladimir on 23.02.2015.
  */
+@Repository
+@Transactional
 public class StoreDaoImpl implements StoreDao {
-    @Override
-    public Long create(Store store) {
-        return null;
+    @Autowired(required = true)
+    SessionFactory sessionFactory; // фабрика берется из контекста
+
+    public StoreDaoImpl() {
     }
 
     @Override
-    public Store read(Long ig) {
-        return null;
+    public Long create(Store store) {
+        return (Long) sessionFactory.getCurrentSession().save(store);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Store read(Long id) {
+        return (Store) sessionFactory.getCurrentSession().get(Store.class, id);
     }
 
     @Override
     public boolean update(Store store) {
-        return false;
+        sessionFactory.getCurrentSession().update(store);
+        return true;
     }
 
     @Override
     public boolean delete(Store store) {
-        return false;
+        sessionFactory.getCurrentSession().delete(store);
+        return true;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Store> findAll() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Store.class);
+        return (List<Store>) criteria.list();
     }
 }

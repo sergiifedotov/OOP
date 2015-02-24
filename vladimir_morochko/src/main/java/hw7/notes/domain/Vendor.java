@@ -1,4 +1,4 @@
-package hw7.notes;
+package hw7.notes.domain;
 
 import javax.persistence.*;
 
@@ -14,33 +14,30 @@ import javax.persistence.*;
  Продажи(склад ноутбуков, дата продажи, количество)
 
  domain
- Notebook
- Vendor
- CPU
- Memory
- Store
- Sales
+ hw7.notes.domain.Notebook
+ hw7.notes.domain.Vendor
+ hw7.notes.domain.CPU
+ hw7.notes.domain.Memory
+ hw7.notes.domain.Store
+ hw7.notes.domain.Sales
  */
 @Entity
-@Table(name = "MEMORY")
-public class Memory {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_MEMORY_ID",
+@Table(name = "VENDORS")
+public class Vendor {
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_VENDOR_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
-    @Column (name = "MEMORY_ID")
+    @Column (name = "VENDOR_ID")
     private Long id;
 
-    @ManyToOne
-    private Vendor vendor;
-    private long capacity;
+    private String name;
 
-    public Memory() {
+    public Vendor() {
     }
 
-    public Memory(Vendor vendor, long capacity) {
-        this.vendor = vendor;
-        this.capacity = capacity;
+    public Vendor(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -51,27 +48,18 @@ public class Memory {
         this.id = id;
     }
 
-    public Vendor getVendor() {
-        return vendor;
+    public String getName() {
+        return name;
     }
 
-    public void setVendor(Vendor vendor) {
-        this.vendor = vendor;
-    }
-
-    public long getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(long size) {
-        this.capacity = size;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Memory{id=" + id
-                + ", vendor=" + vendor
-                + ", capacity=" + capacity
-                + "}";
+        return "Vendor{id=" + id
+                + ", name='" + name
+                + "'}";
     }
 }

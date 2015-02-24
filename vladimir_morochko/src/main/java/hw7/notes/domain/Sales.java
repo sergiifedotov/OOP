@@ -1,6 +1,7 @@
-package hw7.notes;
+package hw7.notes.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by vladimir on 17.02.2015.
@@ -23,27 +24,30 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "CPU")
-public class CPU {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_CPU_ID",
+@Table(name = "SALES")
+public class Sales {
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_SALE_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
-    @Column (name = "CPU_ID")
+    @Column (name = "SALE_ID")
     private Long id;
 
-    @ManyToOne
-    private Vendor vendor;
-    private Long speed;
-    private String model;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Store store;
 
-    public CPU() {
+    @Temporal(TemporalType.DATE)
+    @Column (name = "SALE_DATE")
+    private Date date;
+    private Integer amount;
+
+    public Sales() {
     }
 
-    public CPU(Vendor vendor, Long speed, String model) {
-        this.vendor = vendor;
-        this.speed = speed;
-        this.model = model;
+    public Sales(Store store, Date date, Integer amount) {
+        this.store = store;
+        this.date = date;
+        this.amount = amount;
     }
 
     public Long getId() {
@@ -54,36 +58,35 @@ public class CPU {
         this.id = id;
     }
 
-    public Vendor getVendor() {
-        return vendor;
+    public Store getStore() {
+        return store;
     }
 
-    public void setVendor(Vendor vendor) {
-        this.vendor = vendor;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
-    public Long getSpeed() {
-        return speed;
+    public Date getDate() {
+        return date;
     }
 
-    public void setSpeed(Long speed) {
-        this.speed = speed;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getModel() {
-        return model;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
-        return "CPU{id=" + id
-                + ", vendor=" + vendor
-                + ", speed=" + speed
-                + ", model='" + model
-                + "'}";
+        return "Sale{id=" + id
+                + ", store=" + store
+                + ", amount=" + amount
+                + "}";
     }
 }
