@@ -14,7 +14,7 @@ package hw3.reader;
 
  */
 public class TextReader {
-    public void reader(){
+    public void read(){
 
     }
 }
