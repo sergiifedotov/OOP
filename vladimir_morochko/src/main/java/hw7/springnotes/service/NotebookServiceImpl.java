@@ -1,6 +1,6 @@
 package hw7.springnotes.service;
 
-import hw7.springnotes.dao.GenericDao;
+import hw7.springnotes.dao.NotebookDao;
 import hw7.springnotes.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,8 +14,14 @@ import java.util.Map;
 @Repository
 public class NotebookServiceImpl implements NotebookService {
 
+//    @Autowired(required = true)
+//    private GenericDao<Notebook, Long> notebookDao;
+
     @Autowired(required = true)
-    GenericDao<Notebook, Long> notebookDao;
+    private NotebookDao notebookDao;
+
+    public NotebookServiceImpl() {
+    }
 
     @Override
     public List<Notebook> getNotebooksByPortion(int size) {

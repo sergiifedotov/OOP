@@ -5,6 +5,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,11 +14,13 @@ import java.util.List;
 /**
  * Created by vladimir on 23.02.2015.
  */
+
 @Repository
 @Transactional
 public class NotebookDaoImpl implements NotebookDao {
+    @Qualifier("mySessionFactoryHW7")
     @Autowired(required = true)
-    SessionFactory sessionFactory; // фабрика берется из контекста
+    SessionFactory sessionFactory;
 
     public NotebookDaoImpl() {
     }
@@ -50,6 +53,6 @@ public class NotebookDaoImpl implements NotebookDao {
     public List<Notebook> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Notebook.class);
-        return (List<Notebook>) criteria.list();
+        return criteria.list();
     }
 }

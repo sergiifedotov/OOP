@@ -1,18 +1,28 @@
 package hw7.springnotes;
 
 import hw7.springnotes.service.NotebookService;
+import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import java.util.Locale;
 
 /**
  * Created by vladimir on 23.02.2015.
  */
+
 public class Main {
-    @Autowired(required = true)
-    NotebookService notebookService;
+    private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("hw7/springnotes/transactionalContext.xml");
+
+    private NotebookService notebookService = applicationContext.getBean("notebookServiceImpl", NotebookService.class);
+
 
     public static void main(String[] args) {
+        Locale.setDefault(Locale.ENGLISH);
         Main main = new Main();
 
-        main.notebookService.getNotebooks();
+        System.err.println(main.notebookService.getNotebooks());
     }
 }

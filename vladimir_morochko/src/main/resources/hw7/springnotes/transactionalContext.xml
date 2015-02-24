@@ -19,11 +19,11 @@
         <property name="password" value="notebook"/>
     </bean>
 
-    <bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <bean id="mySessionFactoryHW7" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>hw7.springnotes</value>
+                <value>hw7.springnotes.domain</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -36,7 +36,7 @@
     </bean>
 
     <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="mySessionFactory" />
+        <property name="sessionFactory" ref="mySessionFactoryHW7" />
     </bean>
 
     <tx:annotation-driven transaction-manager="txManager" />

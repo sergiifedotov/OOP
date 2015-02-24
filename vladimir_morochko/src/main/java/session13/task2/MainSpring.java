@@ -13,7 +13,7 @@ import java.util.Locale;
  */
 public class MainSpring {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("session13/task2/context-db.xml");
-    SessionFactory sessionFactory = applicationContext.getBean("sessionFactory", SessionFactory.class);
+    SessionFactory sessionFactory = applicationContext.getBean("sessionFactory13", SessionFactory.class);
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH); // не забывать про локаль!

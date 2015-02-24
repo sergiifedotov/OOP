@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @Component
 public class Driver {
-    @Value("${driver_name}")
+    @Value("${driver_name_14}")
     private String driver_name;
 
     public Driver() {
