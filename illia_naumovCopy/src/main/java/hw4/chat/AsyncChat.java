@@ -21,9 +21,6 @@ class Client implements Runnable {
     PrintWriter pw;
     BufferedReader bf;
 
-    Client() {
-    }
-
     public Client(String name) {
         this.name = name;
         client = new Thread(this, name);
