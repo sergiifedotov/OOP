@@ -51,13 +51,13 @@ public class GraphPresenter {
         System.out.println("Type ENTER to stop");
             switch (userChoice) {
                 case (1):
-                printer(1);
+                print(1);
                 break;
             case (2):
-                printer(2);
+                print(2);
                 break;
             case (3):
-                printer(3);
+                print(3);
                 break;
         }
         buffer.close();
@@ -73,7 +73,7 @@ public class GraphPresenter {
          Thread.currentThread().interrupt();
      }*/
 
-     public  void printer(int function) throws InterruptedException {
+     public  void print(int function) throws InterruptedException {
 
             String indents;
             for (int x = 0; x < 6; x++) {
