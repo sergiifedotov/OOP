@@ -34,46 +34,46 @@ public class GraphPresenter {
 
 
     }
-}
- class Printer extends Thread {
+
+    static class Printer extends Thread {
         BufferedReader buffer;
 
-    @Override
-    public   void run()  {
-    System.out.println("Choose which graphical function you want to print");
-    System.out.println("Type 1 for x*x");
-    System.out.println("Type 2 for 10*sin(x/5)");
-    System.out.println("Type 3 for x");
+        @Override
+        public void run() {
+            System.out.println("Choose which graphical function you want to print");
+            System.out.println("Type 1 for x*x");
+            System.out.println("Type 2 for 10*sin(x/5)");
+            System.out.println("Type 3 for x");
 
-    try {
-        buffer = new BufferedReader(new InputStreamReader(System.in));
-        int userChoice = Integer.parseInt(buffer.readLine());
-        System.out.println("Type ENTER to stop");
-            switch (userChoice) {
-                case (1):
-                print(1);
-                break;
-            case (2):
-                print(2);
-                break;
-            case (3):
-                print(3);
-                break;
+            try {
+                buffer = new BufferedReader(new InputStreamReader(System.in));
+                int userChoice = Integer.parseInt(buffer.readLine());
+                System.out.println("Type ENTER to stop");
+                switch (userChoice) {
+                    case (1):
+                        print(1);
+                        break;
+                    case (2):
+                        print(2);
+                        break;
+                    case (3):
+                        print(3);
+                        break;
+                }
+                buffer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                //e.printStackTrace();
+            }
         }
-        buffer.close();
-    } catch (IOException e) {
-        e.printStackTrace();
-    } catch (InterruptedException e) {
-        //e.printStackTrace();
-    }
-}
 
 /*     @Override
      public void interrupt() {
          Thread.currentThread().interrupt();
      }*/
 
-     public  void print(int function) throws InterruptedException {
+        public void print(int function) throws InterruptedException {
 
             String indents;
             for (int x = 0; x < 6; x++) {
@@ -99,25 +99,26 @@ public class GraphPresenter {
         }
 
 
+    }
 
+    static class KeyListener extends Thread {
+        Thread printer;
 
-}
-class KeyListener extends Thread {
-    Thread printer;
-        KeyListener(Thread thread){
+        KeyListener(Thread thread) {
             printer = thread;
         }
+
         @Override
         public void run() {
 
             BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
             try {
-                while(printer.isAlive()){
+                while (printer.isAlive()) {
                     String i = buffer.readLine();
 
                     if (i.equals("a")) {
 
-                            printer.interrupt();
+                        printer.interrupt();
 
                     }
                 }
@@ -127,5 +128,6 @@ class KeyListener extends Thread {
 
 
         }
-            }
+    }
+}
 
