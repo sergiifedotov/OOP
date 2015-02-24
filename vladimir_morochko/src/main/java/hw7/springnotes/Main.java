@@ -20,9 +20,12 @@ public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH);
         Main main = new Main();
+        NotebookService ns = main.notebookService;
 
-        System.err.println(main.notebookService.getNotebooks());
+        System.err.println(ns.getNotebooks());
+        System.err.println(ns.getNotebooksFromStore());
+        System.err.println(ns.getSalesByDays());
 
-        main.notebookService.close();
+        ns.close();
     }
 }

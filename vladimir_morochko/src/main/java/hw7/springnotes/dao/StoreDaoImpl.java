@@ -1,9 +1,12 @@
 package hw7.springnotes.dao;
 
+import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.domain.Store;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -50,6 +53,24 @@ public class StoreDaoImpl implements StoreDao {
     public List<Store> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Store.class);
-        return (List<Store>) criteria.list();
+        return criteria.list();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Notebook> getNotebooksGtAmount(int amount) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Store.class)
+                .add(Restrictions.gt("amount", amount))
+                .setProjection(Projections.property("notebook"));
+        return criteria.list();
+    }
+
+    @Override
+    public List<Notebook> getNotebooksFromStore() {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Store.class)
+                .setProjection(Projections.property("notebook"));
+        return criteria.list();
     }
 }

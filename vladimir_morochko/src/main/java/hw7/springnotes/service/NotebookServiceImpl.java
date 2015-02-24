@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vladimir on 23.02.2015.
@@ -46,32 +45,46 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public List<Notebook> getNotebooksByPortion(int size) {
-        return null;
+        return notebookDao.getNotebooksByPortion(size);
     }
 
     @Override
     public List<Notebook> getNotebooksGtAmount(int amount) {
-        return null;
+        return storeDao.getNotebooksGtAmount(amount);
     }
 
     @Override
     public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
-        return null;
+        return notebookDao.getNotebooksByCpuVendor(cpuVendor);
     }
 
     @Override
     public List<Notebook> getNotebooksFromStore() {
-        return null;
+        return storeDao.getNotebooksFromStore();
     }
 
     @Override
     public List<Notebook> getNotebooksStorePresent() {
-        return null;
+        int amount = 0;
+        return getNotebooksGtAmount(amount);
     }
 
     @Override
     public Map<Notebook, Integer> getSalesByDays() {
-        return null;
+        Map<Notebook, Integer> map = null;
+        List list = salesDao.getSalesByDays();
+        if (list != null) {
+            map = new HashMap<>();
+            Iterator<Sales> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                Sales sales = iterator.next();
+                Integer amount = sales.getAmount();
+                Store store = sales.getStore();
+                Notebook notebook = store.getNotebook();
+                map.put(notebook, amount);
+            }
+        }
+        return map;
     }
 
     @Override

@@ -4,6 +4,7 @@ import hw7.springnotes.domain.Sales;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -50,6 +51,14 @@ public class SalesDaoImpl implements SalesDao {
     public List<Sales> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Sales.class);
-        return (List<Sales>) criteria.list();
+        return criteria.list();
+    }
+
+    @Override
+    public List<Sales> getSalesByDays() {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Sales.class)
+                .addOrder(Order.asc("date"));
+        return criteria.list();
     }
 }

@@ -50,6 +50,6 @@ public class CPUDaoImpl implements CPUDao {
     public List<CPU> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(CPU.class);
-        return (List<CPU>) criteria.list();
+        return criteria.list();
     }
 }

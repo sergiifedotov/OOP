@@ -50,6 +50,6 @@ public class VendorDaoImpl implements VendorDao {
     public List<Vendor> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Vendor.class);
-        return (List<Vendor>) criteria.list();
+        return criteria.list();
     }
 }

@@ -50,6 +50,6 @@ public class MemoryDaoImpl implements MemoryDao {
     public List<Memory> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Memory.class);
-        return (List<Memory>) criteria.list();
+        return criteria.list();
     }
 }

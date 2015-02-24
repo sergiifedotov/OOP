@@ -1,9 +1,11 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Notebook;
+import hw7.springnotes.domain.Vendor;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -51,6 +53,27 @@ public class NotebookDaoImpl implements NotebookDao {
     public List<Notebook> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Notebook.class);
+        return criteria.list();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Notebook> getNotebooksByPortion(int size) {
+        int firstResult = 0;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Notebook.class)
+                .setFirstResult(firstResult)
+                .setMaxResults(size);
+        return criteria.list();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Notebook.class)
+                .createCriteria("cpu")
+                .add(Restrictions.eq("vendor", cpuVendor));
         return criteria.list();
     }
 }

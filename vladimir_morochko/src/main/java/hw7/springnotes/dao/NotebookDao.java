@@ -1,6 +1,7 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Notebook;
+import hw7.springnotes.domain.Vendor;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ public interface NotebookDao {
     void update(Notebook notebook);
     void delete(Notebook notebook);
     List<Notebook> findAll();
+
+    List<Notebook> getNotebooksByPortion(int size);
+    List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
 }
