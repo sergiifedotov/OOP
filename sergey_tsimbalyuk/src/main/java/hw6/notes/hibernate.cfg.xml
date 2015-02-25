@@ -11,12 +11,8 @@
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <property name="current_session_context_class">thread</property>
-        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
-        <mapping class="session09.Client"/>
-        <mapping class="session09.Region"/>
-        <mapping class="hw6.notes.dao.NotebookDaoImpl" />
         <mapping class="hw6.notes.domain.Notebook" />
     </session-factory>
 </hibernate-configuration>
