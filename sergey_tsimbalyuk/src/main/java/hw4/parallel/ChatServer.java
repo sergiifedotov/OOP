@@ -28,6 +28,24 @@ public class ChatServer {
         clientList = new ArrayList<>();
     }
 
+    public static void main(String[] args) throws IOException {
+        new ChatServer().startServer();
+    }
+
+    public void listenConnections(int port) {
+        try (ServerSocket serverSocket = new ServerSocket(port)){
+            while (true) {
+                try {
+                    new ConnectionHandler(serverSocket.accept());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void startServer() throws IOException {
         System.out.println("Accepting clients...");
         while(true)
@@ -57,8 +75,12 @@ public class ChatServer {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        new ChatServer().startServer();
+    public class ConnectionHandler {
+        Socket socket;
+        public ConnectionHandler(Socket socket) throws IOException {
+            this.socket = socket;
+        }
+
     }
 
 }
