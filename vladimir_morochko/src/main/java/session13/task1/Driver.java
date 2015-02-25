@@ -7,10 +7,9 @@ import org.springframework.stereotype.Component;
 /**
  * Created by vladimir on 22.02.2015.
  */
-@Scope("prototype")
-@Component
+
 public class Driver {
-    @Value("${driver_name}")
+
     private String driver_name;
 
     public Driver() {

@@ -12,7 +12,7 @@ public class AsyncChat {
 
     }
 }
-
+//
 
 class Client implements Runnable {
     Thread client;
@@ -20,6 +20,9 @@ class Client implements Runnable {
     Socket sock;
     PrintWriter pw;
     BufferedReader bf;
+
+    Client() {
+    }
 
     public Client(String name) {
         this.name = name;

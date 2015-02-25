@@ -216,8 +216,5 @@ public class NotebookDaoImpl implements NotebookDao {
         return list;
     }
 
-//    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
-//        List<Notebook> list = new ArrayList<>();
-//        return list;
-//    }
+
 }

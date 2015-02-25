@@ -32,7 +32,7 @@ public interface NotebookDao {
     List<Notebook> findByModel(String model);
     List<Notebook> findByVendor(String vendor);
     List<Notebook> findByPriceManufDate(Double price, Date date);
-    List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, /**Date date,*/ String vendor);
+    List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor);
     //test test
 
 }

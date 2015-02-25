@@ -1,18 +1,23 @@
 package session14.task2;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 /**
  * Created by vladimir on 22.02.2015.
  */
 
-@Repository("employeeDao")
+@Repository
 @Transactional
 public class EmployeeDaoImpl implements EmployeeDao {
+    @Qualifier("mySessionFactory14")
     @Autowired(required = true)
     SessionFactory sessionFactory; // фабрика берется из контекста
 
@@ -25,6 +30,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Employee read(Long id) {
         return (Employee) sessionFactory.getCurrentSession().get(Employee.class, id);
     }
@@ -40,7 +46,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Employee> findAll() {
-        return (List<Employee>) sessionFactory.getCurrentSession().createCriteria(Employee.class).list();
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Employee.class);
+        return (List<Employee>) criteria.list();
     }
 }

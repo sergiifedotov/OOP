@@ -22,7 +22,7 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         try {
             Locale.setDefault(Locale.ENGLISH);
-            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+            Configuration configuration = new Configuration().configure("hw7.notes/hibernate.cfg.xml");
 
             StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder();
             registryBuilder.applySettings(configuration.getProperties());

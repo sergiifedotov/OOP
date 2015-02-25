@@ -107,6 +107,11 @@ private static final ConcurrentSkipListSet<Path> result = new ConcurrentSkipList
         }
     }
 
+
+    // метод не используется
+    public void parallelFind(String path, String fileName) {
+    }
+
     public static void main(String[] args) throws IOException {
 
         String basePath = "f:/";

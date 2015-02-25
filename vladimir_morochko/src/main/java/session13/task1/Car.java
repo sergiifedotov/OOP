@@ -8,13 +8,10 @@ import org.springframework.stereotype.Component;
 /**
  * Created by vladimir on 22.02.2015.
  */
-@Scope("prototype")
-@Component
+
 public class Car {
-    @Value("${car_name}")
     private String car_name;
 
-    @Autowired(required = true)
     private Driver driver;
 
     public Car(){

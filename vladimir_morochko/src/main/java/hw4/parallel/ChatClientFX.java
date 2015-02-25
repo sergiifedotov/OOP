@@ -21,6 +21,7 @@ import javafx.stage.WindowEvent;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by vladimir on 02.02.2015.
@@ -34,7 +35,7 @@ public class ChatClientFX extends Application {
     ChatReceiver chatReceiver;
 
     TextArea chatArea;
-    PrintWriter printWriter = null;
+    ObjectOutputStream objOut = null;
     Socket sendSocket = null;
 
     public ChatClientFX() {
@@ -45,18 +46,17 @@ public class ChatClientFX extends Application {
     private class ChatReceiver implements Runnable {
         private Thread thread;
         String address;
-        int port;
+        int receivePort;
         Socket receiveSocket = null;
-        BufferedReader bufferedReader;
 
         public ChatReceiver() {
             thread = new Thread(this);
         }
 
-        public ChatReceiver(String address, int port) {
+        public ChatReceiver(String address, int receivePort) {
             this();
             this.address = address;
-            this.port = port;
+            this.receivePort = receivePort;
         }
 
         public void start() {
@@ -71,12 +71,12 @@ public class ChatClientFX extends Application {
         public void run() {
 
             try {
-                receiveSocket = new Socket(address, port);
-                bufferedReader = new BufferedReader(new InputStreamReader(receiveSocket.getInputStream()));
-                System.out.println("connected to port " + port + " on " + address);
+                receiveSocket = new Socket(address, receivePort);
+                ObjectInputStream objIn = new ObjectInputStream(receiveSocket.getInputStream());
+                System.out.println("connected to port " + receivePort + " on " + address);
                 while (!thread.isInterrupted()) {
+                    Message message = (Message) objIn.readObject();
 
-                    String message = bufferedReader.readLine();
                     if (message == null) {
                         break;
                     }
@@ -84,16 +84,19 @@ public class ChatClientFX extends Application {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            chatArea.appendText("incoming: " + message + "\n");
+                            chatArea.appendText("incoming: " + message.text + "\n");
                         }
                     });
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             } finally {
                 if (receiveSocket != null) {
                     try {
+                        System.out.println("closing port " + receivePort);
                         receiveSocket.close();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -113,13 +116,20 @@ public class ChatClientFX extends Application {
 
         int sendPort = 30001;
         try {
+            System.out.println("waiting for connections on port " + sendPort);
             sendSocket = new ServerSocket(sendPort).accept();
-            printWriter = new PrintWriter(new OutputStreamWriter(sendSocket.getOutputStream()));
-            printWriter.println("hello server");
-            printWriter.flush();
             System.out.println("opened port " + sendPort);
+            objOut = new ObjectOutputStream(sendSocket.getOutputStream());
+
+            Message message = new Message();
+            message.text = "Hello, server!";
+            System.out.println("sending message: \"" + message.text + "\"");
+                objOut.writeObject(message);
+                objOut.flush();
+
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
             if (sendSocket != null) {
                 try {
                     sendSocket.close();
@@ -135,8 +145,16 @@ public class ChatClientFX extends Application {
         btnSend.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                printWriter.println(inputField.getText());
-                printWriter.flush();
+                Message message = new Message();
+                message.text = inputField.getText();
+                System.out.println("sending message: \"" + message.text + "\"");
+
+                try {
+                    objOut.writeObject(message);
+                    objOut.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 chatArea.appendText(inputField.getText() + "\n");
                 inputField.setText("");
             }
@@ -146,8 +164,16 @@ public class ChatClientFX extends Application {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode().equals(KeyCode.ENTER)) {
-                    printWriter.println(inputField.getText());
-                    printWriter.flush();
+                    Message message = new Message();
+                    message.text = inputField.getText();
+                    System.out.println("sending message: \"" + message.text + "\"");
+
+                    try {
+                        objOut.writeObject(message);
+                        objOut.flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     chatArea.appendText(inputField.getText() + "\n");
                     inputField.setText("");
                 }
@@ -215,6 +241,7 @@ public class ChatClientFX extends Application {
         lowerGridPane.add(inputField, 0, 0);
 
         BorderPane borderPane = new BorderPane();
+        borderPane.setTop(upperGridPane);
         borderPane.setCenter(chatArea);
         borderPane.setBottom(lowerGridPane);
 
@@ -229,9 +256,10 @@ public class ChatClientFX extends Application {
                 chatReceiver.interrupt();
                 if (sendSocket != null) {
                     try {
+                        System.out.println("closing port " + sendPort);
                         sendSocket.close();
-                    } catch (IOException e2) {
-                        e2.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
 

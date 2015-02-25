@@ -1,7 +1,6 @@
-package hw6.notes.view;
+package hw6.notes.service;
 
 import hw6.notes.domain.Notebook;
-import hw6.notes.service.NotebookServiceImpl;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,7 +45,7 @@ import java.util.Scanner;
     List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor)
 
  view
-    hw6.notes.view.Menu
+    hw6.notes.service.Menu
     main()
     Реализовать функции:
      - Добавить новый ноутбук

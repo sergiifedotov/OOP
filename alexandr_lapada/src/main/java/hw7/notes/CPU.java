@@ -1,6 +1,5 @@
-package hw7.notes.domain;
+package hw7.notes;
 
-import Weekend_6_2.Employee;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
