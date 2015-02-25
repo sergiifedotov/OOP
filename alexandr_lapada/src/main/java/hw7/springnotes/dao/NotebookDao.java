@@ -1,13 +1,12 @@
-package hw7.notes.dao;
+package hw7.springnotes.dao;
 
-import hw7.notes.domain.Notebook;
-import hw7.notes.domain.Vendor;
+import hw7.springnotes.domain.Notebook;
+import hw7.springnotes.domain.Vendor;
 
 import java.util.List;
-import java.util.Map;
 
 /**
- * Created by sanya on 17.02.2015.
+ * Created by sanya on 24.02.2015.
  */
 public interface NotebookDao {
 
@@ -26,8 +25,4 @@ public interface NotebookDao {
     List<Notebook> getNotebooksGtAmount(int amount);
 
     List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
-
-    List<Notebook> getNotebooksStorePresent();
-
-    Map<Notebook, Integer> getSalesByDays();
 }
