@@ -165,7 +165,7 @@ public class NotebookDaoImpl implements NotebookDao {
         List<Notebook> list = null;
         try{
             session = factory.openSession();
-            list = session.createCriteria(Notebook.class).createCriteria("cpu").add(Restrictions.eq(cpuVendor.getName(), cpuVendor)).list();
+            list = session.createCriteria(Notebook.class).createCriteria("cpu").add(Restrictions.eq("vendor", cpuVendor.getName())).list();
         } catch (HibernateException e){
             log.error(e);
         } finally {
