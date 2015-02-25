@@ -1,35 +1,55 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Vendor;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by vladimir on 23.02.2015.
  */
+@Repository
+@Transactional
 public class VendorDaoImpl implements VendorDao {
+    @Qualifier("mySessionFactoryHW7")
+    @Autowired(required = true)
+    private SessionFactory sessionFactory; // фабрика берется из контекста
+
+    public VendorDaoImpl() {
+    }
+
     @Override
     public Long create(Vendor vendor) {
-        return null;
+        return (Long) sessionFactory.getCurrentSession().save(vendor);
     }
 
     @Override
-    public Vendor read(Long ig) {
-        return null;
+    @Transactional(readOnly = true)
+    public Vendor read(Long id) {
+        return (Vendor) sessionFactory.getCurrentSession().get(Vendor.class, id);
     }
 
     @Override
-    public boolean update(Vendor vendor) {
-        return false;
+    public void update(Vendor vendor) {
+        sessionFactory.getCurrentSession().update(vendor);
     }
 
     @Override
-    public boolean delete(Vendor vendor) {
-        return false;
+    public void delete(Vendor vendor) {
+        sessionFactory.getCurrentSession().delete(vendor);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Vendor> findAll() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Vendor.class);
+        return criteria.list();
     }
 }

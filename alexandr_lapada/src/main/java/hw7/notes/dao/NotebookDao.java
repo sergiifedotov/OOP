@@ -10,6 +10,7 @@ import java.util.Map;
  * Created by sanya on 17.02.2015.
  */
 public interface NotebookDao {
+
     Long create(Notebook notebook);
 
     Notebook read(Long id);

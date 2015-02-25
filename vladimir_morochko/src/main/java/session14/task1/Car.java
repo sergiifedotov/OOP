@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @Component
 public class Car {
-    @Value("${car_name}")
+    @Value("${car_name_14}")
     private String car_name;
 
     @Autowired(required = true)

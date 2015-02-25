@@ -1,5 +1,6 @@
 package hw7.springnotes.dao;
 
+import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.domain.Store;
 
 import java.util.List;
@@ -9,8 +10,11 @@ import java.util.List;
  */
 public interface StoreDao {
     Long create(Store store);
-    Store read(Long ig);
-    boolean update(Store store);
-    boolean delete(Store store);
+    Store read(Long id);
+    void update(Store store);
+    void delete(Store store);
     List<Store> findAll();
+
+    List<Notebook> getNotebooksGtAmount(int amount);
+    List<Notebook> getNotebooksFromStore();
 }

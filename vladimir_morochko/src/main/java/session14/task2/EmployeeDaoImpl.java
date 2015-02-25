@@ -4,6 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,9 +14,10 @@ import java.util.List;
  * Created by vladimir on 22.02.2015.
  */
 
-@Repository("employeeDao")
+@Repository
 @Transactional
 public class EmployeeDaoImpl implements EmployeeDao {
+    @Qualifier("mySessionFactory14")
     @Autowired(required = true)
     SessionFactory sessionFactory; // фабрика берется из контекста
 

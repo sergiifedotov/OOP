@@ -15,9 +15,12 @@ public interface NotebookService {
     List<Notebook> getNotebooksFromStore();
     List<Notebook> getNotebooksStorePresent();
     Map<Notebook, Integer> getSalesByDays();
-    boolean updateCPU(CPU cpu);
-    boolean updateMemory(Memory memory);
-    boolean updateVendor(Vendor vendor);
-    boolean updateNotebook(Notebook notebook);
-    boolean removeFromStore(Store store, int amount);
+    void updateCPU(CPU cpu);
+    void updateMemory(Memory memory);
+    void updateVendor(Vendor vendor);
+    void updateNotebook(Notebook notebook);
+    void removeFromStore(Store store, int amount);
+
+    List<Notebook> getNotebooks();
+    void close();
 }

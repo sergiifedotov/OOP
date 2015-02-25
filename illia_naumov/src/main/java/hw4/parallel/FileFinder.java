@@ -26,6 +26,9 @@ public class FileFinder {
     String path;
     String filename;
 
+    public FileFinder() {
+    }
+
     public FileFinder(String path, String filename) throws IOException {
         this.path = path;
         this.filename = filename;
@@ -35,6 +38,10 @@ public class FileFinder {
         //System.out.println("Type the name of the searching file");
         //filename = br.readLine();
         new Searcher(path, filename);
+
+    }
+
+    public void parallelFind(String i, String j){
 
     }
 }

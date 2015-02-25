@@ -1,4 +1,4 @@
-package hw7.notes;
+package hw7.notes.domain;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,12 +15,12 @@ import java.util.Date;
  Продажи(склад ноутбуков, дата продажи, количество)
 
  domain
- Notebook
- Vendor
- CPU
- Memory
- Store
- Sales
+ hw7.notes.domain.Notebook
+ hw7.notes.domain.Vendor
+ hw7.notes.domain.CPU
+ hw7.notes.domain.Memory
+ hw7.notes.domain.Store
+ hw7.notes.domain.Sales
  */
 
 @Entity

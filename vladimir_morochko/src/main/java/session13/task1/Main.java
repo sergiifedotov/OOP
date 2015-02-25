@@ -10,7 +10,7 @@ import java.util.Locale;
  */
 public class Main {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("session13/task1/context.xml");
-    Car car = applicationContext.getBean("car", Car.class);
+    Car car = applicationContext.getBean("car13", Car.class);
 
     public static void main(String[] args) {
         Locale.setDefault(Locale.ENGLISH); // не забывать про локаль!
