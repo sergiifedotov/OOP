@@ -1,10 +1,8 @@
-package hw7.notes.view;
+package hw7.springnotes.service;
 
-import hw7.notes.dao.NotebookDao;
-import hw7.notes.dao.NotebookDaoImpl;
-import hw7.notes.domain.Notebook;
-import hw7.notes.service.NotebookService;
-import hw7.notes.service.NotebookServiceImpl;
+import hw7.springnotes.dao.NotebookDao;
+import hw7.springnotes.dao.NotebookDaoImpl;
+import hw7.springnotes.domain.Notebook;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +24,13 @@ public class Menu {
 
 
     public static void main(String[] args) {
+        // !! IMPORTANT !! this is only example of structure
+        /*Locale.setDefault(Locale.ENGLISH);
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
+        sb.applySettings(cfg.getProperties());
+        StandardServiceRegistry standardServiceRegistry = sb.build();
+        SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);*/
 
         NotebookDao notebookDao = new NotebookDaoImpl();
         NotebookService notebookService = new NotebookServiceImpl(notebookDao);
