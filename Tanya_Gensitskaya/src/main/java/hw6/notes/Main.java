@@ -1,4 +1,6 @@
-package hw6.notes.service;
+package hw6.notes;
+
+import hw6.notes.service.Menu;
 
 /**
  * Run main

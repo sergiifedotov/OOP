@@ -22,7 +22,7 @@ import java.util.Date;
 @Table(name="NOTEBOOK")
 public class Notebook {
     @Id
-    @SequenceGenerator(name = "sequence", sequenceName = "NOTEBOOKS",
+    @SequenceGenerator(name = "sequence", sequenceName = "NOTEBOOKS_SEG",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
 
