@@ -2,6 +2,7 @@ package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Store;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,4 +19,6 @@ public interface StoreDao {
     boolean delete(Store store);
 
     List<Store> findAll();
+
+    public List<Store> findAllBySalesDay(Date date);
 }

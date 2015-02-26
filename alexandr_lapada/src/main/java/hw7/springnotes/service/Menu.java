@@ -4,6 +4,7 @@ import hw7.springnotes.domain.*;
 import hw7.springnotes.domain.CPU;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 /**
  * Created by sanya on 24.02.2015.
  */
-@Component
+@Controller
 public class Menu {
 
     private Integer choose = null;
@@ -91,7 +92,9 @@ public class Menu {
                 removeFromStore();
             } else if (choose == 26) {
                 saleNotebookFromStore();
-            } else {
+            } else if (choose == 27) {
+                getSalesByDays();
+            }else {
                 System.out.println("Wrong number!!!");
             }
         }
@@ -124,8 +127,17 @@ public class Menu {
         System.out.println("24 - Show portion notebooks");
         System.out.println("25 - Remove from store notebook");
         System.out.println("26 - (Create) Sale notebook from store");
+        System.out.println("27 - Show all notebooks by day");
         System.out.println("0 - Exit");
         System.out.println("-----------------------");
+    }
+
+    private void getSalesByDays(){
+        try {
+            notebookService.getSalesByDays();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void removeFromStore(){

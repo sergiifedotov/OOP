@@ -3,10 +3,12 @@ package hw7.springnotes.dao;
 import hw7.springnotes.domain.Store;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,6 +57,12 @@ public class StoreDaoImpl implements StoreDao{
     public List<Store> findAll() {
         Session session = factory.getCurrentSession();
         List<Store> list = session.createCriteria(Store.class).list();
+        return list;
+    }
+
+    public List<Store> findAllBySalesDay(Date date){
+        Session session = factory.getCurrentSession();
+        List<Store> list = session.createCriteria(Store.class).createCriteria("sales").add(Restrictions.eq("salesDate",date)).list();
         return list;
     }
 }

@@ -1,5 +1,7 @@
-package hw7.notes;
+package hw7.notes.domain;
 
+import hw7.notes.domain.Notebook;
+import hw7.notes.domain.Sales;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 

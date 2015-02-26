@@ -6,9 +6,7 @@ import hw7.notes.domain.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by sanya on 17.02.2015.
