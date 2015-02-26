@@ -1,7 +1,9 @@
 package hw7.notes.dao;
 
+import hw7.notes.domain.Notebook;
 import hw7.notes.domain.Sales;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 2.  Создать приложение магазин ноутбуков со следующими функциями:
@@ -78,4 +80,5 @@ public interface SalesDao {
     boolean update(Sales sales);
     boolean delete(Sales sales);
     List<Sales> findAll();
+    Map<Notebook,Integer> getSalesByDays();
 }

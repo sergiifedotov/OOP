@@ -76,7 +76,6 @@ public class Menu {
         scan = new Scanner(System.in);
     }
 
-
     public Menu(NotebookService notebookService) {
         this();
         this.notebookService = notebookService;

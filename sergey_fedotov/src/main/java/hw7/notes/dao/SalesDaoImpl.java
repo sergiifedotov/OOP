@@ -1,13 +1,19 @@
 package hw7.notes.dao;
 
+import hw7.notes.domain.Notebook;
 import hw7.notes.domain.Sales;
+import hw7.notes.domain.Store;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -135,6 +141,39 @@ public class SalesDaoImpl implements SalesDao {
         }
         return null;
 
+    }
+
+    @Override
+    public Map<Notebook, Integer> getSalesByDays() {
+        Session session = HibernateUtil.getSession();
+        try {
+            Map<Notebook, Integer> map = new HashMap<>();
+            List list = session.createCriteria(Sales.class)
+                    .addOrder(Order.asc("date")).list();
+
+            if (list != null) {
+                Iterator<Sales> iterator = list.iterator();
+                while (iterator.hasNext()) {
+                    Sales sales = iterator.next();
+                    Integer amount = sales.getAmount();
+                    Store store = sales.getStore();
+                    Notebook notebook = store.getNotebook();
+                    map.put(notebook, amount);
+                }
+            }
+            return map;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
 }
