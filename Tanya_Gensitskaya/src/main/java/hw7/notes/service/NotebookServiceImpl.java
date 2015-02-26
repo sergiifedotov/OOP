@@ -44,7 +44,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long receive(Long id, int amount, double price) {
+    public Long receive(Long notebookId, int amount, double price) {
         return 1L;
     }
 
@@ -56,7 +56,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long sale(Long id, int amount) {
+    public Long sale(Long storeId, int amount) {
         return 1L;
     }
 
