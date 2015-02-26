@@ -21,7 +21,7 @@ public class HibernateUtil {
         try {
             Locale.setDefault(Locale.ENGLISH);
             //return new AnnotationConfiguration().configure().buildSessionFactory();
-            return new Configuration().configure("/hw7/notes/hibernate.cfg.xml").buildSessionFactory();
+            return new Configuration().configure("/hw6/notes/hibernate.cfg.xml").buildSessionFactory();
         }
         catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);

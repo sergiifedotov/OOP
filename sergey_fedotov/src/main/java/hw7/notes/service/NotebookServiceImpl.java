@@ -79,40 +79,47 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean removeFromStore(Store store, int amount) {
-        store.setAmount(amount);
-        return storeDao.update(store);
+        Integer actualAmount = store.getAmount();
+
+        if (actualAmount >= amount){
+            store.setAmount(actualAmount - amount);
+            return storeDao.update(store);
+        }else{
+            System.err.println(" insufficient balance, the actual balance: " + actualAmount);
+            return false;
+        }
+
     }
 
     @Override
     public List<Notebook> getNotebooksByPortion(int size) {
-        return null;
+        return notebookDao.getNotebooksByPortion(size);
     }
 
     @Override
     public List<Notebook> getNotebooksGtAmount(int amount) {
-        return null;
+        return notebookDao.getNotebooksGtAmount(amount);
     }
 
     @Override
     public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
-        return null;
+        return notebookDao.getNotebooksByCpuVendor(cpuVendor);
     }
 
     @Override
     public List<Notebook> getNotebooksFromStore() {
-        return null;
+        return notebookDao.getNotebooksFromStore();
     }
 
     @Override
     public List<Notebook> getNotebooksStorePresent() {
-        return null;
+        return notebookDao.getNotebooksStorePresent();
     }
 
     @Override
     public Map<Notebook, Integer> getSalesByDays() {
-        return null;
+        return salesDao.getSalesByDays();
     }
-
 
     @Override
     public List<Notebook> findAll() {

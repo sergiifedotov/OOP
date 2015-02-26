@@ -2,6 +2,7 @@ package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
 import hw7.notes.domain.Store;
+import hw7.notes.domain.Vendor;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -20,25 +21,12 @@ public class NotebookDaoImpl implements NotebookDao {
 
 
     public static void main(String[] args) {
-        /*Locale.setDefault(Locale.ENGLISH);
-        Configuration cfg = new Configuration().configure("hibernateNotebooks.cfg.xml");
-        StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
-        sb.applySettings(cfg.getProperties());
-        StandardServiceRegistry standardServiceRegistry = sb.build();
-        SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
-        log.info("Reference to SessionFactory " + factory);*/
 
         NotebookDaoImpl notebookDaoImpl = new NotebookDaoImpl();
 
-        //Notebook notebook = new Notebook("11111111111","Sumsung","R538", new GregorianCalendar(2011, Calendar.JANUARY, 15), 4000.00);
-
-        //notebookDaoImpl.create(notebook);
 
         System.out.println(notebookDaoImpl.findAll().toString());
 
-        /*if (factory != null) {
-            factory.close();
-        }*/
     }
 
     public NotebookDaoImpl() {
@@ -138,10 +126,86 @@ public class NotebookDaoImpl implements NotebookDao {
     public List<Notebook> getNotebooksByPortion(int size) {
         Session session = HibernateUtil.getSession();
         try {
-            return null;/*
-                    (List) session.createCriteria(Store.class)
-                    .add(Restrictions.eq("amount", size))
-                    .setProjection(Projections.distinct("notebook")).list();*/
+            return session.createCriteria(Notebook.class).setFirstResult(0).setMaxResults(size).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksGtAmount(int amount) {
+        Session session = HibernateUtil.getSession();
+        try {
+            return session.createCriteria(Notebook.class).createCriteria("stores").add(Restrictions.gt("amount", amount)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
+        Session session = HibernateUtil.getSession();
+        try {
+            return session.createCriteria(Notebook.class)
+                    .createCriteria("cpu")
+                    .add(Restrictions.eq("vendor", cpuVendor)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksFromStore() {
+        Session session = HibernateUtil.getSession();
+        try {
+            return session.createCriteria(Store.class)
+                    .setProjection(Projections.property("notebook")).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksStorePresent() {
+        Session session = HibernateUtil.getSession();
+        try {
+            return session.createCriteria(Notebook.class).createCriteria("stores").list();
         } catch (HibernateException e) {
             log.error("Open session failed", e);
         } finally {

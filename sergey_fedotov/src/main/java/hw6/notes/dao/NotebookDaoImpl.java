@@ -6,12 +6,10 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  *Создать DAO для таблицы ноутбуки
@@ -30,7 +28,6 @@ import java.util.Locale;
  */
 public class NotebookDaoImpl implements NotebookDao {
     private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
-
 
     public static void main(String[] args) {
         /*Locale.setDefault(Locale.ENGLISH);
@@ -73,6 +70,10 @@ public class NotebookDaoImpl implements NotebookDao {
             if(session != null) {
                 session.close();
             }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
         }
         return null;
     }
@@ -88,6 +89,10 @@ public class NotebookDaoImpl implements NotebookDao {
         } finally {
             if(session != null) {
                 session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
             }
         }
         return null;
@@ -109,6 +114,10 @@ public class NotebookDaoImpl implements NotebookDao {
             if(session != null) {
                 session.close();
             }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
         }
     }
 
@@ -128,6 +137,10 @@ public class NotebookDaoImpl implements NotebookDao {
             if(session != null) {
                 session.close();
             }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
         }
     }
 
@@ -142,9 +155,96 @@ public class NotebookDaoImpl implements NotebookDao {
             if (session != null) {
                 session.close();
             }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
         }
         return null;
 
+    }
+
+    @Override
+    public List<Notebook> findByModel(String model) {
+        Session session = HibernateUtil.getSession();
+        try {
+            return  session.createCriteria(Notebook.class).add(Restrictions.eq("model", model)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByVendor(String vendor) {
+        Session session = HibernateUtil.getSession();
+        try {
+            return  session.createCriteria(Notebook.class).add(Restrictions.eq("vendor",vendor)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findByPriceManufDate(Double price, Date date) {
+        Session session = HibernateUtil.getSession();
+        try {
+            return
+                    session.createCriteria(Notebook.class)
+                    .add(Restrictions.eq("price", price))
+                    .add(Restrictions.eq("date", date)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+        Session session = HibernateUtil.getSession();
+        try {
+            return
+                    session.createCriteria(Notebook.class)
+                            .add(Restrictions.between("price", priceFrom, priceTo))
+                            .add(Restrictions.le("date", date))
+                            .add(Restrictions.eq("vendor", vendor)).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
 }
