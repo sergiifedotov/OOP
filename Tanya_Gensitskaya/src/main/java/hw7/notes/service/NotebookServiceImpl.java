@@ -12,7 +12,6 @@ import java.util.List;
 public class NotebookServiceImpl implements NotebookService {
 
 
-
     @Override
     public Long create(CPU cpu) {
         CPUDaoImpl cpuDaoimpl = new CPUDaoImpl();
@@ -26,7 +25,9 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long create(Vendor vendor) {return null; }
+    public Long create(Vendor vendor) {
+        return null;
+    }
 
     @Override
     public Long create(Notebook notebook) {
@@ -43,6 +44,11 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    public Long receive(Long id, int amount, double price) {
+        return 1L;
+    }
+
+    @Override
     public Long sale(Store id, int amount) {
         Sales sales = new Sales(id, amount);
         SalesDaoImpl salesDaoImpl = new SalesDaoImpl();
@@ -50,11 +56,12 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
 
-    public List<Vendor> findAll(){
+    public List<Vendor> findAll() {
         VendorDaoImpl vendorDaoImpl = new VendorDaoImpl();
         List<Vendor> list = vendorDaoImpl.findAll();
         return list;
     }
+
     @Override
     public Notebook read(Long id) {
         NotebookDaoImpl notebookDaoImpl = new NotebookDaoImpl();
@@ -63,12 +70,13 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Store readStore(Long ig){
+    public Store readStore(Long ig) {
         StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
         return storeDaoImpl.read(ig);
     }
+
     @Override
-    public boolean update(Store store){
+    public boolean update(Store store) {
         StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
         storeDaoImpl.update(store);
         return true;
