@@ -8,18 +8,21 @@
         <property name="connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
         <!--<property name="connection.username">hr</property>-->
         <!--<property name="connection.password">hr</property>-->
-        <property name="connection.username">n</property>
-        <property name="connection.password">n</property>
+        <property name="connection.username">t</property>
+        <property name="connection.password">t</property>
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <property name="current_session_context_class">thread</property>
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
-        <!--<mapping class="session9.Region"/>-->
-        <mapping class="session12.Company"/>
-        <mapping class="session12.Employee"/>
-        <mapping class="hw6.notes.domain.Notebook"/>
-        <!--<mapping class="session11.Region"/>-->
+
+
+        <mapping class="hw7.notes.domain.CPU"/>
+        <mapping class="hw7.notes.domain.Memory"/>
+        <mapping class="hw7.notes.domain.Notebook"/>
+        <mapping class="hw7.notes.domain.Sales"/>
+        <mapping class="hw7.notes.domain.Store"/>
+        <mapping class="hw7.notes.domain.Vendor"/>
     </session-factory>
 </hibernate-configuration>
