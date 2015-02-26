@@ -36,6 +36,12 @@ public class NotebookServiceImpl implements NotebookService {
         return id;
     }
 
+
+
+    @Override
+    public Long receive(Long notebookId, int amount, double price) {
+        return 1L;
+    }
     @Override
     public Long receive(Notebook id, int amount, double price) {
         Store store = new Store(id, amount, price);
@@ -43,23 +49,17 @@ public class NotebookServiceImpl implements NotebookService {
         return storeDaoImpl.create(store);
     }
 
+
     @Override
-    public Long receive(Long notebookId, int amount, double price) {
+    public Long sale(Long storeId, int amount) {
         return 1L;
     }
-
     @Override
     public Long sale(Store id, int amount) {
         Sales sales = new Sales(id, amount);
         SalesDaoImpl salesDaoImpl = new SalesDaoImpl();
         return salesDaoImpl.create(sales);
     }
-
-    @Override
-    public Long sale(Long storeId, int amount) {
-        return 1L;
-    }
-
 
     public List<Vendor> findAll() {
         VendorDaoImpl vendorDaoImpl = new VendorDaoImpl();
