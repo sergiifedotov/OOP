@@ -1,6 +1,11 @@
 package hw7.notes.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name= "CPU")
@@ -22,13 +27,28 @@ public class CPU {
     @Column(name = "MODEL")
     private String model;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SELECT)
+    private Set<Notebook> notebooks = new HashSet<>();
+
     public CPU() {
     }
 
-    public CPU(String frequency, String model, String manufacturer) {
+    public CPU(String manufacturer, String frequency, String model) {
+        this.manufacturer = manufacturer;
         this.frequency = frequency;
         this.model = model;
+    }
+
+    public CPU(String manufacturer, String frequency, String model, Set<Notebook> notebooks) {
         this.manufacturer = manufacturer;
+        this.frequency = frequency;
+        this.model = model;
+        this.notebooks = notebooks;
+    }
+    public void addNotebooks(Notebook notebook) {
+        this.notebooks.add(notebook);
+        notebook.setCpu(this);
     }
 
     public String getManufacturer() {
@@ -62,14 +82,26 @@ public class CPU {
     public void setId(Long id) {
         this.id = id;
     }
+    public Set<Notebook> getNotebooks() {
+        return notebooks;
+    }
+
+    public void setNotebooks(Set<Notebook> notebooks) {
+        this.notebooks = notebooks;
+    }
+
 
 
     @Override
     public String toString() {
-        return "CPU {id=" + id
-                + ", manufacturer='" + manufacturer
-                + ", frequency='" + frequency
-                + ", model='" + model
-                + "}";
+        return "CPU{" +
+                "id=" + id +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", frequency='" + frequency + '\'' +
+                ", model='" + model + '\'' +
+                ", notebooks=" + notebooks +
+                '}';
     }
+
+
 }

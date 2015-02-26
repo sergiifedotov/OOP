@@ -13,7 +13,8 @@ public class Store {
     @Column(name = "STORE_ID")
     private Long id;
 
-    @Column(name = "NOTEBOOK")
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Notebook notebook;
 
     @Column(name = "AMOUNT")
@@ -22,9 +23,15 @@ public class Store {
     @Column(name = "PRICE")
     private Double price;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Sales sales;
+
+
+
     public Store() {
 
     }
+
     public Store(Notebook notebook, Integer amount, Double price) {
         this.notebook = notebook;
         this.amount = amount;
@@ -62,6 +69,13 @@ public class Store {
     public void setId(Long id) {
         this.id = id;
     }
+//    public Sales getSales() {
+//        return sales;
+//    }
+//
+//    public void setSales(Sales sales) {
+//        this.sales = sales;
+//    }
 
     @Override
     public String toString() {

@@ -1,7 +1,12 @@
 package hw7.notes.domain;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name= "MEMORY")
@@ -20,6 +25,10 @@ public class Memory {
     @Column(name = "VALUE")
     private String value;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SELECT)
+    private Set<Notebook> notebooks = new HashSet<>();
+
     public Memory() {
 
     }
@@ -28,6 +37,16 @@ public class Memory {
         this.value = value;
     }
 
+    public Memory(String manufacturer, String value, Set<Notebook> notebooks) {
+        this.manufacturer = manufacturer;
+        this.value = value;
+        this.notebooks = notebooks;
+    }
+
+    public void addNotebooks(Notebook notebook) {
+        this.notebooks.add(notebook);
+        notebook.setMemory(this);
+    }
 
     public Long getId() {
         return id;
@@ -53,12 +72,22 @@ public class Memory {
         this.value = value;
     }
 
+    public Set<Notebook> getNotebooks() {
+        return notebooks;
+    }
+
+    public void setNotebooks(Set<Notebook> notebooks) {
+        this.notebooks = notebooks;
+    }
+
     @Override
     public String toString() {
-        return "Memory {id=" + id
-                + ", manufacturer='" + manufacturer
-                + ", value='" + value
-                + "}";
+        return "Memory{" +
+                "id=" + id +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", value='" + value + '\'' +
+                ", notebooks=" + notebooks +
+                '}';
     }
 }
 
