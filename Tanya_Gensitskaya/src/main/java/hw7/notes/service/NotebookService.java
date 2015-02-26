@@ -16,7 +16,8 @@ public interface NotebookService {
 
 
 
-    public Long receive(Long id, int amount, double price); // метод не используется
+    public Long receive(Long id, int amount, double price);
+    public Long sale(Long id, int amount);// метод не используется
     public Long receive(Notebook id, int amount, double price);
     public Long sale(Store id, int amount);
 

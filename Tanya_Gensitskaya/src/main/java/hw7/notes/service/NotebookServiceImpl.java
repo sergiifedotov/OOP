@@ -55,6 +55,11 @@ public class NotebookServiceImpl implements NotebookService {
         return salesDaoImpl.create(sales);
     }
 
+    @Override
+    public Long sale(Long id, int amount) {
+        return 1L;
+    }
+
 
     public List<Vendor> findAll() {
         VendorDaoImpl vendorDaoImpl = new VendorDaoImpl();
