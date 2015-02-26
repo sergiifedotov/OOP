@@ -9,6 +9,17 @@ import java.util.Iterator;
 
 /**
  * Created by tsv on 05.02.15.
+ *
+ * Написать чат сервер. При подключении, пользователь передает на сервер свое имя и получает список всех подключенных к серверу пользователей. Каждый участник может начать чат с любым участником, кроме себя. Реализовать передачу файлов.
+ * Метод:
+ * public void listenConnections()
+ *
+ * Класс задания:
+ * hw4.parallel.ChatServer
+ *
+ * Класс теста:
+ * hw4.parallel.ChatServerTest
+ *
  */
 
 // -- fileHandler ++ send / receive
@@ -26,6 +37,24 @@ public class ChatServer {
             System.out.println(e.getStackTrace());
         }
         clientList = new ArrayList<>();
+    }
+
+    public static void main(String[] args) throws IOException {
+        new ChatServer().startServer();
+    }
+
+    public void listenConnections(int port) {
+        try (ServerSocket serverSocket = new ServerSocket(port)){
+            while (true) {
+                try {
+                    new ConnectionHandler(serverSocket.accept());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void startServer() throws IOException {
@@ -57,8 +86,12 @@ public class ChatServer {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        new ChatServer().startServer();
+    public class ConnectionHandler {
+        Socket socket;
+        public ConnectionHandler(Socket socket) throws IOException {
+            this.socket = socket;
+        }
+
     }
 
 }

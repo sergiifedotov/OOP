@@ -26,13 +26,6 @@ public class Menu {
 
 
     public static void main(String[] args) {
-        // !! IMPORTANT !! this is only example of structure
-        /*Locale.setDefault(Locale.ENGLISH);
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
-        sb.applySettings(cfg.getProperties());
-        StandardServiceRegistry standardServiceRegistry = sb.build();
-        SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);*/
 
         NotebookDao notebookDao = new NotebookDaoImpl();
         NotebookService notebookService = new NotebookServiceImpl(notebookDao);

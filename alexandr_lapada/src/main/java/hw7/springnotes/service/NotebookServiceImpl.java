@@ -5,16 +5,17 @@ import hw7.springnotes.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by sanya on 24.02.2015.
  */
 @Component
 public class NotebookServiceImpl implements NotebookService {
+
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
 
     @Autowired
     private CPUDao cpuDao;
@@ -97,8 +98,20 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Map<Notebook, Integer> getSalesByDays() {
-        return null;
+    public Map<Notebook, Integer> getSalesByDays() throws ParseException {
+        Date date = null;
+        Map<Notebook, Integer> map = new HashMap<Notebook, Integer>();
+        //date = dateFormat.parse("25.02.2015");
+        date = dateFormat.parse("02.02.2015");
+        ArrayList<Store> list = (ArrayList)storeDao.findAllBySalesDay(date);
+        System.err.println(dateFormat.format(date));
+        System.out.println(list.size());
+        for(int i = 0; i < list.size(); i++ ){
+            Store store = list.get(i);
+            System.out.println(i);
+            System.err.println(" "+store.getId()+" "+store.getQuantity());
+        }
+        return map;
     }
 
     @Override
