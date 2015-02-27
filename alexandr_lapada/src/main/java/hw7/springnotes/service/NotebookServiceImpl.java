@@ -4,6 +4,7 @@ import hw7.springnotes.dao.*;
 import hw7.springnotes.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,7 +13,7 @@ import java.util.*;
 /**
  * Created by sanya on 24.02.2015.
  */
-@Component
+@Service
 public class NotebookServiceImpl implements NotebookService {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
