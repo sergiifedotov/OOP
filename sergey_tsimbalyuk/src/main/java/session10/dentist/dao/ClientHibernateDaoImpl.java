@@ -1,15 +1,5 @@
 package session10.dentist.dao;
 
-import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import session10.dentist.domain.Client;
-import session10.dentist.utils.HibernateUtil;
-
-import java.util.List;
-
 /**
  * Created with IntelliJ IDEA.
  * User: al1
@@ -52,7 +42,7 @@ public class ClientHibernateDaoImpl {
 //    }
 //
 //    @Override
-//    public void delete(Client client) {
+//    public void deleteNtb(Client client) {
 //
 //    }
 //

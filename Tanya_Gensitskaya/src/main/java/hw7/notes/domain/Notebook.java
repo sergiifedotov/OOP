@@ -14,8 +14,15 @@ public class Notebook {
     @Column(name = "NOTEBOOK_ID")
     private Long id;
 
-    @Column(name = "VENDOR")
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Vendor vendor;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private CPU cpu;
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    private Memory memory;
 
     @Column(name = "MODEL")
     private String model;
@@ -24,22 +31,22 @@ public class Notebook {
     @Column(name = "MANUFACTURE_DATE")
     private Date manufactureDate;
 
-    @Column(name = "CPU")
-    private CPU cpu;
 
-    @Column(name = "MEMORY")
-    private Memory memory;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Store store;
 
     public Notebook() {
     }
-
-    public Notebook(Vendor vendor, String model, Date manufactureDate, CPU cpu, Memory memory) {
-        this.vendor = vendor;
+    public Notebook(String model, Date manufactureDate) {
         this.model = model;
         this.manufactureDate = manufactureDate;
-        this.cpu = cpu;
-        this.memory = memory;
+
     }
+    public Notebook(String model) {
+        this.model = model;
+    }
+
+
 
     public Long getId() {
         return id;

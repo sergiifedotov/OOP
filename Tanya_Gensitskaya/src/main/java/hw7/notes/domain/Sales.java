@@ -14,8 +14,6 @@ public class Sales {
     @Column(name = "SALES_ID")
     private Long id;
 
-    @Column(name = "NOTEBOOK")
-    private Notebook notebook;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "SALES_DATE")
@@ -24,11 +22,17 @@ public class Sales {
     @Column(name = "AMOUNT")
     private Integer amount;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Store store;
+
     public Sales() {
     }
-
-    public Sales(Notebook notebook, Date salesDate, Integer amount) {
-        this.notebook = notebook;
+    public Sales(Store store,  Integer amount) {
+        this.store = store;
+        this.amount = amount;
+    }
+    public Sales(Store store, Date salesDate, Integer amount) {
+        this.store = store;
         this.salesDate = salesDate;
         this.amount = amount;
     }
@@ -42,13 +46,7 @@ public class Sales {
         this.id = id;
     }
 
-    public Notebook getNotebook() {
-        return notebook;
-    }
 
-    public void setNotebook(Notebook notebook) {
-        this.notebook = notebook;
-    }
 
     public Date getSalesDate() {
         return salesDate;
@@ -66,10 +64,17 @@ public class Sales {
         this.amount = amount;
     }
 
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
     @Override
     public String toString() {
         return "Sales {id=" + id
-                + ", notebook='" + notebook
+
                 + ", salesDate='" + salesDate
                 + ", amount='" + amount
                 + "}";

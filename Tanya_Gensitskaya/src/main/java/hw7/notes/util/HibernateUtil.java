@@ -1,4 +1,4 @@
-package hw6.notes.util;
+package hw7.notes.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -14,7 +14,7 @@ public class HibernateUtil {
 
     public SessionFactory buildSessionFactory() {
         Locale.setDefault(Locale.ENGLISH);
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml"); // парсит файлик
+        Configuration cfg = new Configuration().configure("hw7/hibernate.cfg.xml"); // парсит файлик
 
         StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
         sb.applySettings(cfg.getProperties());

@@ -1,12 +1,5 @@
 package session10.dentist.dao;
 
-import javafx.scene.canvas.GraphicsContext;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-
-import java.io.Serializable;
-import java.util.List;
-
 /**
  * Created with IntelliJ IDEA.
  * User: al1
@@ -51,7 +44,7 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
     }
 
     @Override
-    public void delete(T persistentObject) {
+    public void deleteNtb(T persistentObject) {
 
     }
 
