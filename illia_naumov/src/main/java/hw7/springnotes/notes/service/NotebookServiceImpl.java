@@ -1,12 +1,12 @@
-package hw7.notes.service;
+package hw7.springnotes.notes.service;
 
-import hw7.notes.dao.*;
-import hw7.notes.domain.*;
-import hw7.util.HibernateUtil;
-import org.h2.engine.Session;
-import org.hibernate.SessionFactory;
+import hw7.springnotes.notes.dao.*;
+import hw7.springnotes.notes.domain.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by illia_naumov on 20.02.2015.

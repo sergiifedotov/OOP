@@ -14,7 +14,10 @@ import java.util.List;
  */
 public class StoreDaoImpl implements  StoreDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
-    SessionFactory factory;
+
+    public StoreDaoImpl() {
+    }
+
     @Override
     public Long create(Store store) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -51,6 +54,18 @@ public class StoreDaoImpl implements  StoreDao {
 
     @Override
     public boolean update(Store store) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.update(store);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Transaction failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return false;
     }
 
@@ -73,6 +88,18 @@ public class StoreDaoImpl implements  StoreDao {
 
     @Override
     public List<Store> findAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            session.beginTransaction();
+            return session.createCriteria(Store.class).list();
+        }catch(HibernateException e){
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally{
+            if(session != null){
+                session.close();
+            }
+        }
         return null;
     }
 }

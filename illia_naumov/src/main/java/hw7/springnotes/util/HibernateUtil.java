@@ -1,9 +1,8 @@
-package hw7.util;
+package hw7.springnotes.util;
 
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

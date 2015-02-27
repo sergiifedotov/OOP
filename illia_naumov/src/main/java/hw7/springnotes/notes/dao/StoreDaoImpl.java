@@ -1,67 +1,62 @@
-package hw7.notes.dao;
+package hw7.springnotes.notes.dao;
 
-import hw7.notes.domain.Vendor;
-import hw7.util.HibernateUtil;
+import hw7.springnotes.notes.domain.Store;
+import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 /**
- * Created by illia_naumov on 20.02.2015.
+ * Created by user on 20.02.2015.
  */
-public class VendorDaoImpl implements VendorDao {
+public class StoreDaoImpl implements StoreDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
-    public VendorDaoImpl() {
+    public StoreDaoImpl() {
     }
 
     @Override
-    public Long create(Vendor vendor) {
+    public Long create(Store store) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            session.save(vendor);
+            session.save(store);
             session.getTransaction().commit();
-            return vendor.getId();
-        }catch(HibernateException e){
+            return (Long) store.getId();
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        }finally{
-            if(session != null){
-                session.close();
-            }
+        } finally {
+            session.close();
         }
         return null;
     }
 
     @Override
-    public Vendor read(Long id) {
+    public Store read(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            Vendor vendor = (Vendor) session.get(Vendor.class, id);
+            Store store = (Store) session.get(Store.class, id);
             session.getTransaction().commit();
-            return vendor;
-        }catch(HibernateException e){
+            return store;
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        }finally{
-            if(session != null){
-                session.close();
-            }
+        } finally {
+            session.close();
         }
         return null;
     }
 
     @Override
-    public boolean update(Vendor vendor) {
+    public boolean update(Store store) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(vendor);
+            session.update(store);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -74,14 +69,14 @@ public class VendorDaoImpl implements VendorDao {
     }
 
     @Override
-    public boolean delete(Vendor vendor) {
+    public boolean delete(Store store) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            session.delete(vendor);
+            session.delete(store);
             session.getTransaction().commit();
             return true;
-        } catch (HibernateException e) {
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
         } finally {
@@ -91,11 +86,11 @@ public class VendorDaoImpl implements VendorDao {
     }
 
     @Override
-    public List<Vendor> findAll() {
+    public List<Store> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            return session.createCriteria(Vendor.class).list();
+            return session.createCriteria(Store.class).list();
         }catch(HibernateException e){
             log.error("Open session failed", e);
             session.getTransaction().rollback();

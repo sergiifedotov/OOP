@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class CPUDaoImpl implements CPUDao{
     private static Logger log = Logger.getLogger(CPUDaoImpl.class);
-    SessionFactory factory;
-    public CPUDaoImpl(SessionFactory factory){
-        this.factory = factory;
+
+    public CPUDaoImpl() {
     }
+
     @Override
     public Long create(CPU cpu) {
         Session session = HibernateUtil.getSessionFactory().openSession();

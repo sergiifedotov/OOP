@@ -1,4 +1,4 @@
-package hw7.notes.domain;
+package hw7.springnotes.notes.domain;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

@@ -1,6 +1,4 @@
-package hw7.notes.domain;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+package hw7.springnotes.notes.domain;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
