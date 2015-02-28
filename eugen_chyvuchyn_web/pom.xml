@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>alexandr_lapada_web</artifactId>
+    <artifactId>eugen_chyvuchyn_web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -21,6 +21,6 @@
         </dependencies>
     </dependencyManagement>-->
     <build>
-        <finalName>proff21_alexandr_lapada_web</finalName>
+        <finalName>eugen_chyvuchyn_web</finalName>
     </build>
 </project>
