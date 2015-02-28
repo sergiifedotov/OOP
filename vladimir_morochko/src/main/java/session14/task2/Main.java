@@ -1,10 +1,7 @@
 package session14.task2;
 
 import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.util.Locale;
 
@@ -13,7 +10,7 @@ import java.util.Locale;
  */
 
 public class Main {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("session14/task2/transactionalContext.xml");
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("session14/task2/context.xml");
 
     EmployeeDao employeeDao = applicationContext.getBean("employeeDaoImpl", EmployeeDao.class);
 
