@@ -14,6 +14,7 @@
         <module>vladimir_morochko</module>
         <module>vladimir_morochko_web</module>
         <module>alexandr_lapada</module>
+        <module>alexandr_lapada_web</module>
         <module>Stanislav_Bondar</module>
         <module>eugen_chyvuchyn</module>
         <module>Yaroslav_Syrota</module>
@@ -24,7 +25,6 @@
         <module>sergey_tsimbalyuk</module>
         <module>sergey_tsimbalyuk_web</module>
         <module>Maksim_Kuzmenyuk</module>
-        <module>alexandr_lapada_web</module>
     </modules>
 
     <properties>

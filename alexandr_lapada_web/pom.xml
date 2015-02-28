@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>proff21_alexandr_lapada_web</artifactId>
+    <artifactId>alexandr_lapada_web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
