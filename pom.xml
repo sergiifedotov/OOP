@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,6 +12,7 @@
     <modules>
         <module>proff21_examples</module>
         <module>vladimir_morochko</module>
+        <module>vladimir_morochko_web</module>
         <module>alexandr_lapada</module>
         <module>Stanislav_Bondar</module>
         <module>eugen_chyvuchyn</module>
@@ -20,7 +21,9 @@
         <module>Tanya_Gensitskaya</module>
         <module>sergey_fedotov</module>
         <module>sergey_tsimbalyuk</module>
+        <module>sergey_tsimbalyuk_web</module>
         <module>Maksim_Kuzmenyuk</module>
+        <module>alexandr_lapada_web</module>
     </modules>
 
     <properties>

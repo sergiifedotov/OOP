@@ -16,7 +16,7 @@ import java.util.*;
 @Service
 public class NotebookServiceImpl implements NotebookService {
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     @Autowired
     private CPUDao cpuDao;
@@ -54,7 +54,7 @@ public class NotebookServiceImpl implements NotebookService {
             store.setQuantity(quantity);
             storeDao.update(store);
             Date date = new Date();
-            SimpleDateFormat dateFormate = new SimpleDateFormat("dd.MM.YYYY");
+            SimpleDateFormat dateFormate = new SimpleDateFormat("dd.MM.yyyy");
             dateFormate.format(date);
             Sales sales = new Sales(store,date,amount);
             idSale = salesDao.create(sales);
