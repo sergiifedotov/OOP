@@ -54,15 +54,17 @@ public class StoreDaoImpl implements StoreDao{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Store> findAll() {
         Session session = factory.getCurrentSession();
         List<Store> list = session.createCriteria(Store.class).list();
         return list;
     }
 
+    @Transactional(readOnly = true)
     public List<Store> findAllBySalesDay(Date date){
         Session session = factory.getCurrentSession();
-        List<Store> list = session.createCriteria(Store.class).createCriteria("sales").add(Restrictions.eq("salesDate",date)).list();
+        List<Store> list = session.createCriteria(Store.class).createCriteria("sales").add(Restrictions.gt("salesDate",date)).list();
         return list;
     }
 }
