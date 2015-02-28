@@ -14,7 +14,10 @@ import java.util.List;
  */
 public class SalesDaoImpl implements SalesDao{
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
-    SessionFactory factory;
+
+    public SalesDaoImpl() {
+    }
+
     @Override
     public Long create(Sales store) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -33,22 +36,71 @@ public class SalesDaoImpl implements SalesDao{
     }
 
     @Override
-    public Sales read(Long ig) {
+    public Sales read(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            Sales memory = (Sales) session.get(Sales.class, id);
+            session.getTransaction().commit();
+            return memory;
+        } catch (HibernateException e) {
+            log.error("Transaction failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return null;
     }
 
+
     @Override
     public boolean update(Sales store) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.update(store);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Transaction failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return false;
     }
 
     @Override
-    public boolean delete(Sales store) {
+    public boolean delete(Sales sales) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.delete(sales);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Transaction failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return false;
     }
 
     @Override
     public List<Sales> findAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            session.beginTransaction();
+            return session.createCriteria(Sales.class).list();
+        }catch(HibernateException e){
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally{
+            if(session != null){
+                session.close();
+            }
+        }
         return null;
     }
 }

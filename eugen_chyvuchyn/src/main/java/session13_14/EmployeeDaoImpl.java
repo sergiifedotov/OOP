@@ -1,11 +1,10 @@
 package session13_14;
 
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,35 +13,26 @@ import java.util.List;
  */
 
 @Repository
+@Transactional
 public class EmployeeDaoImpl implements EmployeeDao {
     private static Logger log = Logger.getLogger(EmployeeDaoImpl.class);
 
     private SessionFactory factory;
 
+    @Autowired
+    public EmployeeDaoImpl(SessionFactory factory) {
+        this.factory = factory;
+    }
 
     public EmployeeDaoImpl() {
     }
 
-    @Autowired
-    public EmployeeDaoImpl (SessionFactory factory){
-        this.factory = factory;
-    }
+
+
 
     @Override
+    @Transactional (readOnly = true)
     public List<Employee> findAll() {
-        Session session = null;
-        try {
-            session = factory.openSession();
-            session.beginTransaction();
-            return (List<Employee>)session.createCriteria(Employee.class).list();
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        return factory.getCurrentSession().createCriteria(Employee.class).list();
     }
 }

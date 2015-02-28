@@ -1,6 +1,11 @@
 package hw7.notes.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by user on 20.02.2015.
@@ -11,10 +16,16 @@ public class Store {
     @Id
     @SequenceGenerator(name = "storeGenerator", sequenceName ="STORE_ID_GENERATOR", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "storeGenerator")
+    @Column(name = "STORE_ID")
     private long id;
 
-    @OneToOne
-    private Notebook notebookType;
+    @ManyToMany
+    @JoinTable(name = "notebook_store")
+    private Set<Notebook> notebooks = new HashSet<Notebook>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "store",cascade = CascadeType.PERSIST)
+    @Fetch(FetchMode.SELECT)
+    private Set<Sales> sales = new HashSet<Sales>();
 
     @Column(name = "QUANTITY")
     private int quantity;
@@ -25,7 +36,7 @@ public class Store {
     public Store(){}
 
     public Store(Notebook notebookType, int quantity, double price) {
-        this.notebookType = notebookType;
+        this.notebooks.add(notebookType);
         this.quantity = quantity;
         this.price = price;
     }
@@ -35,8 +46,8 @@ public class Store {
         return id;
     }
 
-    public Notebook getNotebookType() {
-        return notebookType;
+    public Set<Notebook> getNotebook(){
+        return notebooks;
     }
 
     public int getQuantity() {
@@ -53,8 +64,8 @@ public class Store {
         this.id = id;
     }
 
-    public void setNotebookType(Notebook notebookType) {
-        this.notebookType = notebookType;
+    public void setNotebook(Notebook notebook){
+        this.notebooks.add(notebook);
     }
 
     public void setQuantity(int quantity) {
@@ -69,6 +80,6 @@ public class Store {
 
     @Override
     public String toString() {
-        return "Notebook in the store :" + notebookType + " quantity is: " + quantity;
+        return "Notebook in the store :" + " quantity is: " + quantity;
     }
 }

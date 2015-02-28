@@ -15,7 +15,10 @@ import java.util.List;
  */
 public class MemoryDaoImpl implements MemoryDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
-    SessionFactory factory;
+
+    public MemoryDaoImpl() {
+    }
+
     @Override
     public Long create(Memory memory) {
         Session session = HibernateUtil.getSessionFactory().openSession();
