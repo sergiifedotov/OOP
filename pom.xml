@@ -12,6 +12,7 @@
     <modules>
         <module>proff21_examples</module>
         <module>vladimir_morochko</module>
+        <module>vladimir_morochko_web</module>
         <module>alexandr_lapada</module>
         <module>Stanislav_Bondar</module>
         <module>eugen_chyvuchyn</module>
@@ -20,8 +21,10 @@
         <module>Tanya_Gensitskaya</module>
         <module>sergey_fedotov</module>
         <module>sergey_tsimbalyuk</module>
+        <module>sergey_tsimbalyuk_web</module>
         <module>Maksim_Kuzmenyuk</module>
         <module>konstantin_krivous</module>
+        <module>alexandr_lapada_web</module>
     </modules>
 
     <properties>
