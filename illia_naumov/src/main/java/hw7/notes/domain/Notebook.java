@@ -1,7 +1,11 @@
 package hw7.notes.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by user on 20.02.2015.
@@ -12,25 +16,31 @@ public class Notebook {
     @Id
     @SequenceGenerator(name = "sequence", sequenceName = "Notebooks_ID", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+    @Column(name = "NOTEBOOK_ID")
     private long id;
 
-    @OneToOne
-    @JoinColumn(name="VENDOR", nullable=false)
-    private Vendor vendor;
+    @ManyToOne
+    private Vendor vendor = null;
+
 
     @Column(name = "MODEL")
     private String model;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "MANUFACTURE_DATE")
     private Date manufactureDate;
 
-    @OneToOne
-    @JoinColumn(name="CPU", nullable=false)
+    //@ManyToOne(fetch = FetchType.EAGER)
+    @Column(name = "CPU")
     private CPU cpu;
 
-    @OneToOne
-    @JoinColumn(name="MEMORY", nullable=false)
+    //@ManyToOne(fetch = FetchType.EAGER)
+    @Column(name = "MEMORY")
     private Memory memory;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "notebooks",cascade = CascadeType.PERSIST)
+    @Fetch(FetchMode.SELECT)
+    private Set<Store> stores = null;
 
     public Notebook(){}
 

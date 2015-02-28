@@ -1,6 +1,7 @@
 package hw6.notes.dao;
 
 import hw6.notes.domain.Notebook;
+import hw6.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -29,15 +30,12 @@ import java.util.List;
 public class NotebookDaoImpl implements NotebookDao {
 
     private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
-    private SessionFactory factory;
+    private SessionFactory factory = new HibernateUtil().buildSessionFactory();
+
 
     public NotebookDaoImpl() {
     }
 
-
-    public NotebookDaoImpl(SessionFactory factory) {
-        this.factory = factory;
-    }
 
     @Override
     public Long create(Notebook ntb) {

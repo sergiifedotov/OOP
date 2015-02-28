@@ -16,14 +16,14 @@ public class Sales {
     @SequenceGenerator(name = "salesGenerator", sequenceName = "SALES_GENERATOR_ID",
                         initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "salesGenerator")
+    @Column(name = "SALE_ID")
     private long id;
 
-    @OneToOne
-    @JoinColumn(name="STORE", nullable=false)
+    @ManyToOne
     private Store stor;
 
 
-
+    @Temporal(TemporalType.DATE)
     @Column(name = "SELLING_DATE")
     private Date sellingDate;
 
@@ -34,7 +34,7 @@ public class Sales {
     public Sales(){}
 
     public Sales(Store stor, Date sellingDate, int quantity) {
-        //this.stor = stor;
+        this.stor = stor;
         this.sellingDate = sellingDate;
         this.quantity = quantity;
     }

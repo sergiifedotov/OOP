@@ -93,6 +93,7 @@ public class Menu {
             listFromConsole.set(0, str);
             if ("exit".equals(str)) {
                 next = false;
+                System.exit(0);
             } else {
                 String menuItem = listFromConsole.get(0);
                 switch (menuItem) {
@@ -153,7 +154,10 @@ public class Menu {
     }
 
     public void findAllNotebook() {
-        notebookServiceImpl.findAll();
+        List<Notebook> list = notebookServiceImpl.findAll();
+        for (Notebook i : list) {
+            System.out.println(i + " ");
+        }
     }
 
 //    public void deleteNtb(Notebook notebook) {

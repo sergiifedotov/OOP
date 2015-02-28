@@ -1,7 +1,7 @@
 package hw7.notes.service;
 
-import hw7.notes.domain.*;
 
+import hw7.notes.domain.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

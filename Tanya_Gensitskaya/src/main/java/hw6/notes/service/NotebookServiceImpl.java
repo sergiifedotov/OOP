@@ -2,325 +2,86 @@ package hw6.notes.service;
 
 import hw6.notes.dao.NotebookDaoImpl;
 import hw6.notes.domain.Notebook;
-import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import session9.HiberConnect;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Tanya on 11.02.2015.
  */
 public class NotebookServiceImpl implements NotebookService {
 
-    private static Logger log = Logger.getLogger(HiberConnect.class);
+    NotebookDaoImpl n = new NotebookDaoImpl();
+
 
     @Override
-    public Long add(Notebook notebook){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-        Session session = null;
-        Long id = null;
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            id = n.create(notebook);
-            System.out.println(id);
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
-        System.out.println("New Notebook add to database successfully !!!");
+    public Long add(Notebook notebook) {
+        Long id = n.create(notebook);
+        System.out.println(id);
         return id;
     }
 
     @Override
-    public List<Notebook> findAll(){
-        List<Notebook> list = new ArrayList<>();
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet ();
-        log.info("Reference to SessionFactory " + factory);
-        Session session = null;
-        Long id = null;
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            list = n.findAll();
-            for(Notebook i: list){
-                System.out.println(i+"\t " + "        ");
-            }
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
+    public List<Notebook> findAll() {
+        List<Notebook> list = n.findAll();
         return list;
     }
-    @Override
-    public Notebook read(Long id){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-        Session session = null;
-        Notebook notebook = null;
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            notebook = n.read(id);
 
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
+    @Override
+    public Notebook read(Long id) {
+        Notebook notebook = n.read(id);
         return notebook;
     }
 
     @Override
-    public void deleteNtb(Notebook notebook){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-        Session session = null;
-        Long id = null;
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            n.delete(notebook);
-
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
+    public void deleteNtb(Notebook notebook) {
+        n.delete(notebook);
     }
 
     @Override
-    public  void changePrice(Long id, double price){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-        Session session = null;
-
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            Notebook notebook = n.read(id);
-            notebook.setPrice(price);
-            n.update(notebook);
-
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
-        }
-
-    @Override
-    public void changeSerialVendor(Long id, String serial, String vendor){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-        Session session = null;
-
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            Notebook notebook = n.read(id);
-            notebook.setSerial(serial);
-            notebook.setVendor(vendor);
-            n.update(notebook);
-
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
-        }
-
-    @Override
-    public boolean deleteByModel(String model){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-        Session session = null;
-
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            List<Notebook> list = n.findByModel(model);
-            for(Notebook i: list){
-                n.delete(i);
-            }
-            return true;
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
-        return false;
+    public void changePrice(Long id, double price) {
+        Notebook notebook = n.read(id);
+        notebook.setPrice(price);
+        n.update(notebook);
     }
 
     @Override
-    public List<Notebook> findByVendor(String vendor){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
+    public void changeSerialVendor(Long id, String serial, String vendor) {
+        Notebook notebook = n.read(id);
+        notebook.setSerial(serial);
+        notebook.setVendor(vendor);
+        n.update(notebook);
+    }
 
-        List<Notebook> list = new ArrayList<>();
-        Session session = null;
-
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            list = n.findByVendor(vendor);
-
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
+    @Override
+    public boolean deleteByModel(String model) {
+        List<Notebook> list = n.findByModel(model);
+        for (Notebook i : list) {
+            n.delete(i);
         }
-        log.info(session);
+        return true;
+    }
+
+    @Override
+    public List<Notebook> findByVendor(String vendor) {
+        List<Notebook> list = n.findByVendor(vendor);
         return list;
     }
 
     @Override
-    public List<Notebook> findByPriceManufDate(Double price, Date date){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-
-        List<Notebook> list = new ArrayList<>();
-        Session session = null;
-
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            list = n.findByPriceManufDate(price, date);
-
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
+    public List<Notebook> findByPriceManufDate(Double price, Date date) {
+        List<Notebook> list = n.findByPriceManufDate(price, date);
         return list;
     }
+
     @Override
-    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor){
-        Locale.setDefault(Locale.ENGLISH);
-        SessionFactory factory = connectionHibernet();
-        log.info("Reference to SessionFactory " + factory);
-
-        List<Notebook> list = new ArrayList<>();
-        Session session = null;
-
-        try {
-            session = factory.openSession();
-            NotebookDaoImpl n = new NotebookDaoImpl(factory);
-            list = n.findBetweenPriceLtDateByVendor(priceFrom, priceTo, date, vendor);
-
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-            if (factory != null) {
-                factory.close();
-            }
-        }
-        log.info(session);
+    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+        List<Notebook> list = n.findBetweenPriceLtDateByVendor(priceFrom, priceTo, date, vendor);
         return list;
-    }
-
-//    @Override
-//    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor){
-//        List<Notebook> list = new ArrayList<>();
-//        return list;
-//    }
-
-
-
-    public SessionFactory connectionHibernet (){
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
-        sb.applySettings(cfg.getProperties());
-        StandardServiceRegistry standardServiceRegistry = sb.build();
-        SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
-        return factory;
     }
 
     public Notebook createNewNotebook() {

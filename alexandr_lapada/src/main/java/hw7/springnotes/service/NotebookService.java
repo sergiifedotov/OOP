@@ -2,6 +2,7 @@ package hw7.springnotes.service;
 
 import hw7.springnotes.domain.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public interface NotebookService {
 
     List<Notebook> getNotebooksStorePresent();
 
-    Map<Notebook, Integer> getSalesByDays();
+    Map<Notebook, Integer> getSalesByDays() throws ParseException;
 
     List<Notebook> getNotebooksFromStore();
 

@@ -1,8 +1,5 @@
 package session10.dentist.dao;
 
-import java.io.Serializable;
-import java.util.List;
-
 /**
  * Created with IntelliJ IDEA.
  * User: al1
@@ -23,6 +20,6 @@ public interface GenericDao<T, PK extends Serializable> {
 
     void createOrUpdate(T persistentObject);
 
-    void delete(T persistentObject);
+    void deleteNtb(T persistentObject);
 }
 */
