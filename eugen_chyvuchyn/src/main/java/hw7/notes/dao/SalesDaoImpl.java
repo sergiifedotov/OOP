@@ -19,6 +19,9 @@ public class SalesDaoImpl implements SalesDao {
         this.factory = factory;
     }
 
+    public SalesDaoImpl() {
+    }
+
     @Override
     public Long create(Sales sales) {
         Session session = null;

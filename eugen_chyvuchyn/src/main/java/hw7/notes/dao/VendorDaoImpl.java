@@ -15,6 +15,9 @@ public class VendorDaoImpl implements VendorDao {
     private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
     private SessionFactory factory;
 
+    public VendorDaoImpl() {
+    }
+
     public VendorDaoImpl(SessionFactory factory){
         this.factory = factory;
     }

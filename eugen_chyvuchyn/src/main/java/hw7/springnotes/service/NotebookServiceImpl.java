@@ -9,6 +9,8 @@ import java.util.Map;
  * Created by Chuvychin on 27.02.2015.
  */
 public class NotebookServiceImpl implements NotebookService {
+
+
     @Override
     public List<Notebook> getNotebooksByPortion(int size) {
         return null;
