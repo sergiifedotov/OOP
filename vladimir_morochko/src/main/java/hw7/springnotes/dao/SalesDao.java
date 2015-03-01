@@ -13,7 +13,7 @@ public interface SalesDao {
     Long create(Sales sales);
     Sales read(Long id);
     boolean update(Sales sales);
-    void delete(Sales sales);
+    boolean delete(Sales sales);
     List<Sales> findAll();
 
     List<Sales> getSalesByDays();

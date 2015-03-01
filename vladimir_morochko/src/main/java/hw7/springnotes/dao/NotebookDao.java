@@ -12,7 +12,7 @@ public interface NotebookDao {
     Long create(Notebook notebook);
     Notebook read(Long id);
     boolean update(Notebook notebook);
-    void delete(Notebook notebook);
+    boolean delete(Notebook notebook);
     List<Notebook> findAll();
 
     List<Notebook> getNotebooksByPortion(int size);

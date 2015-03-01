@@ -45,8 +45,9 @@ public class StoreDaoImpl implements StoreDao {
     }
 
     @Override
-    public void delete(Store store) {
+    public boolean delete(Store store) {
         sessionFactory.getCurrentSession().delete(store);
+        return true;
     }
 
     @Override

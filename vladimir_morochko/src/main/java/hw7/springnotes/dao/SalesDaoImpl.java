@@ -43,8 +43,9 @@ public class SalesDaoImpl implements SalesDao {
     }
 
     @Override
-    public void delete(Sales sales) {
+    public boolean delete(Sales sales) {
         sessionFactory.getCurrentSession().delete(sales);
+        return true;
     }
 
     @Override

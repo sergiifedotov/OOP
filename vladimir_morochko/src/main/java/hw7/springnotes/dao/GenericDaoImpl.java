@@ -47,8 +47,9 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
     }
 
     @Override
-    public void delete(T o) {
+    public boolean delete(T o) {
         sessionFactory.getCurrentSession().delete(o);
+        return true;
     }
 
     @Override
