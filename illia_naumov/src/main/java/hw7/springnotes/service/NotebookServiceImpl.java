@@ -1,9 +1,8 @@
-package hw7.springnotes.notes.service;
+package hw7.springnotes.service;
 
-import hw7.springnotes.notes.dao.*;
-import hw7.springnotes.notes.domain.*;
+import hw7.springnotes.dao.*;
+import hw7.springnotes.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

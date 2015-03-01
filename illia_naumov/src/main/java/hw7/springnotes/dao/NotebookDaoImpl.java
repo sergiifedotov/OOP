@@ -1,6 +1,6 @@
-package hw7.springnotes.notes.dao;
+package hw7.springnotes.dao;
 
-import hw7.springnotes.notes.domain.Sales;
+import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -13,37 +13,20 @@ import java.util.List;
  * Created by illia_naumov on 20.02.2015.
  */
 @Transactional
-public class SalesDaoImpl implements SalesDao {
+public class NotebookDaoImpl implements NotebookDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
-    public SalesDaoImpl() {
+    public NotebookDaoImpl() {
     }
 
     @Override
-    public Long create(Sales store) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try{
-            session.beginTransaction();
-            session.save(store);
-            session.getTransaction().commit();
-            return (Long) store.getId();
-        }catch (HibernateException e){
-            log.error("Transaction failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            session.close();
-        }
-        return null;
-    }
-
-    @Override
-    public Sales read(Long id) {
+    public Long create(Notebook notebook) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            Sales memory = (Sales) session.get(Sales.class, id);
+            session.save(notebook);
             session.getTransaction().commit();
-            return memory;
+            return (Long) notebook.getId();
         } catch (HibernateException e) {
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
@@ -53,13 +36,29 @@ public class SalesDaoImpl implements SalesDao {
         return null;
     }
 
-
     @Override
-    public boolean update(Sales store) {
+    public Notebook read(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(store);
+            Notebook ntb = (Notebook) session.get(Notebook.class, id);
+            session.getTransaction().commit();
+            return ntb;
+        } catch (HibernateException e) {
+            log.error("Transaction failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean update(Notebook notebook) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.update(notebook);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -72,11 +71,11 @@ public class SalesDaoImpl implements SalesDao {
     }
 
     @Override
-    public boolean delete(Sales sales) {
+    public boolean delete(Notebook notebook) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.delete(sales);
+            session.delete(notebook);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -89,19 +88,20 @@ public class SalesDaoImpl implements SalesDao {
     }
 
     @Override
-    public List<Sales> findAll() {
+    public List<Notebook> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try{
+        try {
             session.beginTransaction();
-            return session.createCriteria(Sales.class).list();
-        }catch(HibernateException e){
+            return session.createCriteria(Notebook.class).list();
+        } catch (HibernateException e) {
             log.error("Open session failed", e);
             session.getTransaction().rollback();
-        } finally{
-            if(session != null){
+        } finally {
+            if (session != null) {
                 session.close();
             }
         }
         return null;
     }
 }
+
