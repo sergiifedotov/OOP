@@ -1,6 +1,6 @@
-package hw7.springnotes.dao;
+package Weekend_6_2.springnotes.dao;
 
-import hw7.springnotes.domain.CPU;
+import Weekend_6_2.springnotes.domain.CPU;
 
 import java.util.List;
 

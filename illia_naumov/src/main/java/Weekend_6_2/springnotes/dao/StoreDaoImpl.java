@@ -1,7 +1,7 @@
-package hw7.springnotes.dao;
+package Weekend_6_2.springnotes.dao;
 
-import hw7.springnotes.domain.Store;
-import hw7.springnotes.util.HibernateUtil;
+import Weekend_6_2.springnotes.domain.Store;
+import Weekend_6_2.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

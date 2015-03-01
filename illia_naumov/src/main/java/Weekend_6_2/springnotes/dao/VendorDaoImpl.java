@@ -1,7 +1,7 @@
-package hw7.springnotes.dao;
+package Weekend_6_2.springnotes.dao;
 
-import hw7.springnotes.domain.Memory;
-import hw7.springnotes.util.HibernateUtil;
+import Weekend_6_2.springnotes.domain.Vendor;
+import Weekend_6_2.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,53 +13,56 @@ import java.util.List;
  * Created by illia_naumov on 20.02.2015.
  */
 @Transactional
-public class MemoryDaoImpl implements MemoryDao {
+public class VendorDaoImpl implements VendorDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
-    public MemoryDaoImpl() {
+    public VendorDaoImpl() {
     }
 
     @Override
-    public Long create(Memory memory) {
+    public Long create(Vendor vendor) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            session.save(memory);
+            session.save(vendor);
             session.getTransaction().commit();
-            return (Long) memory.getId();
-        }catch (HibernateException e){
+            return vendor.getId();
+        }catch(HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        } finally {
-            session.close();
+        }finally{
+            if(session != null){
+                session.close();
+            }
         }
         return null;
     }
 
     @Override
-    public Memory read(Long id) {
+    public Vendor read(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            Memory memory = (Memory) session.get(Memory.class, id);
+            Vendor vendor = (Vendor) session.get(Vendor.class, id);
             session.getTransaction().commit();
-            return memory;
-        } catch (HibernateException e) {
+            return vendor;
+        }catch(HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        } finally {
-            session.close();
+        }finally{
+            if(session != null){
+                session.close();
+            }
         }
         return null;
     }
 
-
     @Override
-    public boolean update(Memory memory) {
+    public boolean update(Vendor vendor) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(memory);
+            session.update(vendor);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -72,11 +75,11 @@ public class MemoryDaoImpl implements MemoryDao {
     }
 
     @Override
-    public boolean delete(Memory memory) {
+    public boolean delete(Vendor vendor) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.delete(memory);
+            session.delete(vendor);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -89,11 +92,11 @@ public class MemoryDaoImpl implements MemoryDao {
     }
 
     @Override
-    public List<Memory> findAll() {
+    public List<Vendor> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            return session.createCriteria(Memory.class).list();
+            return session.createCriteria(Vendor.class).list();
         }catch(HibernateException e){
             log.error("Open session failed", e);
             session.getTransaction().rollback();

@@ -1,4 +1,4 @@
-package hw7.springnotes.domain;
+package Weekend_6_2.springnotes.domain;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

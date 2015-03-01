@@ -1,7 +1,7 @@
-package hw7.springnotes.dao;
+package Weekend_6_2.springnotes.dao;
 
-import hw7.springnotes.domain.Notebook;
-import hw7.springnotes.util.HibernateUtil;
+import Weekend_6_2.springnotes.domain.Sales;
+import Weekend_6_2.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,21 +13,21 @@ import java.util.List;
  * Created by illia_naumov on 20.02.2015.
  */
 @Transactional
-public class NotebookDaoImpl implements NotebookDao {
+public class SalesDaoImpl implements SalesDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
-    public NotebookDaoImpl() {
+    public SalesDaoImpl() {
     }
 
     @Override
-    public Long create(Notebook notebook) {
+    public Long create(Sales store) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            session.save(notebook);
+            session.save(store);
             session.getTransaction().commit();
-            return (Long) notebook.getId();
-        } catch (HibernateException e) {
+            return (Long) store.getId();
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
         } finally {
@@ -37,13 +37,13 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public Notebook read(Long id) {
+    public Sales read(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            Notebook ntb = (Notebook) session.get(Notebook.class, id);
+            Sales memory = (Sales) session.get(Sales.class, id);
             session.getTransaction().commit();
-            return ntb;
+            return memory;
         } catch (HibernateException e) {
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
@@ -53,12 +53,13 @@ public class NotebookDaoImpl implements NotebookDao {
         return null;
     }
 
+
     @Override
-    public boolean update(Notebook notebook) {
+    public boolean update(Sales store) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(notebook);
+            session.update(store);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -71,11 +72,11 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public boolean delete(Notebook notebook) {
+    public boolean delete(Sales sales) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.delete(notebook);
+            session.delete(sales);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -88,20 +89,19 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> findAll() {
+    public List<Sales> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            return session.createCriteria(Notebook.class).list();
-        } catch (HibernateException e) {
+            return session.createCriteria(Sales.class).list();
+        }catch(HibernateException e){
             log.error("Open session failed", e);
             session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
+        } finally{
+            if(session != null){
                 session.close();
             }
         }
         return null;
     }
 }
-

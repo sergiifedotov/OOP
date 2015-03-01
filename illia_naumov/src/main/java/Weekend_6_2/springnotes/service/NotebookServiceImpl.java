@@ -1,7 +1,7 @@
-package hw7.springnotes.service;
+package Weekend_6_2.springnotes.service;
 
-import hw7.springnotes.dao.*;
-import hw7.springnotes.domain.*;
+import Weekend_6_2.springnotes.dao.*;
+import Weekend_6_2.springnotes.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

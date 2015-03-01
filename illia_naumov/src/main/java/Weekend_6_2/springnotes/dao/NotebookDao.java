@@ -1,6 +1,6 @@
-package hw7.springnotes.dao;
+package Weekend_6_2.springnotes.dao;
 
-import hw7.springnotes.domain.Notebook;
+import Weekend_6_2.springnotes.domain.Notebook;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

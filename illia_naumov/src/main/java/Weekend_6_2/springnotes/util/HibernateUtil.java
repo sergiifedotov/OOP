@@ -1,4 +1,4 @@
-package hw7.springnotes.util;
+package Weekend_6_2.springnotes.util;
 
 
 import org.apache.log4j.Logger;

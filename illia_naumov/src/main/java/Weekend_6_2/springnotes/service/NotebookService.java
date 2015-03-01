@@ -1,6 +1,6 @@
-package hw7.springnotes.service;
+package Weekend_6_2.springnotes.service;
 
-import hw7.springnotes.domain.*;
+import Weekend_6_2.springnotes.domain.*;
 
 import java.util.List;
 import java.util.Map;
