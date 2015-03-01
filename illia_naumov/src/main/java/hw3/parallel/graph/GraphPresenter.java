@@ -25,6 +25,7 @@ import java.io.InputStreamReader;
 
 public class GraphPresenter {
     BufferedReader buffer;
+    int function;
     public static void main(String[] args) throws InterruptedException, IOException {
         KeyListener breaker = new KeyListener();
         breaker.start();
@@ -45,15 +46,18 @@ public class GraphPresenter {
                 buffer = new BufferedReader(new InputStreamReader(System.in));
                 int userChoice = Integer.parseInt(buffer.readLine());
                 System.out.println("Type ENTER to stop");
-                switch (userChoice) {
+                switch (function) {
                     case (1):
-                        print(1);
+                        function = 1;
+                        print();
                         break;
                     case (2):
-                        print(2);
+                        function = 2;
+                        print();
                         break;
                     case (3):
-                        print(3);
+                        function = 3;
+                        print();
                         break;
                 }
                 buffer.close();
@@ -64,7 +68,7 @@ public class GraphPresenter {
             }
         }
 
-        public void print(int function) throws InterruptedException {
+        public void print() throws InterruptedException {
 
             String indents;
             for (int ix = 0; ix < 6; ix++) {
