@@ -11,7 +11,7 @@ import java.util.List;
 public interface GenericDao<T, PK extends Serializable> {
     PK create(T persistentObject);
     T read(PK id);
-    void update(T persistentObject);
+    boolean update(T persistentObject);
     void delete(T persistentObject);
     List<T> findAll();
 }

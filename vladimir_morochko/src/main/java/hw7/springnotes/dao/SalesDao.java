@@ -12,7 +12,7 @@ import java.util.Map;
 public interface SalesDao {
     Long create(Sales sales);
     Sales read(Long id);
-    void update(Sales sales);
+    boolean update(Sales sales);
     void delete(Sales sales);
     List<Sales> findAll();
 

@@ -39,8 +39,9 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public void update(Notebook notebook) {
+    public boolean update(Notebook notebook) {
         sessionFactory.getCurrentSession().update(notebook);
+        return true;
     }
 
     @Override

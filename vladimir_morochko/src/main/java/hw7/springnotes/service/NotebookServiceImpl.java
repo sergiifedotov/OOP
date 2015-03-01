@@ -2,6 +2,12 @@ package hw7.springnotes.service;
 
 import hw7.springnotes.dao.*;
 import hw7.springnotes.domain.*;
+import hw7.springnotes.domain.CPU;
+import hw7.springnotes.domain.Memory;
+import hw7.springnotes.domain.Notebook;
+import hw7.springnotes.domain.Sales;
+import hw7.springnotes.domain.Store;
+import hw7.springnotes.domain.Vendor;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -122,4 +128,12 @@ public class NotebookServiceImpl implements NotebookService {
     public void close() {
         sessionFactory.close();
     }
+
+    @Override
+    public Long receive(Long notebookId, int amount, double price) {
+        Notebook notebook = notebookDao.read(notebookId);
+        Store store = new Store(notebook, amount, price);
+        return storeDao.create(store);
+    }
+
 }

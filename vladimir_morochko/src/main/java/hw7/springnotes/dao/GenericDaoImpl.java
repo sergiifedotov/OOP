@@ -41,8 +41,9 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
     }
 
     @Override
-    public void update(T o) {
+    public boolean update(T o) {
         sessionFactory.getCurrentSession().update(o);
+        return true;
     }
 
     @Override
