@@ -45,8 +45,9 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public void delete(Notebook notebook) {
+    public boolean delete(Notebook notebook) {
         sessionFactory.getCurrentSession().delete(notebook);
+        return true;
     }
 
     @Override

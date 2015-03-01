@@ -11,6 +11,6 @@ public interface MemoryDao {
     Long create(Memory memory);
     Memory read(Long id);
     boolean update(Memory memory);
-    void delete(Memory memory);
+    boolean delete(Memory memory);
     List<Memory> findAll();
 }

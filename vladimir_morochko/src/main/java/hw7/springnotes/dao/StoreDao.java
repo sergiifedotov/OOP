@@ -12,7 +12,7 @@ public interface StoreDao {
     Long create(Store store);
     Store read(Long id);
     boolean update(Store store);
-    void delete(Store store);
+    boolean delete(Store store);
     List<Store> findAll();
 
     List<Notebook> getNotebooksGtAmount(int amount);

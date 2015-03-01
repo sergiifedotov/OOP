@@ -42,8 +42,9 @@ public class VendorDaoImpl implements VendorDao {
     }
 
     @Override
-    public void delete(Vendor vendor) {
+    public boolean delete(Vendor vendor) {
         sessionFactory.getCurrentSession().delete(vendor);
+        return true;
     }
 
     @Override

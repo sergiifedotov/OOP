@@ -136,4 +136,14 @@ public class NotebookServiceImpl implements NotebookService {
         return storeDao.create(store);
     }
 
+    @Override
+    public Long sale(Long storeId, int amount) {
+        Store store = storeDao.read(storeId);
+        this.removeFromStore(store, amount);
+
+        Date date = new Date();
+        Sales sales = new Sales(store, date, amount);
+        return salesDao.create(sales);
+    }
+
 }

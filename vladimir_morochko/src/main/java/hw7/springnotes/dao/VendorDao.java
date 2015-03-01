@@ -11,6 +11,6 @@ public interface VendorDao {
     Long create(Vendor vendor);
     Vendor read(Long id);
     boolean update(Vendor vendor);
-    void delete(Vendor vendor);
+    boolean delete(Vendor vendor);
     List<Vendor> findAll();
 }

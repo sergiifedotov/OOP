@@ -42,8 +42,9 @@ public class MemoryDaoImpl implements MemoryDao {
     }
 
     @Override
-    public void delete(Memory memory) {
+    public boolean delete(Memory memory) {
         sessionFactory.getCurrentSession().delete(memory);
+        return true;
     }
 
     @Override
