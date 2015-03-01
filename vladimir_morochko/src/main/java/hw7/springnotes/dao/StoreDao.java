@@ -11,7 +11,7 @@ import java.util.List;
 public interface StoreDao {
     Long create(Store store);
     Store read(Long id);
-    void update(Store store);
+    boolean update(Store store);
     void delete(Store store);
     List<Store> findAll();
 

@@ -36,8 +36,9 @@ public class VendorDaoImpl implements VendorDao {
     }
 
     @Override
-    public void update(Vendor vendor) {
+    public boolean update(Vendor vendor) {
         sessionFactory.getCurrentSession().update(vendor);
+        return true;
     }
 
     @Override

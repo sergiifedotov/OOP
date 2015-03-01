@@ -36,8 +36,9 @@ public class MemoryDaoImpl implements MemoryDao {
     }
 
     @Override
-    public void update(Memory memory) {
+    public boolean update(Memory memory) {
         sessionFactory.getCurrentSession().update(memory);
+        return true;
     }
 
     @Override

@@ -36,8 +36,9 @@ public class CPUDaoImpl implements CPUDao {
     }
 
     @Override
-    public void update(CPU cpu) {
+    public boolean update(CPU cpu) {
         sessionFactory.getCurrentSession().update(cpu);
+        return true;
     }
 
     @Override

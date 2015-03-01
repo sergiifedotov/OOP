@@ -10,7 +10,7 @@ import java.util.List;
 public interface MemoryDao {
     Long create(Memory memory);
     Memory read(Long id);
-    void update(Memory memory);
+    boolean update(Memory memory);
     void delete(Memory memory);
     List<Memory> findAll();
 }

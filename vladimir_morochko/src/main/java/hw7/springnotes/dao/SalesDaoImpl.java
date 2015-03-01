@@ -37,8 +37,9 @@ public class SalesDaoImpl implements SalesDao {
     }
 
     @Override
-    public void update(Sales sales) {
+    public boolean update(Sales sales) {
         sessionFactory.getCurrentSession().update(sales);
+        return true;
     }
 
     @Override
