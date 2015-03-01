@@ -1,4 +1,4 @@
-package hw7.notes.dao;
+package hw7.springnotes.dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,14 +10,8 @@ import java.util.List;
  */
 public interface GenericDao<T, PK extends Serializable> {
     PK create(T persistentObject);
-
-    T get(PK id);
-
-    List<T> getAll();
-
+    T read(PK id);
     void update(T persistentObject);
-
-    void createOrUpdate(T persistentObject);
-
     void delete(T persistentObject);
+    List<T> findAll();
 }

@@ -1,13 +1,14 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
-import hw7.notes.domain.Vendor;
+import hw7.notes.domain.Store;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -15,25 +16,25 @@ import java.util.List;
 /**
  * Created by vladimir on 17.02.2015.
  */
-public class NotebookDaoImpl implements NotebookDao {
+public class StoreDaoImpl implements StoreDao {
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
 
-    public NotebookDaoImpl() {
+    public StoreDaoImpl() {
     }
 
-    public NotebookDaoImpl(SessionFactory sessionFactory) {
+    public StoreDaoImpl(SessionFactory sessionFactory) {
         this();
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public Long create(Notebook notebook) {
+    public Long create(Store store) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Long id = (Long)session.save(notebook);
+            Long id = (Long)session.save(store);
             session.getTransaction().commit();
             return id;
         } catch (HibernateException e) {
@@ -48,12 +49,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public Notebook read(Long id) {
+    public Store read(Long id) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            return (Notebook) session.get(Notebook.class, id);
+            return (Store) session.get(Store.class, id);
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
             session.getTransaction().rollback();
@@ -66,12 +67,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public boolean update(Notebook notebook) {
+    public boolean update(Store store) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            session.update(notebook);
+            session.update(store);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -86,12 +87,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public boolean delete(Notebook notebook) {
+    public boolean delete(Store store) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            session.delete(notebook);
+            session.delete(store);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -106,11 +107,11 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> findAll() {
+    public List<Store> findAll() {
         Session session = null;
         try {
             session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class);
+            Criteria criteria = session.createCriteria(Store.class);
             return criteria.list();
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
@@ -124,14 +125,13 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> getNotebooksByPortion(int size) {
-        int firstResult = 0;
+    public List<Notebook> getNotebooksGtAmount(int amount) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class)
-                    .setFirstResult(firstResult)
-                    .setMaxResults(size);
+            Criteria criteria = session.createCriteria(Store.class)
+                    .add(Restrictions.gt("amount", amount))
+                    .setProjection(Projections.property("notebook"));
             return criteria.list();
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
@@ -145,13 +145,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
+    public List<Notebook> getNotebooksFromStore() {
         Session session = null;
         try {
             session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class)
-                    .createCriteria("cpu")
-                    .add(Restrictions.eq("vendor", cpuVendor));
+            Criteria criteria = session.createCriteria(Store.class)
+                    .setProjection(Projections.property("notebook"));
             return criteria.list();
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
@@ -164,6 +163,26 @@ public class NotebookDaoImpl implements NotebookDao {
         return null;
     }
 
+    @Override
+    public List<Notebook> getNotebooksStorePresent() {
+        int amount = 0;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Store.class)
+                    .add(Restrictions.gt("amount", amount))
+                    .setProjection(Projections.property("notebook"));
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
 
     @Override
     public void close() {

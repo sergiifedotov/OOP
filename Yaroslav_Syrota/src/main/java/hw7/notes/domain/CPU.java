@@ -1,12 +1,11 @@
 package hw7.notes.domain;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
- * Created by vladimir on 11.02.2015.
+ * Created by vladimir on 17.02.2015.
  *
- *  1. Создать сущности для базы данных "Магазин ноутбуков":
+ * 1. Создать сущности для базы данных "Магазин ноутбуков":
  Тип ноутбука(производитель, модель, дата производства, процессор, память)
  Производители(имя)
  Процессоры(производитель, частота, модель)
@@ -24,36 +23,27 @@ import java.util.Date;
  */
 
 @Entity
-@Table (name = "NOTEBOOKS")
-public class Notebook {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_NOTEBOOKS_ID",
+@Table(name = "CPU")
+public class CPU {
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_CPU_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
-    @Column (name = "NOTEBOOK_ID")
+    @Column (name = "CPU_ID")
     private Long id;
 
     @ManyToOne
     private Vendor vendor;
+    private Long speed;
     private String model;
 
-    @Temporal(TemporalType.DATE)
-    @Column (name = "MANUFACTURE_DATE")
-    private Date date;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private CPU cpu;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Memory memory;
-
-    public Notebook() {
+    public CPU() {
     }
 
-    public Notebook (Vendor vendor, String model, Date date, CPU cpu, Memory memory) {
+    public CPU(Vendor vendor, Long speed, String model) {
         this.vendor = vendor;
+        this.speed = speed;
         this.model = model;
-        this.date = date;
-        this.cpu = cpu;
-        this.memory = memory;
     }
 
     public Long getId() {
@@ -72,6 +62,14 @@ public class Notebook {
         this.vendor = vendor;
     }
 
+    public Long getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Long speed) {
+        this.speed = speed;
+    }
+
     public String getModel() {
         return model;
     }
@@ -80,39 +78,12 @@ public class Notebook {
         this.model = model;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public CPU getCpu() {
-        return cpu;
-    }
-
-    public void setCpu(CPU cpu) {
-        this.cpu = cpu;
-    }
-
-    public Memory getMemory() {
-        return memory;
-    }
-
-    public void setMemory(Memory memory) {
-        this.memory = memory;
-    }
-
-
     @Override
     public String toString() {
-        return "Notebook{id=" + id
+        return "CPU{id=" + id
                 + ", vendor=" + vendor
+                + ", speed=" + speed
                 + ", model='" + model
-                + "', date=" + String.format("%tF", date)
-                + ", CPU=" + cpu
-                + ", memory=" + memory
-                + "}";
+                + "'}";
     }
 }
