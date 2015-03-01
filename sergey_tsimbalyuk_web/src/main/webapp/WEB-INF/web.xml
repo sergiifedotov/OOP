@@ -6,4 +6,15 @@
          version="3.0">
 
     <display-name>Archetype Created Web Application</display-name>
+
+    <!--example <load-on-startup> configuration-->
+    <!--<servlet>
+    <servlet-name>controlServlet</servlet-name>
+    <servlet-class>controller.MyServ</servlet-class>
+    <init-param><param-name>container.script.static</param-name>
+                <param-value>/WEB-INF/container.script</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+    </servlet>-->
+
 </web-app>
