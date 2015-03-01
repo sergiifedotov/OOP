@@ -15,7 +15,7 @@ public interface NotebookService {
     public void add(Sales sales);
     public void add(Store store);
     public void add(Vendor vendor);
-    Long receive(long notebookId, int amount, double price);
+    Long receive(Long notebookId, int amount, double price);
     Long sale(long storeId, int amount);
     boolean updateCPU(CPU cpu);
     boolean updateMemory(Memory memory);

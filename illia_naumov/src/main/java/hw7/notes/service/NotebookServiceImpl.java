@@ -30,7 +30,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long receive(long notebookId, int amount, double price) {
+    public Long receive(Long notebookId, int amount, double price) {
         Notebook ntb = notebookDao.read((Long) notebookId);
         Store newDelivery = new Store(ntb, amount, price);
         storeDao.create(newDelivery);
