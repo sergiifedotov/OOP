@@ -25,6 +25,7 @@ import java.io.InputStreamReader;
 
 public class GraphPresenter {
     BufferedReader buffer;
+    int function;
     public static void main(String[] args) throws InterruptedException, IOException {
         KeyListener breaker = new KeyListener();
         breaker.start();
@@ -35,71 +36,74 @@ public class GraphPresenter {
 
     }
 
-        public void choose (){
-            System.out.println("Choose which graphical function you want to print");
-            System.out.println("Type 1 for x*x");
-            System.out.println("Type 2 for 10*sin(x/5)");
-            System.out.println("Type 3 for x");
+    public void choose (){
+        System.out.println("Choose which graphical function you want to print");
+        System.out.println("Type 1 for x*x");
+        System.out.println("Type 2 for 10*sin(x/5)");
+        System.out.println("Type 3 for x");
 
-            try {
-                buffer = new BufferedReader(new InputStreamReader(System.in));
-                int userChoice = Integer.parseInt(buffer.readLine());
-                System.out.println("Type ENTER to stop");
-                switch (userChoice) {
-                    case (1):
-                        print(1);
-                        break;
-                    case (2):
-                        print(2);
-                        break;
-                    case (3):
-                        print(3);
-                        break;
-                }
-                buffer.close();
-            } catch (IOException excep) {
-                excep.printStackTrace();
-            } catch (InterruptedException excep) {
-                //e.printStackTrace();
+        try {
+            buffer = new BufferedReader(new InputStreamReader(System.in));
+            int userChoice = Integer.parseInt(buffer.readLine());
+            System.out.println("Type ENTER to stop");
+            switch (function) {
+                case (1):
+                    function = 1;
+                    print();
+                    break;
+                case (2):
+                    function = 2;
+                    print();
+                    break;
+                case (3):
+                    function = 3;
+                    print();
+                    break;
             }
+            buffer.close();
+        } catch (IOException excep) {
+            excep.printStackTrace();
+        } catch (InterruptedException excep) {
+            //e.printStackTrace();
+        }
+    }
+
+    public void print() throws InterruptedException {
+
+        String indents;
+        for (int ix = 0; ix < 6; ix++) {
+            indents = "";
+            double iy = 0;
+            if (function == 1) {
+                iy = ix * ix;
+            } else if (function == 2) {
+                iy = 10 * Math.sin(ix * 0.2);
+            } else if (function == 3) {
+                iy = ix;
+            }
+            for (int j = 0; j < iy; j++) {
+                indents += " ";
+            }
+            System.out.println(indents + "*");
+            Thread.sleep(500);
         }
 
-        public void print(int function) throws InterruptedException {
-
-            String indents;
-            for (int ix = 0; ix < 6; ix++) {
-                indents = "";
-                double iy = 0;
-                if (function == 1) {
-                    iy = ix * ix;
-                } else if (function == 2) {
-                    iy = 10 * Math.sin(ix * 0.2);
-                } else if (function == 3) {
-                    iy = ix;
-                }
-                for (int j = 0; j < iy; j++) {
-                    indents += " ";
-                }
-                System.out.println(indents + "*");
-                Thread.sleep(500);
-            }
-
-        }
+    }
 
 
 
 
-   static class KeyListener extends Thread {
+    static class KeyListener extends Thread {
 
         KeyListener(Thread thread) {
 
         }
 
-       public KeyListener() {
+        public KeyListener() {
 
-       }
+        }
 
-       @Override
+        @Override
         public void run() {
 
             BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
