@@ -1,41 +1,48 @@
 package session11;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by sanya on 14.02.2015.
+ * Created with IntelliJ IDEA.
+ * User: al1
+ * Date: 14.02.15
  */
 @Entity
 public class Company {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_NOTEBOOK_ID",
-            allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     @Id
-    @Column(name = "COMPANY_ID")
+    @GeneratedValue
     private Long id;
-    @Column(name = "NAME")
+
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "company",cascade = CascadeType.ALL)
-    private Set<Employee> employees = new HashSet<Employee>();
+    @OneToMany
+    private Set<Employee> emps = new HashSet<>();
 
-    public Company(){
-
+    public Company() {
     }
 
-    public Company(String name, Long id){
+    public Company(String name) {
         this.name = name;
-        this.id = id;
-
     }
 
-    public void addEmployee(Employee empl) {
-        employees.add(empl);
+    public String getName() {
+        return name;
     }
 
-    public Set<Employee> getEmployees(){
-        return employees;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Employee> getEmps() {
+        return emps;
+    }
+
+    public void setEmps(Set<Employee> emps) {
+        this.emps = emps;
     }
 }

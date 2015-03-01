@@ -18,7 +18,7 @@ public class CPUDaoImpl implements CPUDao {
 
     public CPUDaoImpl() {
     }
-
+//
     @Override
     public Long create(CPU cpu) {
         Session session = HibernateUtil.getSessionFactory().openSession();
