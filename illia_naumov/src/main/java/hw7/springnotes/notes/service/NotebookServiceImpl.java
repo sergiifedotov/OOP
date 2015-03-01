@@ -2,6 +2,9 @@ package hw7.springnotes.notes.service;
 
 import hw7.springnotes.notes.dao.*;
 import hw7.springnotes.notes.domain.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,22 +14,31 @@ import java.util.Map;
 /**
  * Created by illia_naumov on 20.02.2015.
  */
+@Service
 public class NotebookServiceImpl implements NotebookService {
+    @Autowired
     private NotebookDao notebookDao;
+    @Autowired
     private StoreDao storeDao;
+    @Autowired
     private SalesDao salesDao;
+    @Autowired
     private CPUDao cpuDao;
+    @Autowired
     private MemoryDao memoryDao;
+    @Autowired
     private VendorDao vendorDao;
     private int pointer = 0;
 
+
     public NotebookServiceImpl() {
-        notebookDao = new NotebookDaoImpl();
+        /**notebookDao = new NotebookDaoImpl();
         storeDao = new StoreDaoImpl();
         salesDao = new SalesDaoImpl();
         cpuDao = new CPUDaoImpl();
         memoryDao = new MemoryDaoImpl();
         vendorDao = new VendorDaoImpl();
+         */ //comment because of autowired
     }
 
     @Override

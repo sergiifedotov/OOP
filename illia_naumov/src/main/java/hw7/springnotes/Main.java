@@ -1,13 +1,19 @@
 package hw7.springnotes;
 
+import hw7.springnotes.notes.dao.NotebookDao;
+import hw7.springnotes.notes.domain.Notebook;
 import hw7.springnotes.notes.domain.Vendor;
 import hw7.springnotes.notes.service.NotebookService;
 import hw7.springnotes.notes.service.NotebookServiceImpl;
+import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by illia_naumov on 20.02.2015.
@@ -15,8 +21,24 @@ import java.util.Date;
 public class Main {
     //private static Logger log = Logger.getLogger(Main.class);
     public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("hw7/springnotes/context-db.xml");
 
-        NotebookService notebookService = new NotebookServiceImpl();
+        NotebookDao ntbDao = context.getBean("notebookDao", NotebookDao.class);
+        List<Notebook> ntbs = ntbDao.findAll();
+        for(Notebook i:ntbs) {
+            System.out.println(i);
+        }
+
+
+
+
+
+
+
+
+
+
+        /**NotebookService notebookService = new NotebookServiceImpl();
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date date1 = null;
         Date date2 = null;

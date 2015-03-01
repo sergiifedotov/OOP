@@ -5,12 +5,14 @@ import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by illia_naumov on 20.02.2015.
  */
+@Transactional
 public class MemoryDaoImpl implements MemoryDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
