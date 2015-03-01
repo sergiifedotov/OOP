@@ -24,22 +24,18 @@ import java.io.InputStreamReader;
  */
 
 public class GraphPresenter {
+    BufferedReader buffer;
     public static void main(String[] args) throws InterruptedException, IOException {
-        Printer printer = new Printer();
-        printer.start();
-        KeyListener breaker = new KeyListener(printer);
+        KeyListener breaker = new KeyListener();
         breaker.start();
-        printer.join();
+        GraphPresenter graph = new GraphPresenter();
+        breaker.start();
         breaker.join();
 
 
     }
 
-    static class Printer extends Thread {
-        BufferedReader buffer;
-
-        @Override
-        public void run() {
+        public void choose (){
             System.out.println("Choose which graphical function you want to print");
             System.out.println("Type 1 for x*x");
             System.out.println("Type 2 for 10*sin(x/5)");
@@ -61,35 +57,27 @@ public class GraphPresenter {
                         break;
                 }
                 buffer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (IOException excep) {
+                excep.printStackTrace();
+            } catch (InterruptedException excep) {
                 //e.printStackTrace();
             }
         }
 
-/*     @Override
-     public void interrupt() {
-         Thread.currentThread().interrupt();
-     }*/
-
         public void print(int function) throws InterruptedException {
 
             String indents;
-            for (int x = 0; x < 6; x++) {
-                if (isInterrupted()) {
-                    return;
-                }
+            for (int ix = 0; ix < 6; ix++) {
                 indents = "";
-                double y = 0;
+                double iy = 0;
                 if (function == 1) {
-                    y = x * x;
+                    iy = ix * ix;
                 } else if (function == 2) {
-                    y = 10 * Math.sin(x * 0.2);
+                    iy = 10 * Math.sin(ix * 0.2);
                 } else if (function == 3) {
-                    y = x;
+                    iy = ix;
                 }
-                for (int j = 0; j < y; j++) {
+                for (int j = 0; j < iy; j++) {
                     indents += " ";
                 }
                 System.out.println(indents + "*");
@@ -99,26 +87,29 @@ public class GraphPresenter {
         }
 
 
-    }
 
-    static class KeyListener extends Thread {
-        Thread printer;
+
+   static class KeyListener extends Thread {
 
         KeyListener(Thread thread) {
-            printer = thread;
+
         }
 
-        @Override
+       public KeyListener() {
+
+       }
+
+       @Override
         public void run() {
 
             BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
             try {
-                while (printer.isAlive()) {
+                while (true) {
                     String i = buffer.readLine();
 
                     if (i.equals("a")) {
 
-                        printer.interrupt();
+                        Thread.currentThread().interrupt();
 
                     }
                 }
@@ -130,4 +121,6 @@ public class GraphPresenter {
         }
     }
 }
+
+
 
