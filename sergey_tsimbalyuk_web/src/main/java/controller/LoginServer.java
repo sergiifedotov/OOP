@@ -31,8 +31,8 @@ public class LoginServer extends HttpServlet {
         try {
             if (Auth(login, password)) {
 //                request.setAttribute("key", new String("Wrong LOGIN / PASSWORD!"));
-//                request.setAttribute("list", list);
-                request.getRequestDispatcher("passok.jsp").forward(request, response);
+                request.setAttribute("list", list);
+                request.getRequestDispatcher("logpwdok.jsp").forward(request, response);
             } else {
 
 //                request.getRequestDispatcher("wronglogpwd.jsp").forward(request, response);
