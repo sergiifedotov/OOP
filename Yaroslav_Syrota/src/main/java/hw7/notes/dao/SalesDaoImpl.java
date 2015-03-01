@@ -1,39 +1,43 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.Notebook;
-import hw7.notes.domain.Vendor;
+import hw7.notes.domain.Sales;
+import hw7.notes.domain.Store;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Order;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by vladimir on 17.02.2015.
  */
-public class NotebookDaoImpl implements NotebookDao {
+public class SalesDaoImpl implements SalesDao {
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
 
-    public NotebookDaoImpl() {
+    public SalesDaoImpl() {
     }
 
-    public NotebookDaoImpl(SessionFactory sessionFactory) {
+    public SalesDaoImpl(SessionFactory sessionFactory) {
         this();
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public Long create(Notebook notebook) {
+    public Long create(Sales sales) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Long id = (Long)session.save(notebook);
+            Long id = (Long)session.save(sales);
             session.getTransaction().commit();
             return id;
         } catch (HibernateException e) {
@@ -48,12 +52,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public Notebook read(Long id) {
+    public Sales read(Long id) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            return (Notebook) session.get(Notebook.class, id);
+            return (Sales) session.get(Sales.class, id);
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
             session.getTransaction().rollback();
@@ -66,12 +70,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public boolean update(Notebook notebook) {
+    public boolean update(Sales sales) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            session.update(notebook);
+            session.update(sales);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -86,12 +90,12 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public boolean delete(Notebook notebook) {
+    public boolean delete(Sales sales) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            session.delete(notebook);
+            session.delete(sales);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -106,11 +110,11 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> findAll() {
+    public List<Sales> findAll() {
         Session session = null;
         try {
             session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class);
+            Criteria criteria = session.createCriteria(Sales.class);
             return criteria.list();
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
@@ -124,15 +128,25 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> getNotebooksByPortion(int size) {
-        int firstResult = 0;
+    public Map<Notebook, Integer> getSalesByDays() {
         Session session = null;
         try {
             session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class)
-                    .setFirstResult(firstResult)
-                    .setMaxResults(size);
-            return criteria.list();
+            Map<Notebook, Integer> map = new HashMap<>();
+            Criteria criteria = session.createCriteria(Sales.class)
+                    .addOrder(Order.asc("date"));
+            List list = criteria.list();
+            if (list != null) {
+                Iterator<Sales> iterator = list.iterator();
+                while (iterator.hasNext()) {
+                    Sales sales = iterator.next();
+                    Integer amount = sales.getAmount();
+                    Store store = sales.getStore();
+                    Notebook notebook = store.getNotebook();
+                    map.put(notebook, amount);
+                }
+            }
+            return map;
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
             session.getTransaction().rollback();
@@ -143,27 +157,6 @@ public class NotebookDaoImpl implements NotebookDao {
         }
         return null;
     }
-
-    @Override
-    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class)
-                    .createCriteria("cpu")
-                    .add(Restrictions.eq("vendor", cpuVendor));
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
-    }
-
 
     @Override
     public void close() {
