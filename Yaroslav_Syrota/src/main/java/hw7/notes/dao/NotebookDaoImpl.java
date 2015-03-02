@@ -1,26 +1,23 @@
 package hw7.notes.dao;
 
-import hw6.notes.dao.*;
-import hw6.notes.domain.Notebook;
-import hw6.notes.util.HibernateUtil;
+import hw7.notes.domain.Notebook;
+import hw7.notes.domain.Vendor;
+import hw7.notes.util.HibernateUtil;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
-// import java.util.logging.Logger;
 
 /**
- * Created by @CAT_Caterpiller on 10.02.2015.
+ * Created by vladimir on 17.02.2015.
  */
-
-public class NotebookDaoImpl implements hw6.notes.dao.NotebookDao {
+public class NotebookDaoImpl implements NotebookDao {
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(NotebookDaoImpl.class);
+    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
 
     public NotebookDaoImpl() {
     }
@@ -127,49 +124,14 @@ public class NotebookDaoImpl implements hw6.notes.dao.NotebookDao {
     }
 
     @Override
-    public List<Notebook> findByModel(String model) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class, model);
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public List<Notebook> findByVendor(String vendor) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Notebook.class, vendor);
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public List<Notebook> findByPriceManufDate(Double price, Date date) {
+    public List<Notebook> getNotebooksByPortion(int size) {
+        int firstResult = 0;
         Session session = null;
         try {
             session = sessionFactory.openSession();
             Criteria criteria = session.createCriteria(Notebook.class)
-                    .add(Restrictions.eq("price", price))
-                    .add(Restrictions.eq("date", date));
+                    .setFirstResult(firstResult)
+                    .setMaxResults(size);
             return criteria.list();
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
@@ -183,14 +145,13 @@ public class NotebookDaoImpl implements hw6.notes.dao.NotebookDao {
     }
 
     @Override
-    public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
+    public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
             Criteria criteria = session.createCriteria(Notebook.class)
-                    .add(Restrictions.between("price", priceFrom, priceTo))
-                    .add(Restrictions.le("date", date))
-                    .add(Restrictions.eq("vendor", vendor));
+                    .createCriteria("cpu")
+                    .add(Restrictions.eq("vendor", cpuVendor));
             return criteria.list();
         } catch (HibernateException e) {
             logger.error("Open session failed", e);
@@ -202,6 +163,7 @@ public class NotebookDaoImpl implements hw6.notes.dao.NotebookDao {
         }
         return null;
     }
+
 
     @Override
     public void close() {
