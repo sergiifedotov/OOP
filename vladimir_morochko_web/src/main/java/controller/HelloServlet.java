@@ -18,8 +18,10 @@ public class HelloServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> parameterMap = request.getParameterMap();
-        String value = parameterMap.get("password")[0];
-        if (value.equals("123")) {
+        String password = parameterMap.get("password")[0];
+        String name = parameterMap.get("name")[0];
+        if (password.equals("123")) {
+            request.setAttribute("name", name);
             request.getRequestDispatcher("welcome.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);

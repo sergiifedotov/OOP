@@ -39,13 +39,15 @@ public class StoreDaoImpl implements StoreDao {
     }
 
     @Override
-    public void update(Store store) {
+    public boolean update(Store store) {
         sessionFactory.getCurrentSession().update(store);
+        return true;
     }
 
     @Override
-    public void delete(Store store) {
+    public boolean delete(Store store) {
         sessionFactory.getCurrentSession().delete(store);
+        return true;
     }
 
     @Override

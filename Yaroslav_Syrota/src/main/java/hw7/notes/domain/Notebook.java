@@ -6,11 +6,21 @@ import java.util.Date;
 /**
  * Created by vladimir on 11.02.2015.
  *
- *  Создать DAO для таблицы ноутбуки
- Таблица ноутбуки имеет следующую структуру
- (id, serial, vendor, model, manufacture date, price)
+ *  1. Создать сущности для базы данных "Магазин ноутбуков":
+ Тип ноутбука(производитель, модель, дата производства, процессор, память)
+ Производители(имя)
+ Процессоры(производитель, частота, модель)
+ Память(производитель, размер)
+ Склад ноутбуков(тип ноутбука, количество, цена)
+ Продажи(склад ноутбуков, дата продажи, количество)
+
  domain
- hw6.notes.domain.Notebook
+ hw7.notes.domain.Notebook
+ hw7.notes.domain.Vendor
+ hw7.notes.domain.CPU
+ hw7.notes.domain.Memory
+ hw7.notes.domain.Store
+ hw7.notes.domain.Sales
  */
 
 @Entity
@@ -23,24 +33,27 @@ public class Notebook {
     @Column (name = "NOTEBOOK_ID")
     private Long id;
 
-    String serial;
-    String model;
-    String vendor;
-    Double price;
+    @ManyToOne
+    private Vendor vendor;
+    private String model;
 
     @Temporal(TemporalType.DATE)
     @Column (name = "MANUFACTURE_DATE")
-    Date date;
+    private Date date;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private CPU cpu;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Memory memory;
 
     public Notebook() {
     }
 
-    public Notebook(String model, String vendor, Double price, Date date, String serial) {
-        this.model = model;
-        this.serial = serial;
+    public Notebook (Vendor vendor, String model, Date date, CPU cpu, Memory memory) {
         this.vendor = vendor;
-        this.price = price;
+        this.model = model;
         this.date = date;
+        this.cpu = cpu;
+        this.memory = memory;
     }
 
     public Long getId() {
@@ -51,12 +64,12 @@ public class Notebook {
         this.id = id;
     }
 
-    public String getSerial() {
-        return serial;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setSerial(String serial) {
-        this.serial = serial;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 
     public String getModel() {
@@ -67,22 +80,6 @@ public class Notebook {
         this.model = model;
     }
 
-    public String getVendor() {
-        return vendor;
-    }
-
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -91,14 +88,31 @@ public class Notebook {
         this.date = date;
     }
 
+    public CPU getCpu() {
+        return cpu;
+    }
+
+    public void setCpu(CPU cpu) {
+        this.cpu = cpu;
+    }
+
+    public Memory getMemory() {
+        return memory;
+    }
+
+    public void setMemory(Memory memory) {
+        this.memory = memory;
+    }
+
+
     @Override
     public String toString() {
         return "Notebook{id=" + id
+                + ", vendor=" + vendor
                 + ", model='" + model
-                + "', vendor='" + vendor
-                + "', price=" + price
-                + ", date=" + String.format("%tF", date)
-                + ", serial='" + serial
-                + "'}";
+                + "', date=" + String.format("%tF", date)
+                + ", CPU=" + cpu
+                + ", memory=" + memory
+                + "}";
     }
 }

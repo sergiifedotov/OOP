@@ -23,4 +23,8 @@ public interface NotebookService {
 
     List<Notebook> getNotebooks();
     void close();
+
+    Long receive(Long notebookId, int amount, double price);
+
+    Long sale(Long storeId, int amount);
 }
