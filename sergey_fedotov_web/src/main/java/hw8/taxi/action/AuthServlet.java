@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * this class for jon
  */
-@WebServlet("/authServlet")
+@WebServlet("/AuthServlet")
 public class AuthServlet extends HttpServlet {
 
     @Override
