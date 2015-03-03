@@ -1,16 +1,15 @@
 package hw8.taxi.action;
 
+import hw8.taxi.exception.AuthenticationException;
 import hw8.taxi.service.AuthenticationService;
 import hw8.taxi.service.AuthenticationServiceImpl;
 
-import javax.naming.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**

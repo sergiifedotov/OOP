@@ -1,6 +1,7 @@
 package hw8.taxi.service;
 
-import javax.naming.AuthenticationException;
+import hw8.taxi.exception.AuthenticationException;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -65,13 +66,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             //locked = properties.getProperty("locked");
         }
 
-        if(!result){
+        /*if(!result){
             Integer tempNumberAttemptsEnter = (Integer)properties.get("numberAttemptsEnter");
             if(tempNumberAttemptsEnter>0){
                 properties.put("numberAttemptsEnter", tempNumberAttemptsEnter-1);
             }
 
-        }
+        }*/
         return  pass.equals(properties.getProperty("pass"));
         //loginMap.put(login,)
     }
