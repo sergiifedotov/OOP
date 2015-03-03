@@ -1,6 +1,5 @@
 package hw8.taxi.action;
 
-import hw8.taxi.domain.Client;
 import hw8.taxi.exception.OrderException;
 import hw8.taxi.service.OrderService;
 import hw8.taxi.service.OrderServiceImpl;
@@ -21,7 +20,7 @@ public class OrderServlet extends HttpServlet {
     private OrderService orderService;
     private Long id;
     private String amount;
-    private Client client;
+    private String client;
 
     @Override
     public void init() throws ServletException {
@@ -35,6 +34,8 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String client = null;
+//        client = request.getParameter(client);
         String addressFrom = request.getParameter("addressFrom");
         String addressTo = request.getParameter("addressTo");
         try {
@@ -54,7 +55,7 @@ public class OrderServlet extends HttpServlet {
         this.amount = amount;
     }
 
-    public void setClient(Client client) {
+    public void setClient(String client) {
         this.client = client;
     }
 
