@@ -13,4 +13,6 @@ public interface OrderService {
     void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo);
     List showOrders(Long from, Long to);
     List showOrdersByPortion();
+
+    boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException;
 }

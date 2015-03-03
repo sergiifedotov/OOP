@@ -40,4 +40,9 @@ public class OrderServiceImpl implements OrderService {
     public List showOrdersByPortion() {
         return null;
     }
+
+    @Override
+    public boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException {
+        return false;
+    }
 }
