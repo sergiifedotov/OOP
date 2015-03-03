@@ -1,7 +1,10 @@
 package hw7.notes.service;
 
 import hw7.notes.dao.NotebookDaoImpl;
+import hw7.notes.domain.Notebook;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Sergey Tsimbalyuk
@@ -22,6 +25,21 @@ public class NotebookServiceImpl implements NotebookService{
 
     @Override
     public Long sale(int storeId, int amount) {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksFromStore() {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getNotebooksStorePresent() {
+        return null;
+    }
+
+    @Override
+    public List<Notebook> getSalesByDays() {
         return null;
     }
 }
