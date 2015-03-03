@@ -15,4 +15,5 @@ public interface NotebookService {
     List<Notebook> getNotebooksFromStore();
     List<Notebook> getNotebooksStorePresent();
     List<Notebook> getSalesByDays();
+    List<Notebook> getNotebooksByPortion(int size);
 }

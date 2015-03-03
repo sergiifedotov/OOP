@@ -42,4 +42,9 @@ public class NotebookServiceImpl implements NotebookService{
     public List<Notebook> getSalesByDays() {
         return null;
     }
+
+    @Override
+    public List<Notebook> getNotebooksByPortion(int size) {
+        return notebookDaoImpl.getPortion(0,size);
+    }
 }
