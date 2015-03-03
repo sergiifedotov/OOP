@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet("/ClientServlet")
 public class ClientServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
