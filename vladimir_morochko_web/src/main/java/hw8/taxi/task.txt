@@ -33,8 +33,8 @@
   hw8.taxi.domain.Order
   hw8.taxi.domain.Client
   hw8.taxi.service.OrderService
-     boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException
-     void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo)
+     boolean createOrder(Long id, Client client, String sum, String addressFrom, String addressTo) throws OrderException
+     void editOrder(Long id, Client client, String sum, String addressFrom, String addressTo)
      List showOrders(Long from, Long to)
      List showOrdersByPortion()
   hw8.taxi.service.OrderServiceImpl

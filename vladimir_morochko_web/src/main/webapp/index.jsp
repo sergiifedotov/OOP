@@ -9,6 +9,6 @@
     <title></title>
 </head>
 <body>
-
+<p><a href="dashboard.jsp">dashboard</a></p><br>
 </body>
 </html>
