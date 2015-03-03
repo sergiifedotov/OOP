@@ -18,12 +18,12 @@ import java.util.Properties;
  * on 02.03.15
  */
 @WebServlet("/auth")
-public class AuthServlet extends HttpServlet {
+public class AuthenticationServlet extends HttpServlet {
     private AuthenticationService authenticationService;
     private int loginTryCount;
     private Properties properties;
 
-    public AuthServlet(Properties properties) {
+    public AuthenticationServlet(Properties properties) {
         this.properties = properties;
     }
 
