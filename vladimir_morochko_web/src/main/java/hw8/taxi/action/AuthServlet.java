@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by vladimir on 03.03.2015.
  */
-@WebServlet("/AuthenticationServlet")
+@WebServlet("/AuthServlet")
 public class AuthServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
