@@ -16,6 +16,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 //    private AuthServlet servlet;
     Map<String,String> Users = new HashMap<>();
 
+    AuthenticationServiceImpl () {
+
+    }
     public AuthenticationServiceImpl(int count) {
 //        this.count = count;
         Users.put("SiteOpLogin","SiteOpPwd");
