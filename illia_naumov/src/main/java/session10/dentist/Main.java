@@ -8,6 +8,7 @@ import session10.dentist.dao.ClientDao;
 import session10.dentist.dao.ClientHibernateDaoImpl;
 import session10.dentist.service.ClientService;
 import session10.dentist.service.ClientServiceImpl;
+import session10.dentist.utils.HibernateUtil;
 import session10.dentist.view.Menu;
 
 import java.util.Locale;
@@ -22,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
         // !! IMPORTANT !! this is only example of structure
         Locale.setDefault(Locale.ENGLISH);
-        Configuration cfg = new Configuration().configure("session10/hibernate.cfg.xml");
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
         sb.applySettings(cfg.getProperties());
         StandardServiceRegistry standardServiceRegistry = sb.build();

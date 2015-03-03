@@ -9,11 +9,9 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Locale;
 
-
 /**
- * Created by @CAT_Caterpiller on 11.02.2015.
+ * Created by vladimir on 11.02.2015.
  */
-
 public class HibernateUtil {
     private static Logger logger = Logger.getLogger(HibernateUtil.class);
     private static final SessionFactory sessionFactory = buildSessionFactory();
@@ -24,7 +22,7 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         try {
             Locale.setDefault(Locale.ENGLISH);
-            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+            Configuration configuration = new Configuration().configure("hw7.notes/hibernate.cfg.xml");
 
             StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder();
             registryBuilder.applySettings(configuration.getProperties());
