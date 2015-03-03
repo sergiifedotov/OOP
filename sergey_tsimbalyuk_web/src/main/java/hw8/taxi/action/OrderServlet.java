@@ -21,6 +21,7 @@ public class OrderServlet extends HttpServlet {
     private Long id;
     private String amount;
     private String client;
+//    private String client;
 
     @Override
     public void init() throws ServletException {
@@ -34,8 +35,7 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String client = null;
-//        client = request.getParameter(client);
+        String client = request.getParameter("client");
         String addressFrom = request.getParameter("addressFrom");
         String addressTo = request.getParameter("addressTo");
         try {
@@ -55,12 +55,16 @@ public class OrderServlet extends HttpServlet {
         this.amount = amount;
     }
 
-    public void setClient(String client) {
-        this.client = client;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
     }
 }
 
