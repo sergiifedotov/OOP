@@ -75,7 +75,8 @@ public class ChatClientFX extends Application {
                 ObjectInputStream objIn = new ObjectInputStream(receiveSocket.getInputStream());
                 System.out.println("connected to port " + receivePort + " on " + address);
                 while (!thread.isInterrupted()) {
-                    Message message = (Message) objIn.readObject();
+                   Message message = (Message) objIn.readObject();
+
 
                     if (message == null) {
                         break;

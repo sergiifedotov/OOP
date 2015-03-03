@@ -11,7 +11,11 @@
     <title>Hello</title>
 </head>
 
+<body>
+
 <h>Welcome ${name}!</h>
+
+<p>${map}</p>
 
 </body>
 </html>
