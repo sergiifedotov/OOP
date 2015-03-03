@@ -12,8 +12,8 @@ import java.util.Map;
 public interface SalesDao {
     Long create(Sales sales);
     Sales read(Long id);
-    void update(Sales sales);
-    void delete(Sales sales);
+    boolean update(Sales sales);
+    boolean delete(Sales sales);
     List<Sales> findAll();
 
     List<Sales> getSalesByDays();

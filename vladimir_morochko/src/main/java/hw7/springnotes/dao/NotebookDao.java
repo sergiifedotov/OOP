@@ -11,8 +11,8 @@ import java.util.List;
 public interface NotebookDao {
     Long create(Notebook notebook);
     Notebook read(Long id);
-    void update(Notebook notebook);
-    void delete(Notebook notebook);
+    boolean update(Notebook notebook);
+    boolean delete(Notebook notebook);
     List<Notebook> findAll();
 
     List<Notebook> getNotebooksByPortion(int size);
