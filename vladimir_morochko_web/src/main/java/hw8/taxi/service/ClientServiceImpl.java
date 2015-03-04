@@ -24,24 +24,48 @@ import java.util.List;
  */
 public class ClientServiceImpl implements ClientService {
 
-    private ArrayList<Client> clients;
+    public static ClientService clientService = new ClientServiceImpl();
+
+    private ArrayList<Client> clients = new ArrayList<>();
 
     public ClientServiceImpl() {
-        clients = new ArrayList<>();
+        Client client = new Client("Ваня", "Иванов", "1234567890", "ул. Бассейная, 1");
+        client.setLastOrderDate(new Date());
+        client.setSum(123);
+        clients.add(client);
+        client = new Client("Петя", "Петров", "2345678901", "ул. Бассейная, 2");
+        client.setLastOrderDate(new Date());
+        client.setSum(234);
+        clients.add(client);
+        client = new Client("Сидор", "Сидоров", "3456789012", "ул. Бассейная, 3");
+        client.setLastOrderDate(new Date());
+        client.setSum(345);
+        clients.add(client);
+        client = new Client("Прошка", "Прохоров", "4567890123", "ул. Бассейная, 4");
+        client.setLastOrderDate(new Date());
+        client.setSum(456);
+        clients.add(client);
+        client = new Client("Изя", "Зильберштуцер", "5678901234", "ул. Бассейная, 5");
+        client.setLastOrderDate(new Date());
+        client.setSum(567);
+        clients.add(client);
+        client = new Client("Махмуд", "Алинбеков", "6789012345", "ул. Бассейная, 6");
+        client.setLastOrderDate(new Date());
+        client.setSum(678);
+        clients.add(client);
     }
+
     public ClientServiceImpl(ArrayList<Client> clients) {
         this.clients = clients;
     }
 
     @Override
     public boolean createClient(String name, String surname, String phone, String address) throws ClientException {
-        // TODO existing client
         if (name != null && address != null) {
             Long clientId = clients.size() + 1L;
             Client client = new Client(clientId, name, surname, phone, address);
-            clients.add(client);
-            System.out.println(client);
-            return true;
+            // System.out.println(client);
+            return clients.add(client);
         } else {
             throw new ClientException();
         }
@@ -57,7 +81,7 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> showClientsGtSum(int sum) {
         List <Client> list = new ArrayList<>();
         for (Client client : clients) {
-            if (client.getSum() > sum) {
+            if (client.getSum() != null && client.getSum() > sum) {
                 list.add(client);
             }
         }
@@ -76,5 +100,13 @@ public class ClientServiceImpl implements ClientService {
             }
         }
         return list;
+    }
+
+    public ArrayList<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(ArrayList<Client> clients) {
+        this.clients = clients;
     }
 }
