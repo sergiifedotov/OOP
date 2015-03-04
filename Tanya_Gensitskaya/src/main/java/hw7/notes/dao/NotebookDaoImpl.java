@@ -1,5 +1,6 @@
 package hw7.notes.dao;
 
+
 import hw7.notes.domain.Notebook;
 import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;

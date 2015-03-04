@@ -7,6 +7,11 @@
 
     <display-name>Archetype Created Web Application</display-name>
 
+    <!--<servlet>-->
+        <!--<servlet-name>AuthenticationServlet</servlet-name>-->
+        <!--<servlet-class>hw8.taxi.action.AuthenticationServlet</servlet-class>-->
+    <!--</servlet>-->
+
     <!--example <load-on-startup> configuration-->
     <!--<servlet>
     <servlet-name>controlServlet</servlet-name>
