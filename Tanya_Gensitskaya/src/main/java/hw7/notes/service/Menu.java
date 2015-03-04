@@ -1,5 +1,9 @@
 package hw7.notes.service;
 
+import hw7.notes.dao.CPUDaoImpl;
+import hw7.notes.dao.MemoryDaoImpl;
+import hw7.notes.dao.NotebookDaoImpl;
+import hw7.notes.dao.VendorDaoImpl;
 import hw7.notes.domain.*;
 
 import java.text.DateFormat;
@@ -67,9 +71,21 @@ public class Menu {
                         showVendor();
                         break;
                     case "8":
-
+                        updateCPU();
                         break;
                     case "9":
+                        updateMemory();
+                        break;
+                    case "10":
+                        updateVendor();
+                        break;
+                    case "11":
+                        updateNotebook();
+                        break;
+                    case "12":
+                        removeFromStore();
+                        break;
+                    case "13":
 
                         break;
                     default:
@@ -90,10 +106,13 @@ public class Menu {
                 "5.  Принять на склад партию ноутбуков (тип ноутбука, количество, цена) \n" +
                 "6.  Продать указанное количество ноутбуков со склада(id склада, количество)\n" +
                 "7.  Посмотреть список производителей компьютеров\n" +
-                "8.  \n" +
-                "9.  \n" +
-                "        \n" +
-                "10. Введите (exit) для выхода из программы");
+                " \n"+
+                "8.  Изменить процессор\n" +
+                "9.  Изменить память\n" +
+                "10. Изменить имя производителя\n" +
+                "11. Изменить тип ноутбука\n" +
+                "12. Списать со склад ноутбуки (ключ, количество)\n" +
+                "13. Введите (exit) для выхода из программы");
     }
 
 
@@ -158,13 +177,14 @@ public class Menu {
     }
     public void receive(){
         System.out.println("Введите id ноутбука");
-         Long id = scan.nextLong();
-        Notebook notebook = notebookServiceImpl.read(id);
+         Long notebookId = scan.nextLong();
         System.out.println("Введите к-во ноутбуков");
         int amount = scan.nextInt();
         System.out.println("Введите стоимость ноутбуков");
         double price = scan.nextDouble();
-        notebookServiceImpl.receive(notebook, amount, price);
+        notebookServiceImpl.receive(notebookId, amount, price);
+
+
     }
 
     public void sale(){
@@ -176,6 +196,96 @@ public class Menu {
         Integer amountStore = store.getAmount();
         store.setAmount(amountStore- amount);
         notebookServiceImpl.update(store);
-        notebookServiceImpl.sale(store, amount);
+
+        notebookServiceImpl.sale(id, amount);
     }
+
+
+    public boolean updateCPU() {
+        System.out.println("Введите id CPU");
+        Long id = scan.nextLong();
+        CPU cpu1 = new CPUDaoImpl().read(id);
+
+        System.out.println("Введите нового производителя CPU:");
+        String manufacturer = scan.next();
+        cpu1.setManufacturer(manufacturer);
+
+        System.out.println("Введите новую частоту CPU:");
+        String frequency = scan.next();
+        cpu1.setFrequency(frequency);
+
+        System.out.println("Введите новую модель CPU:");
+        String model = scan.next();
+        cpu1.setModel(model);
+        notebookServiceImpl.updateCPU(cpu1);
+
+        return true;
+    }
+
+
+    public boolean updateMemory() {
+        System.out.println("Введите id Memory");
+        Long id = scan.nextLong();
+        Memory memory1 = new MemoryDaoImpl().read(id);
+
+        System.out.println("Введите нового производителя Memory:");
+        String manufacturer = scan.next();
+        memory1.setManufacturer(manufacturer);
+
+        System.out.println("Введите новый размер Memory:");
+        String value = scan.next();
+        memory1.setValue(value);
+        notebookServiceImpl.updateMemory(memory1);
+
+        return true;
+    }
+
+
+    public boolean updateVendor() {
+        System.out.println("Введите id производителя Notebook:");
+        Long id = scan.nextLong();
+        Vendor vendor1 = new VendorDaoImpl().read(id);
+        System.out.println("Введите нового производителя Notebook:");
+        String name = scan.next();
+        vendor1.setName(name);
+        notebookServiceImpl.updateVendor(vendor1);
+        return true;
+    }
+
+    public boolean updateNotebook() {
+        System.out.println("Введите id производителя Notebook:");
+        Long id = scan.nextLong();
+        Notebook notebook = new NotebookDaoImpl().read(id);
+
+        System.out.println("Введите новую модель Notebook:");
+        String model = scan.next();
+        notebook.setModel(model);
+
+        System.out.println("Введите новый год выпуска (dd.mm.yyyy)");
+        String manufDate = scan.next();
+
+
+        DateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
+        Date manufactureDate = null;
+        try {
+            manufactureDate = dateFormat.parse(manufDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        notebook.setManufactureDate(manufactureDate);
+
+        notebookServiceImpl.updateNotebook(notebook);
+        return true;
+    }
+
+    public boolean removeFromStore() {
+        System.out.println("Введите id склада");
+        Long id = scan.nextLong();
+        Store store = notebookServiceImpl.readStore(id);
+        System.out.println("Введите к-во ноутбуков для списания");
+        int amount = scan.nextInt();
+        notebookServiceImpl.removeFromStore(store,  amount);
+        return false;
+    }
+
 }

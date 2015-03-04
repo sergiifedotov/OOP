@@ -17,14 +17,18 @@ import java.util.Map;
  */
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
-    ClientService clientService = new ClientServiceImpl();
+    ClientService clientService = ClientServiceImpl.clientService;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        String name = parameterMap.get("name")[0];
-        String surname = parameterMap.get("surname")[0];
-        String phone = parameterMap.get("phone")[0];
-        String address = parameterMap.get("address")[0];
+//        Map<String, String[]> parameterMap = request.getParameterMap();
+//        String name = parameterMap.get("name")[0];
+//        String surname = parameterMap.get("surname")[0];
+//        String phone = parameterMap.get("phone")[0];
+//        String address = parameterMap.get("address")[0];
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
 
         boolean registerResult = false;
         try {
@@ -32,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
         } catch (ClientException e) {
             e.printStackTrace();
         }
-        String registerResultMessage = registerResult ? "Client created successfully" : "Error";
+        String registerResultMessage = registerResult ? "Client created successfully" : "Error!";
         request.setAttribute("registerResultMessage", registerResultMessage);
         request.getRequestDispatcher("registerClient.jsp").forward(request, response);
 

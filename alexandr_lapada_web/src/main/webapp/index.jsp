@@ -23,18 +23,26 @@
     </tr>
 
     <tr>
-          <td align="center">
-              <h1>Войдите в свой кабинет.</h1></br>
-            <form action = /hw8 method="post"/>
-              ${wrongUser}
-              </br>
-              <input type = "text" name = "login"/></br>
-              <input type = "password" name = "password"/></br>
-              <input type = "submit" value="login"/>
-             </form>
+
+        <td align="center">
+            <h1>Войдите в свой кабинет.</h1></br>
+            <form action = /hw8Auth method="post"/>
+            ${wrongUser} </br>
+            <input type = "text" name = "login"/></br>
+            <input type = "password" name = "password"/></br>
+            <input type = "submit" value="login"/>
+            </form>
+
+            <a href="register.jsp"><button>Register</button></a>
+
           </td>
     </tr>
-    <tr><td></td></tr>
+
+    <tr>
+        <td>
+
+        </td>
+    </tr>
 
 
 </table>

@@ -8,5 +8,6 @@ import hw8.taxi.exception.AuthenticationException;
 public interface AuthenticationService {
 
     boolean authenticate(String login, String pass) throws AuthenticationException;
+    boolean register(String login, String id, String pass) throws AuthenticationException;
     public boolean changePass();
 }

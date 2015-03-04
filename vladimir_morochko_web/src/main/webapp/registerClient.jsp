@@ -13,21 +13,17 @@
 </head>
 <body>
 <h>${registerResultMessage}</h>
+<p><a href="dashboard.jsp"><<< dashboard</a></p>
 <form action="/RegisterServlet"/>
 <p>Имя клиента:</p>
 <input type="text" name="name" value=""/>
-
-<p>Фамилия клиента:</p><br>
-<input type="text" name="surname" value=""/>
-
-<p>Телефон:</p><br>
-<input type="text" name="phone" value=""/>
-
-<p>Адрес:</p><br>
-<input type="text" name="address" value=""/><br>
-
+<p>Фамилия клиента:</p>
+<input type="text" name="surname" value=""/><br>
+<p>Телефон:</p>
+<input type="text" name="phone" value=""/><br>
+<p>Адрес:</p>
+<input type="text" name="address" value=""/><br><br>
 <input type="submit" name="register" value="Зарегистрировать!"/>
 </form>
-
 </body>
 </html>

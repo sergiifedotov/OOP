@@ -15,11 +15,10 @@
     <title></title>
 </head>
 <body>
-<p><a href="registerClient.jsp">зарегистрировать клиента</a></p><br>
-<p><a href="registerClient.jsp">зарегистрировать клиента</a></p><br>
-<p><a href="registerClient.jsp">зарегистрировать клиента</a></p><br>
-<p><a href="registerClient.jsp">зарегистрировать клиента</a></p><br>
-<p><a href="registerClient.jsp">зарегистрировать клиента</a></p><br>
+<p><a href="registerClient.jsp">зарегистрировать клиента</a></p>
+<p><a href="/ClientServlet?action=showClientsByPortion">вывести всех клиентов порциями по 10 человек</a></p>
+<p><a href="/ClientServlet?action=showClientsGtSum">вывести всех клиентов наездивших на сумму больше указанной</a></p>
+<p><a href="/ClientServlet?action=showClientsLastMonth">вывести всех клиентов, делавших заказы за последний месяц</a></p>
 
 </body>
 </html>

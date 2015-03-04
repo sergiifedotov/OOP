@@ -4,7 +4,7 @@ package hw2.hash;
  * Created by sanya on 21.01.2015.
  */
 
-public class HashMapTest {
+public class MyHashMapTest {
     public static void main(String[] args) {
         HashMap map = new HashMap();
 
