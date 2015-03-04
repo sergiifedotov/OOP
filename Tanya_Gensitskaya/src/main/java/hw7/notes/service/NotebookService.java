@@ -13,14 +13,17 @@ public interface NotebookService {
     public Long create(Vendor vendor);
     public Long create(Notebook notebook);
 
-
-
-
     public Long receive(Long notebookId, int amount, double price);
     public Long sale(Long storeId, int amount);// метод не используется
-    public Long receive(Notebook id, int amount, double price);
-    public Long sale(Store id, int amount);
+//    public Long receive(Notebook id, int amount, double price);
+//    public Long sale(Store id, int amount);
 
+
+    boolean updateCPU(CPU cpu);
+    boolean updateMemory(Memory memory);
+    boolean updateVendor(Vendor vendor);
+    boolean updateNotebook(Notebook notebook);
+    boolean removeFromStore(Store store, int amount);
 
 
 
