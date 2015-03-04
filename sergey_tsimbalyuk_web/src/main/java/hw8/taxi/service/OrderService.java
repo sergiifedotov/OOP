@@ -9,20 +9,11 @@ import java.util.List;
  * Created by Sergey Tsimbalyuk
  * on 02.03.15
  */
-public class OrderService {
-    boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException {
+public interface OrderService {
+    boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException;
+    void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo);
+    List showOrders(Long from, Long to);
+    List showOrdersByPortion();
 
-        return false;
-    }
-    void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo) {
-
-    }
-    List showOrders(Long from, Long to) {
-
-        return null;
-    }
-    List showOrdersByPortion() {
-
-        return null;
-    }
+//    boolean createOrder(String id, String client, String amount, String fromAddress, String toAddress);
 }

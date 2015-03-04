@@ -21,6 +21,6 @@
         </dependencies>
     </dependencyManagement>-->
     <build>
-        <finalName>proff21_alexandr_lapada_web</finalName>
+        <finalName>alexandr_lapada_web</finalName>
     </build>
 </project>
