@@ -17,9 +17,11 @@ import java.util.Map;
  * Created by sanya on 03.03.2015.
  */
 
-@WebServlet("/hw8")
+@WebServlet("/hw8Auth")
 public class AuthenticationServlet extends HttpServlet {
+
     private AuthenticationService authenticationService;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         authenticationService = new AuthenticationServiceImpl();
@@ -27,6 +29,9 @@ public class AuthenticationServlet extends HttpServlet {
         Map<String, String[]> map = request.getParameterMap();
         String login = map.get("login")[0];
         String password = map.get("password")[0];
+        System.out.println(login);
+        System.out.println(password);
+
 
         try {
             if(authenticationService.authenticate(login,password)){

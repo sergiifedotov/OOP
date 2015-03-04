@@ -48,6 +48,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return rez;
     }
 
+    @Override
+    public boolean register(String login, String id, String pass) throws AuthenticationException {
+        return false;
+    }
+
     public boolean changePass(){
         date = new Date();
         boolean rez = false;
@@ -63,4 +68,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         return rez;
     }
+
+    public Map<String,String> getUsers(){
+        return mapUsers;
+    }
+
 }
