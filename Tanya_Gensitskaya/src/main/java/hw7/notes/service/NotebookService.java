@@ -14,9 +14,7 @@ public interface NotebookService {
     public Long create(Notebook notebook);
 
     public Long receive(Long notebookId, int amount, double price);
-    public Long sale(Long storeId, int amount);// метод не используется
-//    public Long receive(Notebook id, int amount, double price);
-//    public Long sale(Store id, int amount);
+    public Long sale(Long storeId, int amount);
 
 
     boolean updateCPU(CPU cpu);

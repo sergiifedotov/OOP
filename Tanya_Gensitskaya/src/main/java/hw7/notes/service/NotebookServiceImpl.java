@@ -40,30 +40,24 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public Long receive(Long notebookId, int amount, double price) {
-        return 1L;
+        NotebookDaoImpl notebookDaoImpl = new NotebookDaoImpl();
+        Notebook notebook = notebookDaoImpl.read(notebookId);
+        Store store = new Store(notebook, amount, price);
+        StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
+        return storeDaoImpl.create(store);
+
     }
-//    @Override
-//    public Long receive(Notebook id, int amount, double price) {
-//        Store store = new Store(id, amount, price);
-//        StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
-//        return storeDaoImpl.create(store);
-//    }
+
 
 
     @Override
     public Long sale(Long storeId, int amount) {
-        return 1L;
+        StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
+        Store store = storeDaoImpl.read(storeId);
+        Sales sales = new Sales(store, amount);
+        SalesDaoImpl salesDaoImpl = new SalesDaoImpl();
+        return salesDaoImpl.create(sales);
     }
-//    @Override
-//    public Long sale(Store id, int amount) {
-//        Sales sales = new Sales(id, amount);
-//        SalesDaoImpl salesDaoImpl = new SalesDaoImpl();
-//        return salesDaoImpl.create(sales);
-//    }
-
-
-
-
 
 
 
@@ -98,7 +92,12 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean removeFromStore(Store store, int amount) {
-        return false;
+        Integer amountStore = store.getAmount();
+        Integer newAmount = amountStore -amount;
+        store.setAmount(newAmount);
+        StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
+        storeDaoImpl.update(store);
+        return true;
     }
 
 

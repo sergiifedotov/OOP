@@ -83,7 +83,7 @@ public class Menu {
                         updateNotebook();
                         break;
                     case "12":
-
+                        removeFromStore();
                         break;
                     case "13":
 
@@ -176,26 +176,28 @@ public class Menu {
 
     }
     public void receive(){
-//        System.out.println("Введите id ноутбука");
-//         Long id = scan.nextLong();
-//        Notebook notebook = notebookServiceImpl.read(id);
-//        System.out.println("Введите к-во ноутбуков");
-//        int amount = scan.nextInt();
-//        System.out.println("Введите стоимость ноутбуков");
-//        double price = scan.nextDouble();
-//        notebookServiceImpl.receive(notebook, amount, price);
+        System.out.println("Введите id ноутбука");
+         Long notebookId = scan.nextLong();
+        System.out.println("Введите к-во ноутбуков");
+        int amount = scan.nextInt();
+        System.out.println("Введите стоимость ноутбуков");
+        double price = scan.nextDouble();
+        notebookServiceImpl.receive(notebookId, amount, price);
+
+
     }
 
     public void sale(){
-//        System.out.println("Введите id склада");
-//        Long id = scan.nextLong();
-//        Store store = notebookServiceImpl.readStore(id);
-//        System.out.println("Введите к-во ноутбуков для продажи");
-//        int amount = scan.nextInt();
-//        Integer amountStore = store.getAmount();
-//        store.setAmount(amountStore- amount);
-//        notebookServiceImpl.update(store);
-//        notebookServiceImpl.sale(store, amount);
+        System.out.println("Введите id склада");
+        Long id = scan.nextLong();
+        Store store = notebookServiceImpl.readStore(id);
+        System.out.println("Введите к-во ноутбуков для продажи");
+        int amount = scan.nextInt();
+        Integer amountStore = store.getAmount();
+        store.setAmount(amountStore- amount);
+        notebookServiceImpl.update(store);
+
+        notebookServiceImpl.sale(id, amount);
     }
 
 
@@ -277,6 +279,12 @@ public class Menu {
     }
 
     public boolean removeFromStore() {
+        System.out.println("Введите id склада");
+        Long id = scan.nextLong();
+        Store store = notebookServiceImpl.readStore(id);
+        System.out.println("Введите к-во ноутбуков для списания");
+        int amount = scan.nextInt();
+        notebookServiceImpl.removeFromStore(store,  amount);
         return false;
     }
 
