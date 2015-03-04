@@ -74,13 +74,13 @@ public class Menu {
                         updateCPU();
                         break;
                     case "9":
-
+                        updateMemory();
                         break;
                     case "10":
-
+                        updateVendor();
                         break;
                     case "11":
-
+                        updateNotebook();
                         break;
                     case "12":
 
@@ -176,26 +176,26 @@ public class Menu {
 
     }
     public void receive(){
-        System.out.println("Введите id ноутбука");
-         Long id = scan.nextLong();
-        Notebook notebook = notebookServiceImpl.read(id);
-        System.out.println("Введите к-во ноутбуков");
-        int amount = scan.nextInt();
-        System.out.println("Введите стоимость ноутбуков");
-        double price = scan.nextDouble();
-        notebookServiceImpl.receive(notebook, amount, price);
+//        System.out.println("Введите id ноутбука");
+//         Long id = scan.nextLong();
+//        Notebook notebook = notebookServiceImpl.read(id);
+//        System.out.println("Введите к-во ноутбуков");
+//        int amount = scan.nextInt();
+//        System.out.println("Введите стоимость ноутбуков");
+//        double price = scan.nextDouble();
+//        notebookServiceImpl.receive(notebook, amount, price);
     }
 
     public void sale(){
-        System.out.println("Введите id склада");
-        Long id = scan.nextLong();
-        Store store = notebookServiceImpl.readStore(id);
-        System.out.println("Введите к-во ноутбуков для продажи");
-        int amount = scan.nextInt();
-        Integer amountStore = store.getAmount();
-        store.setAmount(amountStore- amount);
-        notebookServiceImpl.update(store);
-        notebookServiceImpl.sale(store, amount);
+//        System.out.println("Введите id склада");
+//        Long id = scan.nextLong();
+//        Store store = notebookServiceImpl.readStore(id);
+//        System.out.println("Введите к-во ноутбуков для продажи");
+//        int amount = scan.nextInt();
+//        Integer amountStore = store.getAmount();
+//        store.setAmount(amountStore- amount);
+//        notebookServiceImpl.update(store);
+//        notebookServiceImpl.sale(store, amount);
     }
 
 
