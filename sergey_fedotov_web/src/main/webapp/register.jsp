@@ -7,18 +7,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Taxi</title>
+    <title>Registration</title>
 </head>
 
 <body>
 
-<form action="/login" method="POST"/>
+<form action="/auth" method="POST"/>
 <table width="100%" style="height: 100%; ">
     <thead></thead>
 
     <tbody>
     <tr style="height: 5%">
-        <td colspan="3" width="100%">TAXI</td>
+        <td colspan="3" width="100%">Registration</td>
     </tr>
     <tr style="height: 5%">
         <td colspan="3" width="100%">
@@ -34,6 +34,13 @@
                 <td width="85%"></td>
             </tr>
             <tr>
+                <td width="5%">identification code</td>
+                <td width="10%">
+                    <input type="text" name="id"/>
+                </td>
+                <td width="85%"></td>
+            </tr>
+            <tr>
                 <td width="5%">pass</td>
                 <td width="10%">
                     <input type="password" name="pass"/>
@@ -43,16 +50,18 @@
                 </td>
             </tr>
             <tr>
-                <td width="5%"></td>
+                <td width="5%">pass confirmation</td>
                 <td width="10%">
-                    <input type="submit" value="Login"/>
+                    <input type="password" name="passConfirmation"/>
                 </td>
-                <td width="85%"></td>
+                <td width="85%">
+                    ${errLogin}
+                </td>
             </tr>
             <tr>
                 <td width="5%"></td>
                 <td width="10%">
-                    <a href="register.jsp">registration</a>
+                    <input type="submit" value="Register"/>
                 </td>
                 <td width="85%"></td>
             </tr>

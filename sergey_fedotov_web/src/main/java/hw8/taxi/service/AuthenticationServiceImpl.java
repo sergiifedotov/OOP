@@ -62,7 +62,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         boolean result = false;
         boolean locked = true;
         if(properties!=null){
-            result = pass.equals(properties.getProperty("pass"));
+            return result = pass.equals(properties.getProperty("pass"));
             //locked = properties.getProperty("locked");
         }
 
@@ -73,7 +73,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             }
 
         }*/
-        return  pass.equals(properties.getProperty("pass"));
+        return result;
         //loginMap.put(login,)
     }
 
