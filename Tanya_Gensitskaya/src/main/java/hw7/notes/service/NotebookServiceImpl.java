@@ -40,26 +40,73 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public Long receive(Long notebookId, int amount, double price) {
-        return 1L;
-    }
-    @Override
-    public Long receive(Notebook id, int amount, double price) {
-        Store store = new Store(id, amount, price);
+        NotebookDaoImpl notebookDaoImpl = new NotebookDaoImpl();
+        Notebook notebook = notebookDaoImpl.read(notebookId);
+        Store store = new Store(notebook, amount, price);
         StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
         return storeDaoImpl.create(store);
+
     }
+
 
 
     @Override
     public Long sale(Long storeId, int amount) {
-        return 1L;
-    }
-    @Override
-    public Long sale(Store id, int amount) {
-        Sales sales = new Sales(id, amount);
+        StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
+        Store store = storeDaoImpl.read(storeId);
+        Sales sales = new Sales(store, amount);
         SalesDaoImpl salesDaoImpl = new SalesDaoImpl();
         return salesDaoImpl.create(sales);
     }
+
+
+
+
+    @Override
+    public boolean updateCPU(CPU cpu) {
+        CPUDaoImpl cpuDaoImpl = new CPUDaoImpl();
+        cpuDaoImpl.update(cpu);
+        return true;
+    }
+
+    @Override
+    public boolean updateMemory(Memory memory) {
+        MemoryDaoImpl memoryDaoImpl = new MemoryDaoImpl();
+        memoryDaoImpl.update(memory);
+        return true;
+    }
+
+    @Override
+    public boolean updateVendor(Vendor vendor) {
+        VendorDaoImpl vendorDaoImpl = new VendorDaoImpl();
+        vendorDaoImpl.update(vendor);
+        return true;
+    }
+
+    @Override
+    public boolean updateNotebook(Notebook notebook) {
+        NotebookDaoImpl notebookDaoImpl = new NotebookDaoImpl();
+        notebookDaoImpl.update(notebook);
+        return false;
+    }
+
+    @Override
+    public boolean removeFromStore(Store store, int amount) {
+        Integer amountStore = store.getAmount();
+        Integer newAmount = amountStore -amount;
+        store.setAmount(newAmount);
+        StoreDaoImpl storeDaoImpl = new StoreDaoImpl();
+        storeDaoImpl.update(store);
+        return true;
+    }
+
+
+
+
+
+
+
+
 
     public List<Vendor> findAll() {
         VendorDaoImpl vendorDaoImpl = new VendorDaoImpl();

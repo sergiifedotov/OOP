@@ -24,6 +24,11 @@ public class RegisterServlet extends HttpServlet {
     }
 
     @Override
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("register.jsp").forward(req, resp);
+    }
+
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login").trim();
         String password = request.getParameter("password").trim();

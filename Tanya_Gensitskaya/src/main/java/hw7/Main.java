@@ -1,7 +1,10 @@
-package hw7.notes.service;
+package hw7;
+
+import hw7.notes.service.Menu;
 
 /**
- * Created by Tanya on 25.02.2015.
+ * Created by
+ * Tanya on 25.02.2015.
  */
 public class Main {
     public static void main(String[] args) {

@@ -80,3 +80,47 @@
         hw7.notes.service.Menu
             main()
 3.
+
+Добавить в приложение ноутбуков следующие функции
+ Изменить процессор
+ Изменить память
+ Изменить имя производителя
+ Изменить тип ноутбука
+ Списать со склад ноутбуки (ключ, количество)
+
+
+ service
+    hw7.notes.service.NotebookService
+        boolean updateCPU(CPU cpu)
+        boolean updateMemory(Memory memory)
+        boolean updateVendor(Vendor vendor)
+        boolean updateNotebook(Notebook notebook)
+        boolean removeFromStore(Store store, int amount)
+    hw7.notes.service.NotebookServiceImpl
+ view
+    hw7.notes.service.Menu
+        main()
+
+
+4.
+. Добавить в приложение ноутбуков следующие функции:
+ Показать все ноутбуки на складе (пользователь указывает размер порции)
+ Показать все ноутбуки которых больше указанного количества
+ Показать все ноутбуки по указанному имени производителя процессора
+ Показать все ноутбуки на складе
+ Показать типы ноутбуков, оставшиеся на складе по каждому производителю
+ Получить объем продаж ноутбуков по каждому дню
+
+
+ service
+    hw7.notes.service.NotebookService
+        List<Notebook> getNotebooksByPortion(int size)
+        List<Notebook> getNotebooksGtAmount(int amount)
+        List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor)
+        List<Notebook> getNotebooksFromStore()
+        List<Notebook> getNotebooksStorePresent()
+        Map<Notebook, int> getSalesByDays()
+    hw7.notes.service.NotebookServiceImpl
+ view
+    hw7.notes.service.Menu
+        main()
