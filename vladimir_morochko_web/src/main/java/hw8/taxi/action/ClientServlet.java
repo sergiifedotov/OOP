@@ -22,8 +22,7 @@ public class ClientServlet extends HttpServlet {
     ClientService clientService = ClientServiceImpl.clientService;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        String action = parameterMap.get("action")[0];
+        String action = request.getParameter("action");
         List list = null;
         if (action.equals("showClientsByPortion")) {
             list = clientService.showClientsByPortion(10);
@@ -36,7 +35,7 @@ public class ClientServlet extends HttpServlet {
         if (action.equals("showClientsLastMonth")) {
             list = clientService.showClientsLastMonth();
         }
-        request.setAttribute("clientList", list);
+        request.getSession().setAttribute("clientList", list);
         request.getRequestDispatcher("clients.jsp").forward(request, response);
     }
 }
