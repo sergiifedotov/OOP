@@ -1,4 +1,4 @@
-
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: al1
@@ -12,6 +12,22 @@
 </head>
 
 <body>
-Hello Good Reguards
+
+<br/>
+
+<%
+    Map<String, String []> map = request.getParameterMap();
+        String login = map.get("login")[0];
+    out.println(login + ", приветствуем Вас на нашем сайте !!!\n");
+%>
+</br>
+</br>
+
+
+
+
+
+
+
 </body>
 </html>
