@@ -74,9 +74,8 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public boolean createClient(String name, String surname, String phone, String address) throws ClientException {
         if (name != null && address != null) {
-            Long clientId = clients.size() + 1L;
-            Client client = new Client(clientId, name, surname, phone, address);
-            // System.out.println(client);
+            Long id = clients.size() + 1L;
+            Client client = new Client(id, name, surname, phone, address);
             return clients.add(client);
         } else {
             throw new ClientException();
@@ -114,11 +113,23 @@ public class ClientServiceImpl implements ClientService {
         return list;
     }
 
+    @Override
     public ArrayList<Client> getClients() {
         return clients;
     }
 
+    @Override
     public void setClients(ArrayList<Client> clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public Client getClientById(Long id) {
+        for (Client client : clients) {
+            if (client.getId() == id) {
+                return client;
+            }
+        }
+        return null;
     }
 }
