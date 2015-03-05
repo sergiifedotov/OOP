@@ -18,7 +18,7 @@ import java.util.Map;
 public class AuthenticationServlet extends HttpServlet {
     private int count = 0;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
         Map<String, String []> map = request.getParameterMap();
