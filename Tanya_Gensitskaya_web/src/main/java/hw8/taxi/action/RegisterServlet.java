@@ -1,8 +1,8 @@
-package hw8.action;
+package hw8.taxi.action;
 
-import hw8.domain.Operator;
-import hw8.exception.AuthenticationException;
-import hw8.service.AuthenticationServiceImpl;
+import hw8.taxi.domain.Operator;
+import hw8.taxi.exception.AuthenticationException;
+import hw8.taxi.service.AuthenticationServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

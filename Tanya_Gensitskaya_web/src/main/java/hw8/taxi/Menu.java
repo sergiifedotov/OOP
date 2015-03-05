@@ -1,7 +1,7 @@
-package hw8;
+package hw8.taxi;
 
-import hw8.domain.Operator;
-import hw8.service.AuthenticationServiceImpl;
+import hw8.taxi.domain.Operator;
+import hw8.taxi.service.AuthenticationServiceImpl;
 
 /**
  * Created by Tanya on 05.03.2015.

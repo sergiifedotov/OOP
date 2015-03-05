@@ -1,6 +1,6 @@
-package hw8.dao;
+package hw8.taxi.dao;
 
-import hw8.domain.Operator;
+import hw8.taxi.domain.Operator;
 
 import java.util.List;
 

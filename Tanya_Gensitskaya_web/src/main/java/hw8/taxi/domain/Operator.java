@@ -1,12 +1,7 @@
-package hw8.domain;
+package hw8.taxi.domain;
 
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Tanya on 05.03.2015.

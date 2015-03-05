@@ -18,7 +18,7 @@
         <property name="hbm2ddl.auto">update</property>
 
 
-        <mapping class="hw8.domain.Operator"/>
+        <mapping class="hw8.taxi.domain.Operator"/>
         <!--<mapping class="session11.Region"/>-->
     </session-factory>
 </hibernate-configuration>

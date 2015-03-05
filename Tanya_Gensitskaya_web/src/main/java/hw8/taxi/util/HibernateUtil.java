@@ -1,4 +1,4 @@
-package hw8.util;
+package hw8.taxi.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;

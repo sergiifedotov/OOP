@@ -1,4 +1,4 @@
-package hw8.exception;
+package hw8.taxi.exception;
 
 /**
  * Created by Tanya on 04.03.2015.

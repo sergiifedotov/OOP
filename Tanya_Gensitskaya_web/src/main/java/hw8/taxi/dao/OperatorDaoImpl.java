@@ -1,7 +1,7 @@
-package hw8.dao;
+package hw8.taxi.dao;
 
-import hw8.domain.Operator;
-import hw8.util.HibernateUtil;
+import hw8.taxi.domain.Operator;
+import hw8.taxi.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

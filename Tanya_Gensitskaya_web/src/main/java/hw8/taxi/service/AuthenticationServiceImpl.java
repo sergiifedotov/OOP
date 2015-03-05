@@ -1,8 +1,8 @@
-package hw8.service;
+package hw8.taxi.service;
 
-import hw8.dao.OperatorDaoImpl;
-import hw8.domain.Operator;
-import hw8.exception.AuthenticationException;
+import hw8.taxi.dao.OperatorDaoImpl;
+import hw8.taxi.domain.Operator;
+import hw8.taxi.exception.AuthenticationException;
 
 import java.io.IOException;
 import java.io.InputStream;
