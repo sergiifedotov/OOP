@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class Order {
     private Date date;
-    private Client client;
+    private String client;
     private int amount;
     private String addressFrom;
     private String addressTo;
@@ -15,7 +15,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Date date, Client client, int amount, String addressFrom, String addressTo) {
+    public Order(Date date, String client, int amount, String addressFrom, String addressTo) {
         this.date = date;
         this.client = client;
         this.amount = amount;
@@ -31,11 +31,11 @@ public class Order {
         this.date = date;
     }
 
-    public Client getClient() {
+    public String getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(String client) {
         this.client = client;
     }
 

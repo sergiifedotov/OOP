@@ -7,7 +7,6 @@ import hw8.taxi.exception.OrderException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  *
@@ -18,7 +17,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException {
+    public boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException {
 
         Order order = new Order(new java.util.Date(),client, Integer.getInteger(amount), addressFrom, addressTo);
         orders.put(id,order);
@@ -26,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo) {
+    public void editOrder(Long id, String client, String amount, String addressFrom, String addressTo) {
         Order order = orders.get(id);
         if (order!=null){
             order.setClient(client);

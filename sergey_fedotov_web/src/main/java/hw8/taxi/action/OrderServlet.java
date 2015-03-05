@@ -25,7 +25,7 @@ import java.util.Map;
 public class OrderServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
     }
 
@@ -57,7 +57,7 @@ public class OrderServlet extends HttpServlet {
         OrderService orderService = new OrderServiceImpl();
         boolean ok = false;
         try {
-            ok = orderService.createOrder(System.currentTimeMillis(), null, amount, addressFrom,addressTo);
+            ok = orderService.createOrder(System.currentTimeMillis(), client, amount, addressFrom,addressTo);
         } catch (OrderException e) {
             e.printStackTrace();
         }
