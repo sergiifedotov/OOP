@@ -7,7 +7,7 @@ import hw8.taxi.exception.AuthenticationException;
  * Created by Tanya on 04.03.2015.
  */
 public interface AuthenticationService {
-//                 AuthorizationService
+
     public boolean authenticate(String login, String pass) throws AuthenticationException;
     public Long create(Operator operator);
     public boolean findLoginInBase(String login);

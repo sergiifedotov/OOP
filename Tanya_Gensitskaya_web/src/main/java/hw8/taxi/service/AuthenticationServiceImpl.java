@@ -12,14 +12,14 @@ import java.util.Properties;
 /**
  * Created by Tanya on 04.03.2015.
  */
-public class AuthenticationServiceImpl {
+public class AuthenticationServiceImpl implements AuthenticationService {
 
 
     public AuthenticationServiceImpl() {
     }
 
 
-    public boolean authenticate(String login, String pass) throws AuthenticationException, IOException {
+    public boolean authenticate(String login, String pass) throws AuthenticationException {
         String loginInBase = null;
         String passInBase = null;
         OperatorDaoImpl operatorDaoImpl = new OperatorDaoImpl();
