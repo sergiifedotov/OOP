@@ -19,7 +19,7 @@ import java.util.Map;
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> map = request.getParameterMap();
         String login = map.get("login")[0];
         String idNumber = map.get("idNumber")[0];
