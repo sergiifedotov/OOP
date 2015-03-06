@@ -2,18 +2,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Create Order</title>
+    <title>Create Client</title>
 </head>
 
 <body>
 
-<form action="/OrderServlet" method="POST"/>
+<form action="/ClientServlet" method="POST"/>
 <table width="100%" style="height: 100%; ">
     <thead></thead>
 
     <tbody>
     <tr style="height: 5%">
-        <td colspan="3" width="100%">Create Order</td>
+        <td colspan="3" width="100%">Create Client</td>
     </tr>
     <tr style="height: 5%">
         <td colspan="3" width="100%">
@@ -21,37 +21,30 @@
             <thead></thead>
             <tbody>
             <tr>
-                <td width="5%">date</td>
+                <td width="5%">name</td>
                 <td width="10%">
-                    <input type="date" name="date"/>
+                    <input type="text" name="name"/>
                 </td>
                 <td width="85%"></td>
             </tr>
             <tr>
-                <td width="5%">client</td>
+                <td width="5%">surname</td>
                 <td width="10%">
-                    <input type="client" name="client"/>
+                    <input type="text" name="surname"/>
                 </td>
                 <td width="85%"></td>
             </tr>
             <tr>
-                <td width="5%">sum</td>
+                <td width="5%">phone</td>
                 <td width="10%">
-                    <input type="number" name="sum"/>
+                    <input type="text" name="phone"/>
                 </td>
                 <td width="85%"></td>
             </tr>
             <tr>
-                <td width="5%">addressFrom</td>
+                <td width="5%">address</td>
                 <td width="10%">
-                    <input type="text" name="addressFrom"/>
-                </td>
-                <td width="85%"></td>
-            </tr>
-            <tr>
-                <td width="5%">addressTo</td>
-                <td width="10%">
-                    <input type="text" name="addressTo"/>
+                    <input type="text" name="address"/>
                 </td>
                 <td width="85%"></td>
             </tr>
