@@ -35,6 +35,7 @@ public class AuthenticationServlet extends HttpServlet {
 
         try {
             if(authenticationService.authenticate(login,password)){
+                request.setAttribute("welcomeLogin",login);
                 if (!authenticationService.changePass()) {
                     request.getRequestDispatcher("dashboard.jsp").forward(request, response);
                 } else{

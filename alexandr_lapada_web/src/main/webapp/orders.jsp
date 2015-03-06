@@ -37,10 +37,10 @@
                 </tr>
                 <tr height="60px" align="center">
                     <td>
-                    <form action="/hw8Order" method="post">
-                        </br>
-                        <input type="submit" name="releaseOrder" value="Оформить заказ" style="height: 40"></br>
-                    </form>
+                        <form action="/hw8Order" method="post">
+                            </br>
+                            <input type="submit" name="releaseOrder" value="Оформить заказ" style="height: 40"></br>
+                        </form>
                     </td>
                 </tr>
                 <tr height="60px">
@@ -79,13 +79,19 @@
         </td>
         <td>
             <%
-                List<Client> list = (ArrayList<Client>)request.getAttribute("list");
-                if (list != null) {
-                    for (int i = 0; i < list.size(); i++) {
-                        out.println(list.get(i).getFirstName() + " " + list.get(i).getLastName() + "</br>");
+                List<Client> listPorcia = (ArrayList<Client>)request.getAttribute("listPorcia");
+                if (listPorcia != null){
+                    for (int i = 0; i < listPorcia.size(); i++){
+                        out.println(listPorcia.get(i).getFirstName()+" "+listPorcia.get(i).getLastName()+"</br>");
                     }
+                    listPorcia = null;
                 }
             %>
+            <form action="/hw8Order" method="post">
+                <input type="submit" name="left" value="<<<">
+                <input type="submit" name="right" value=">>>">
+            </form>
+
         </td>
 
     </tr>

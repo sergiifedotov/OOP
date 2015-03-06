@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Authenticate</title>
 </head>
 
 <body>
@@ -28,12 +28,22 @@
             <h1>Войдите в свой кабинет.</h1></br>
             <form action = /hw8Auth method="post"/>
             ${wrongUser} </br>
-            <input type = "text" name = "login"/></br>
-            <input type = "password" name = "password"/></br>
-            <input type = "submit" value="login"/>
+            <table border="1">
+                <tr>
+                    <td colspan="2"><input type = "text" name = "login"/></br> </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type = "password" name = "password"/></br> </td>
+                </tr>
+                <tr>
+                    <td height="20%"><input type = "submit" value="login"/></td>
+                    <td height="80%"><a href="register.jsp">Register</a></td>
+                </tr>
+            </table>
             </form>
 
-            <a href="register.jsp"><button>Register</button></a>
+
+
 
           </td>
     </tr>
