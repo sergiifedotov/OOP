@@ -46,7 +46,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         if (getOperatorByLogin(login) != null) {
             throw new AuthorizationException("логин \"" + login + "\" уже существует");
         }
-        if (accessId == null || !accessId.matches("^[0-9]*.{10,}$")) {
+        if (accessId == null || !accessId.matches("^[0-9]*.{10}$")) {
             throw new AuthorizationException("идентификационный номер должен быть из 10 цифр, без букв и других знаков");
         }
         if (password == null || password.length() < 8) {

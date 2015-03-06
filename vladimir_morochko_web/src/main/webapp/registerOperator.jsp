@@ -21,7 +21,7 @@
 <h>${registerResultMessage}</h>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
 <form action="/AuthorizationServlet">
-    <input type="hidden" name="action" value="registerClient"/>
+    <input type="hidden" name="action" value="registerOperator"/>
     <p>Логин:</p>
     <input type="text" name="login" value="${defaultLogin}"/>
     <p>Идентификационный номер:</p>
