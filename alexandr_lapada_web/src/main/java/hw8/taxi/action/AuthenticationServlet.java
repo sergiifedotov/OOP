@@ -1,8 +1,8 @@
 package hw8.taxi.action;
 
 import hw8.taxi.exception.AuthenticationException;
-import hw8.taxi.service.AuthenticationService;
-import hw8.taxi.service.AuthenticationServiceImpl;
+import hw8.taxi.service.AuthorizationService;
+import hw8.taxi.service.AuthorizationServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,11 +19,11 @@ import java.util.Map;
 @WebServlet("/hw8Auth")
 public class AuthenticationServlet extends HttpServlet {
 
-    private AuthenticationService authenticationService;
+    private AuthorizationService authenticationService;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        authenticationService = new AuthenticationServiceImpl();
+        authenticationService = new AuthorizationServiceImpl();
 
         Map<String, String[]> map = request.getParameterMap();
         String login = map.get("login")[0];

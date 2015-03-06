@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by sanya on 03.03.2015.
  */
-public class AuthenticationServiceImpl implements AuthenticationService {
+public class AuthorizationServiceImpl implements AuthorizationService {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     private final String dateChangePassStr = "04.03.2015";
@@ -23,7 +23,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private Map<String, String> mapUsers;
 
-    public AuthenticationServiceImpl() {
+    public AuthorizationServiceImpl() {
         mapUsers = new HashMap<String, String>();
 
         mapUsers.put("zagebenge", "123456");

@@ -1,7 +1,6 @@
 package hw8.taxi.action;
 
-import hw8.taxi.service.AuthenticationService;
-import hw8.taxi.service.AuthenticationServiceImpl;
+import hw8.taxi.service.AuthorizationServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,12 +16,12 @@ import java.util.Map;
 @WebServlet("/hw8Register")
 public class RegisterServlet extends HttpServlet {
 
-    private AuthenticationServiceImpl authenticationService ;
+    private AuthorizationServiceImpl authenticationService ;
 
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        authenticationService = new AuthenticationServiceImpl();
+        authenticationService = new AuthorizationServiceImpl();
         boolean flagWrongAuth = false;
 
         Map<String, String[]> map = request.getParameterMap();

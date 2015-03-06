@@ -11,7 +11,7 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     @Override
-    public boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException {
+    public boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException {
         return false;
     }
 
