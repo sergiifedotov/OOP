@@ -32,26 +32,38 @@ public class ClientServiceImpl implements ClientService {
         Client client = new Client("Ваня", "Иванов", "1234567890", "ул. Бассейная, 1");
         client.setLastOrderDate(new Date());
         client.setSum(123);
+        Long clientId = clients.size() + 1L;
+        client.setId(clientId);
         clients.add(client);
         client = new Client("Петя", "Петров", "2345678901", "ул. Бассейная, 2");
         client.setLastOrderDate(new Date());
         client.setSum(234);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
         clients.add(client);
         client = new Client("Сидор", "Сидоров", "3456789012", "ул. Бассейная, 3");
         client.setLastOrderDate(new Date());
         client.setSum(345);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
         clients.add(client);
         client = new Client("Прошка", "Прохоров", "4567890123", "ул. Бассейная, 4");
         client.setLastOrderDate(new Date());
         client.setSum(456);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
         clients.add(client);
         client = new Client("Изя", "Зильберштуцер", "5678901234", "ул. Бассейная, 5");
         client.setLastOrderDate(new Date());
         client.setSum(567);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
         clients.add(client);
         client = new Client("Махмуд", "Алинбеков", "6789012345", "ул. Бассейная, 6");
         client.setLastOrderDate(new Date());
         client.setSum(678);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
         clients.add(client);
     }
 
@@ -62,9 +74,8 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public boolean createClient(String name, String surname, String phone, String address) throws ClientException {
         if (name != null && address != null) {
-            Long clientId = clients.size() + 1L;
-            Client client = new Client(clientId, name, surname, phone, address);
-            // System.out.println(client);
+            Long id = clients.size() + 1L;
+            Client client = new Client(id, name, surname, phone, address);
             return clients.add(client);
         } else {
             throw new ClientException();
@@ -102,11 +113,23 @@ public class ClientServiceImpl implements ClientService {
         return list;
     }
 
+    @Override
     public ArrayList<Client> getClients() {
         return clients;
     }
 
+    @Override
     public void setClients(ArrayList<Client> clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public Client getClientById(Long id) {
+        for (Client client : clients) {
+            if (client.getId() == id) {
+                return client;
+            }
+        }
+        return null;
     }
 }

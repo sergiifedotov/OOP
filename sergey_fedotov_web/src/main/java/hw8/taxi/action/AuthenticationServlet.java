@@ -37,7 +37,7 @@ public class AuthenticationServlet extends HttpServlet {
             req.setAttribute("login", login);
             req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
         }else{
-            req.setAttribute("errLogin",new String("error login!!!"));
+            req.setAttribute("errLogin",new String("error login or pass!!!"));
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         }
 
