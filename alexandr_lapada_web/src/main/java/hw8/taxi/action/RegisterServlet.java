@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
     private AuthorizationServiceImpl authenticationService ;
 
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         authenticationService = new AuthorizationServiceImpl();
         boolean flagWrongAuth = false;

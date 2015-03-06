@@ -17,7 +17,7 @@ import java.util.Map;
  */
 
 @WebServlet("/hw8Auth")
-public class AuthenticationServlet extends HttpServlet {
+public class AuthServlet extends HttpServlet {
 
     private AuthorizationService authenticationService;
 

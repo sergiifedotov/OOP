@@ -24,7 +24,7 @@
 
         <tr>
             <td align="right" width="50%">
-                <form action="hw8Register" method="post"/>
+                <form action="hw8Register" method="get"/>
                     Логин - <input type = "text" name = "login">  ${wrongNewLogin} ${loginUsed} </br></br>
                     Пароль - <input type = "password" name = "password"> ${wrongNewPass} </br></br>
                     Подтверждение пароля - <input type = "password" name = "confirmPassword"> ${wrongConfPass} </br></br>
