@@ -1,14 +1,28 @@
 package hw7.notes.service;
 
-import hw6.notes.domain.Notebook;
+import hw7.notes.domain.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by @CAT_Caterpiller on 11.02.2015.
+ * Created by Chuvychin on 19.02.2015.
  */
-
 public interface NotebookService {
-    Long add(Notebook notebook);
-    List<Notebook> findAll();
+
+    Long receive(Long notebookId, int amount, double price);
+    Long sale(Long storeId, int amount);
+
+    boolean updateCPU(CPU cpu);
+    boolean updateMemory(Memory memory);
+    boolean updateVendor(Vendor vendor);
+    boolean updateNotebook(Notebook notebook);
+    boolean removeFromStore(Store store, int amount);
+
+    List<Notebook> getNotebooksByPortion(int size);
+    List<Notebook> getNotebooksGtAmount(int amount);
+    List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
+    List<Notebook> getNotebooksFromStore();
+    List<Notebook> getNotebooksStorePresent();
+    Map<Notebook, Integer> getSalesByDays();
 }

@@ -1,17 +1,15 @@
-
 <%--
   Created by IntelliJ IDEA.
-  User: al1
-  Date: 05.10.14
+  User: vladimir
+  Date: 03.03.2015
 --%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Hello</title>
+    <title></title>
 </head>
-
 <body>
-     Hello Web
+<p><a href="dashboard.jsp">На панель управления</a></p>
+<p><a href="registerOperator.jsp">Зарегистрироваться</a></p>
 </body>
 </html>

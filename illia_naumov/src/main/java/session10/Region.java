@@ -10,12 +10,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "REGIONS")
 public class Region {
+    @Id
     @SequenceGenerator(name = "sequence", sequenceName = "SEQ_REGIONS_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-    @Id
     @Column(name = "REGION_ID")
     private Long id;
+
     @Column(name = "REGION_NAME")
     private String name;
 
@@ -44,6 +45,9 @@ public class Region {
 
     @Override
     public String toString() {
-        return "Region{id=" + id + ", name='" + name + "\'}";
+        return "Region{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

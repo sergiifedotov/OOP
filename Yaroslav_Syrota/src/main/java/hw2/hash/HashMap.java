@@ -1,60 +1,146 @@
 package hw2.hash;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
- * Created by Yaroslav_Syrota on 20.01.2015.
+ * Created by vladimir on 23.01.2015.
+ *
+ * Написать собственную реализацию "Хэш карты".
+ * Карта должна хранить объекты класса "Пользователь" из первого задания.
+ *
+ * Реализовать методы:
+ *
+ * 1. boolean put(int key, User elem)
+ * 2. User get(int key)
+ * 3. int size()
+ * 4. boolean remove(int key)
+ * 5. Iterator<User> iterator()
+ *
+ * Классы задания:
+ * hw2.hash.HashMap
+ * hw2.hash.User
+ *
+ * Класс теста hw2.hash.HashMapTest
  */
+public class HashMap implements Iterable {
+    private List<Entry>[] entries;
+    private int defaultSize = 16;
+    private final double loadFactor = 0.75;
+    private int currentSize;
 
-/*
-Написать собственную реализацию "Хэш карты".
-Карта должна хранить объекты класса "Пользователь" из первого задания.
+    public HashMap() {
+        currentSize = 0;
+        entries = new List[defaultSize];
+        for (int i = 0; i < entries.length; i++) {
+            entries[i] = new LinkedList<>();
+            // AbstractMap.SimpleEntry<>
+        }
+    }
 
-Реализовать методы:
+    public boolean put(int key, User user) {
+        List<Entry> list = entries[key % entries.length];
+        Entry entryToAdd = new Entry(key, user);
+        if (!list.contains(entryToAdd)) {
+            list.add(entryToAdd);
+            currentSize++;
+            resizeEntriesListIfNeeded();
+            return true;
+        }
+        return false;
+    }
 
-1. boolean put(int key, User elem)
-2. User get(int key)
-3. int size()
-4. boolean remove(int key)
-5. Iterator<User> iterator()
+    private void resizeEntriesListIfNeeded() {
+        if (currentSize > (int) defaultSize * loadFactor) {
+            defaultSize *= 2;
+            System.out.println("resizing to " + defaultSize);
+            List<Entry>[] newEntries = new List[defaultSize];
+            for (int i = 0; i < newEntries.length; i++) {
+                newEntries[i] = new LinkedList<>();
+            }
 
-Классы задания:
-hw2.hash.HashMap
-hw2.hash.User
+            int currentEntryIndex = 0;
+            int entriesIndex = 0;
+            int listIndex = 0;
 
-Класс теста hw2.hash.HashMapTest
- */
-
-    import java.util.AbstractMap;
-    import java.util.LinkedList;
-    import java.util.AbstractMap;
-    import java.util.Map;
-
-public class HashMap<Integer, User> {
-    private int sizeUsers;
-    private int indexSize;
-    // private ArrayList<User> usersList;
-    private LinkedList<User>[] usersMass = new LinkedList[10];
-
-    public HashMap(){}
-
-
-
-    public boolean put(int key, User elm) {
-        boolean b = false;
-        return b;
+            while (currentEntryIndex < currentSize) {
+                if (listIndex >= entries[entriesIndex].size()) {
+                    entriesIndex++;
+                    listIndex = 0;
+                } else {
+                    int newKey = entries[entriesIndex].get(listIndex).getKey();
+                    List<Entry> list = newEntries[newKey % newEntries.length];
+                    list.add(entries[entriesIndex].get(listIndex));
+                    currentEntryIndex++;
+                    listIndex++;
+                }
+            }
+            entries = newEntries;
+        }
     }
 
     public User get(int key) {
-        User temp = null;
-        return temp;
+        List<Entry> list = entries[key % entries.length];
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getKey().equals(key)) {
+                return list.get(i).getUser();
+            }
+        }
+        return null;
+    }
+
+    public int size() {
+        return currentSize;
     }
 
     public boolean remove(int key) {
-        boolean b = false;
-        return b;
+        List<Entry> list = entries[key % entries.length];
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getKey().equals(key)) {
+                list.remove(i);
+                currentSize--;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Iterator<User> iterator() {
+        return new Iterator<User>() {
+            int currentEntryIndex = 0;
+            int entriesIndex = 0;
+            int listIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentEntryIndex < currentSize;
+            }
+
+            @Override
+            public User next() {
+                while (hasNext()) {
+                    if (listIndex >= entries[entriesIndex].size()) {
+                        entriesIndex++;
+                        listIndex = 0;
+                    } else {
+                        currentEntryIndex++;
+                        return entries[entriesIndex].get(listIndex++).getUser();
+                    }
+                }
+                return null;
+            }
+        };
+    }
+
+    @Override
+    public String toString() {
+        String stringToReturn = new String();
+        for (List<Entry> list : entries) {
+            stringToReturn += list;
+        }
+        return stringToReturn;
     }
 
 
-    public int size() {
-        return sizeUsers;
-    }
 }

@@ -13,4 +13,6 @@ public interface NotebookDao {
     boolean update(Notebook notebook);
     boolean delete(Notebook notebook);
     List<Notebook> findAll();
+
+    List<Notebook> getPortion(Integer first, Integer result);
 }
