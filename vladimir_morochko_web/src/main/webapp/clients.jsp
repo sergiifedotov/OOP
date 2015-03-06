@@ -13,11 +13,10 @@
 <body>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
 <%--<p>${clientList}</p>--%>
-
 <%
-    session = request.getSession();
+    //session = request.getSession();
     List<Client> list = (List<Client>) session.getAttribute("clientList");
-    response.getWriter().print(
+    out.print(
             "<table border=\"1\">" +
                     "<tr>" +
                     "<th>id</th>" +
@@ -29,7 +28,7 @@
                     "<th>lastOrderDate</th>" +
                     "</tr>");
     for (Client client : list) {
-        response.getWriter().print(
+        out.print(
                 "<tr>" +
                         "<td>" + client.getId() + "</td>" +
                         "<td>" + client.getName() + "</td>" +
@@ -41,7 +40,7 @@
                         "</tr>"
         );
     }
-    response.getWriter().print("</table>");
+    out.print("</table>");
 %>
 </body>
 </html>

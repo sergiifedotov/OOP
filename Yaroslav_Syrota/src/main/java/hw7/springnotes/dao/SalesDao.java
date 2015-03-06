@@ -5,14 +5,12 @@ import hw7.springnotes.domain.Sales;
 import java.util.List;
 
 /**
- * Created by vladimir on 23.02.2015.
+ * Created by Chuvychin on 27.02.2015.
  */
 public interface SalesDao {
-    Long create(Sales sales);
-    Sales read(Long id);
-    void update(Sales sales);
-    void delete(Sales sales);
+    Long create(Sales store);
+    Sales read(Long ig);
+    boolean update(Sales store);
+    boolean delete(Sales store);
     List<Sales> findAll();
-
-    List<Sales> getSalesByDays();
 }

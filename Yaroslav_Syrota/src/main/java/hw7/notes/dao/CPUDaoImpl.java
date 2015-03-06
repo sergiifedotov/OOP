@@ -1,9 +1,7 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.CPU;
-import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,31 +9,31 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 /**
- * Created by vladimir on 17.02.2015.
+ * Created by Chuvychin on 20.02.2015.
  */
 public class CPUDaoImpl implements CPUDao {
-    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
 
-    public CPUDaoImpl() {
+    private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
+    private SessionFactory factory;
+
+    public CPUDaoImpl(SessionFactory factory){
+        this.factory = factory;
     }
 
-    public CPUDaoImpl(SessionFactory sessionFactory) {
-        this();
-        this.sessionFactory = sessionFactory;
+    public CPUDaoImpl() {
     }
 
     @Override
     public Long create(CPU cpu) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
             Long id = (Long)session.save(cpu);
             session.getTransaction().commit();
             return id;
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
+            log.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
             if(session != null) {
@@ -46,19 +44,16 @@ public class CPUDaoImpl implements CPUDao {
     }
 
     @Override
-    public CPU read(Long id) {
+    public CPU read(Long ig) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
-            return (CPU) session.get(CPU.class, id);
+            return (CPU)session.get(CPU.class, ig);
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return null;
     }
@@ -67,18 +62,15 @@ public class CPUDaoImpl implements CPUDao {
     public boolean update(CPU cpu) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
             session.update(cpu);
             session.getTransaction().commit();
             return true;
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return false;
     }
@@ -87,18 +79,15 @@ public class CPUDaoImpl implements CPUDao {
     public boolean delete(CPU cpu) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
             session.delete(cpu);
             session.getTransaction().commit();
             return true;
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return false;
     }
@@ -107,22 +96,15 @@ public class CPUDaoImpl implements CPUDao {
     public List<CPU> findAll() {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(CPU.class);
-            return criteria.list();
+            session = factory.openSession();
+            session.beginTransaction();
+            return (List<CPU>)session.createCriteria(CPU.class).list();
+
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return null;
-    }
-
-    @Override
-    public void close() {
-        sessionFactory.close();
     }
 }

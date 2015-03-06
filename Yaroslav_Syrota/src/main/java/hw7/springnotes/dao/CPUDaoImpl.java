@@ -1,55 +1,57 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.CPU;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * Created by vladimir on 23.02.2015.
+ * Created by Chuvychin on 27.02.2015.
  */
+
 @Repository
 @Transactional
 public class CPUDaoImpl implements CPUDao {
-    @Qualifier("mySessionFactoryHW7")
-    @Autowired(required = true)
-    private SessionFactory sessionFactory;
+    private static Logger log = Logger.getLogger(CPUDao.class);
+
+    private SessionFactory factory;
+
+    @Autowired
+    public CPUDaoImpl(SessionFactory factory) {
+        this.factory = factory;
+    }
 
     public CPUDaoImpl() {
     }
 
     @Override
     public Long create(CPU cpu) {
-        return (Long) sessionFactory.getCurrentSession().save(cpu);
+        return null;
+    }
+
+    @Transactional (readOnly = true)
+    @Override
+    public CPU read(Long ig) {
+        return null;
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public CPU read(Long id) {
-        return (CPU) sessionFactory.getCurrentSession().get(CPU.class, id);
+    public boolean update(CPU cpu) {
+        return false;
     }
 
     @Override
-    public void update(CPU cpu) {
-        sessionFactory.getCurrentSession().update(cpu);
+    public boolean delete(CPU cpu) {
+        return false;
     }
 
+    @Transactional (readOnly = true)
     @Override
-    public void delete(CPU cpu) {
-        sessionFactory.getCurrentSession().delete(cpu);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<CPU> findAll() {
-        Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(CPU.class);
-        return criteria.list();
+        return null;
     }
 }

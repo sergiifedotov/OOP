@@ -5,7 +5,7 @@ import hw7.notes.domain.Vendor;
 import java.util.List;
 
 /**
- * Created by vladimir on 17.02.2015.
+ * Created by Chuvychin on 19.02.2015.
  */
 public interface VendorDao {
     Long create(Vendor vendor);
@@ -13,6 +13,4 @@ public interface VendorDao {
     boolean update(Vendor vendor);
     boolean delete(Vendor vendor);
     List<Vendor> findAll();
-
-    void close();
 }
