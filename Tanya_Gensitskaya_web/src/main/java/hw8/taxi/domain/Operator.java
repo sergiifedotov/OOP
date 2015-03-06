@@ -1,6 +1,5 @@
 package hw8.taxi.domain;
 
-
 import javax.persistence.*;
 
 /**
