@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,6 +17,7 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().print("Hello servlet");
+        Map<String, String[]> parameters = request.getParameterMap();
+        response.getWriter().print("Hello servlet"+"  "+parameters.get("login")[0]);
     }
 }
