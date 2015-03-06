@@ -25,186 +25,145 @@ import java.util.*;
  */
 
 public class Freq {
-	private String wordsSet = "";
+	  private HashMap<String, Integer> wordMap;
 
-
-	public String setTextFromConsole() throws IOException{
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		String temp = reader.readLine();
-		wordsSet += temp;
-		return temp;
-	}
-
-	public String setTextFromFile(String fileName) {
-		String temp = "";
-		try {
-			FileInputStream fis = new FileInputStream(fileName);
-			do {
-				fis.read();
-				temp += fis.toString();
-			} while(fis.read()!='\n');
-			/*
-			while(fis.available()>0) {
-				temp += fis.read();
-			}
-			*/
-			fis.close();
-		} catch(FileNotFoundException e) {
-			System.out.println("can not open the file");
-
-		} catch (IOException e) {
-			System.out.println(e);
+public Freq() {
+		wordMap = new HashMap<String, Integer>();
 		}
-		wordsSet += temp;
-		return temp;
-	}
 
-	public String generateRandomText(int textLength) {
-		String temp = "";
-		Set<String> set = revertSet(wordsSet);
-		for(int i=0; i<textLength; i++) {
-			Iterator<String> iterator = set.iterator();
-			temp += iterator.next();
+// добавляет текст с консоли в строку и возвращает строку
+public String setTextFromConsole() {
+		Scanner scan = new Scanner(System.in);
+		return scan.next();
 		}
-		return temp;
-	}
 
-	public Set<String> getWordsByFrequency(int frequency) {
-		HashMap<String, Integer> map = revertMap(wordsSet);
-		Set<String> set = new HashSet<String>();
-		Iterator<Map.Entry<String,Integer>> iterator = map.entrySet().iterator();
+// добавляет текст из указанного по имени файла в строку
+// и возвращает строку
+public String setTextFromFile(String fileName) throws FileNotFoundException {
+		String textToReturn = new String();
+		FileReader fr = new FileReader(fileName);
+		Scanner scanFile = new Scanner(fr);
+		while (scanFile.hasNext()) {
+		textToReturn += scanFile.next();
+		}
+		scanFile.close();
+		return textToReturn;
+		}
+
+// генерирует случайный текст по указанной длине
+public String generateRandomText(int textLength) {
+		String textToReturn = new String();
+		String textSample = "generally the day after policy moves" +
+		"from the ecb or the fed you have a little bit of " +
+		"a pullback said head of global " +
+		"equities at first new york securities after a euphoric " +
+		"move up normally there is a little bit of a hangover " +
+		"the next day the market extended its declines into the " +
+		"close some traders said friday that investors were " +
+		"wary of making or staying in bets that stocks will go " +
+		"higher ahead of greece elections on sunday which could " +
+		"again spark fears about political instability in " +
+		"the eurozone ";
+		for (int i = 0; i < textLength / textSample.length(); i++) {
+		textToReturn += textSample;
+		}
+		textToReturn += textSample.substring(0, textLength % textSample.length());
+		return textToReturn;
+		}
+
+public void fillWordMap(String inputString) {
+		wordMap = new HashMap<String, Integer>();
+		Reader read = new StringReader(inputString);
+		Scanner scan = new Scanner(read);
+		while (scan.hasNext()) {
+		String currentItem = scan.next();
+		if (wordMap.containsKey(currentItem)) {
+		wordMap.replace(currentItem, wordMap.get(currentItem) + 1);
+		} else {
+		wordMap.put(currentItem, 1);
+		}
+		}
+		}
+
+// возвращает множество слов, которые встречаются
+// указанное количество раз
+public Set<String> getWordsByFrequency(int frequency) {
+		Set<String> setToReturn = new HashSet<String>();
+		Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
 		while (iterator.hasNext()) {
-			Map.Entry<String, Integer> pair = iterator.next();
-			if(pair.getValue() == frequency) set.add(pair.getKey());
+		Map.Entry<String, Integer> currentEntry = iterator.next();
+		if (currentEntry.getValue().equals(frequency)) {
+		setToReturn.add(currentEntry.getKey());
 		}
-		return set;
-	}
+		}
+		return setToReturn;
+		}
 
-	public Set<String> getWordsByFrequencyLessThan(int frequency) {
-		HashMap<String, Integer> map = revertMap(wordsSet);
-		Set<String> set = new HashSet<String>();
-		Iterator<Map.Entry<String,Integer>> iterator = map.entrySet().iterator();
+// возвращает множество, которое встречается реже
+public Set<String> getWordsByFrequencyLessThan(int frequency) {
+		Set<String> setToReturn = new HashSet<String>();
+		Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
 		while (iterator.hasNext()) {
-			Map.Entry<String, Integer> pair = iterator.next();
-			if(pair.getValue() < frequency) set.add(pair.getKey());
+		Map.Entry<String, Integer> currentEntry = iterator.next();
+		if (currentEntry.getValue().compareTo(frequency) < 0) {
+		setToReturn.add(currentEntry.getKey());
 		}
-		return set;
-	}
+		}
+		return setToReturn;
+		}
 
-	public Set<String> getWordsByFrequencyMoreThan(int frequency) {
-		HashMap<String, Integer> map = revertMap(wordsSet);
-		Set<String> set = new HashSet<String>();
-		Iterator<Map.Entry<String,Integer>> iterator = map.entrySet().iterator();
+// возвращает множество, которое встречается чаще
+public Set<String> getWordsByFrequencyMoreThan(int frequency) {
+		Set<String> setToReturn = new HashSet<String>();
+		Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
 		while (iterator.hasNext()) {
-			Map.Entry<String, Integer> pair = iterator.next();
-			if(pair.getValue() > frequency) set.add(pair.getKey());
+		Map.Entry<String, Integer> currentEntry = iterator.next();
+		if (currentEntry.getValue().compareTo(frequency) > 0) {
+		setToReturn.add(currentEntry.getKey());
 		}
-		return set;
-	}
-
-	public void printAcs() {
-		HashMap<String, Integer> map = revertMap(wordsSet);
-		int[] ind = new int[map.size()];
-		String[] val = new String[map.size()];
-		Iterator<Map.Entry<String,Integer>> iterator = map.entrySet().iterator();
-		int o = 0;
-		while (iterator.hasNext()) {
-			Map.Entry<String, Integer> pair = iterator.next();
-			ind[o] = pair.getValue();
-			val[o] = pair.getKey();
-			o++;
 		}
-		quicksort(ind, val, 0, ind.length-1);
-		for(int i=0; i<ind.length; i++) {
-			System.out.println(val[i]);
+		return setToReturn;
 		}
-	}
 
-	public void printDesc() {
-		HashMap<String, Integer> map = revertMap(wordsSet);
-		int[] ind = new int[map.size()];
-		String[] val = new String[map.size()];
-		Iterator<Map.Entry<String,Integer>> iterator = map.entrySet().iterator();
-		int o = 0;
-		while (iterator.hasNext()) {
-			Map.Entry<String, Integer> pair = iterator.next();
-			ind[o] = pair.getValue();
-			val[o] = pair.getKey();
-			o++;
+		// вывести все слова + частота по возрастанию частоты
+		void printAcs() {
+		Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>() {
+@Override
+public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		return o1.getValue().compareTo(o2.getValue());
 		}
-		quicksort(ind, val, 0, ind.length-1);
-		for(int i=val.length-1; i>=0; i--) {
-			System.out.println(val[i]);
+		};
+		ArrayList<Map.Entry<String, Integer>> sortedWords = new ArrayList<>(wordMap.entrySet());
+//        Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
+//        while (iterator.hasNext()) {
+//            sortedWords.add(iterator.next());
+//        }
+		Collections.sort(sortedWords, comparator);
+		System.out.println(sortedWords);
 		}
-	}
 
-	public Set<String> revertSet(String s) {
-		Set<String> set = new HashSet<String>();
-		String temp = "";
-		char[] l = s.toCharArray();
-		for(char i : l) {
-			if(i!=' ' && i!=',' && i!='.') temp += i;
-			else {
-				set.add(temp);
-				temp = "";
-			}
+		// вывести все слова + частота по убыванию частоты
+		void printDesc() {
+		Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>() {
+@Override
+public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		return - o1.getValue().compareTo(o2.getValue());
 		}
-		return set;
-	}
-
-	public HashMap<String, Integer> revertMap(String s) {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		String temp = "";
-		char[] l = s.toCharArray();
-		for(char i : l) {
-			if(i!=' ' && i!=',' && i!='.') temp += i;
-			else {
-				if(map.containsKey(temp)) {
-					int t = map.get(temp);
-					map.put(temp, t++);
-					temp="";
-				} else {
-					map.put(temp, 1);
-					temp = "";
-				}
-
-			}
+		};
+		ArrayList<Map.Entry<String, Integer>> sortedWords = new ArrayList<>(wordMap.entrySet());
+//        Iterator<Map.Entry<String, Integer>> iterator = wordMap.entrySet().iterator();
+//        while (iterator.hasNext()) {
+//            sortedWords.add(iterator.next());
+//        }
+		Collections.sort(sortedWords, comparator);
+		System.out.println(sortedWords);
 		}
-		return map;
-	}
 
-
-
-	private int partition(int[] array, String[] words, int start, int end)
-	{
-		int marker = start;
-		for ( int i = start; i <= end; i++ )
-		{
-			if ( array[i] <= array[end] )
-			{
-				int temp = array[marker];
-				String t = words[marker];// swap
-				array[marker] = array[i];
-				words[marker] = words[i];
-				array[i] = temp;
-				words[i] = t;
-				marker += 1;
-			}
+public HashMap<String, Integer> getWordMap() {
+		return wordMap;
 		}
-		return marker - 1;
-	}
-
-	private void quicksort(int[] array, String[] words, int start, int end)
-	{
-		if ( start >= end )
-		{
-			return;
+public void setWordMap(HashMap<String, Integer> wordMap) {
+		this.wordMap = wordMap;
 		}
-		int pivot = partition (array, words, start, end);
-		quicksort (array, words, start, pivot-1);
-		quicksort (array, words, pivot+1, end);
-	}
 
-
-
-}
+		}

@@ -1,9 +1,7 @@
 package hw7.notes.dao;
 
 import hw7.notes.domain.Memory;
-import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,31 +9,30 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 /**
- * Created by vladimir on 17.02.2015.
+ * Created by Chuvychin on 20.02.2015.
  */
 public class MemoryDaoImpl implements MemoryDao {
-    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
+    private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
+    private SessionFactory factory;
 
-    public MemoryDaoImpl() {
+    public MemoryDaoImpl(SessionFactory factory){
+        this.factory = factory;
     }
 
-    public MemoryDaoImpl(SessionFactory sessionFactory) {
-        this();
-        this.sessionFactory = sessionFactory;
+    public MemoryDaoImpl() {
     }
 
     @Override
     public Long create(Memory memory) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
             Long id = (Long)session.save(memory);
             session.getTransaction().commit();
             return id;
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
+            log.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
             if(session != null) {
@@ -46,19 +43,16 @@ public class MemoryDaoImpl implements MemoryDao {
     }
 
     @Override
-    public Memory read(Long id) {
+    public Memory read(Long ig) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
-            return (Memory) session.get(Memory.class, id);
+            return (Memory)session.get(Memory.class, ig);
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return null;
     }
@@ -67,18 +61,15 @@ public class MemoryDaoImpl implements MemoryDao {
     public boolean update(Memory memory) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
             session.update(memory);
             session.getTransaction().commit();
             return true;
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return false;
     }
@@ -87,18 +78,15 @@ public class MemoryDaoImpl implements MemoryDao {
     public boolean delete(Memory memory) {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
+            session = factory.openSession();
             session.beginTransaction();
             session.delete(memory);
             session.getTransaction().commit();
             return true;
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return false;
     }
@@ -107,22 +95,15 @@ public class MemoryDaoImpl implements MemoryDao {
     public List<Memory> findAll() {
         Session session = null;
         try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Memory.class);
-            return criteria.list();
+            session = factory.openSession();
+            session.beginTransaction();
+            return (List<Memory>)session.createCriteria(Memory.class).list();
+
+
         } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
+            log.error("Open session failed", e);
+
         }
         return null;
-    }
-
-    @Override
-    public void close() {
-        sessionFactory.close();
     }
 }

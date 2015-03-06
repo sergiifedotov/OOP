@@ -5,12 +5,12 @@ import hw7.springnotes.domain.Vendor;
 import java.util.List;
 
 /**
- * Created by vladimir on 23.02.2015.
+ * Created by Chuvychin on 27.02.2015.
  */
 public interface VendorDao {
     Long create(Vendor vendor);
-    Vendor read(Long id);
-    void update(Vendor vendor);
-    void delete(Vendor vendor);
+    Vendor read(Long ig);
+    boolean update(Vendor vendor);
+    boolean delete(Vendor vendor);
     List<Vendor> findAll();
 }
