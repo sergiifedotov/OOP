@@ -16,19 +16,21 @@ import java.util.Map;
 @WebServlet("/serv")
 public class HelloServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
         Map<String, String []> map = request.getParameterMap();
         String login = map.get("login")[0];
-
         String password = map.get("password")[0];
+
         if(login.equals("Tanya") && password.equals("Tanya")){
-            request.getRequestDispatcher("good.jsp").forward(request, response);
+            request.getRequestDispatcher("dashboard.jsp").forward(request, response);
         } else {
             request.setAttribute("hi", new String("Error"));
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         }
+
 
         response.getWriter().print("Hello " + login);
     }

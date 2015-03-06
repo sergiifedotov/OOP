@@ -6,13 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by vladimir on 17.02.2015.
+ * Created by Chuvychin on 19.02.2015.
  */
 public interface NotebookService {
-    Long add(CPU cpu);
-    Long add(Memory memory);
-    Long add(Vendor vendor);
-    Long add(Notebook notebook);
 
     Long receive(Long notebookId, int amount, double price);
     Long sale(Long storeId, int amount);
@@ -29,6 +25,4 @@ public interface NotebookService {
     List<Notebook> getNotebooksFromStore();
     List<Notebook> getNotebooksStorePresent();
     Map<Notebook, Integer> getSalesByDays();
-
-    void close();
 }

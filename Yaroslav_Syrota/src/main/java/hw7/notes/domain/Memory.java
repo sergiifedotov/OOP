@@ -2,45 +2,37 @@ package hw7.notes.domain;
 
 import javax.persistence.*;
 
-/**
- * Created by vladimir on 17.02.2015.
- *
- * 1. Создать сущности для базы данных "Магазин ноутбуков":
- Тип ноутбука(производитель, модель, дата производства, процессор, память)
- Производители(имя)
- Процессоры(производитель, частота, модель)
- Память(производитель, размер)
- Склад ноутбуков(тип ноутбука, количество, цена)
- Продажи(склад ноутбуков, дата продажи, количество)
 
- domain
- hw7.notes.domain.Notebook
- hw7.notes.domain.Vendor
- hw7.notes.domain.CPU
- hw7.notes.domain.Memory
- hw7.notes.domain.Store
- hw7.notes.domain.Sales
+/**
+ * Created by Chuvychin on 19.02.2015.
  */
 @Entity
 @Table(name = "MEMORY")
 public class Memory {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_MEMORY_ID",
+
+    @Id
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_REGION_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-    @Id
     @Column (name = "MEMORY_ID")
     private Long id;
 
     @ManyToOne
     private Vendor vendor;
-    private long capacity;
+
+    private String size;
 
     public Memory() {
     }
 
-    public Memory(Vendor vendor, long capacity) {
+    public Memory(Vendor vendor, String size) {
         this.vendor = vendor;
-        this.capacity = capacity;
+        this.size = size;
+    }
+
+    @Override
+    public String toString(){
+        return vendor+"/"+size;
     }
 
     public Long getId() {
@@ -59,19 +51,11 @@ public class Memory {
         this.vendor = vendor;
     }
 
-    public long getCapacity() {
-        return capacity;
+    public String getSize() {
+        return size;
     }
 
-    public void setCapacity(long size) {
-        this.capacity = size;
-    }
-
-    @Override
-    public String toString() {
-        return "Memory{id=" + id
-                + ", vendor=" + vendor
-                + ", capacity=" + capacity
-                + "}";
+    public void setSize(String size) {
+        this.size = size;
     }
 }

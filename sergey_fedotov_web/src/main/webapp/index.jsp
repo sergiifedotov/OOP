@@ -31,9 +31,7 @@
                 <td width="10%">
                     <input type="text" name="login"/>
                 </td>
-                <td width="85%">
-                    <input type="submit" value="Login"/>
-                </td>
+                <td width="85%"></td>
             </tr>
             <tr>
                 <td width="5%">pass</td>
@@ -43,6 +41,20 @@
                 <td width="85%">
                     ${errLogin}
                 </td>
+            </tr>
+            <tr>
+                <td width="5%"></td>
+                <td width="10%">
+                    <input type="submit" value="Login"/>
+                </td>
+                <td width="85%"></td>
+            </tr>
+            <tr>
+                <td width="5%"></td>
+                <td width="10%">
+                    <a href="register.jsp">registration</a>
+                </td>
+                <td width="85%"></td>
             </tr>
             </tbody>
         </table>

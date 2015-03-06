@@ -24,24 +24,59 @@ import java.util.List;
  */
 public class ClientServiceImpl implements ClientService {
 
-    private ArrayList<Client> clients;
+    public static ClientService clientService = new ClientServiceImpl();
+
+    private ArrayList<Client> clients = new ArrayList<>();
 
     public ClientServiceImpl() {
-        clients = new ArrayList<>();
+        Client client = new Client("Ваня", "Иванов", "1234567890", "ул. Бассейная, 1");
+        client.setLastOrderDate(new Date());
+        client.setSum(123);
+        Long clientId = clients.size() + 1L;
+        client.setId(clientId);
+        clients.add(client);
+        client = new Client("Петя", "Петров", "2345678901", "ул. Бассейная, 2");
+        client.setLastOrderDate(new Date());
+        client.setSum(234);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
+        clients.add(client);
+        client = new Client("Сидор", "Сидоров", "3456789012", "ул. Бассейная, 3");
+        client.setLastOrderDate(new Date());
+        client.setSum(345);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
+        clients.add(client);
+        client = new Client("Прошка", "Прохоров", "4567890123", "ул. Бассейная, 4");
+        client.setLastOrderDate(new Date());
+        client.setSum(456);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
+        clients.add(client);
+        client = new Client("Изя", "Зильберштуцер", "5678901234", "ул. Бассейная, 5");
+        client.setLastOrderDate(new Date());
+        client.setSum(567);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
+        clients.add(client);
+        client = new Client("Махмуд", "Алинбеков", "6789012345", "ул. Бассейная, 6");
+        client.setLastOrderDate(new Date());
+        client.setSum(678);
+        clientId = clients.size() + 1L;
+        client.setId(clientId);
+        clients.add(client);
     }
+
     public ClientServiceImpl(ArrayList<Client> clients) {
         this.clients = clients;
     }
 
     @Override
     public boolean createClient(String name, String surname, String phone, String address) throws ClientException {
-        // TODO existing client
         if (name != null && address != null) {
-            Long clientId = clients.size() + 1L;
-            Client client = new Client(clientId, name, surname, phone, address);
-            clients.add(client);
-            System.out.println(client);
-            return true;
+            Long id = clients.size() + 1L;
+            Client client = new Client(id, name, surname, phone, address);
+            return clients.add(client);
         } else {
             throw new ClientException();
         }
@@ -57,7 +92,7 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> showClientsGtSum(int sum) {
         List <Client> list = new ArrayList<>();
         for (Client client : clients) {
-            if (client.getSum() > sum) {
+            if (client.getSum() != null && client.getSum() > sum) {
                 list.add(client);
             }
         }
@@ -68,7 +103,7 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> showClientsLastMonth() {
         List <Client> list = new ArrayList<>();
         Date currentDate = new Date();
-        Long monthMilliseconds = (long)1000 * 60 * 60 * 24 * 31;
+        Long monthMilliseconds = 1000L * 60 * 60 * 24 * 31;
         for (Client client : clients) {
             if (client.getLastOrderDate() != null
                     && (currentDate.getTime() - client.getLastOrderDate().getTime() < monthMilliseconds)) {
@@ -76,5 +111,25 @@ public class ClientServiceImpl implements ClientService {
             }
         }
         return list;
+    }
+
+    @Override
+    public ArrayList<Client> getClients() {
+        return clients;
+    }
+
+    @Override
+    public void setClients(ArrayList<Client> clients) {
+        this.clients = clients;
+    }
+
+    @Override
+    public Client getClientById(Long id) {
+        for (Client client : clients) {
+            if (client.getId() == id) {
+                return client;
+            }
+        }
+        return null;
     }
 }

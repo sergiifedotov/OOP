@@ -4,32 +4,15 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by vladimir on 11.02.2015.
- *
- *  1. Создать сущности для базы данных "Магазин ноутбуков":
- Тип ноутбука(производитель, модель, дата производства, процессор, память)
- Производители(имя)
- Процессоры(производитель, частота, модель)
- Память(производитель, размер)
- Склад ноутбуков(тип ноутбука, количество, цена)
- Продажи(склад ноутбуков, дата продажи, количество)
-
- domain
- hw7.notes.domain.Notebook
- hw7.notes.domain.Vendor
- hw7.notes.domain.CPU
- hw7.notes.domain.Memory
- hw7.notes.domain.Store
- hw7.notes.domain.Sales
+ * Created by Chuvychin on 27.02.2015.
  */
-
-@Entity
-@Table (name = "NOTEBOOKS")
+@Entity //defoult
+@Table(name = "NOTEBOOKS")
 public class Notebook {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_NOTEBOOKS_ID",
+    @Id
+    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_REGION_ID",
             allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-    @Id
     @Column (name = "NOTEBOOK_ID")
     private Long id;
 
@@ -40,20 +23,28 @@ public class Notebook {
     @Temporal(TemporalType.DATE)
     @Column (name = "MANUFACTURE_DATE")
     private Date date;
-    @ManyToOne(fetch = FetchType.EAGER)
+
+    @ManyToOne
     private CPU cpu;
-    @ManyToOne(fetch = FetchType.EAGER)
+
+    @ManyToOne
     private Memory memory;
 
-    public Notebook() {
+    public Notebook(){
+
     }
 
-    public Notebook (Vendor vendor, String model, Date date, CPU cpu, Memory memory) {
+    public Notebook(Vendor vendor, String model, Date date, CPU cpu, Memory memory) {
         this.vendor = vendor;
         this.model = model;
         this.date = date;
         this.cpu = cpu;
         this.memory = memory;
+    }
+
+    @Override
+    public String toString(){
+        return "id: "+ id + "/ Vendor: " +vendor + "/ Model: " + model + "/ Manufacture Date: "+ getDate().toString()+ "/ CPU: " + cpu + "/ Memory: " + memory;
     }
 
     public Long getId() {
@@ -102,17 +93,5 @@ public class Notebook {
 
     public void setMemory(Memory memory) {
         this.memory = memory;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Notebook{id=" + id
-                + ", vendor=" + vendor
-                + ", model='" + model
-                + "', date=" + String.format("%tF", date)
-                + ", CPU=" + cpu
-                + ", memory=" + memory
-                + "}";
     }
 }
