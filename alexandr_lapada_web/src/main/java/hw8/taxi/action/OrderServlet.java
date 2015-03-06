@@ -22,7 +22,7 @@ import java.util.Map;
 public class OrderServlet extends HttpServlet{
     private static int porcia;
 
-    public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         List<Client> listClientsPorcia = new ArrayList<Client>();
         List<Client> listClients = new ArrayList<Client>();
         Client client1 = new Client("Alexandr", "Lapada", "0979469953", "Kiev", 400.0, null);

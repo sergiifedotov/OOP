@@ -37,7 +37,7 @@
                 </tr>
                 <tr height="60px" align="center">
                     <td>
-                    <form action="/hw8Order" method="post">
+                    <form action="/hw8Order" method="get">
                         </br>
                         <input type="submit" name="releaseOrder" value="Оформить заказ" style="height: 40"></br>
                     </form>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr height="60px" align="center">
                     <td>
-                        <form action="/hw8Order" method="post">
+                        <form action="/hw8Order" method="get">
                             </br>
                             <input type="submit" name="listOrderByPrice" value="Вывести список заказов на указанную сумму" style="height: 40"></br>
                         </form>
@@ -56,7 +56,7 @@
                 </tr>
                 <tr height="60px">
                     <td>
-                        <form action="/hw8Order" method="post">
+                        <form action="/hw8Order" method="get">
                             </br>
                             <input type="submit" name="listOrderByPorcia" value="Вывести список всех заказов по 5 штук" style="height: 40"></br>
                         </form>
