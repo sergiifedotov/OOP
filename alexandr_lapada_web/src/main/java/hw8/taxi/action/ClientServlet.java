@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ClientServlet")
 public class ClientServlet extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response){
+    public void doGet(HttpServletRequest request, HttpServletResponse response){
 
     }
 }
