@@ -1,7 +1,7 @@
 package hw8.taxi.service;
 
 
-import hw8.taxi.exception.AuthenticationException;
+import hw8.taxi.exception.AuthorizationException;
 
 
 import java.text.ParseException;
@@ -34,7 +34,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     }
 
     @Override
-    public boolean authenticate(String login, String pass) throws AuthenticationException {
+    public boolean authenticate(String login, String pass) throws AuthorizationException {
         boolean rez = false;
         if(mapUsers.containsKey(login) && mapUsers.get(login).equals(pass)){
             numberOfWrongTries = 0;
@@ -43,13 +43,13 @@ public class AuthorizationServiceImpl implements AuthorizationService {
             numberOfWrongTries++;
         }
         if (numberOfWrongTries >= maxWrongTries) {
-            throw new AuthenticationException("Превышено число не верных попыток!.");
+            throw new AuthorizationException("Превышено число не верных попыток!.");
         }
         return rez;
     }
 
     @Override
-    public boolean register(String login, String id, String pass) throws AuthenticationException {
+    public boolean register(String login, String id, String pass) throws AuthorizationException {
         return false;
     }
 

@@ -1,6 +1,6 @@
 package hw8.taxi.action;
 
-import hw8.taxi.exception.AuthenticationException;
+import hw8.taxi.exception.AuthorizationException;
 import hw8.taxi.service.AuthorizationService;
 import hw8.taxi.service.AuthorizationServiceImpl;
 
@@ -45,7 +45,7 @@ public class AuthenticationServlet extends HttpServlet {
                 request.setAttribute("wrongUser","Wrong login or password try again");
                 request.getRequestDispatcher("index.jsp").forward(request,response);
             }
-        } catch (AuthenticationException e) {
+        } catch (AuthorizationException e) {
             request.setAttribute("ban","Больше трех неправильных вводов БАН!!");
             request.getRequestDispatcher("ban.jsp").forward(request,response);
             e.printStackTrace();
