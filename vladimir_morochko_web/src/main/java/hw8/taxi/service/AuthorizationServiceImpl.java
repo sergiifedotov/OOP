@@ -56,7 +56,9 @@ public class AuthorizationServiceImpl implements AuthorizationService {
             throw new AuthorizationException("пароль должен включать большие и маленькие буквы, цифры");
         }
         Long id = operators.size() + 1L;
-        Date expireDate = new Date(); // дата создания будет датой последней смены пароля
+        Date expireDate = new Date();
+        Long monthMilliseconds = 1000L * 60 * 60 * 24 * 31;
+        expireDate.setTime(expireDate.getTime() + monthMilliseconds); // todo
         boolean locked = false;
         Operator operator = new Operator(id, login, accessId, password, expireDate, locked);
         operators.add(operator);
