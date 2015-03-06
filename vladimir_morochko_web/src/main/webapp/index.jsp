@@ -9,6 +9,7 @@
     <title></title>
 </head>
 <body>
-<p><a href="dashboard.jsp">to dashboard</a></p><br>
+<p><a href="dashboard.jsp">На панель управления</a></p>
+<p><a href="registerOperator.jsp">Зарегистрироваться</a></p>
 </body>
 </html>
