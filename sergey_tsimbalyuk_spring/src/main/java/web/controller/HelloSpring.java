@@ -4,7 +4,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import web.dao.UserDao;
 import web.domain.User;
-import web.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,54 +22,32 @@ import java.util.Locale;
 
 @WebServlet("/test")
 public class HelloSpring extends HttpServlet {
-    private WebApplicationContext context;
-    UserService userService;
     UserDao userdao;
+    private WebApplicationContext context;
+
     @Override
     public void init() {
         Locale.setDefault(Locale.ENGLISH);
         context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-//        userService = context.getBean(UserService.class);
         userdao = context.getBean(UserDao.class);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         if(context != null) {
             String message = (String) context.getBean("str");
             User usr = new User(request.getParameter("login"), request.getParameter("pass"));
-//            userService.addUser(usr);
             userdao.create(usr);
-//            response.getWriter().print(message);
             response.getWriter().print(message + " " + request.getParameter("login"));
         } else  {
             response.getWriter().print("Error: Context not found!");
-        }   HttpSession session = request.getSession();
+        }
+        HttpSession session = request.getSession(true);
         if(session.isNew()) {
-            response.getWriter().print(" new session");
+            response.getWriter().print(" New session ID: "+session.getId());
         } else {
             response.getWriter().print(session.getId());
+            System.out.print("Old Session with ID: " + session.getId());
         }
     }
 
-
 }
-//@WebServlet("/hello")
-//public class HelloSpring extends HttpServlet {
-//    private WebApplicationContext context;
-//
-//    @Override
-//    public void init() {
-//        context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-//    }
-//
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        if (context != null) {
-//            String message = (String) context.getBean("str");
-//            response.getWriter().print(message + " " + request.getParameter("log"));
-//        } else  {
-//            response.getWriter().print("Error: Context not found");
-//        }
-//    }
-//}
