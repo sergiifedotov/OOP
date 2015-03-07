@@ -1,4 +1,4 @@
-package homework3.dinamicsorter.dinamicsorter;
+package hw3;
 
 import java.io.IOException;
 
