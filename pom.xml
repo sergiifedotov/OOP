@@ -11,6 +11,8 @@
 
     <modules>
         <module>proff21_examples</module>
+        <module>proff21_examples_web</module>
+        <module>proff21_examples_spring</module>
         <module>vladimir_morochko</module>
         <module>vladimir_morochko_web</module>
         <module>alexandr_lapada</module>
@@ -301,6 +303,12 @@
             <artifactId>android</artifactId>
             <version>${platform.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20141113</version>
         </dependency>
     </dependencies>
 
