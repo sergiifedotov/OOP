@@ -18,13 +18,18 @@ import java.io.IOException;
 public class AuthorizationServlet extends HttpServlet {
     AuthorizationService authorizationService = AuthorizationServiceImpl.authorizationService;
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String accessId = request.getParameter("accessId");
         String password = request.getParameter("password");
+        String oldPassword = request.getParameter("oldPassword");
         String passwordConfirm = request.getParameter("passwordConfirm");
         String registerResultMessage = "Operator created successfully";
-        if (password.equals(passwordConfirm)) {
+        if (password.equals(oldPassword)) {
+            registerResultMessage = "пароль должен отличаться от старого пароля";
+        } else if (!password.equals(passwordConfirm)) {
+            registerResultMessage = "пароль должен совпадать с подтверждением";
+        } else {
             boolean registerResult = false;
             try {
                 registerResult = authorizationService.register(login, accessId, password);
@@ -33,10 +38,14 @@ public class AuthorizationServlet extends HttpServlet {
                 registerResultMessage = e.getMessage();
                 System.out.println(registerResultMessage);
             }
-        } else {
-            registerResultMessage = "пароль должен совпадать с подтверждением";
         }
+        request.setAttribute("defaultLogin", login);
+        request.setAttribute("defaultAccessId", accessId);
         request.setAttribute("registerResultMessage", registerResultMessage);
         request.getRequestDispatcher("registerOperator.jsp").forward(request, response);
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

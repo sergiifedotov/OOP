@@ -13,6 +13,12 @@
 <body>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
 <%--<p>${clientList}</p>--%>
+<p>Минимальная сумма:</p>
+<form action="/ClientServlet">
+    <input type="hidden" name="action" value="showClientsGtSum"/>
+    <input type="text" name="clientMinSum" value="${clientMinSum}"/>
+    <input type="submit" name="show" value="Показать"/>
+</form>
 <%
     //session = request.getSession();
     List<Client> list = (List<Client>) session.getAttribute("clientList");

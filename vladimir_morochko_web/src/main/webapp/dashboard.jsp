@@ -22,11 +22,11 @@
 <body>
 <p><a href="registerClient.jsp">зарегистрировать клиента</a></p>
 <p><a href="/ClientServlet?action=showClientsByPortion">вывести всех клиентов порциями по 10 человек</a></p>
-<p><a href="/ClientServlet?action=showClientsGtSum">вывести всех клиентов наездивших на сумму больше указанной</a></p>
+<p><a href="/ClientServlet?action=showClientsGtSum&clientMinSum=0">вывести всех клиентов наездивших на сумму больше указанной</a></p>
 <p><a href="/ClientServlet?action=showClientsLastMonth">вывести всех клиентов, делавших заказы за последний месяц</a></p>
 <p><a href="/OrderServlet?action=createOrder">оформить заказ</a></p>
 <p><a href="/OrderServlet?action=editOrder&orderId=1">отредактировать заказ</a></p>
-<p><a href="/OrderServlet?action=showOrders">вывести список заказов на сумму в указанном диапазоне</a></p>
+<p><a href="/OrderServlet?action=showOrders&lowerLimit=0&upperLimit=1000">вывести список заказов на сумму в указанном диапазоне</a></p>
 <p><a href="/OrderServlet?action=showOrdersByPortion">вывести список всех заказов порциями по 5 штук</a></p>
 
 </body>

@@ -19,13 +19,13 @@
 </head>
 <body>
 <h>${registerResultMessage}</h>
-<p><a href="dashboard.jsp"><<< dashboard</a></p>
-<form action="/AuthorizationServlet">
-    <input type="hidden" name="action" value="registerOperator"/>
+<p><a href="index.jsp"><<< залогиниться</a></p>
+<form action="/AuthorizationServlet" method="post">
+    <input type="hidden" name="oldPassword" value="${oldPassword}"/>
     <p>Логин:</p>
     <input type="text" name="login" value="${defaultLogin}"/>
     <p>Идентификационный номер:</p>
-    <input type="text" name="accessId" value=""/>
+    <input type="text" name="accessId" value="${defaultAccessId}"/>
     <p>Пароль:</p>
     <input type="text" name="password" value=""/>
     <p>Подтверждение пароля:</p>

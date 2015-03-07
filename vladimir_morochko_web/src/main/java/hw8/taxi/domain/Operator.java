@@ -11,6 +11,7 @@ public class Operator {
     private String accessId;
     private String password;
     private Date expireDate;
+    private int loginAttempts = 0;
     private boolean locked;
 
     public Operator() {
@@ -73,6 +74,14 @@ public class Operator {
         this.expireDate = expireDate;
     }
 
+    public int getLoginAttempts() {
+        return loginAttempts;
+    }
+
+    public void setLoginAttempts(int loginAttempts) {
+        this.loginAttempts = loginAttempts;
+    }
+
     public boolean isLocked() {
         return locked;
     }
@@ -88,6 +97,7 @@ public class Operator {
                 + ", accessId=" + "'" + accessId + "'"
                 + ", password=" + "'" + password + "'"
                 + ", expireDate=" + String.format("%tF", expireDate)
+                + ", loginAttempts=" + loginAttempts
                 + ", locked=" + locked
                 + "}";
     }

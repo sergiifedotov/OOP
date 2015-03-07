@@ -6,15 +6,15 @@
  - вывести всех клиентов наездивших на сумму больше указанной
  - вывести всех клиентов, делавших заказы за последний месяц
 
- hw8.taxi.domain.Client
- hw8.taxi.service.ClientService
+ session14.task1.taxi.domain.Client
+ session14.task1.taxi.service.ClientService
     boolean createClient(String name, String surname, String phone, String address) throws ClientException
     List<Client> showClientsByPortion(int portionSize)
     List<Client> showClientsGtSum(int sum)
     List<Client> showClientsLastMonth()
- hw8.taxi.service.ClientServiceImpl
- hw8.taxi.action.ClientServlet
- hw8.taxi.exception.ClientException
+ session14.task1.taxi.service.ClientServiceImpl
+ session14.task1.taxi.action.ClientServlet
+ session14.task1.taxi.exception.ClientException
  webapp
     index.jsp
     dashboard.jsp - страница со списком функций (доступна после аутентификации)
@@ -30,16 +30,16 @@
   - вывести список заказов на сумму в указанном диапазоне
   - вывести список всех заказов порциями по 5 штук
 
-  hw8.taxi.domain.Order
-  hw8.taxi.domain.Client
-  hw8.taxi.service.OrderService
+  session14.task1.taxi.domain.Order
+  session14.task1.taxi.domain.Client
+  session14.task1.taxi.service.OrderService
      boolean createOrder(Long id, Client client, String sum, String addressFrom, String addressTo) throws OrderException
      void editOrder(Long id, Client client, String sum, String addressFrom, String addressTo)
      List showOrders(Long from, Long to)
      List showOrdersByPortion()
-  hw8.taxi.service.OrderServiceImpl
-  hw8.taxi.action.OrderServlet
-  hw8.taxi.exception.OrderException
+  session14.task1.taxi.service.OrderServiceImpl
+  session14.task1.taxi.action.OrderServlet
+  session14.task1.taxi.exception.OrderException
   webapp
      index.jsp
      dashboard.jsp - страница со списком функций
@@ -57,11 +57,11 @@
    - подтверждение пароля
    - пользователь с таким логином должен быть уникальным
 
-   hw8.taxi.service.AuthorizationService
+   session14.task1.taxi.service.AuthorizationService
       boolean register(String login, String id, String pass) throws AuthenticationException // ???
-   hw8.taxi.service.AuthorizationServiceImpl
-   hw8.taxi.action.RegisterServlet
-   hw8.taxi.exception.AuthorizationException
+   session14.task1.taxi.service.AuthorizationServiceImpl
+   session14.task1.taxi.action.RegisterServlet
+   session14.task1.taxi.exception.AuthorizationException
    webapp
       index.jsp
       register.jsp - форма регистрации
@@ -74,11 +74,11 @@
     Время действия пароля задается в сервисе
     После истечения действия пароля, пользователь должен поменять пароль. Предыдущий вводить нельзя
 
-    hw8.taxi.service.AuthenticationService
+    session14.task1.taxi.service.AuthenticationService
        boolean authenticate(String login, String pass) throws AuthenticationException
-    hw8.taxi.service.AuthenticationServiceImpl
-    hw8.taxi.action.AuthenticationServlet
-    hw8.taxi.exception.AuthenticationException
+    session14.task1.taxi.service.AuthenticationServiceImpl
+    session14.task1.taxi.action.AuthenticationServlet
+    session14.task1.taxi.exception.AuthenticationException
     webapp
        index.jsp - страница с формой аутентификации
       dashboard.jsp - поздравления об удачной аутентификации

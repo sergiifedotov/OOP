@@ -1,12 +1,9 @@
 package hw8.taxi.action;
 
+import hw8.taxi.service.*;
 import hw8.taxi.domain.Client;
 import hw8.taxi.domain.Order;
 import hw8.taxi.exception.OrderException;
-import hw8.taxi.service.ClientService;
-import hw8.taxi.service.ClientServiceImpl;
-import hw8.taxi.service.OrderService;
-import hw8.taxi.service.OrderServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +21,7 @@ import java.util.List;
 public class OrderServlet extends HttpServlet {
     OrderService orderService = OrderServiceImpl.orderService;
     ClientService clientService = ClientServiceImpl.clientService;
+    PropertiesService propertiesService = PropertiesServiceImpl.propertiesService;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -77,12 +75,17 @@ public class OrderServlet extends HttpServlet {
             request.getRequestDispatcher("order.jsp").forward(request, response);
         }
         if (action.equals("showOrders")) {
-            list = orderService.showOrders(0, 10000); //TODO
+            int lowerLimit = Integer.parseInt(request.getParameter("lowerLimit"));
+            int upperLimit = Integer.parseInt(request.getParameter("upperLimit"));
+            list = orderService.showOrders(lowerLimit, upperLimit);
+            request.setAttribute("lowerLimit", lowerLimit);
+            request.setAttribute("upperLimit", upperLimit);
             request.getSession().setAttribute("orderList", list);
             request.getRequestDispatcher("orders.jsp").forward(request, response);
         }
         if (action.equals("showOrdersByPortion")) {
-            list = orderService.showOrdersByPortion(5); //TODO
+            int portionSize = propertiesService.getOrderPortionSize();
+            list = orderService.showOrdersByPortion(portionSize);
             request.getSession().setAttribute("orderList", list);
             request.getRequestDispatcher("orders.jsp").forward(request, response);
         }
