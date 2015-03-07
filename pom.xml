@@ -15,6 +15,7 @@
         <module>proff21_examples_spring</module>
         <module>vladimir_morochko</module>
         <module>vladimir_morochko_web</module>
+        <module>vladimir_morochko_spring</module>
         <module>alexandr_lapada</module>
         <module>alexandr_lapada_web</module>
         <module>Stanislav_Bondar</module>
@@ -28,6 +29,7 @@
         <module>sergey_fedotov_web</module>
         <module>sergey_tsimbalyuk</module>
         <module>sergey_tsimbalyuk_web</module>
+        <module>sergey_tsimbalyuk_spring</module>
         <module>Maksim_Kuzmenyuk</module>
         <module>konstantin_krivous</module>
         <module>alexandr_lapada_web</module>
