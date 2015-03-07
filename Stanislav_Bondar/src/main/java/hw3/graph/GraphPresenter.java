@@ -10,16 +10,16 @@ import static java.lang.Math.sin;
 public class GraphPresenter {
     public void print() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Выберите функцию:");
-        System.out.println("1. y = x*x  Парабола");
-        System.out.println("2. y = 10*sin(x/5) Синусоида");
-        System.out.println("3. y = x Прямая");
-        System.out.print("Выберите один из пунктов(1, 2, 3): ");
+        System.out.println("Choose funtion please");
+        System.out.println("1. y = x*x  parabola");
+        System.out.println("2. y = 10*sin(x/5) sinusoida");
+        System.out.println("3. y = x strenght");
+        System.out.print("Choose one from three points(1, 2, 3): ");
         int userSelection = 0;
         while ((userSelection < 1) || (userSelection > 3)) {
             userSelection = scanner.nextInt();
         }
-        System.out.println("Выбрано: " + userSelection);
+        System.out.println("You've chosen: " + userSelection);
 
         GraphPresenterThread thread = new GraphPresenterThread(userSelection);
         thread.start();
@@ -78,7 +78,7 @@ class GraphPresenterThread implements Runnable {
                 Thread.sleep(500);
             }
         } catch (InterruptedException e) {
-            System.out.println("Прервано пользователем.");
+            System.out.println("Cancelled by user");
         }
     }
 
