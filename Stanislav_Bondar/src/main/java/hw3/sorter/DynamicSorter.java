@@ -1,4 +1,4 @@
-package hw3;
+package hw3.sorter;
 
 import java.io.*;
 import java.util.Arrays;

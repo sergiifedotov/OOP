@@ -1,4 +1,6 @@
-package hw3;
+package hw3.sorter;
+
+import hw3.sorter.DynamicSorter;
 
 import java.io.IOException;
 
