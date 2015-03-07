@@ -16,7 +16,7 @@ import java.util.List;
  - вывести всех клиентов наездивших на сумму больше указанной
  - вывести всех клиентов, делавших заказы за последний месяц
 
- hw8.taxi.service.ClientService
+ session14.task1.taxi.service.ClientService
  boolean createClient(String name, String surname, String phone, String address) throws ClientException
  List<Client> showClientsByPortion(int portionSize)
  List<Client> showClientsGtSum(int sum)
@@ -103,7 +103,7 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> showClientsLastMonth() {
         List <Client> list = new ArrayList<>();
         Date currentDate = new Date();
-        Long monthMilliseconds = (long)1000 * 60 * 60 * 24 * 31;
+        Long monthMilliseconds = 1000L * 60 * 60 * 24 * 31;
         for (Client client : clients) {
             if (client.getLastOrderDate() != null
                     && (currentDate.getTime() - client.getLastOrderDate().getTime() < monthMilliseconds)) {

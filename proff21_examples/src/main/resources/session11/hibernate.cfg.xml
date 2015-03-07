@@ -8,6 +8,8 @@
         <property name="connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
         <property name="connection.username">hr</property>
         <property name="connection.password">hr</property>
+        <property name="connection.username">neqw</property>
+        <property name="connection.password">neqw</property>
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <property name="current_session_context_class">thread</property>
@@ -16,5 +18,8 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping class="session11.Employee"/>
         <mapping class="session11.Company"/>
+        <mapping class="session11.Employee"/>
+        <!--<mapping class="session11.Main"/>-->
+        <!--<mapping class="session11.Region"/>-->
     </session-factory>
 </hibernate-configuration>

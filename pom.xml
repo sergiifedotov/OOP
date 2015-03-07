@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -16,6 +16,7 @@
         <module>alexandr_lapada</module>
         <module>alexandr_lapada_web</module>
         <module>Stanislav_Bondar</module>
+        <module>Stanislav_Bondar_web</module>
         <module>eugen_chyvuchyn</module>
         <module>Yaroslav_Syrota</module>
         <module>Yaroslav_Syrota_web</module>
@@ -92,12 +93,12 @@
 
         5) Install driver into repo
         any other steps are not required, only step 5
-        mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.5.0 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true
+        %m2_home%\bin\mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.5.0 -Dpackaging=jar -Dfile=ojdbc6.jar -DgeneratePom=true
 
         6) Run maven build
 -->
         <!-- ORACLE JDBC driver -->
-        <dependency>
+ <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc14</artifactId>
             <version>10.2.0.5.0</version>

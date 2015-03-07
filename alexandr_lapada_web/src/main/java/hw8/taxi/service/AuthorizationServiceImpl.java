@@ -1,7 +1,7 @@
 package hw8.taxi.service;
 
 
-import hw8.taxi.exception.AuthenticationException;
+import hw8.taxi.exception.AuthorizationException;
 
 
 import java.text.ParseException;
@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by sanya on 03.03.2015.
  */
-public class AuthenticationServiceImpl implements AuthenticationService {
+public class AuthorizationServiceImpl implements AuthorizationService {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     private final String dateChangePassStr = "04.03.2015";
@@ -23,7 +23,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private Map<String, String> mapUsers;
 
-    public AuthenticationServiceImpl() {
+    public AuthorizationServiceImpl() {
         mapUsers = new HashMap<String, String>();
 
         mapUsers.put("zagebenge", "123456");
@@ -34,7 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public boolean authenticate(String login, String pass) throws AuthenticationException {
+    public boolean authenticate(String login, String pass) throws AuthorizationException {
         boolean rez = false;
         if(mapUsers.containsKey(login) && mapUsers.get(login).equals(pass)){
             numberOfWrongTries = 0;
@@ -43,13 +43,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             numberOfWrongTries++;
         }
         if (numberOfWrongTries >= maxWrongTries) {
-            throw new AuthenticationException("Превышено число не верных попыток!.");
+            throw new AuthorizationException("Превышено число не верных попыток!.");
         }
         return rez;
     }
 
     @Override
-    public boolean register(String login, String id, String pass) throws AuthenticationException {
+    public boolean register(String login, String id, String pass) throws AuthorizationException {
         return false;
     }
 

@@ -9,6 +9,15 @@
     <title></title>
 </head>
 <body>
-<p><a href="dashboard.jsp">to dashboard</a></p><br>
+<h>${authenticationResultMessage}</h>
+<form action="/AuthenticationServlet" method="post">
+    <p>Логин (111 для теста):</p>
+    <input type="text" name="login" value="${defaultLogin}"/>
+    <p>Пароль (111 для теста):</p>
+    <input type="text" name="password" value=""/>
+    <br><br>
+    <input type="submit" name="register" value="Войти"/>
+</form>
+<p><a href="registerOperator.jsp">Зарегистрироваться</a></p>
 </body>
 </html>

@@ -19,9 +19,9 @@
     <p>Имя клиента:</p>
     <input type="text" name="name" value=""/>
     <p>Фамилия клиента:</p>
-    <input type="text" name="surname" value=""/><br>
+    <input type="text" name="surname" value=""/>
     <p>Телефон:</p>
-    <input type="text" name="phone" value=""/><br>
+    <input type="text" name="phone" value=""/>
     <p>Адрес:</p>
     <input type="text" name="address" value=""/><br><br>
     <input type="submit" name="register" value="Зарегистрировать!"/>
