@@ -16,7 +16,7 @@ import java.util.List;
  - вывести всех клиентов наездивших на сумму больше указанной
  - вывести всех клиентов, делавших заказы за последний месяц
 
- hw8.taxi.service.ClientService
+ session14.task1.taxi.service.ClientService
  boolean createClient(String name, String surname, String phone, String address) throws ClientException
  List<Client> showClientsByPortion(int portionSize)
  List<Client> showClientsGtSum(int sum)

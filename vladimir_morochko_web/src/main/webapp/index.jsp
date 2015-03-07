@@ -11,9 +11,9 @@
 <body>
 <h>${authenticationResultMessage}</h>
 <form action="/AuthenticationServlet" method="post">
-    <p>Логин:</p>
+    <p>Логин (111 для теста):</p>
     <input type="text" name="login" value="${defaultLogin}"/>
-    <p>Пароль:</p>
+    <p>Пароль (111 для теста):</p>
     <input type="text" name="password" value=""/>
     <br><br>
     <input type="submit" name="register" value="Войти"/>

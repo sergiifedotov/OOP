@@ -18,7 +18,7 @@ import java.util.Date;
  - подтверждение пароля
  - пользователь с таким логином должен быть уникальным
 
- hw8.taxi.service.AuthorizationService
+ session14.task1.taxi.service.AuthorizationService
  boolean register(String login, String id, String pass) throws AuthorizationException
 
  */
@@ -29,6 +29,12 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     private ArrayList<Operator> operators = new ArrayList<>();
 
     public AuthorizationServiceImpl() {
+        Long id = operators.size() + 1L;
+        Date expireDate = new Date();
+        Long monthMilliseconds = 1000L * 60 * 60 * 24 * 31;
+        expireDate.setTime(expireDate.getTime() + monthMilliseconds);
+        Operator operator = new Operator( id, "111", "111", "111", expireDate, false);
+        operators.add(operator);
     }
 
     public AuthorizationServiceImpl(ArrayList<Operator> operators) {
@@ -58,7 +64,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         Long id = operators.size() + 1L;
         Date expireDate = new Date();
         Long monthMilliseconds = 1000L * 60 * 60 * 24 * 31;
-        expireDate.setTime(expireDate.getTime() + monthMilliseconds); // todo
+        expireDate.setTime(expireDate.getTime() + monthMilliseconds);
         boolean locked = false;
         Operator operator = new Operator(id, login, accessId, password, expireDate, locked);
         operators.add(operator);

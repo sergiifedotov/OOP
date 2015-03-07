@@ -14,7 +14,7 @@ import java.util.Date;
  Время действия пароля задается в сервисе
  После истечения действия пароля, пользователь должен поменять пароль. Предыдущий вводить нельзя
 
- hw8.taxi.service.AuthenticationService
+ session14.task1.taxi.service.AuthenticationService
  boolean authenticate(String login, String pass) throws AuthenticationException
  */
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -22,7 +22,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public static AuthenticationService authenticationService = new AuthenticationServiceImpl();
 
     AuthorizationService authorizationService = AuthorizationServiceImpl.authorizationService;
-    int allowedLoginAttempts = 3; // todo
+    PropertiesService propertiesService = PropertiesServiceImpl.propertiesService;
+    int allowedLoginAttempts = propertiesService.getAllowedLoginAttempts();
 
     @Override
     public boolean authenticate(String login, String password) throws AuthenticationException {
@@ -33,6 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (operator.isLocked()) {
             throw new AuthenticationException("Пользователь \"" + login + "\" заблокирован");
         }
+        System.out.println(allowedLoginAttempts);
         if (!operator.getPassword().equals(password)) {
             operator.setLoginAttempts(operator.getLoginAttempts() + 1);
             if (operator.getLoginAttempts() > allowedLoginAttempts) {
