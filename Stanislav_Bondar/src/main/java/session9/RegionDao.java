@@ -1,13 +1,12 @@
-package session10;
+package session9;
 
-import javax.swing.plaf.synth.Region;
+import session9.Region;
+
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: al1
- * Date: 20.09.14
- */
+* Created by stan on 08.02.15.
+*/
 public interface RegionDao {
     Long create(Region region);
     Region read(Long id);
