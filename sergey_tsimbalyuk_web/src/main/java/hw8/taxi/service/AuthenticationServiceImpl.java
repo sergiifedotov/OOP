@@ -13,7 +13,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private static AuthenticationServiceImpl instance;
     private final int LOGIN_TRY_COUNT  = 3;
 //    private int count;
-//    private AuthServlet servlet;
     Map<String,String> Users = new HashMap<>();
 
     AuthenticationServiceImpl () {
