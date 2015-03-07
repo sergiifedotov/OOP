@@ -16,7 +16,7 @@ import java.util.List;
  - вывести список заказов на сумму в указанном диапазоне
  - вывести список всех заказов порциями по 5 штук
 
- hw8.taxi.service.OrderService
+ session14.task1.taxi.service.OrderService
  boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException
  void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo)
  List showOrders(Long from, Long to)
@@ -92,11 +92,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List showOrders(Integer from, Integer to) {
+    public List showOrders(Integer orderAmountLowerLimit, Integer orderAmountUpperLimit) {
         List<Order> list = new ArrayList<>();
         for (Order order : orders) {
             Integer amount = order.getAmount();
-            if (amount >= from && amount <= to) {
+            if (amount >= orderAmountLowerLimit && amount <= orderAmountUpperLimit) {
                 list.add(order);
             }
         }
@@ -105,7 +105,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List showOrdersByPortion(int portionSize) {
-        // TODO list size
         int orderPortionSize = portionSize > orders.size() ? orders.size() : portionSize;
         return orders.subList(0, orderPortionSize);
     }

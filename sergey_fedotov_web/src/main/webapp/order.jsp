@@ -17,13 +17,6 @@
     </tr>
     <tr style="height: 5%">
         <td colspan="3" width="100%">
-
-            "date=" + date +
-            ", client=" + client +
-            ", sum=" + sum +
-            ", addressFrom='" + addressFrom + '\'' +
-            ", addressTo='" + addressTo + '\'' +
-
         <table width="100%" style="height: 5%;" >
             <thead></thead>
             <tbody>

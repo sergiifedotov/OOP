@@ -13,6 +13,16 @@
 </head>
 <body>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
+
+<form action="/OrderServlet">
+    <input type="hidden" name="action" value="showOrders"/>
+    <p>Минимальная сумма:
+    <input type="text" name="lowerLimit" value="${lowerLimit}"/></p>
+    <p>Максимальная сумма:
+    <input type="text" name="upperLimit" value="${upperLimit}"/></p><br>
+    <input type="submit" name="show" value="Показать"/>
+</form>
+
 <%
     //session = request.getSession();
     List<Order> list = (List<Order>) session.getAttribute("orderList");

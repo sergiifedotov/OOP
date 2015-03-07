@@ -13,7 +13,7 @@ import java.util.List;
 public interface OrderService {
     boolean createOrder(Client client, Integer amount, String addressFrom, String addressTo) throws OrderException;
     void editOrder(Long id, Client client, Integer amount, String addressFrom, String addressTo);
-    List showOrders(Integer from, Integer to);
+    List showOrders(Integer orderAmountLowerLimit, Integer orderAmountUpperLimit);
     List showOrdersByPortion(int portionSize);
 
     ArrayList<Order> getOrders();
