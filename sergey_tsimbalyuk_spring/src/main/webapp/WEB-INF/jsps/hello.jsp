@@ -9,12 +9,18 @@
 <head>
     <title></title>
 </head>
+
 <body>
-     <h2>
-         <c:out value="Hello ${name}"/>
-         <c:forEach var="nout" items="${list}">
-             <c:out value="${nout.name}"/>
-         </c:forEach>
-     </h2>
+<h2>
+    <c:out value="Hello ${name}"/>
+</h2>
 </body>
+<%--<body>--%>
+     <%--<h2>--%>
+         <%--<c:out value="Hello ${name}"/>--%>
+         <%--<c:forEach var="nout" items="${list}">--%>
+             <%--<c:out value="${nout.name}"/>--%>
+         <%--</c:forEach>--%>
+     <%--</h2>--%>
+<%--</body>--%>
 </html>
