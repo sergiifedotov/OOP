@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Задание на каскадные таблицы</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
   <h3>Покрасьте меня в розовый цвет (color:pink).</h3>
@@ -23,7 +24,7 @@
   <h4>Данный элемент должен остаться неоформленным.</h4>
   <p>Покрасьте меня в зеленый цвет (color:green).</p>
   <p class='yellowcol'>Покрасьте меня в желтый цвет (color:yellow).</p>
-  <div class='yellowcol'>Покрасьте меня в синий цвет (color:yellow).</div>
+  <div class='yellowcol'>Покрасьте меня в синий цвет (color:blue).</div>
   <div style="border: dashed">Покрасьте меня в оливковый цвет (color:olive)</div>
 </body>
 </html>
