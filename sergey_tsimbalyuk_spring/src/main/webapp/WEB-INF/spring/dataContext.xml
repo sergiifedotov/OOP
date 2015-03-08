@@ -16,9 +16,9 @@ http://www.springframework.org/schema/tx
 
     <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${connection.driver_class}"/>
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-        <property name="username" value="notebooks"/>
-        <property name="password" value="notebooks"/>
+        <property name="url" value="jdbc:oracle:thin:@193.110.76.55:1521:XE"/>
+        <property name="username" value="ntb"/>
+        <property name="password" value="ntb"/>
     </bean>
 
     <bean id="factory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
