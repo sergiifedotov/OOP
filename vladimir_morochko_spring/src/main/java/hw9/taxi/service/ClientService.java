@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface ClientService {
     boolean createClient(String name, String surname, String phone, String address) throws OrderException;
-    List<Client> showClientsByPortion(int portionSize);
-    List<Client> showClientsGtSum(int sum);
-    List<Client> showClientsLastMonth();
+    void showClientsByPortion(int portionSize);
+    void showClientsGtSum(int sum);
+    void showClientsLastMonth();
     List getClientsByPortion(int portionSize);
 
 }
