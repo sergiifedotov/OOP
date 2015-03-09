@@ -17,4 +17,5 @@ public interface OrderService {
 
     List showOrders(Long orderAmountLowerLimit, Long orderAmountUpperLimit);
     List showOrdersByPortion(int portionSize);
+    List sowOrdersByPortion(); // WTF?
 }
