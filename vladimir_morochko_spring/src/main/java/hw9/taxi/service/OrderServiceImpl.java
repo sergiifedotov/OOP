@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List showOrders(Integer orderAmountLowerLimit, Integer orderAmountUpperLimit) {
+    public List showOrders(Long orderAmountLowerLimit, Long orderAmountUpperLimit) {
         return null;
     }
 

@@ -32,4 +32,14 @@ public class ClientServiceImpl implements ClientService {
     public List getClientsByPortion(int portionSize) {
         return null;
     }
+
+    @Override
+    public List getClientsGtSum(int sum) {
+        return null;
+    }
+
+    @Override
+    public List getClientsLastMonth() {
+        return null;
+    }
 }

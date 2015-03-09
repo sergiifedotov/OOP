@@ -14,6 +14,7 @@ public interface ClientService {
     void showClientsGtSum(int sum);
     void showClientsLastMonth();
     List getClientsByPortion(int portionSize);
-
+    List getClientsGtSum(int sum);
+    List getClientsLastMonth();
 }
 
