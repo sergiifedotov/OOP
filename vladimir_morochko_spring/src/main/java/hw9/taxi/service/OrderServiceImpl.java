@@ -38,4 +38,9 @@ public class OrderServiceImpl implements OrderService {
     public List showOrdersByPortion(int portionSize) {
         return null;
     }
+
+    @Override
+    public List sowOrdersByPortion() {
+        return null;
+    }
 }
