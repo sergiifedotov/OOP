@@ -16,4 +16,14 @@ public class OrderServiceImpl implements OrderService {
     public void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo) {
 
     }
+
+    @Override
+    public boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException {
+        return false;
+    }
+
+    @Override
+    public void editOrder(Long id, String client, String amount, String addressFrom, String addressTo) {
+
+    }
 }

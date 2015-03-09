@@ -9,4 +9,7 @@ import hw9.taxi.exception.OrderException;
 public interface OrderService {
     boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException;
     void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo);
+
+    boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException;
+    void editOrder(Long id, String client, String amount, String addressFrom, String addressTo);
 }
