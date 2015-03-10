@@ -39,6 +39,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public CPU readCPU(Long ig) {
         return null;
     }
@@ -54,6 +55,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Notebook readNotebook(Long ig) {
         return null;
     }
@@ -69,6 +71,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Sales readSales(Long ig) {
         return null;
     }
@@ -79,6 +82,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Store readStore(Long ig) {
         return null;
     }
@@ -89,6 +93,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Vendor readVendor(Long ig) {
         return null;
     }
@@ -104,6 +109,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Memory readMemory(Long ig) {
         return null;
     }
@@ -111,6 +117,11 @@ public class NotebookServiceImpl implements NotebookService {
     @Override
     public boolean deleteMemory(Memory memory) {
         return false;
+    }
+
+    @Override
+    public Long sale(Long storeId, int amount) {
+        return null;
     }
 
     @Override
