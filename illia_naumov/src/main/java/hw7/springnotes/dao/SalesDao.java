@@ -1,4 +1,4 @@
-package hw7.notes.dao;
+package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Sales;
 

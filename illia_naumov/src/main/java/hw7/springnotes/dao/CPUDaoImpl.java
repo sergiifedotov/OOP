@@ -1,6 +1,6 @@
-package hw7.springnotes.notes.dao;
+package hw7.springnotes.dao;
 
-import hw7.springnotes.notes.domain.Notebook;
+import hw7.springnotes.domain.CPU;
 import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -11,87 +11,94 @@ import java.util.List;
 /**
  * Created by illia_naumov on 20.02.2015.
  */
-public class NotebookDaoImpl implements NotebookDao {
-    private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
+public class CPUDaoImpl implements CPUDao{
+    private static Logger log = Logger.getLogger(CPUDaoImpl.class);
 
-    public NotebookDaoImpl() {
+    public CPUDaoImpl() {
     }
 
     @Override
-    public Long create(Notebook notebook) {
+    public Long create(CPU cpu) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            session.save(notebook);
+            session.save(cpu);
             session.getTransaction().commit();
-            return (Long) notebook.getId();
-        } catch (HibernateException e) {
+            return (Long) cpu.getId();
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        } finally {
-            session.close();
+        }finally{
+            if(session != null){
+                session.close();
+            }
         }
         return null;
     }
 
     @Override
-    public Notebook read(Long id) {
+    public CPU read(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            Notebook ntb = (Notebook) session.get(Notebook.class, id);
+            CPU cpu = (CPU) session.get(CPU.class, id);
             session.getTransaction().commit();
-            return ntb;
-        } catch (HibernateException e) {
+            return cpu;
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        } finally {
-            session.close();
+        }finally{
+            if(session != null){
+                session.close();
+            }
         }
         return null;
     }
 
     @Override
-    public boolean update(Notebook notebook) {
+    public boolean update(CPU cpu) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            session.update(notebook);
+            session.update(cpu);
             session.getTransaction().commit();
             return true;
-        } catch (HibernateException e) {
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        } finally {
-            session.close();
+        }finally{
+            if(session != null){
+                session.close();
+            }
         }
         return false;
     }
 
     @Override
-    public boolean delete(Notebook notebook) {
+    public boolean delete(CPU cpu) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        try{
             session.beginTransaction();
-            session.delete(notebook);
+            session.delete(cpu);
             session.getTransaction().commit();
             return true;
-        } catch (HibernateException e) {
+        }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
-        } finally {
-            session.close();
+        }finally{
+            if(session != null){
+                session.close();
+            }
         }
         return false;
     }
 
     @Override
-    public List<Notebook> findAll() {
+    public List<CPU> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            session.beginTransaction();
-            return session.createCriteria(Notebook.class).list();
-        } catch (HibernateException e) {
+            return session.createCriteria(CPU.class).list();
+        } catch (HibernateException e){
             log.error("Open session failed", e);
             session.getTransaction().rollback();
         } finally {
@@ -102,4 +109,3 @@ public class NotebookDaoImpl implements NotebookDao {
         return null;
     }
 }
-

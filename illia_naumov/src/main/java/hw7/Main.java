@@ -1,8 +1,8 @@
 package hw7;
 
-import hw7.springnotes.notes.domain.Vendor;
-import hw7.springnotes.notes.service.NotebookService;
-import hw7.springnotes.notes.service.NotebookServiceImpl;
+import hw7.springnotes.domain.Vendor;
+import hw7.springnotes.service.NotebookService;
+import hw7.springnotes.service.NotebookServiceImpl;
 
 import java.text.DateFormat;
 import java.text.ParseException;

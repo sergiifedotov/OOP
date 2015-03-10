@@ -1,7 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.springnotes.notes.dao.*;
-import hw7.springnotes.notes.domain.CPU;
+import hw7.springnotes.domain.CPU;
 import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -12,7 +11,7 @@ import java.util.List;
 /**
  * Created by illia_naumov on 20.02.2015.
  */
-public class CPUDaoImpl implements hw7.springnotes.notes.dao.CPUDao {
+public class CPUDaoImpl implements hw7.springnotes.dao.CPUDao {
     private static Logger log = Logger.getLogger(CPUDaoImpl.class);
 
     public CPUDaoImpl() {

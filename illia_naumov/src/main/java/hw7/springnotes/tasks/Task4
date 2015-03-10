@@ -7,34 +7,34 @@
  Получить объем продаж ноутбуков по каждому дню
 
  domain
-     hw7.springnotes.notes.domain.Notebook
-     hw7.springnotes.notes.domain.Vendor
-     hw7.springnotes.notes.domain.CPU
-     hw7.springnotes.notes.domain.Memory
-     hw7.springnotes.notes.domain.Store
-     hw7.springnotes.notes.domain.Sales
+     hw7.springnotes.domain.Notebook
+     hw7.springnotes.domain.Vendor
+     hw7.springnotes.domain.CPU
+     hw7.springnotes.domain.Memory
+     hw7.springnotes.domain.Store
+     hw7.springnotes.domain.Sales
  dao
-     hw7.springnotes.notes.dao.NotebookDao
-     hw7.springnotes.notes.dao.VendorDao
-     hw7.springnotes.notes.dao.CPUDao
-     hw7.springnotes.notes.dao.MemoryDao
-     hw7.springnotes.notes.dao.StoreDao
-     hw7.springnotes.notes.dao.SalesDao
-     hw7.springnotes.notes.dao.NotebookDaoImpl
-     hw7.springnotes.notes.dao.VendorDaoImpl
-     hw7.springnotes.notes.dao.CPUDaoImpl
-     hw7.springnotes.notes.dao.MemoryDaoImpl
-     hw7.springnotes.notes.dao.StoreDaoImpl
-     hw7.springnotes.notes.dao.SalesDaoImpl
+     hw7.springnotes.dao.NotebookDao
+     hw7.springnotes.dao.VendorDao
+     hw7.springnotes.dao.CPUDao
+     hw7.springnotes.dao.MemoryDao
+     hw7.springnotes.dao.StoreDao
+     hw7.springnotes.dao.SalesDao
+     hw7.springnotes.dao.NotebookDaoImpl
+     hw7.springnotes.dao.VendorDaoImpl
+     hw7.springnotes.dao.CPUDaoImpl
+     hw7.springnotes.dao.MemoryDaoImpl
+     hw7.springnotes.dao.StoreDaoImpl
+     hw7.springnotes.dao.SalesDaoImpl
  service
-    hw7.springnotes.notes.service.NotebookService
+    hw7.springnotes.service.NotebookService
         List<Notebook> getNotebooksByPortion(int size)
         List<Notebook> getNotebooksGtAmount(int amount)
         List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor)
         List<Notebook> getNotebooksFromStore()
         List<Notebook> getNotebooksStorePresent()
         Map<Notebook, int> getSalesByDays()
-    hw7.springnotes.notes.service.NotebookServiceImpl
+    hw7.springnotes.service.NotebookServiceImpl
  view
-    hw7.springnotes.notes.service.Menu
+    hw7.springnotes.service.Menu
         main()
