@@ -27,7 +27,7 @@ import java.util.Locale;
 public class Main {
     //private static Logger log = Logger.getLogger(Main.class);
     public static void main(String[] args) {
-
+//
         NotebookService notebookService = new NotebookServiceImpl();
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date date1 = null;
