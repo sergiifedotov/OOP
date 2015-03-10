@@ -1,4 +1,4 @@
-package hw7.notes.dao;
+package hw7.springnotes.notes.dao;
 
 import hw7.springnotes.notes.domain.Notebook;
 

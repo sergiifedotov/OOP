@@ -1,4 +1,4 @@
-package hw7;
+package hw7.springnotes;
 
 import hw7.springnotes.notes.domain.Vendor;
 import hw7.springnotes.notes.service.NotebookService;

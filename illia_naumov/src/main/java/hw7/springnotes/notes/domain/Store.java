@@ -1,6 +1,5 @@
-package hw7.notes.domain;
+package hw7.springnotes.notes.domain;
 
-import hw7.springnotes.notes.domain.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -26,7 +25,7 @@ public class Store {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "store",cascade = CascadeType.PERSIST)
     @Fetch(FetchMode.SELECT)
-    private Set<hw7.springnotes.notes.domain.Sales> sales = new HashSet<hw7.springnotes.notes.domain.Sales>();
+    private Set<Sales> sales = new HashSet<Sales>();
 
     @Column(name = "QUANTITY")
     private int quantity;

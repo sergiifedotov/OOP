@@ -1,9 +1,5 @@
-package hw7.notes.domain;
+package hw7.springnotes.notes.domain;
 
-import hw7.springnotes.notes.domain.*;
-import hw7.springnotes.notes.domain.CPU;
-import hw7.springnotes.notes.domain.Memory;
-import hw7.springnotes.notes.domain.Vendor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -24,7 +20,7 @@ public class Notebook {
     private long id;
 
     @ManyToOne
-    private hw7.springnotes.notes.domain.Vendor vendor = null;
+    private Vendor vendor = null;
 
 
     @Column(name = "MODEL")
@@ -36,19 +32,19 @@ public class Notebook {
 
     //@ManyToOne(fetch = FetchType.EAGER)
     @Column(name = "CPU")
-    private hw7.springnotes.notes.domain.CPU cpu;
+    private CPU cpu;
 
     //@ManyToOne(fetch = FetchType.EAGER)
     @Column(name = "MEMORY")
-    private hw7.springnotes.notes.domain.Memory memory;
+    private Memory memory;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "notebooks",cascade = CascadeType.PERSIST)
     @Fetch(FetchMode.SELECT)
-    private Set<hw7.springnotes.notes.domain.Store> stores = null;
+    private Set<Store> stores = null;
 
     public Notebook(){}
 
-    public Notebook(hw7.springnotes.notes.domain.Vendor vendor, String model, Date manufactureDate, hw7.springnotes.notes.domain.CPU cpu, hw7.springnotes.notes.domain.Memory memory){
+    public Notebook(Vendor vendor, String model, Date manufactureDate, CPU cpu, Memory memory){
         this.vendor = vendor;
         this.model = model;
         this.manufactureDate = manufactureDate;
@@ -57,11 +53,11 @@ public class Notebook {
     }
 
     //<editor-fold desc="getters">
-    public hw7.springnotes.notes.domain.Memory getMemory() {
+    public Memory getMemory() {
         return memory;
     }
 
-    public hw7.springnotes.notes.domain.CPU getCpu() {
+    public CPU getCpu() {
         return cpu;
     }
 
@@ -73,7 +69,7 @@ public class Notebook {
         return model;
     }
 
-    public hw7.springnotes.notes.domain.Vendor getVendor() {
+    public Vendor getVendor() {
         return vendor;
     }
 

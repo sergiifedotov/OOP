@@ -1,4 +1,4 @@
-package hw7.notes.service;
+package hw7.springnotes.notes.service;
 
 import hw7.springnotes.notes.domain.*;
 

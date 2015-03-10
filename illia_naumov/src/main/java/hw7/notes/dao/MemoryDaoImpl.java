@@ -1,19 +1,18 @@
 package hw7.notes.dao;
 
-import hw7.notes.domain.Memory;
-import hw7.util.HibernateUtil;
+import hw7.springnotes.notes.dao.*;
+import hw7.springnotes.notes.domain.Memory;
+import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 /**
  * Created by illia_naumov on 20.02.2015.
  */
-public class MemoryDaoImpl implements MemoryDao {
+public class MemoryDaoImpl implements hw7.springnotes.notes.dao.MemoryDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
     public MemoryDaoImpl() {

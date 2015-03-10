@@ -1,4 +1,4 @@
-package hw7.util;
+package hw7.springnotes.util;
 
 
 import org.apache.log4j.Logger;
