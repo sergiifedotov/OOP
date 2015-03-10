@@ -29,7 +29,7 @@ public class AuthenticationServlet extends HttpServlet {
         authenticationService = context.getBean("auth", AuthenticationService.class);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session == null) {
             checkAuthentication(request, response);
