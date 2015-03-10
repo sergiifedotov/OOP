@@ -17,7 +17,7 @@ import java.io.IOException;
  * User: al1
  * Date: 9/8/13
  */
-@WebServlet("/hello")
+@WebServlet("/helloSpring")
 public class HelloSpring extends HttpServlet {
     private WebApplicationContext context;
     private EmployeeDao employeeDao;
@@ -32,8 +32,8 @@ public class HelloSpring extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (context != null) {
-            String log = request.getParameter("log");
-            String pass = request.getParameter("pass");
+            String log = request.getParameter("login");
+            String pass = request.getParameter("password");
             HttpSession session;
             if (log.equals("111") && pass.equals("111")) {
                 session = request.getSession();

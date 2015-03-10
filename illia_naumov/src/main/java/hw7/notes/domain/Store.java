@@ -25,7 +25,7 @@ public class Store {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "store",cascade = CascadeType.PERSIST)
     @Fetch(FetchMode.SELECT)
-    private Set<Sales> sales = new HashSet<Sales>();
+    private Set<hw7.springnotes.domain.Sales> sales = new HashSet<hw7.springnotes.domain.Sales>();
 
     @Column(name = "QUANTITY")
     private int quantity;

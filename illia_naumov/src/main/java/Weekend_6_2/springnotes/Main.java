@@ -1,10 +1,7 @@
 package Weekend_6_2.springnotes;
 
-import Weekend_6_2.springnotes.notes.dao.NotebookDao;
-import Weekend_6_2.springnotes.notes.domain.Notebook;
-import Weekend_6_2.springnotes.notes.domain.Vendor;
-import Weekend_6_2.springnotes.notes.service.NotebookService;
-import Weekend_6_2.springnotes.notes.service.NotebookServiceImpl;
+import Weekend_6_2.springnotes.dao.NotebookDao;
+import Weekend_6_2.springnotes.domain.Notebook;
 import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
 import org.springframework.context.ApplicationContext;
 
