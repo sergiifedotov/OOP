@@ -1,7 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.springnotes.notes.dao.*;
-import hw7.springnotes.notes.domain.Store;
+import hw7.springnotes.domain.Store;
 import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -12,7 +11,7 @@ import java.util.List;
 /**
  * Created by user on 20.02.2015.
  */
-public class StoreDaoImpl implements hw7.springnotes.notes.dao.StoreDao {
+public class StoreDaoImpl implements hw7.springnotes.dao.StoreDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
     public StoreDaoImpl() {

@@ -1,5 +1,5 @@
 package hw7.notes.domain;
-import hw7.springnotes.notes.domain.Notebook;
+import hw7.springnotes.domain.Notebook;
 
 import javax.persistence.*;
 import java.util.HashSet;

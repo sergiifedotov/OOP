@@ -1,15 +1,14 @@
 package hw7.notes.service;
 
-import hw7.springnotes.notes.dao.*;
-import hw7.springnotes.notes.domain.*;
-import hw7.springnotes.notes.service.*;
+import hw7.springnotes.dao.*;
+import hw7.springnotes.domain.*;
 
 import java.util.*;
 
 /**
  * Created by illia_naumov on 20.02.2015.
  */
-public class NotebookServiceImpl implements hw7.springnotes.notes.service.NotebookService {
+public class NotebookServiceImpl implements hw7.springnotes.service.NotebookService {
     private NotebookDao notebookDao;
     private StoreDao storeDao;
     private SalesDao salesDao;

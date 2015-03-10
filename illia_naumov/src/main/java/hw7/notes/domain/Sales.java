@@ -1,6 +1,6 @@
 package hw7.notes.domain;
 
-import hw7.springnotes.notes.domain.Store;
+import hw7.springnotes.domain.Store;
 
 import javax.persistence.*;
 import java.util.Date;

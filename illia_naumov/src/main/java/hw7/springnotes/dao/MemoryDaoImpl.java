@@ -1,6 +1,6 @@
-package hw7.springnotes.notes.dao;
+package hw7.springnotes.dao;
 
-import hw7.springnotes.notes.domain.Store;
+import hw7.springnotes.domain.Memory;
 import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -9,22 +9,22 @@ import org.hibernate.Session;
 import java.util.List;
 
 /**
- * Created by user on 20.02.2015.
+ * Created by illia_naumov on 20.02.2015.
  */
-public class StoreDaoImpl implements  StoreDao {
+public class MemoryDaoImpl implements MemoryDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
-    public StoreDaoImpl() {
+    public MemoryDaoImpl() {
     }
 
     @Override
-    public Long create(Store store) {
+    public Long create(Memory memory) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            session.save(store);
+            session.save(memory);
             session.getTransaction().commit();
-            return (Long) store.getId();
+            return (Long) memory.getId();
         }catch (HibernateException e){
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
@@ -35,28 +35,29 @@ public class StoreDaoImpl implements  StoreDao {
     }
 
     @Override
-    public Store read(Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try{
-            session.beginTransaction();
-            Store store = (Store) session.get(Store.class, id);
-            session.getTransaction().commit();
-            return store;
-        }catch (HibernateException e){
-            log.error("Transaction failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            session.close();
-        }
-        return null;
-    }
-
-    @Override
-    public boolean update(Store store) {
+    public Memory read(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(store);
+            Memory memory = (Memory) session.get(Memory.class, id);
+            session.getTransaction().commit();
+            return memory;
+        } catch (HibernateException e) {
+            log.error("Transaction failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+
+    @Override
+    public boolean update(Memory memory) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.update(memory);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -69,14 +70,14 @@ public class StoreDaoImpl implements  StoreDao {
     }
 
     @Override
-    public boolean delete(Store store) {
+    public boolean delete(Memory memory) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try{
+        try {
             session.beginTransaction();
-            session.delete(store);
+            session.delete(memory);
             session.getTransaction().commit();
             return true;
-        }catch (HibernateException e){
+        } catch (HibernateException e) {
             log.error("Transaction failed", e);
             session.getTransaction().rollback();
         } finally {
@@ -86,11 +87,11 @@ public class StoreDaoImpl implements  StoreDao {
     }
 
     @Override
-    public List<Store> findAll() {
+    public List<Memory> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
             session.beginTransaction();
-            return session.createCriteria(Store.class).list();
+            return session.createCriteria(Memory.class).list();
         }catch(HibernateException e){
             log.error("Open session failed", e);
             session.getTransaction().rollback();

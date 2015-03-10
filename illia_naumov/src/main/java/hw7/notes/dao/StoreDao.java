@@ -1,6 +1,6 @@
 package hw7.notes.dao;
 
-import hw7.springnotes.notes.domain.Store;
+import hw7.springnotes.domain.Store;
 
 import java.util.List;
 

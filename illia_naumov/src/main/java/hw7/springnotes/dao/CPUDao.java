@@ -1,6 +1,6 @@
-package hw7.springnotes.notes.dao;
+package hw7.springnotes.dao;
 
-import hw7.springnotes.notes.domain.CPU;
+import hw7.springnotes.domain.CPU;
 
 import java.util.List;
 
