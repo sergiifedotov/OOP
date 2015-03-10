@@ -114,6 +114,11 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    public Long receive(Long notebookId, int amount, double price) {
+        return null;
+    }
+
+    @Override
     public List<Notebook> getNotebooksByPortion(int size) {
         return null;
     }

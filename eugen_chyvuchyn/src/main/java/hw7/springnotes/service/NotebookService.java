@@ -32,6 +32,8 @@ public interface NotebookService {
     Memory readMemory(Long ig);
     boolean deleteMemory(Memory memory);
 
+    Long receive(Long notebookId, int amount, double price);
+
     List<Notebook> getNotebooksByPortion(int size);
     List<Notebook> getNotebooksGtAmount(int amount);
     List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
