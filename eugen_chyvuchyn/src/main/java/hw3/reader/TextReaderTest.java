@@ -1,4 +1,4 @@
-package hw3.chat.reader;
+package hw3.reader;
 
 /**
  * Created by Chuvychin on 07.02.2015.
