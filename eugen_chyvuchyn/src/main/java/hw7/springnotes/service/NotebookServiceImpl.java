@@ -3,7 +3,7 @@ package hw7.springnotes.service;
 import hw7.springnotes.dao.*;
 import hw7.springnotes.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by Chuvychin on 27.02.2015.
  */
 
-@Component
+@Service
 @Transactional
 public class NotebookServiceImpl implements NotebookService {
 
@@ -39,6 +39,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public CPU readCPU(Long ig) {
         return null;
     }
@@ -54,6 +55,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Notebook readNotebook(Long ig) {
         return null;
     }
@@ -69,6 +71,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Sales readSales(Long ig) {
         return null;
     }
@@ -79,6 +82,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Store readStore(Long ig) {
         return null;
     }
@@ -89,6 +93,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Vendor readVendor(Long ig) {
         return null;
     }
@@ -104,6 +109,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
+    @Transactional (readOnly = true)
     public Memory readMemory(Long ig) {
         return null;
     }
@@ -111,6 +117,16 @@ public class NotebookServiceImpl implements NotebookService {
     @Override
     public boolean deleteMemory(Memory memory) {
         return false;
+    }
+
+    @Override
+    public Long sale(Long storeId, int amount) {
+        return null;
+    }
+
+    @Override
+    public Long receive(Long notebookId, int amount, double price) {
+        return null;
     }
 
     @Override

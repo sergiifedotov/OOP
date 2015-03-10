@@ -31,6 +31,9 @@ public interface NotebookService {
     Long createMemory(Memory memory);
     Memory readMemory(Long ig);
     boolean deleteMemory(Memory memory);
+    Long sale(Long storeId, int amount);
+
+    Long receive(Long notebookId, int amount, double price);
 
     List<Notebook> getNotebooksByPortion(int size);
     List<Notebook> getNotebooksGtAmount(int amount);
