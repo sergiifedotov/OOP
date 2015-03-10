@@ -9,7 +9,7 @@ import java.util.List;
  * on 27.02.15
  */
 public interface NotebookService {
-    Long receive(int notebookId, int amount, double price);
+    Long receive(Long notebookId, int amount, double price);
     Long sale(int storeId, int amount);
 
     List<Notebook> getNotebooksFromStore();
