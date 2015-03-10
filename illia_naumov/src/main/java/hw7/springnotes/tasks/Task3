@@ -1,0 +1,38 @@
+3. Добавить в приложение ноутбуков следующие функции
+ Изменить процессор
+ Изменить память
+ Изменить имя производителя
+ Изменить тип ноутбука
+ Списать со склад ноутбуки (ключ, количество)
+
+ domain
+     hw7.springnotes.notes.domain.Notebook
+     hw7.springnotes.notes.domain.Vendor
+     hw7.springnotes.notes.domain.CPU
+     hw7.springnotes.notes.domain.Memory
+     hw7.springnotes.notes.domain.Store
+     hw7.springnotes.notes.domain.Sales
+ dao
+     hw7.springnotes.notes.dao.NotebookDao
+     hw7.springnotes.notes.dao.VendorDao
+     hw7.springnotes.notes.dao.CPUDao
+     hw7.springnotes.notes.dao.MemoryDao
+     hw7.springnotes.notes.dao.StoreDao
+     hw7.springnotes.notes.dao.SalesDao
+     hw7.springnotes.notes.dao.NotebookDaoImpl
+     hw7.springnotes.notes.dao.VendorDaoImpl
+     hw7.springnotes.notes.dao.CPUDaoImpl
+     hw7.springnotes.notes.dao.MemoryDaoImpl
+     hw7.springnotes.notes.dao.StoreDaoImpl
+     hw7.springnotes.notes.dao.SalesDaoImpl
+ service
+    hw7.springnotes.notes.service.NotebookService
+        boolean updateCPU(CPU cpu)
+        boolean updateMemory(Memory memory)
+        boolean updateVendor(Vendor vendor)
+        boolean updateNotebook(Notebook notebook)
+        boolean removeFromStore(Store store, int amount)
+    hw7.springnotes.notes.service.NotebookServiceImpl
+ view
+    hw7.springnotes.notes.service.Menu
+        main()
