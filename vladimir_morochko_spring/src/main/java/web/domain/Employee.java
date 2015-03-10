@@ -151,11 +151,15 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", email=" + email
-                + ", phoneNumber=" + phoneNumber + ", hireDate=" + hireDate
-                + ", salary=" + salary + ", comissionPct="
-                + comissionPct + ", manager=\n" + manager + ",\n " +
-                "]";
+        return "Employee [id=" + id
+                + ", firstName=" + firstName
+                + ", lastName=" + lastName
+                + ", email=" + email
+                + ", phoneNumber=" + phoneNumber
+                + ", hireDate=" + hireDate
+                + ", salary=" + salary
+                + ", comissionPct=" + comissionPct
+                // + ", manager=\n" + manager + ",\n "
+                + "]";
     }
 }

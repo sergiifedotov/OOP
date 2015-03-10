@@ -86,6 +86,8 @@ public class OrderServlet extends HttpServlet {
         if (action.equals("showOrdersByPortion")) {
             int portionSize = propertiesService.getOrderPortionSize();
             list = orderService.showOrdersByPortion(portionSize);
+            request.setAttribute("lowerLimit", 0);
+            request.setAttribute("upperLimit", 10000);
             request.getSession().setAttribute("orderList", list);
             request.getRequestDispatcher("orders.jsp").forward(request, response);
         }

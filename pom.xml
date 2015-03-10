@@ -25,7 +25,7 @@
         <module>eugen_chyvuchyn_spring</module>
         <module>Yaroslav_Syrota</module>
         <module>Yaroslav_Syrota_web</module>
-        <module>Yaroslav_Syrota_examples_spring</module>
+        <module>Yaroslav_Syrota_spring</module>
         <module>illia_naumov</module>
         <module>Tanya_Gensitskaya</module>
         <module>sergey_fedotov</module>
@@ -38,6 +38,9 @@
         <module>konstantin_krivous</module>
         <module>konstantin_krivous_web</module>
         <module>konstantin_krivous_spring</module>
+
+        <module>alexandr_lapada_web</module>
+
 
     </modules>
 

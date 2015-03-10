@@ -2,15 +2,28 @@ package web.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.*;
+
 /**
- * Created with IntelliJ IDEA.
- * User: al1
- * Date: 15.06.13
+ *
  */
+
+@Entity
+@Table(name="USERS")
 public class User {
+
+    @Id
+    @SequenceGenerator(name = "auto", sequenceName = "USER_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
+    @Column(name="USER_ID")
+    private Long id;
+
+
     @NotEmpty
+    @Column(name="LOGIN")
     private String login;
     @NotEmpty
+    @Column(name="PASS")
     private String pass;
 
     public User() {

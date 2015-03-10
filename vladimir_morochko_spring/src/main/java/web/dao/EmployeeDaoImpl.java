@@ -18,12 +18,37 @@ import java.util.List;
 public class EmployeeDaoImpl implements EmployeeDao {
 
     @Autowired
-    private SessionFactory factory;
+    private SessionFactory sessionFactory;
+
+    public EmployeeDaoImpl() {
+    }
+
+    public Long create(Employee employee) {
+        return (Long) sessionFactory.getCurrentSession().save(employee);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Employee read(Long id) {
+        return (Employee) sessionFactory.getCurrentSession().get(Employee.class, id);
+    }
+
+    @Override
+    public boolean update(Employee employee) {
+        sessionFactory.getCurrentSession().update(employee);
+        return true;
+    }
+
+    @Override
+    public boolean delete(Employee employee) {
+        sessionFactory.getCurrentSession().delete(employee);
+        return true;
+    }
 
     @Transactional(readOnly = true)
     @Override
     public List<Employee> findAll() {
-        Session session = factory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return session.createCriteria(Employee.class).list();
     }
 }
