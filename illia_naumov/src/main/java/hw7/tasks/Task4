@@ -1,0 +1,40 @@
+4. Добавить в приложение ноутбуков следующие функции:
+ Показать все ноутбуки на складе (пользователь указывает размер порции)
+ Показать все ноутбуки которых больше указанного количества
+ Показать все ноутбуки по указанному имени производителя процессора
+ Показать все ноутбуки на складе
+ Показать типы ноутбуков, оставшиеся на складе по каждому производителю
+ Получить объем продаж ноутбуков по каждому дню
+
+ domain
+     hw7.springnotes.notes.domain.Notebook
+     hw7.springnotes.notes.domain.Vendor
+     hw7.springnotes.notes.domain.CPU
+     hw7.springnotes.notes.domain.Memory
+     hw7.springnotes.notes.domain.Store
+     hw7.springnotes.notes.domain.Sales
+ dao
+     hw7.springnotes.notes.dao.NotebookDao
+     hw7.springnotes.notes.dao.VendorDao
+     hw7.springnotes.notes.dao.CPUDao
+     hw7.springnotes.notes.dao.MemoryDao
+     hw7.springnotes.notes.dao.StoreDao
+     hw7.springnotes.notes.dao.SalesDao
+     hw7.springnotes.notes.dao.NotebookDaoImpl
+     hw7.springnotes.notes.dao.VendorDaoImpl
+     hw7.springnotes.notes.dao.CPUDaoImpl
+     hw7.springnotes.notes.dao.MemoryDaoImpl
+     hw7.springnotes.notes.dao.StoreDaoImpl
+     hw7.springnotes.notes.dao.SalesDaoImpl
+ service
+    hw7.springnotes.notes.service.NotebookService
+        List<Notebook> getNotebooksByPortion(int size)
+        List<Notebook> getNotebooksGtAmount(int amount)
+        List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor)
+        List<Notebook> getNotebooksFromStore()
+        List<Notebook> getNotebooksStorePresent()
+        Map<Notebook, int> getSalesByDays()
+    hw7.springnotes.notes.service.NotebookServiceImpl
+ view
+    hw7.springnotes.notes.service.Menu
+        main()
