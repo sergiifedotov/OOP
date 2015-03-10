@@ -79,6 +79,10 @@ public class AsyncChat {
     }
 
 
+    public void process(){
+        // for jon
+    }
+
     private class Receiver implements Runnable{
 
         @Override

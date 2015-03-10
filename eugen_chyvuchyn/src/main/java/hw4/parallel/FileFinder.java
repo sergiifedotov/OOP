@@ -28,8 +28,8 @@ public class FileFinder implements Runnable{
     public FileFinder() {
 
     }
-    void parallelFind(){
-
+    void parallelFind(String path, String fileName){
+        //for jon
     }
     public void parallelFind(File path, String fileName) {
 
