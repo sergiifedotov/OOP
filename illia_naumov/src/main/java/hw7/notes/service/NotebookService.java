@@ -1,6 +1,6 @@
 package hw7.notes.service;
 
-import hw7.notes.domain.*;
+import hw7.springnotes.domain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +16,7 @@ public interface NotebookService {
     public void add(Store store);
     public void add(Vendor vendor);
     Long receive(Long notebookId, int amount, double price);
-    Long sale(long storeId, int amount);
+    Long sale(Long storeId, int amount);
     boolean updateCPU(CPU cpu);
     boolean updateMemory(Memory memory);
     boolean updateVendor(Vendor vendor);

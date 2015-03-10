@@ -1,5 +1,6 @@
 package hw7.notes.domain;
 
+import hw7.springnotes.domain.Notebook;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 

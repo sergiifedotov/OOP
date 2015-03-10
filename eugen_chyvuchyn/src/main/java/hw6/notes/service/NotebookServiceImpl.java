@@ -26,6 +26,9 @@ private NotebookDaoImpl notebookDao;
         return notebookDao.create(notebook);
     }
 
+    public NotebookServiceImpl() {
+    }
+
     @Override
     public List<Notebook> findAll() {
 

@@ -1,25 +1,13 @@
 package hw7;
 
-import hw7.notes.dao.*;
-import hw7.notes.domain.CPU;
-import hw7.notes.domain.Memory;
-import hw7.notes.domain.Notebook;
-import hw7.notes.domain.Vendor;
-import hw7.notes.service.NotebookService;
-import hw7.notes.service.NotebookServiceImpl;
-import hw7.util.HibernateUtil;
-import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+import hw7.springnotes.domain.Vendor;
+import hw7.springnotes.service.NotebookService;
+import hw7.springnotes.service.NotebookServiceImpl;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by illia_naumov on 20.02.2015.
