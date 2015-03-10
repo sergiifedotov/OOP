@@ -32,7 +32,9 @@ public class ChatServer {
         serverSocket = new ServerSocket(port);
         this.port = port;
     }
+    void listenConnections( int port ){
 
+    }
     public void run(){
         serverTread = Thread.currentThread();
         while (true){
