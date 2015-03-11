@@ -31,6 +31,12 @@
         <module>Maksim_Kuzmenyuk</module>
         <module>konstantin_krivous</module>
         <module>alexandr_lapada_spring</module>
+        <module>konstantin_krivous_web</module>
+        <module>konstantin_krivous_spring</module>
+
+        <module>alexandr_lapada_web</module>
+
+
     </modules>
 
     <properties>

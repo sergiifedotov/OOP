@@ -57,6 +57,7 @@ public class ClientServlet extends HttpServlet {
         }
         if (action.equals("showClientsLastMonth")) {
             list = clientService.showClientsLastMonth();
+            request.setAttribute("clientMinSum", 0);
             request.getSession().setAttribute("clientList", list);
             request.getRequestDispatcher("clients.jsp").forward(request, response);
         }

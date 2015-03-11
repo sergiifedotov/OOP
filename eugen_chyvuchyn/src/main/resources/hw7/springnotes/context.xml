@@ -25,7 +25,7 @@
               <property name="dataSource" ref="myDataSource"/>
               <property name="packagesToScan">
                      <list>
-                            <value>hw7</value>
+                            <value>hw7.springnotes</value>
                      </list>
               </property>
               <property name="hibernateProperties">

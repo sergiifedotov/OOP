@@ -1,0 +1,85 @@
+
+div p {
+    padding: 10px;
+    /*height: 50%;*/
+    width:50%;
+    text-align: center;
+    /*height:40px;*/
+    border-radius: 20px;
+    background: lawngreen;
+    border: 2px dashed red;
+    display: inline-block;
+}
+
+#body {
+    padding: 0;
+}
+
+.rad {
+     border-radius: 2px;
+}
+
+#header {
+    background: #777;
+}
+
+.nav {
+    /*float: left;*/
+    width: 49%;
+    background: #ccc;
+    border: 1px solid #000000;
+    display: inline-block;
+}
+
+#menu {
+    float: left;
+    width: 20%;
+    height: 200px;
+    background: #999;
+    border: 1px solid #000000;
+    display: inline-block;
+}
+#content {
+    float: left;
+    height: 200px;
+    width: 79%;
+    background: #aaa;
+    border: 1px solid #000000;
+    display: inline-block;
+}
+
+h3 {
+    color: pink;
+}
+
+#greycol {
+    color: grey;
+}
+
+div > p {
+    color: red;
+}
+
+span > p {
+    color: brown;
+}
+
+div > div {
+    color: silver;
+}
+
+h4 + p {
+    color: green;
+}
+
+.yellowcol {
+    color: yellow;
+}
+
+div.yellowcol {
+    color: blue;
+}
+
+[style="border: dashed"] {
+    color: olive;
+}

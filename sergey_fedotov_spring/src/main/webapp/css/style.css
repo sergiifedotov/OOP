@@ -1,0 +1,35 @@
+h3 {
+    color: pink;
+}
+
+#greycol {
+    color: grey;
+}
+
+div p {
+     color: red;
+ }
+
+div span p {
+    color:brown;
+}
+
+[style=""] {
+    color:silver;
+}
+
+h4 + p{
+    color:green;
+}
+
+.yellowcol{
+    color:yellow;
+}
+
+.yellowcol+div{
+    color:blue;
+}
+
+div + [style="border: dashed"]{
+    color:olive;
+}

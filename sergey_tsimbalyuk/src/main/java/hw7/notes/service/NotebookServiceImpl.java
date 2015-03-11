@@ -18,7 +18,7 @@ public class NotebookServiceImpl implements NotebookService{
     private double price;
 
     @Override
-    public Long receive(int notebookId, int amount, double price) {
+    public Long receive(Long notebookId, int amount, double price) {
 
         return null;
     }

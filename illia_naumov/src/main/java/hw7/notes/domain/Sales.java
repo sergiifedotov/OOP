@@ -1,7 +1,6 @@
 package hw7.notes.domain;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import hw7.springnotes.domain.Store;
 
 import javax.persistence.*;
 import java.util.Date;
