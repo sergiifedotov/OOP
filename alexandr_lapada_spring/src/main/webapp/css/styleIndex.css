@@ -1,0 +1,30 @@
+div {
+    border: 2px solid #000000;
+    border-radius: 25px;
+    width: 250px;
+    height: 150px;
+    padding: 10;
+}
+input {
+    tab-size: 35;
+}
+#button1 {
+    margin: 5;
+}
+a {
+    margin: 5;
+}
+img {
+    width: 300;
+    height: 150;
+}
+h5 {
+    color: #ff0000;
+}
+h6 {
+    color: #ffffff;
+}
+.button {
+    width: 70;
+    height: 25;
+}
