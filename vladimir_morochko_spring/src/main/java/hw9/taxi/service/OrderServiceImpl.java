@@ -1,46 +1,48 @@
 package hw9.taxi.service;
 
+import hw9.taxi.dao.OrderDao;
 import hw9.taxi.domain.Client;
+import hw9.taxi.domain.Order;
 import hw9.taxi.exception.OrderException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by vladimir on 09.03.2015.
  */
+@Service
 public class OrderServiceImpl implements OrderService {
-//    @Override
-//    public boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException {
-//        return false;
-//    }
-//
-//    @Override
-//    public void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo) {
-//
-//    }
+    @Autowired(required = true)
+    private OrderDao orderDao;
 
-    @Override
-    public boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException {
-        return false;
+    public OrderServiceImpl() {
     }
 
     @Override
-    public void editOrder(Long id, String client, String amount, String addressFrom, String addressTo) {
+    public boolean createOrder(Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
+        if (client != null) {
+            Order order = new Order(client, amount, addressFrom, addressTo);
+            Long id = orderDao.create(order);
+            return true;
+        } else {
+            throw new OrderException("не выбран клиент");
+        }
+    }
+
+    @Override
+    public void editOrder(Long id, Client client, Integer amount, String addressFrom, String addressTo) {
 
     }
 
     @Override
-    public List showOrders(Long orderAmountLowerLimit, Long orderAmountUpperLimit) {
+    public List getOrders(Long orderAmountLowerLimit, Long orderAmountUpperLimit) {
         return null;
     }
 
     @Override
-    public List showOrdersByPortion(int portionSize) {
-        return null;
-    }
-
-    @Override
-    public List sowOrdersByPortion() {
+    public List getOrdersByPortion(int portionSize) {
         return null;
     }
 }

@@ -13,7 +13,7 @@
     <title>${orderMessage}</title>
 </head>
 <body>
-<h>${orderMessage}</h>
+<h4>${orderMessage}</h4>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
 <p><a href="/OrderServlet?action=editOrder&orderId=${prevOrderId}"><<< предыдущий заказ  </a>
 <a href="/OrderServlet?action=editOrder&orderId=${nextOrderId}">   следующий заказ >>></a></p>

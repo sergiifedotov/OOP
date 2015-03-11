@@ -9,13 +9,9 @@ import java.util.List;
  * Created by vladimir on 09.03.2015.
  */
 public interface OrderService {
-    //boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException;
-    //void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo);
+    boolean createOrder(Client client, Integer amount, String addressFrom, String addressTo) throws OrderException;
+    void editOrder(Long id, Client client, Integer amount, String addressFrom, String addressTo);
 
-    boolean createOrder(Long id, String client, String amount, String addressFrom, String addressTo) throws OrderException;
-    void editOrder(Long id, String client, String amount, String addressFrom, String addressTo);
-
-    List showOrders(Long orderAmountLowerLimit, Long orderAmountUpperLimit);
-    List showOrdersByPortion(int portionSize);
-    List sowOrdersByPortion(); // WTF?
+    List getOrders(Long orderAmountLowerLimit, Long orderAmountUpperLimit);
+    List getOrdersByPortion(int portionSize);
 }

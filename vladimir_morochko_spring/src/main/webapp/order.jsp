@@ -1,3 +1,7 @@
+<%@ page import="hw9.taxi.domain.Client" %>
+<%@ page import="java.util.List" %>
+
+<%@ page import="hw9.taxi.service.ClientServiceImpl" %>
 <%--
   Created by IntelliJ IDEA.
   User: vladimir
@@ -11,6 +15,35 @@
     <title></title>
 </head>
 <body>
+<h4>${orderMessage}</h4>
+<p><a href="dashboard.jsp"><<< to dashboard</a></p>
 
+<form action="/orderEditServlet">
+    <input type="hidden" name="action" value="saveOrder"/>
+    <p>Клиент:</p>
+    <%
+        List<Client> list = (List<Client>) session.getAttribute("clientList");
+        Long defaultClientId = (Long)session.getAttribute("defaultClientId");
+        out.print("<select name=\"clientChoice\">");
+
+        for (Client client : list) {
+            out.print("<option value=\"" + client.getId() + "\"");
+            if (client.getId() == defaultClientId) {
+                out.print(" selected");
+            }
+            out.print(">");
+            out.print(client);
+            out.print("</option>");
+        }
+        out.print("</select>");
+    %>
+    <p>Сумма:</p>
+    <input type="text" name="amount" value="${defaultAmount}"/><br>
+    <p>Адрес подачи:</p>
+    <input type="text" name="addressFrom" value="${defaultAddressFrom}"/><br>
+    <p>Адрес назначения:</p>
+    <input type="text" name="addressTo" value="${defaultAddressTo}"/><br><br>
+    <input type="submit" name="register" value="Сохранить"/>
+</form>
 </body>
 </html>

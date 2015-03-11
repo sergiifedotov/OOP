@@ -1,15 +1,15 @@
 
-div p {
-    padding: 10px;
+/*div p {*/
+    /*padding: 10px;*/
     /*height: 50%;*/
-    width:50%;
-    text-align: center;
+    /*width:50%;*/
+    /*text-align: center;*/
     /*height:40px;*/
-    border-radius: 20px;
-    background: lawngreen;
-    border: 2px dashed red;
-    display: inline-block;
-}
+    /*border-radius: 20px;*/
+    /*background: lawngreen;*/
+    /*border: 2px dashed red;*/
+    /*display: inline-block;*/
+/*}*/
 
 #body {
     padding: 0;
@@ -56,9 +56,9 @@ h3 {
     color: grey;
 }
 
-div > p {
-    color: red;
-}
+/*div > p {*/
+    /*color: red;*/
+/*}*/
 
 span > p {
     color: brown;
@@ -82,4 +82,16 @@ div.yellowcol {
 
 [style="border: dashed"] {
     color: olive;
+}
+
+img {
+    text-align: center;
+}
+
+h4 {
+    color: red;
+}
+
+.silvertext {
+    color: silver;
 }

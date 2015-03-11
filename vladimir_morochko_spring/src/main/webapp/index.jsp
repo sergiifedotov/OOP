@@ -5,15 +5,18 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<a href="cssTask.jsp">На CSS!!!11>>></a>
-<div class="board">
-    <form method="get" action="/helloSpring" id="project">
-        <input id="login" class="board" type="text" name="login" value="" size="50"/><br/>
-        <input type="password" name="password" value="" size="50"/><br/>
-        <input id="button1" type="submit" value="Send Numbers" size="40"><br/>
+<div class="board" align="center">
+    <img src="img/header.jpg" height="100" width="100">
+    <h3>Zen Taxi</h3>
+    <h4>${authenticationResultMessage}</h4>
+    <form method="post" action="/authenticationServlet" id="project">
+        <input id="login" class="board" type="text" name="login" value="${defaultLogin}" size="30"/><br/>
+        <input type="password" name="password" value="" size="30"/><br/>
+        <input id="button" type="submit" value="Войти" size="40">
+        <p class='silvertext'> или <a href="register.jsp">зарегистрироваться</a></p>
     </form>
 </div>
-
+<p class='silvertext' align="center">На самом деле нет никакого такси (c)</p>
 
 </body>
 </html>

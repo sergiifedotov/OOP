@@ -8,9 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>зарегистрировать клиента</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
+<h4>${registerResultMessage}</h4>
+<p><a href="dashboard.jsp"><<< dashboard</a></p>
+<form action="/clientCreateServlet">
+    <p>Имя клиента:</p>
+    <input type="text" name="name" value=""/>
+    <p>Фамилия клиента:</p>
+    <input type="text" name="surname" value=""/>
+    <p>Телефон:</p>
+    <input type="text" name="phone" value=""/>
+    <p>Адрес:</p>
+    <input type="text" name="address" value=""/><br><br>
+    <input type="submit" name="register" value="Зарегистрировать"/>
+</form>
 </body>
 </html>

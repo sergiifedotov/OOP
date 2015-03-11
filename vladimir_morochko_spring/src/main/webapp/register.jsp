@@ -8,9 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>регистрация оператора</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
+<h4>${registerResultMessage}</h4>
+<p><a href="index.jsp"><<< залогиниться</a></p>
+<form action="/registerServlet" method="post">
+    <input type="hidden" name="oldPassword" value="${oldPassword}"/>
+    <p>Логин:</p>
+    <input type="text" name="login" value="${defaultLogin}"/>
+    <p>Идентификационный номер:</p>
+    <input type="text" name="accessId" value="${defaultAccessId}"/>
+    <p>Пароль:</p>
+    <input type="text" name="password" value=""/>
+    <p>Подтверждение пароля:</p>
+    <input type="text" name="passwordConfirm" value=""/>
+    <br><br>
+    <input type="submit" name="register" value="Зарегистрировать"/>
+</form>
 </body>
 </html>
