@@ -1,5 +1,6 @@
 package hw9.taxi.controller;
 
+import hw9.taxi.domain.User;
 import hw9.taxi.exception.AuthenticationException;
 import hw9.taxi.service.AuthorizationService;
 import hw9.taxi.service.AuthorizationServiceImpl;
@@ -40,6 +41,8 @@ public class RegisterServlet extends HttpServlet {
         try {
             if (authorizationServiceService.register(request.getParameter("newLogin"),request.getParameter("identNumber"),request.getParameter("newPassword"))
                     && confPass(request.getParameter("newPassword"),request.getParameter("confPassword"))) {
+                User user = new User(request.getParameter("newLogin"),request.getParameter("newPassword"), request.getParameter("identNumber"));
+                authorizationServiceService.create(user);
                 request.setAttribute("login",request.getParameter("newLogin"));
                 request.getRequestDispatcher("dashboard.jsp").forward(request,response);
             }
@@ -47,6 +50,9 @@ public class RegisterServlet extends HttpServlet {
             e.printStackTrace();
             if (!authorizationServiceService.validTestLogin(request.getParameter("newLogin"))) {
                 request.setAttribute("wrongLogin", "Логин должен быть не меньше 4 символов без пробелов");
+            }
+            if (!authorizationServiceService.unicLogin(request.getParameter("newLogin"))) {
+                request.setAttribute("wrongLogin", "Пользователь с таким логином уже существует");
             }
             if (!authorizationServiceService.validTestPassword(request.getParameter("newPassword"))) {
                 request.setAttribute("wrongPass", "Пароль должен состоять из цифр, маленьких и больших букв, длиной не меньше 8 символов без пробелов");
@@ -59,6 +65,10 @@ public class RegisterServlet extends HttpServlet {
             }
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
+        if (!confPass(request.getParameter("newPassword"),request.getParameter("confPassword"))) {
+            request.setAttribute("wrongEqPass", "Пароли не совпадают");
+        }
+        request.getRequestDispatcher("register.jsp").forward(request, response);
 
     }
     private boolean confPass(String pass, String confPass){

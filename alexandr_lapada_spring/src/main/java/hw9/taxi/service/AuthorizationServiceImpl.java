@@ -39,6 +39,11 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         return false;
     }
 
+    @Override
+    public Long create(User user) {
+        return (long)userDao.create(user);
+    }
+
     public boolean validTestIdent(String id){
         Pattern p = Pattern.compile("^[0-9]{10}$");
         Matcher m = p.matcher(id);

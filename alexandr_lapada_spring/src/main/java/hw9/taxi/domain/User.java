@@ -21,12 +21,16 @@ public class User {
     @Column(name = "PASSWORD")
     private String pass;
 
+    @Column(name = "IDENT_NUMBER")
+    private String identNumber;
+
     public User() {
     }
 
-    public User(String login, String pass) {
+    public User(String login, String pass, String identNumber) {
         this.login = login;
         this.pass = pass;
+        this.identNumber = identNumber;
     }
 
     public String getLogin() {
@@ -53,11 +57,21 @@ public class User {
         this.id = id;
     }
 
+    public String getIdentNumber() {
+        return identNumber;
+    }
+
+    public void setIdentNumber(String identNumber) {
+        this.identNumber = identNumber;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                "id=" + id +
+                ", login='" + login + '\'' +
                 ", pass='" + pass + '\'' +
+                ", identNumber='" + identNumber + '\'' +
                 '}';
     }
 }

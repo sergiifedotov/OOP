@@ -14,27 +14,50 @@
         <td><img src="img/header.gif"></td>
     </tr>
     <tr align="center" height="50px">
-        <td><h2>Login to your cabinet or register</h2></br> </td>
+        <td><h1>Login to your cabinet or register</h1></br> </td>
     </tr>
-    <tr align="center" height="400px">
+    <tr align="center" height="50px">
         <td>
-        <div>
-            <form method="post" action="/Authentication" id="project">
                 <%
                     if (request.getAttribute("wrongAuth") != null){
-                        out.println("<h5>"+request.getAttribute("wrongAuth")+"</h5>");
+                        out.println("<h2>"+request.getAttribute("wrongAuth")+"</h2>");
                     }else {
                         out.println("</br></br></br>");
                     }
                 %>
-                <input id="login" type="text" name="login" value=""/><br/>
-                <input type="password" name="pass" value=""/><br/>
-                <input class="button" type="submit" value="login" size="40">
-                <button><a href="register.jsp">Register</a></button>
-                </form>
-        </div>
         </td>
     </tr>
+    <tr align="center">
+        <td>
+            <div>
+            <table width="22%">
+                <form method="post" action="/Authentication" id="project">
+                    <tr height="50px">
+                        <td width="60%" align="left"><p>Login</p></td>
+                        <td width="40%"><input id="login" type="text" name="login" value=""/><br/></td>
+                    </tr>
+                    <tr height="50px">
+                        <td width="60%" align="left"><p>Password</p></td>
+                        <td width="40%"><input type="password" name="pass" value=""/><br/></td>
+                    </tr>
+                    <tr height="50px" align="center">
+                        <td colspan="2"><input class="button" type="submit" value="login"></td>
+                    </tr>
+                </form>
+            </table>
+            </div>
+
+            <table width="20%" height="50px">
+                <tr height="50px" align="center">
+                    <td width="50%"><a href="register.jsp">-Register-</a></td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+<table width="100%">
     <tr align="center" height="300px">
         <td></td>
     </tr>

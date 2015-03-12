@@ -31,6 +31,7 @@ public class AuthenticationServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             if (authenticationServiceService.authenticate(request.getParameter("login"), request.getParameter("pass"))){
+                request.setAttribute("login",request.getParameter("login"));
                 request.getRequestDispatcher("dashboard.jsp").forward(request,response);
             }else{
                 request.setAttribute("wrongAuth","Wrong login or password.");
