@@ -34,7 +34,7 @@ public class ClientShowMonthServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List list = clientService.getClientsLastMonth();
         request.getSession().setAttribute("clientList", list);
-        request.setAttribute("clientMinSum", 0);
+        request.setAttribute("clientMessage", "Клиенты, делавшие заказы за последний месяц:");
         request.getRequestDispatcher("clients.jsp").forward(request, response);
 
     }

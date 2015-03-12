@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page session="false" %>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title></title>
 </head>
 <body>
 <div class="board" align="center">
@@ -13,7 +14,7 @@
         <input id="login" class="board" type="text" name="login" value="${defaultLogin}" size="30"/><br/>
         <input type="password" name="password" value="" size="30"/><br/>
         <input id="button" type="submit" value="Войти" size="40">
-        <p class='silvertext'> или <a href="register.jsp">зарегистрироваться</a></p>
+        <p class='silvertext'> или <a href="registerOperator.jsp">зарегистрироваться</a></p>
     </form>
 </div>
 <p class='silvertext' align="center">На самом деле нет никакого такси (c)</p>

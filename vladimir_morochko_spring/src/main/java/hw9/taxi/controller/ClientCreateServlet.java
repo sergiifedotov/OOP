@@ -37,15 +37,16 @@ public class ClientCreateServlet extends HttpServlet {
         String surname = request.getParameter("surname");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        String registerResultMessage = "Client created successfully";
-        boolean registerResult = false;
+        String clientMessage;
+        Long clientId;
         try {
-            registerResult = clientService.createClient(name, surname, phone, address);
+            clientId = clientService.createClient(name, surname, phone, address);
+            clientMessage = "Создан клиент с id=" + clientId;
         } catch (ClientException e) {
             //e.printStackTrace();
-            registerResultMessage = e.getMessage();
+            clientMessage = e.getMessage();
         }
-        request.setAttribute("registerResultMessage", registerResultMessage);
+        request.setAttribute("registerResultMessage", clientMessage);
         request.getRequestDispatcher("registerClient.jsp").forward(request, response);
     }
 }

@@ -1,5 +1,6 @@
 package hw9.taxi.dao;
 
+import hw9.taxi.domain.Client;
 import hw9.taxi.domain.Order;
 
 import java.util.List;
@@ -13,4 +14,7 @@ public interface OrderDao {
     boolean update(Order order);
     boolean delete(Order order);
     List findAll();
+
+    List getOrders(Integer orderAmountLowerLimit, Integer orderAmountUpperLimit);
+    List getOrdersByPortion(Integer portionSize);
 }

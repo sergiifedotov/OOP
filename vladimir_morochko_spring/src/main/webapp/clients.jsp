@@ -8,20 +8,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <p><a href="dashboard.jsp"><<< to dashboard</a></p>
+<h4>${clientMessage}</h4>
 
-<p>Минимальная сумма:</p>
-
-<form action="/clientShowSumServlet">
-    <input type="text" name="clientMinSum" value="${clientMinSum}"/>
-    <input type="submit" name="show" value="Показать"/>
-</form>
 <%
     List<Client> list = (List<Client>) session.getAttribute("clientList");
 

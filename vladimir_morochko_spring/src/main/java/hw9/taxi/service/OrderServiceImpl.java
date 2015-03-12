@@ -21,28 +21,39 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean createOrder(Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
-        if (client != null) {
-            Order order = new Order(client, amount, addressFrom, addressTo);
-            Long id = orderDao.create(order);
-            return true;
-        } else {
+    public Long createOrder(Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
+        if (client == null) {
             throw new OrderException("не выбран клиент");
         }
+        Order order = new Order(client, amount, addressFrom, addressTo);
+        return orderDao.create(order);
     }
 
     @Override
-    public void editOrder(Long id, Client client, Integer amount, String addressFrom, String addressTo) {
+    public void editOrder(Long id, Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
+        if (client == null) {
+            throw new OrderException("не выбран клиент");
+        }
+        System.out.println(id);
+        System.out.println(client);
 
+        Order order = orderDao.read(id);
+        System.out.println(order);
+
+        order.setClient(client);
+        order.setAmount(amount);
+        order.setAddressFrom(addressFrom);
+        order.setAddressTo(addressTo);
+        orderDao.update(order);
     }
 
     @Override
-    public List getOrders(Long orderAmountLowerLimit, Long orderAmountUpperLimit) {
-        return null;
+    public List getOrders(Integer orderAmountLowerLimit, Integer orderAmountUpperLimit) {
+        return orderDao.getOrders(orderAmountLowerLimit, orderAmountUpperLimit);
     }
 
     @Override
-    public List getOrdersByPortion(int portionSize) {
-        return null;
+    public List getOrdersByPortion(Integer portionSize) {
+        return orderDao.getOrdersByPortion(portionSize);
     }
 }

@@ -21,11 +21,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public boolean createClient(String name, String surname, String phone, String address) throws ClientException {
+    public Long createClient(String name, String surname, String phone, String address) throws ClientException {
         if (name != null && address != null) {
             Client client = new Client(name, surname, phone, address);
             Long id = clientDao.create(client);
-            return true;
+            return id;
         } else {
             throw new ClientException("заполните имя и фамилию клиента");
         }

@@ -4,6 +4,7 @@ import hw9.taxi.domain.Order;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,6 +51,26 @@ public class OrderDaoImpl implements OrderDao {
     public List findAll() {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Order.class);
+        return criteria.list();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List getOrders(Integer orderAmountLowerLimit, Integer orderAmountUpperLimit) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Order.class)
+                .add(Restrictions.between("amount", orderAmountLowerLimit, orderAmountUpperLimit));
+        return criteria.list();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List getOrdersByPortion(Integer portionSize) {
+        int firstResult = 0;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Order.class)
+                .setFirstResult(firstResult)
+                .setMaxResults(portionSize);
         return criteria.list();
     }
 }

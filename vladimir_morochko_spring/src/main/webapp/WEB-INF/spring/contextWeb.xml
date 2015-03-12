@@ -34,4 +34,8 @@ http://www.springframework.org/schema/tx
         <constructor-arg value="${clientPortionSize}"/>
     </bean>
 
+    <bean id="orderPortionSize" class="java.lang.Integer">
+        <constructor-arg value="${orderPortionSize}"/>
+    </bean>
+
 </beans>

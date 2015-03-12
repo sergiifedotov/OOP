@@ -33,15 +33,15 @@ public class ClientShowSumServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String sumString = request.getParameter("clientMinSum");
-        System.out.println(sumString);
         int sum = 0;
-        if (sumString != null) {
-            sum = Integer.parseInt(sumString);
+        try {
+            sum = Integer.parseInt(request.getParameter("clientMinSum"));
+        } catch (NumberFormatException e) {
+            //e.printStackTrace();
         }
         List list = clientService.getClientsGtSum(sum);
         request.getSession().setAttribute("clientList", list);
-        request.setAttribute("clientMinSum", sum);
+        request.setAttribute("clientMessage", "Клиенты, наездившие на сумму более " + sum + ":");
         request.getRequestDispatcher("clients.jsp").forward(request, response);
     }
 }

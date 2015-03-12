@@ -10,7 +10,7 @@ import java.util.List;
  * Created by vladimir on 09.03.2015.
  */
 public interface ClientService {
-    boolean createClient(String name, String surname, String phone, String address) throws ClientException;
+    Long createClient(String name, String surname, String phone, String address) throws ClientException;
     List getClientsByPortion(int portionSize);
     List getClientsGtSum(int sum);
     List getClientsLastMonth();

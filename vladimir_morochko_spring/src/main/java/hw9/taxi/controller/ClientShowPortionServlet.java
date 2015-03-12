@@ -37,7 +37,7 @@ public class ClientShowPortionServlet extends HttpServlet {
         System.out.println(clientPortionSize);
         List list = clientService.getClientsByPortion(clientPortionSize);
         request.getSession().setAttribute("clientList", list);
-        request.setAttribute("clientMinSum", 0);
+        request.setAttribute("clientMessage", "Клиенты по " + clientPortionSize + " штук:");
         request.getRequestDispatcher("clients.jsp").forward(request, response);
     }
 }

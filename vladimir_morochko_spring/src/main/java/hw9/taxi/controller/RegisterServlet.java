@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
         request.setAttribute("defaultLogin", login);
         request.setAttribute("defaultAccessId", accessId);
         request.setAttribute("registerResultMessage", registerResultMessage);
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        request.getRequestDispatcher("registerOperator.jsp").forward(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

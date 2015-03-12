@@ -6,13 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
     <title>зарегистрировать клиента</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-<h4>${registerResultMessage}</h4>
+<h4>${clientMessage}</h4>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
 <form action="/clientCreateServlet">
     <p>Имя клиента:</p>

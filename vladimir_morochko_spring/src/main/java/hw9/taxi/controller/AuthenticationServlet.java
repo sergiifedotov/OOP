@@ -43,7 +43,7 @@ public class AuthenticationServlet extends HttpServlet {
             request.setAttribute("defaultLogin", login);
             request.setAttribute("oldPassword", password);
             request.setAttribute("registerResultMessage", authenticationResultMessage);
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            request.getRequestDispatcher("registerOperator.jsp").forward(request, response);
         }
         if (authenticationResult) {
             request.getRequestDispatcher("dashboard.jsp").forward(request, response);
