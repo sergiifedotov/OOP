@@ -10,7 +10,7 @@
 http://www.springframework.org/schema/tx
  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="web" />
+    <context:component-scan base-package="hw9" />
 
     <context:property-placeholder location="classpath:conf.properties"/>
 
@@ -25,7 +25,7 @@ http://www.springframework.org/schema/tx
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>web</value>
+                <value>hw9</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -43,7 +43,7 @@ http://www.springframework.org/schema/tx
 
     <tx:annotation-driven transaction-manager="myTransactionManager"/>
 
-    <bean id="authenticationServiceImp" class="web.service.UserServiceImpl"/>
+    <bean id="authenticationServiceImp" class="hw9.taxi.service.AuthenticationServiceImpl"/>
     <!--</bean>-->
 
 </beans>
