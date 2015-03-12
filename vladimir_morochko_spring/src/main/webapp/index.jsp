@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body>
+<%request.getSession().invalidate();%>
 <div class="board" align="center">
     <img src="img/header.jpg" height="100" width="100">
     <h3>Zen Taxi</h3>

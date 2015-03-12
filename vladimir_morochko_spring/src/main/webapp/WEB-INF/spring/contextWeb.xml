@@ -38,4 +38,8 @@ http://www.springframework.org/schema/tx
         <constructor-arg value="${orderPortionSize}"/>
     </bean>
 
+    <bean id="sessionMaxInactiveInterval" class="java.lang.Integer">
+        <constructor-arg value="${sessionMaxInactiveInterval}"/>
+    </bean>
+
 </beans>

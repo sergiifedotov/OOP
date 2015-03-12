@@ -12,6 +12,7 @@
     <title></title>
 </head>
 <body>
+
 <h4>${dashboardMessage}</h4>
 <p><a href="registerClient.jsp">Зарегистрировать нового клиента</a></p>
 <p><a href="/clientShowPortionServlet">Вывести всех клиентов порциями по 10 человек</a></p>

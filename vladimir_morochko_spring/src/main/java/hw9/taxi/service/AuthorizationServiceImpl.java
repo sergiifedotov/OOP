@@ -28,9 +28,9 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         if (login.contains(" ")) {
             throw new AuthenticationException("логин не должен содержать пробелы");
         }
-        if (operatorDao.getOperatorByLogin(login) != null) {
-            throw new AuthenticationException("логин \"" + login + "\" уже существует");
-        }
+//        if (operatorDao.getOperatorByLogin(login) != null) {
+//            throw new AuthenticationException("логин \"" + login + "\" уже существует");
+//        }
         if (accessId == null || !accessId.matches("^[0-9]*.{10}$")) {
             throw new AuthenticationException("идентификационный номер должен быть из 10 цифр, без букв и других знаков");
         }
@@ -44,8 +44,13 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         Long monthMilliseconds = 1000L * 60 * 60 * 24 * 31;
         expireDate.setTime(expireDate.getTime() + monthMilliseconds);
         boolean locked = false;
-        Operator operator = new Operator(login, accessId, password, expireDate, locked);
-        operatorDao.create(operator);
+        Operator operator = operatorDao.getOperatorByLogin(login);
+        if (operator == null) {
+            operator = new Operator(login, accessId, password, expireDate, locked);
+            operatorDao.create(operator);
+        } else {
+            operatorDao.update(operator);
+        }
         System.out.println(operator);
         return true;
     }
