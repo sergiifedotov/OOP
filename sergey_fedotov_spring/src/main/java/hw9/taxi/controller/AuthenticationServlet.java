@@ -27,7 +27,7 @@ public class AuthenticationServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if (context != null) {
             HttpSession session = req.getSession(false);
