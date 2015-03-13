@@ -30,6 +30,9 @@ public class User {
     @Column(name="PASS")
     private String pass;
 
+    @Column(name="INN")
+    private String inn;
+
     @Column(name="NUMBER_RETRIES")
     private Integer numberRetries;
 
@@ -48,9 +51,22 @@ public class User {
         this.pass = pass;
     }
 
-    public User(String login, String pass,int numberRetries, int days) {
+    public User(String login, String pass,String inn) {
         this.login = login;
         this.pass = pass;
+        this.inn = inn;
+        this.locked = false;
+        this.numberRetries = 3;
+        Calendar calendar = GregorianCalendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, 30);
+        this.datePassValidity = calendar.getTime();
+
+    }
+
+    public User(String login, String pass,String inn ,int numberRetries, int days) {
+        this.login = login;
+        this.pass = pass;
+        this.inn = inn;
         this.locked = false;
         this.numberRetries = numberRetries;
         Calendar calendar = GregorianCalendar.getInstance();
@@ -74,6 +90,15 @@ public class User {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+    public String getInn() {
+        return inn;
+    }
+
+    public void setInn(String inn) {
+        this.inn = inn;
+    }
+
 
     public Integer getNumberRetries() {
         return numberRetries;

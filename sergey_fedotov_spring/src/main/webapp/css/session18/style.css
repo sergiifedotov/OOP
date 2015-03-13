@@ -1,19 +1,35 @@
-.wrapper {
-    margin: 0 auto;
-    min-height: 100%;
-    height: 100%;
+h3 {
+    color: pink;
 }
 
-.header {
-    height: 100%;
+#greycol {
+    color: grey;
 }
 
-.content {
-    padding: 0 0 100%;
+div p {
+     color: red;
+ }
+
+div span p {
+    color:brown;
 }
 
-.footer {
-    width: 100%;
-    height: 100%;
-    position: relative;
+[style=""] {
+    color:silver;
+}
+
+h4 + p{
+    color:green;
+}
+
+.yellowcol{
+    color:yellow;
+}
+
+.yellowcol+div{
+    color:blue;
+}
+
+div + [style="border: dashed"]{
+    color:olive;
 }

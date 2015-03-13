@@ -44,6 +44,7 @@ http://www.springframework.org/schema/tx
     <tx:annotation-driven transaction-manager="myTransactionManager"/>
 
     <bean id="authenticationServiceImp" class="hw9.taxi.service.AuthenticationServiceImpl"/>
+    <bean id="authorizationServiceImpl" class="hw9.taxi.service.AuthorizationServiceImpl"/>
     <!--</bean>-->
 
 </beans>
