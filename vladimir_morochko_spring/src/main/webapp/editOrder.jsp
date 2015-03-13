@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <title>править клиента</title>
+    <title>Отредактировать заказ</title>
 </head>
 <body>
 

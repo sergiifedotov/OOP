@@ -27,7 +27,7 @@ public class ClientServiceImpl implements ClientService {
             Long id = clientDao.create(client);
             return id;
         } else {
-            throw new ClientException("заполните имя и фамилию клиента");
+            throw new ClientException("Заполните имя и фамилию клиента");
         }
     }
 

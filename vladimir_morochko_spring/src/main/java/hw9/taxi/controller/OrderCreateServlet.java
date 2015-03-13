@@ -62,7 +62,7 @@ public class OrderCreateServlet extends HttpServlet {
             Long orderId;
             try {
                 orderId = orderService.createOrder(client, amount, addressFrom, addressTo);
-                orderMessage = "создан заказ с id=" + orderId;
+                orderMessage = "Создан заказ с id=" + orderId;
             } catch (OrderException e) {
                 orderMessage = e.getMessage();
             }

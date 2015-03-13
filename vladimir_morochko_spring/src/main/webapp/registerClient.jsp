@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <title>зарегистрировать клиента</title>
+    <title>Зарегистрировать клиента</title>
 
 </head>
 <body>

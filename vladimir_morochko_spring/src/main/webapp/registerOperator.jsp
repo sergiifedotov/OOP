@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <title>регистрация оператора</title>
+    <title>Зарегистрировать оператора</title>
 
 </head>
 <body>

@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Long createOrder(Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
         if (client == null) {
-            throw new OrderException("не выбран клиент");
+            throw new OrderException("Не выбран клиент");
         }
         Order order = new Order(client, amount, addressFrom, addressTo);
         return orderDao.create(order);
@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void editOrder(Long id, Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
         if (client == null) {
-            throw new OrderException("не выбран клиент");
+            throw new OrderException("Не выбран клиент");
         }
         System.out.println(id);
         System.out.println(client);

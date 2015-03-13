@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <title></title>
+    <title>Список функций</title>
 </head>
 <body>
 
@@ -31,6 +31,6 @@
 </form>
 
 <br>
-<p><a href="index.jsp">выйти</a></p>
+<p><a href="index.jsp">Выйти</a></p>
 </body>
 </html>

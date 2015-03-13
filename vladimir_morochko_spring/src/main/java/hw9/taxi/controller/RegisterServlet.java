@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
         String passwordConfirm = request.getParameter("passwordConfirm");
         String registerResultMessage = null;
         if (!password.equals(passwordConfirm)) {
-            registerResultMessage = "пароль должен совпадать с подтверждением";
+            registerResultMessage = "Пароль должен совпадать с подтверждением";
         } else {
             boolean registerResult = false;
             try {

@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <title>создать клиента</title>
+    <title>Создать клиента</title>
 </head>
 <body>
 <h4>${orderMessage}</h4>
