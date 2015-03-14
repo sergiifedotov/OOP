@@ -10,7 +10,6 @@
 http://www.springframework.org/schema/tx
  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="web" />
 
     <context:property-placeholder location="classpath:conf.properties"/>
 
@@ -25,8 +24,7 @@ http://www.springframework.org/schema/tx
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>web.domain</value>
-                <value>hw9.taxi</value>
+                <value>comandWork.domain</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -1,5 +1,7 @@
 package comandWork.controller;
 
+import comandWork.domain.User;
+import comandWork.service.UserService;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -15,7 +17,7 @@ import java.util.Map;
 /**
  *
  */
-@WebServlet("/form")
+@WebServlet("/getUsersList")
 public class FormHandler extends HttpServlet {
 
     private WebApplicationContext context;
@@ -35,7 +37,7 @@ public class FormHandler extends HttpServlet {
 
             String message = (String) context.getBean("str");
 
-            Map<String,String[]> parametrs = req.getParameterMap();
+            Map<String,String[]> parametrs = request.getParameterMap();
             String login = parametrs.get("login")[0];
             String pass = parametrs.get("pass")[0];
 
