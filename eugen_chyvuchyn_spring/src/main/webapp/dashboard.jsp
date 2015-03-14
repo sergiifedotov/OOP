@@ -6,11 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page session="true" %>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Просто закажи такси</title>
+  <title>Dashboard</title>
   <style>
     .fig {
       text-align: center; /* Выравнивание по центру */
@@ -41,6 +42,5 @@
 <br>
 
 </body>
-
-<footer class = "center"><a href="http://www.facebook.com/chuvendoil">made by Eugen Chyvuchyn © 2015</a></footer>
+<%--<footer class = "center"><a href="http://www.facebook.com/chuvendoil">made by Eugen Chyvuchyn © 2015</a></footer>--%>
 </html>

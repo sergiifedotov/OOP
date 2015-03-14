@@ -14,12 +14,12 @@ import javax.persistence.*;
  Продажи(склад ноутбуков, дата продажи, количество)
 
  domain
- hw7.notes.domain.Notebook
- hw7.notes.domain.Vendor
- hw7.notes.domain.CPU
- hw7.notes.domain.Memory
- hw7.notes.domain.Store
- hw7.notes.domain.Sales
+ hw7.springnotes.domain.Notebook
+ hw7.springnotes.domain.Vendor
+ hw7.springnotes.domain.CPU
+ hw7.springnotes.domain.Memory
+ hw7.springnotes.domain.Store
+ hw7.springnotes.domain.Sales
  */
 
 @Entity

@@ -1,0 +1,19 @@
+Реализовать авторизацию пользователя системы (оператора).
+ Пользователь вводит:
+ - логин (должен быть не менее 4 символов, не должен содержать пробелы)
+ - идентификационный номер (10 цифр, без букв и других знаков)
+ - пароль (должен быть не менее 8 символов,
+ включать большие и маленькие буквы, цифры, должен совпадать с подтверждением)
+ - подтверждение пароля
+ - пользователь с таким логином должен быть уникальным
+
+ hw8.taxi.service.AuthorizationService
+    boolean register(String login, String id, String pass) throws AuthenticationException
+ hw8.taxi.service.AuthorizationServiceImpl
+ hw8.taxi.action.RegisterServlet
+ hw8.taxi.exception.AuthorizationException
+ webapp
+    index.jsp
+    register.jsp - форма регистрации
+
+ Задание выполнить в модуле name_surname_web

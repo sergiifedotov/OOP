@@ -1,69 +1,123 @@
 package hw7.springnotes.dao;
 
-
 import hw7.springnotes.domain.CPU;
+
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
-
-@Repository
-@Transactional
 public class CPUDaoImpl implements CPUDao {
-
-    @Autowired
-    private SessionFactory sf;
+    private Logger log = Logger.getLogger(CPUDaoImpl.class);
+    private SessionFactory factory;
 
     public CPUDaoImpl(){
 
     }
 
-    public CPUDaoImpl(SessionFactory factory){
-        this.sf = factory;
+    public CPUDaoImpl(SessionFactory factory) {
+        this.factory = factory;
     }
-
 
     @Override
     public Long create(CPU cpu) {
-        Session session = sf.getCurrentSession();
-        Long id = (long)session.save(cpu);
+        Session session = null;
+        Long id = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            id = (Long) session.save(cpu);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            log.error(e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
         return id;
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public CPU read(Long id) {
-        Session session = sf.getCurrentSession();
-        return (CPU)session.get(CPU.class,id);
+    public CPU read(Long id) throws NullPointerException {
+        Session session = null;
+        CPU cpu = null;
+        try {
+            session = factory.openSession();
+            cpu = (CPU) session.get(CPU.class, id);
+        } catch (HibernateException e) {
+            log.error(e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return cpu;
     }
 
     @Override
     public boolean update(CPU cpu) {
-        Session session = sf.getCurrentSession();
-        session.update(cpu);
-        return false;
+        Session session = null;
+        boolean rez = false;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            session.update(cpu);
+            session.getTransaction().commit();
+            rez = true;
+        } catch (HibernateException e) {
+            log.error(e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return rez;
     }
 
     @Override
     public boolean delete(CPU cpu) {
-        Session session = sf.getCurrentSession();
-        session.delete(cpu);
-        return false;
+        Session session = null;
+        boolean rez = false;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            session.delete(cpu);
+            session.getTransaction().commit();
+            rez = true;
+        } catch (HibernateException e) {
+            log.error(e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return rez;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<CPU> findAll() {
-        Session session = sf.getCurrentSession();
-        List<CPU> list = session.createCriteria(CPU.class).list();
+        Session session = null;
+        List<CPU> list = null;
+        try {
+            session = factory.openSession();
+            list = session.createCriteria(CPU.class).list();
+        } catch (HibernateException e) {
+            log.error(e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
         return list;
     }
 }

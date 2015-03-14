@@ -1,12 +1,10 @@
 package hw7.springnotes.domain;
 
-
-
 import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
 @Entity
 public class Sales {
