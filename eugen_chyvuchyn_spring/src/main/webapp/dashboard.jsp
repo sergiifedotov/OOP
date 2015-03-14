@@ -29,13 +29,41 @@
 </head>
 <body>
 <div>
-    <form method="get" class="fig">
-  <br> Здравствуйте, "LOGIN ОПЕРАТОРА"
-  <br> Ваш идентификационный номер ########## (должен вытягиваться из БД)
-  <br> в случае если пользователь пришел со ссылки register.jsp (только что зарегистрировался - написать приветствие о регистрации)
-    </form>
+    <%--<form method="get" class="fig">--%>
+        <h3>
+            <h2>Welcome, ${login}!</h2>
+        </h3>
+  <%--<br> Ваш идентификационный номер ########## (должен вытягиваться из БД)--%>
+  <%--<br> в случае если пользователь пришел со ссылки register.jsp (только что зарегистрировался - написать приветствие о регистрации)--%>
+    <%--</form>--%>
+        <form method="POST" action="/auth" id="authForm">
+            <table id="orders">
+                <table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+                       cellspacing="2">
+                    <tbody>
+                    <tr>
+                        <td style="vertical-align: top;">orderValOne<br>
+                        </td>
+                        <td style="vertical-align: top;">orderValTwo</td>
+                        <td style="vertical-align: top;">orderValThree</td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;">${valOne}<br>
+                        </td>
+                        <td style="vertical-align: top;">${valTwo}<br>
+                        </td>
+                        <td style="vertical-align: top;">${valThree}<br>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form id="logout" method="post" action="/LogOutServlet">
+                    <label class="logoutLblPos">
+                        <input name="submit2" type="submit" id="submit2" value="log out">
+                    </label>
+                </form>
+                    <p class="center"><a href="index.jsp"> <img src="img/header.jpg"></a></p>
 
-  <p class="center"><a href="index.jsp"> <img src="img/header.jpg"></a></p>
 
 </div>
 <br>
