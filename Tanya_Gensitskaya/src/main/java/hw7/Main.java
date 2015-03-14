@@ -1,6 +1,6 @@
 package hw7;
 
-import hw7.notes.service.Menu;
+import hw7.springnotes.service.Menu;
 
 /**
  * Created by

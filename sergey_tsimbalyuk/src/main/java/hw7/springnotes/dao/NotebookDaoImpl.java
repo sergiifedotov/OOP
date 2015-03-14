@@ -1,6 +1,6 @@
 package hw7.springnotes.dao;
 
-import hw7.notes.domain.Notebook;
+import hw7.springnotes.domain.Notebook;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

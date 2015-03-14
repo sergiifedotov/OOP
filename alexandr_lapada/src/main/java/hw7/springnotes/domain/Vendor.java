@@ -1,15 +1,14 @@
 package hw7.springnotes.domain;
 
-
-
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
 @Entity
 public class Vendor {
@@ -50,4 +49,3 @@ public class Vendor {
         this.id = id;
     }
 }
-

@@ -1,57 +1,128 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Vendor;
+import hw7.springnotes.notes.util.HibernateUtil;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * Created by vladimir on 23.02.2015.
+ * Created by vladimir on 17.02.2015.
  */
-@Repository
-@Transactional
 public class VendorDaoImpl implements VendorDao {
-    @Qualifier("mySessionFactoryHW7")
-    @Autowired(required = true)
-    private SessionFactory sessionFactory; // фабрика берется из контекста
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
 
     public VendorDaoImpl() {
     }
 
-    @Override
-    public Long create(Vendor vendor) {
-        return (Long) sessionFactory.getCurrentSession().save(vendor);
+    public VendorDaoImpl(SessionFactory sessionFactory) {
+        this();
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
-    @Transactional(readOnly = true)
+    public Long create(Vendor vendor) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Long id = (Long)session.save(vendor);
+            session.getTransaction().commit();
+            return id;
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Vendor read(Long id) {
-        return (Vendor) sessionFactory.getCurrentSession().get(Vendor.class, id);
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            return (Vendor) session.get(Vendor.class, id);
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean update(Vendor vendor) {
-        sessionFactory.getCurrentSession().update(vendor);
-        return true;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.update(vendor);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean delete(Vendor vendor) {
-        sessionFactory.getCurrentSession().delete(vendor);
-        return true;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(vendor);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Vendor> findAll() {
-        Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Vendor.class);
-        return criteria.list();
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Vendor.class);
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void close() {
+        sessionFactory.close();
     }
 }
