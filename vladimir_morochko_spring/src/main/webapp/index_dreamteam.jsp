@@ -7,18 +7,39 @@
 </head>
 <body>
 <%request.getSession().invalidate();%>
-<div class="board" align="center">
-    <img src="img/header.jpg" height="100" width="100">
-    <h3>Zen Taxi</h3>
     <h4>${authenticationResultMessage}</h4>
-    <form method="post" action="/authenticationServlet" id="project">
-        <input id="login" class="board" type="text" name="login" value="${defaultLogin}" size="30"/><br/>
-        <input type="password" name="password" value="" size="30"/><br/>
-        <input id="button" type="submit" value="Войти" size="40">
-        <p class='silvertext'> или <a href="registerOperator.jsp">зарегистрироваться</a></p>
-    </form>
-</div>
-<p class='silvertext' align="center">На самом деле нет никакого такси (c)</p>
+<table width="100%">
+
+    <tr align="center" height="50px">
+        <td></td>
+    </tr>
+    <tr align="center">
+        <td>
+            <div>
+                <table width="22%">
+                    <form method="post" action="/authenticationServlet" id="project">
+                        <tr height="50px">
+                            <td width="60%" align="left"><p>Login</p></td>
+                            <td width="40%"><input id="login" type="text" name="login" value="${defaultLogin}"/><br/></td>
+                        </tr>
+                        <tr height="50px">
+                            <td width="60%" align="left"><p>Password</p></td>
+                            <td width="40%"><input type="password" name="pass" value=""/><br/></td>
+                        </tr>
+                        <tr height="50px" align="center">
+                            <td colspan="2"><input class="button" type="submit" value="login"></td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+            <table width="20%" height="50px">
+                <tr height="50px" align="center">
+                    <td width="50%"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>
