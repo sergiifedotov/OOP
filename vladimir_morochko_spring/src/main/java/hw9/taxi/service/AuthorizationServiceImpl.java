@@ -43,12 +43,16 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         Date expireDate = new Date();
         Long monthMilliseconds = 1000L * 60 * 60 * 24 * 31;
         expireDate.setTime(expireDate.getTime() + monthMilliseconds);
-        boolean locked = false;
         Operator operator = operatorDao.getOperatorByLogin(login);
         if (operator == null) {
-            operator = new Operator(login, accessId, password, expireDate, locked);
+            operator = new Operator(login, accessId, password, expireDate, false);
             operatorDao.create(operator);
         } else {
+            //login is already set
+            operator.setAccessId(accessId);
+            operator.setPassword(password);
+            operator.setExpireDate(expireDate);
+            operator.setLocked(false);
             operatorDao.update(operator);
         }
         System.out.println(operator);
