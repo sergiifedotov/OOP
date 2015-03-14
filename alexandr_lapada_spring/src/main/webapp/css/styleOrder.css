@@ -1,0 +1,15 @@
+p {
+    font-size: 22;
+}
+.button {
+    width: 150px;
+    height: 30px;
+}
+img {
+    width: 300;
+    height: 150;
+}
+#select {
+    border: 2px solid #000000;
+    height: 30px;
+}
