@@ -59,7 +59,7 @@ public class AuthenticationServlet extends HttpServlet {
             List<User> list = userService.findByNameAndPass(login, pass);
 
             if ( list.size()!= 0){
-                resp.getWriter().print(message + " old " + req.getParameter("login"));
+                //resp.getWriter().print(message + " old " + req.getParameter("login"));
                 req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
             } else{
                 //User tempBase = new User(req.getParameter("login"), req.getParameter("pass"));
