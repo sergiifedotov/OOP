@@ -50,14 +50,21 @@ public class HelloSpring extends HttpServlet {
         if (context !=null){
 
             String message = (String) context.getBean("str");
-            List<User> list = userService.findByNameAndPass(req.getParameter("login"), req.getParameter("pass"));
+
+            Map<String,String[]> parametrs = req.getParameterMap();
+            String login = parametrs.get("login")[0];
+            String pass = parametrs.get("pass")[0];
+
+            List<User> list = userService.findByNameAndPass(login, pass);
 
             if ( list.size()!= 0){
                 resp.getWriter().print(message + " old " + req.getParameter("login"));
+                req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
             } else{
-                User tempBase = new User(req.getParameter("login"), req.getParameter("pass"));
-                userService.add(tempBase);
-                resp.getWriter().print(message + " new " + req.getParameter("login"));
+                //User tempBase = new User(req.getParameter("login"), req.getParameter("pass"));
+                //userService.add(tempBase);
+                //resp.getWriter().print(message + " new " + req.getParameter("login"));
+                req.getRequestDispatcher("index.jsp").forward(req, resp);
             }
 
 
