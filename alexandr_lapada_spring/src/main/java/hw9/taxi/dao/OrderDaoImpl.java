@@ -3,6 +3,7 @@ package hw9.taxi.dao;
 import hw9.taxi.domain.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,5 +52,17 @@ public class OrderDaoImpl implements OrderDao {
     public List<Order> findAll() {
         Session session = factory.getCurrentSession();
         return session.createCriteria(Order.class).list();
+    }
+
+    @Override
+    public List<Order> findAllByPortion(int first, int result) {
+        Session session = factory.getCurrentSession();
+        return session.createCriteria(Order.class).setFirstResult(first).setMaxResults(result).list();
+    }
+
+    @Override
+    public List<Order> findAllDiapasonSumm(Double sumFrom, Double sumTo) {
+        Session session = factory.getCurrentSession();
+        return session.createCriteria(Order.class).add(Restrictions.gt("summa",sumFrom)).add(Restrictions.lt("summa",sumTo)).list();
     }
 }

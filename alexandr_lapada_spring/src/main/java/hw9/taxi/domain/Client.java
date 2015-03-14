@@ -128,6 +128,39 @@ public class Client {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Client client = (Client) o;
+
+        if (address != null ? !address.equals(client.address) : client.address != null) return false;
+        if (dateLastOrder != null ? !dateLastOrder.equals(client.dateLastOrder) : client.dateLastOrder != null)
+            return false;
+        if (firstName != null ? !firstName.equals(client.firstName) : client.firstName != null) return false;
+        if (id != null ? !id.equals(client.id) : client.id != null) return false;
+        if (lastName != null ? !lastName.equals(client.lastName) : client.lastName != null) return false;
+        if (orders != null ? !orders.equals(client.orders) : client.orders != null) return false;
+        if (phone != null ? !phone.equals(client.phone) : client.phone != null) return false;
+        if (summa != null ? !summa.equals(client.summa) : client.summa != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (summa != null ? summa.hashCode() : 0);
+        result = 31 * result + (dateLastOrder != null ? dateLastOrder.hashCode() : 0);
+        result = 31 * result + (orders != null ? orders.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Client{" +
                 "id=" + id +

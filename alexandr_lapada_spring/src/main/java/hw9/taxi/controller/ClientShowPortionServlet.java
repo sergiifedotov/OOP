@@ -21,6 +21,7 @@ import java.util.List;
 public class ClientShowPortionServlet extends HttpServlet {
 
     private static int a;
+    private final int porcia = 10;
     private WebApplicationContext context;
     private ClientService clientService;
 
@@ -41,28 +42,28 @@ public class ClientShowPortionServlet extends HttpServlet {
             ArrayList<Client> listPorcia = null;
 
             if (request.getParameter("action").equals("View all clients by portion 10")) {
-                listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * 2, 2);
+                listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * porcia, porcia);
             }
 
             if (request.getParameter("action").equals("right")) {
-                if (a * 2 < list.size()) {
-                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * 2, 2);
+                if (a * porcia < list.size()) {
+                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * porcia, porcia);
                     a++;
                 } else {
                     a = 0;
-                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * 2, 2);
+                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * porcia, porcia);
                     a++;
                 }
             }
 
             if (request.getParameter("action").equals("left")) {
                 if (a == 0) {
-                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * 2, 2);
-                    a = list.size() / 2;
+                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * porcia, porcia);
+                    a = list.size() / porcia;
                     a--;
                 } else {
 
-                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * 2, 2);
+                    listPorcia = (ArrayList<Client>) clientService.findAllByPortion(a * porcia, porcia);
                     a--;
                 }
 

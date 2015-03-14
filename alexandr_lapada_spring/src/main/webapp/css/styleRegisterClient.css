@@ -5,6 +5,7 @@ div {
     height: 20px;
     padding: 6px;
     margin: 2px;
+    align-content: center;
 }
 .button {
     width: 100;

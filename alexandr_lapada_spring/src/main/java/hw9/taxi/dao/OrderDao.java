@@ -17,4 +17,8 @@ public interface OrderDao {
     boolean delete(Order order);
 
     List<Order> findAll();
+
+    List<Order> findAllByPortion(int first, int result);
+
+    List<Order> findAllDiapasonSumm(Double sumFrom, Double sumTo);
 }

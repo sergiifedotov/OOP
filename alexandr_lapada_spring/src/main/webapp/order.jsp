@@ -10,6 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="css/styleOrder.css">
     <title>Order</title>
 </head>
 <body>
@@ -23,15 +24,15 @@
     <tr align="center">
         <td>
             <table width="80%" border="1">
-                <tr height="100px">
-                    <td width="20%">Date</td>
-                    <td width="20%">Client</td>
-                    <td width="20%">Summa</td>
-                    <td width="20%">Address from</td>
-                    <td width="20%">Address to</td>
+                <tr height="100px" align="center">
+                    <td width="20%"><p>Date</p></td>
+                    <td width="20%"><p>Client</p></td>
+                    <td width="20%"><p>Summa</p></td>
+                    <td width="20%"><p>Address from</p></td>
+                    <td width="20%"><p>Address to</p></td>
                 </tr>
                 <form action="CreateOrder" method="post">
-                <tr height="100px">
+                <tr height="100px" align="center">
                     <td width="20%"><input type="date" value="" name="dateOrder"/></td>
                     <td width="20%">
                         <%
@@ -53,8 +54,8 @@
                 </tr>
                 <tr align="center" height="50px">
                     <td colspan="5">
-                        <input type="submit" name="action" value="Ok"/>
-                        <input type="submit" name="action" value="Cancel"/>
+                        <input class="button" type="submit" name="action" value="Ok"/>
+                        <input class="button" type="submit" name="action" value="Cancel"/>
                     </td>
                 </tr>
                 </form>

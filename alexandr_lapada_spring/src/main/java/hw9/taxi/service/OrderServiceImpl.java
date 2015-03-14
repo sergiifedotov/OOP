@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by sanya on 12.03.2015.
@@ -44,6 +45,54 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo) {
+        Order order = (Order) read(id);
 
+        order.setSumma(Double.valueOf(amount));
+        order.setAddressFrom(addressFrom);
+        order.setAddressTo(addressTo);
+
+        Client oldClient = order.getClient();
+
+        if (!oldClient.equals(client)) {
+            oldClient.getOrders().remove(order);
+            clientDao.update(oldClient);
+            order.setClient(client);
+            client.setOrders(order);
+            clientDao.update(client);
+        }
+
+        update(order);
+    }
+
+    @Override
+    public Object read(Long id) {
+        return orderDao.read(id);
+    }
+
+    @Override
+    public boolean update(Order order) {
+        orderDao.update(order);
+        return true;
+    }
+
+    @Override
+    public boolean delete(Order order) {
+        orderDao.delete(order);
+        return true;
+    }
+
+    @Override
+    public List<Order> findAll() {
+        return orderDao.findAll();
+    }
+
+    @Override
+    public List<Order> findAllByPortion(int first, int result) {
+        return orderDao.findAllByPortion(first, result);
+    }
+
+    @Override
+    public List<Order> findAllDiapasonSumm(Double sumFrom, Double sumTo) {
+        return orderDao.findAllDiapasonSumm(sumFrom, sumTo);
     }
 }

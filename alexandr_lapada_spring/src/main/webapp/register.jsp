@@ -5,7 +5,7 @@
     <title>register</title>
 </head>
 <body>
-<table  width="100%">
+<table width="100%">
     <tr align="center" height="200px">
         <td colspan="4"><img src="img/header.gif"></td>
     </tr>
