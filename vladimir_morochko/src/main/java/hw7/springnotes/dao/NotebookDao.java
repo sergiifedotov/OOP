@@ -6,7 +6,7 @@ import hw7.springnotes.domain.Vendor;
 import java.util.List;
 
 /**
- * Created by vladimir on 23.02.2015.
+ * Created by vladimir on 17.02.2015.
  */
 public interface NotebookDao {
     Long create(Notebook notebook);
@@ -17,4 +17,7 @@ public interface NotebookDao {
 
     List<Notebook> getNotebooksByPortion(int size);
     List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor);
+
+    public void close();
+
 }

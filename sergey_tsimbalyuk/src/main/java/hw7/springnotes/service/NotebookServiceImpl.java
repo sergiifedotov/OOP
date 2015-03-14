@@ -1,6 +1,6 @@
 package hw7.springnotes.service;
 
-import hw7.notes.dao.NotebookDaoImpl;
+import hw7.springnotes.dao.NotebookDaoImpl;
 import hw7.springnotes.domain.CPU;
 import hw7.springnotes.domain.Memory;
 import hw7.springnotes.domain.Notebook;
@@ -30,7 +30,7 @@ public class NotebookServiceImpl implements NotebookService {
     private Vendor vendor;
 
     @Override
-    public Long create(hw7.notes.domain.CPU cpu) {
+    public Long create(hw7.springnotes.domain.CPU cpu) {
         return null;
     }
 
@@ -61,7 +61,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public List<hw7.notes.domain.Notebook> getNotebooksByPortion(int size) {
+    public List<hw7.springnotes.domain.Notebook> getNotebooksByPortion(int size) {
         return notebookDaoImpl.getPortion(0,size);
     }
 }
