@@ -1,0 +1,24 @@
+Добавить функции работы с заказами такси.
+ Функции:
+ - оформить заказ (дата, клиент, сумма, адрес подачи, адрес назначения)
+ - отредактировать заказ (поменять свойства заказа)
+ - вывести список заказов на сумму в указанном диапазоне
+ - вывести список всех заказов порциями по 5 штук
+
+ hw8.taxi.domain.Order
+ hw8.taxi.domain.Client
+ hw8.taxi.service.OrderService
+    boolean createOrder(Long id, Client client, String amount, String addressFrom, String addressTo) throws OrderException
+    void editOrder(Long id, Client client, String amount, String addressFrom, String addressTo)
+    List showOrders(Long from, Long to)
+    List showOrdersByPortion()
+ hw8.taxi.service.OrderServiceImpl
+ hw8.taxi.action.OrderServlet
+ hw8.taxi.exception.OrderException
+ webapp
+    index.jsp
+    dashboard.jsp - страница со списком функций
+    order.jsp - форма оформления/редактирования заказа
+    orders.jsp - список заказов
+
+ Задание выполнить в модуле name_surname_web

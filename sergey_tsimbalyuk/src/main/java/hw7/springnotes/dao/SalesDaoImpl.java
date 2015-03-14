@@ -1,7 +1,7 @@
 package hw7.springnotes.dao;
 
 
-import hw7.notes.domain.Sales;
+import hw7.springnotes.domain.Sales;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

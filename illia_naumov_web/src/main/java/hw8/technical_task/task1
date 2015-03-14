@@ -1,0 +1,16 @@
+Оператор вводит логин и пароль.
+ Если пароль с логином не совпадает то повторить ввод. Передача осуществляется методом POST.
+ Колличество попыток ввода задается в properties файле. После последней неудачной попытки пользователь блокируется.
+ Время действия пароля задается в сервисе
+ После истечения действия пароля, пользователь должен поменять пароль. Предыдущий вводить нельзя
+
+ hw8.taxi.service.AuthenticationService
+    boolean authenticate(String login, String pass) throws AuthenticationException
+ hw8.taxi.service.AuthenticationServiceImpl
+ hw8.taxi.action.AuthenticationServlet
+ hw8.taxi.exception.AuthenticationException
+ webapp
+    index.jsp - страница с формой аутентификации
+   dashboard.jsp - поздравления об удачной аутентификации
+
+ Задание выполнить в модуле name_surname_web
