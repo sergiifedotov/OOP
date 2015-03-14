@@ -1,6 +1,6 @@
-package web.service;
+package comandWork.service;
 
-import web.domain.User;
+import comandWork.domain.User;
 
 import java.util.List;
 

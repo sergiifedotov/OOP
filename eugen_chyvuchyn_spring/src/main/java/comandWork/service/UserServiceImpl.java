@@ -1,5 +1,7 @@
-package web.service;
+package comandWork.service;
 
+import comandWork.dao.UserDao;
+import comandWork.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

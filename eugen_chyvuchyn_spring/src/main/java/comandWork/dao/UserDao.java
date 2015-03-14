@@ -1,5 +1,6 @@
-package web.dao;
+package comandWork.dao;
 
+import comandWork.domain.User;
 import web.domain.User;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface UserDao {
     boolean delete(User user);
     List<User> findByNameAndPass(String login, String pass);
     List<User> findAll();
+    //don't care about this comment
 }
