@@ -67,8 +67,24 @@
 
         Мы гордимся нашей командой профессионалов, наши операторы никогда не оставят Ваш заказ без внимания, а водители доставят Вас по нужному адресу в четко установленные сроки.</br>
     </div>
-
 </div>
+
+<script>
+    var vector = new Array(1,2,3,4,5,6)
+    console.log('Исходный массив')
+    for(i=0;i<vector.length;i++){
+        console.log(vector[i])
+    }
+    for(i=0;i<vector.length;i++){
+        if(vector[i]%2===0){
+            vector[i]=0
+        }
+    }
+    console.log('Новый массив')
+    for(i=0;i<vector.length;i++){
+        console.log(vector[i])
+    }
+</script>
 
 <div class="footer">
     © 2015 sergey fedotov
