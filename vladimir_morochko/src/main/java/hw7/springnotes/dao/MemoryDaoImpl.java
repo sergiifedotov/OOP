@@ -1,57 +1,128 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Memory;
+import hw7.springnotes.notes.util.HibernateUtil;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * Created by vladimir on 23.02.2015.
+ * Created by vladimir on 17.02.2015.
  */
-@Repository
-@Transactional
 public class MemoryDaoImpl implements MemoryDao {
-    @Qualifier("mySessionFactoryHW7")
-    @Autowired(required = true)
-    private SessionFactory sessionFactory; // фабрика берется из контекста
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
 
     public MemoryDaoImpl() {
     }
 
-    @Override
-    public Long create(Memory memory) {
-        return (Long) sessionFactory.getCurrentSession().save(memory);
+    public MemoryDaoImpl(SessionFactory sessionFactory) {
+        this();
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
-    @Transactional(readOnly = true)
+    public Long create(Memory memory) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Long id = (Long)session.save(memory);
+            session.getTransaction().commit();
+            return id;
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Memory read(Long id) {
-        return (Memory) sessionFactory.getCurrentSession().get(Memory.class, id);
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            return (Memory) session.get(Memory.class, id);
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean update(Memory memory) {
-        sessionFactory.getCurrentSession().update(memory);
-        return true;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.update(memory);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean delete(Memory memory) {
-        sessionFactory.getCurrentSession().delete(memory);
-        return true;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(memory);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Memory> findAll() {
-        Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Memory.class);
-        return criteria.list();
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria criteria = session.createCriteria(Memory.class);
+            return criteria.list();
+        } catch (HibernateException e) {
+            logger.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void close() {
+        sessionFactory.close();
     }
 }

@@ -1,14 +1,14 @@
 package hw7.springnotes.domain;
 
-
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
 @Entity
 public class CPU {
@@ -44,23 +44,23 @@ public class CPU {
     public void setVendor(String vendor){
         this.vendor = vendor;
     }
-    public String getVendor() {
-        return vendor;
-    }
+        public String getVendor() {
+            return vendor;
+        }
 
     public void setFrequency(Double frequency){
         this.frequency = frequency;
     }
-    public Double getFrequency(){
-        return frequency;
-    }
+        public Double getFrequency(){
+            return frequency;
+        }
 
     public void setModel(String model){
         this.model = model;
     }
-    public String getModel(){
-        return model;
-    }
+        public String getModel(){
+            return model;
+        }
 
     public Long getId() {
         return id;
@@ -77,4 +77,5 @@ public class CPU {
     public void setNotebooks(Notebook notebook) {
         notebooks.add(notebook);
     }
+
 }

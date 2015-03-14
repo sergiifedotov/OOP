@@ -5,7 +5,7 @@ import hw7.springnotes.domain.Memory;
 import java.util.List;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
 public interface MemoryDao {
 
