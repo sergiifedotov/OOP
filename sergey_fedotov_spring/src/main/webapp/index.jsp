@@ -17,7 +17,7 @@
     <div class="header">
         <img src="img/header.jpg"/>
     </div>
-
+    <form action="/auth" method="POST"/>
     <table width="100%" style="height: 5%;" >
         <thead></thead>
         <tbody>
@@ -53,7 +53,7 @@
         </tr>
         </tbody>
     </table>
-
+    </form>
     <div class="content">
         Компания «TAXI» предлагает жителям и гостям столицы качественное обслуживание! Слова «дешевое такси» применимы лишь к стоимости проезда, а уровень комфорта всегда остается высоким.</br>
 

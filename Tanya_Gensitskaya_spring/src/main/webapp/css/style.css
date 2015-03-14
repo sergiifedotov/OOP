@@ -9,6 +9,9 @@ div p {
     border: 2px dashed red;
     display: inline-block;
 }
+#greycol{
+    color:red;
+}
 
 #body {
     padding: 0;
