@@ -12,7 +12,7 @@
     <title>зарегистрировать клиента</title>
 </head>
 <body>
-<h>${registerResultMessage}</h>
+<h4>${registerResultMessage}</h4>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
 <form action="/ClientServlet">
     <input type="hidden" name="action" value="registerClient"/>

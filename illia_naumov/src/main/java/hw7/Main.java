@@ -1,25 +1,13 @@
 package hw7;
 
-import hw7.notes.dao.*;
-import hw7.notes.domain.CPU;
-import hw7.notes.domain.Memory;
-import hw7.notes.domain.Notebook;
-import hw7.notes.domain.Vendor;
-import hw7.notes.service.NotebookService;
-import hw7.notes.service.NotebookServiceImpl;
-import hw7.util.HibernateUtil;
-import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+import hw7.springnotes.domain.Vendor;
+import hw7.springnotes.service.NotebookService;
+import hw7.springnotes.service.NotebookServiceImpl;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by illia_naumov on 20.02.2015.
@@ -27,7 +15,7 @@ import java.util.Locale;
 public class Main {
     //private static Logger log = Logger.getLogger(Main.class);
     public static void main(String[] args) {
-
+//
         NotebookService notebookService = new NotebookServiceImpl();
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date date1 = null;

@@ -17,10 +17,11 @@ public class AsyncChat {
 
     }
 
-    final Socket serverSocket;
-    final BufferedReader socketReader; //читаем с сервера
-    final BufferedReader userInput; //читаем пользовательский ввод с консоли
-    final BufferedWriter socketWriter; //ввод с консоли
+
+    private Socket serverSocket;
+    private BufferedReader socketReader; //читаем с сервера
+    private BufferedReader userInput; //читаем пользовательский ввод с консоли
+    private BufferedWriter socketWriter; //ввод с консоли
 
 
 
@@ -33,6 +34,15 @@ public class AsyncChat {
         new Thread(new Receiver()).start();
     }
 
+    public AsyncChat(Socket serverSocket, BufferedReader socketReader, BufferedReader userInput, BufferedWriter socketWriter) {
+        this.serverSocket = serverSocket;
+        this.socketReader = socketReader;
+        this.userInput = userInput;
+        this.socketWriter = socketWriter;
+    }
+
+    public AsyncChat() {
+    }
 
     public void run(){
         while(true){
@@ -68,6 +78,10 @@ public class AsyncChat {
         }
     }
 
+
+    public void process(){
+        // for jon
+    }
 
     private class Receiver implements Runnable{
 

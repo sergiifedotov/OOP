@@ -28,7 +28,9 @@ public class FileFinder implements Runnable{
     public FileFinder() {
 
     }
-
+    public void parallelFind(String path, String fileName){
+        //for jon
+    }
     public void parallelFind(File path, String fileName) {
 
         setFileName(fileName);

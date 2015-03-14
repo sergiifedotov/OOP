@@ -1,18 +1,18 @@
 package hw7.notes.dao;
 
-import hw7.notes.domain.Vendor;
-import hw7.util.HibernateUtil;
+import hw7.springnotes.dao.MemoryDaoImpl;
+import hw7.springnotes.domain.Vendor;
+import hw7.springnotes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 /**
  * Created by illia_naumov on 20.02.2015.
  */
-public class VendorDaoImpl implements VendorDao {
+public class VendorDaoImpl implements hw7.springnotes.dao.VendorDao {
     private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
 
     public VendorDaoImpl() {

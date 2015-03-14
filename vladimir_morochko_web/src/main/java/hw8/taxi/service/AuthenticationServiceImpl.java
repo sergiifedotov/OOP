@@ -34,7 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (operator.isLocked()) {
             throw new AuthenticationException("Пользователь \"" + login + "\" заблокирован");
         }
-        System.out.println(allowedLoginAttempts);
+//        System.out.println(allowedLoginAttempts);
         if (!operator.getPassword().equals(password)) {
             operator.setLoginAttempts(operator.getLoginAttempts() + 1);
             if (operator.getLoginAttempts() > allowedLoginAttempts) {

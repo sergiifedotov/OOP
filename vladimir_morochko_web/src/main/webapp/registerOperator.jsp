@@ -18,7 +18,7 @@
     <title>регистрация пользователя</title>
 </head>
 <body>
-<h>${registerResultMessage}</h>
+<h4>${registerResultMessage}</h4>
 <p><a href="index.jsp"><<< залогиниться</a></p>
 <form action="/AuthorizationServlet" method="post">
     <input type="hidden" name="oldPassword" value="${oldPassword}"/>
