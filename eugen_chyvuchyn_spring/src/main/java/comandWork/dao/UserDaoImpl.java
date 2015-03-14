@@ -21,6 +21,7 @@ public class UserDaoImpl implements UserDao {
 
     public UserDaoImpl() {
     }
+    //don't care about this comment
 
     @Override
     public Long create(User user) {

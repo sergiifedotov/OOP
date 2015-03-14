@@ -15,4 +15,5 @@ public interface UserDao {
     boolean delete(User user);
     List<User> findByNameAndPass(String login, String pass);
     List<User> findAll();
+    //don't care about this comment
 }
