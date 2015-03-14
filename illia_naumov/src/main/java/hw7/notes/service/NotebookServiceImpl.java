@@ -1,17 +1,14 @@
 package hw7.notes.service;
 
-import hw7.notes.dao.*;
-import hw7.notes.domain.*;
-import hw7.util.HibernateUtil;
-import org.h2.engine.Session;
-import org.hibernate.SessionFactory;
+import hw7.springnotes.dao.*;
+import hw7.springnotes.domain.*;
 
 import java.util.*;
 
 /**
  * Created by illia_naumov on 20.02.2015.
  */
-public class NotebookServiceImpl implements NotebookService {
+public class NotebookServiceImpl implements hw7.springnotes.service.NotebookService {
     private NotebookDao notebookDao;
     private StoreDao storeDao;
     private SalesDao salesDao;
@@ -39,7 +36,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public Long sale(long storeId, int amount) {
+    public Long sale(Long storeId, int amount) {
         Sales sale = new Sales(storeDao.read(storeId), new Date(), amount);
         salesDao.create(sale);
         storeDao.delete(storeDao.read(storeId));
