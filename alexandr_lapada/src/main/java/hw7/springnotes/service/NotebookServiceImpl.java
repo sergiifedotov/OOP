@@ -2,37 +2,34 @@ package hw7.springnotes.service;
 
 import hw7.springnotes.dao.*;
 import hw7.springnotes.domain.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
-@Service
 public class NotebookServiceImpl implements NotebookService {
-
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-
-    @Autowired
-    private CPUDao cpuDao;
-    @Autowired
-    private MemoryDao memoryDao;
-    @Autowired
-    private NotebookDao notebookDao;
-    @Autowired
-    private SalesDao salesDao;
-    @Autowired
-    private StoreDao storeDao;
-    @Autowired
-    private VendorDao vendorDao;
+    CPUDaoImpl cpuDao = null;
+    MemoryDaoImpl memoryDao = null;
+    VendorDaoImpl vendorDao = null;
+    NotebookDaoImpl notebookDao = null;
+    StoreDaoImpl storeDao = null;
+    SalesDaoImpl salesDao = null;
 
     public NotebookServiceImpl(){
 
+    }
+
+    public NotebookServiceImpl(CPUDaoImpl cpuDao, MemoryDaoImpl memoryDao, VendorDaoImpl vendorDao,
+                               NotebookDaoImpl notebookDao, StoreDaoImpl storeDao, SalesDaoImpl salesDao) {
+        this.salesDao = salesDao;
+        this.cpuDao = cpuDao;
+        this.memoryDao = memoryDao;
+        this.vendorDao = vendorDao;
+        this.notebookDao = notebookDao;
+        this.storeDao = storeDao;
     }
 
     @Override
@@ -54,7 +51,7 @@ public class NotebookServiceImpl implements NotebookService {
             store.setQuantity(quantity);
             storeDao.update(store);
             Date date = new Date();
-            SimpleDateFormat dateFormate = new SimpleDateFormat("dd.MM.yyyy");
+            SimpleDateFormat dateFormate = new SimpleDateFormat("dd.MM.YYYY");
             dateFormate.format(date);
             Sales sales = new Sales(store,date,amount);
             idSale = salesDao.create(sales);
@@ -93,26 +90,15 @@ public class NotebookServiceImpl implements NotebookService {
         return notebookDao.getNotebooksByCpuVendor(cpuVendor);
     }
 
+
     @Override
     public List<Notebook> getNotebooksStorePresent() {
-        return notebookDao.findAll();
+        return notebookDao.getNotebooksStorePresent();
     }
 
     @Override
-    public Map<Notebook, Integer> getSalesByDays() throws ParseException {
-        Date date = null;
-        Map<Notebook, Integer> map = new HashMap<Notebook, Integer>();
-        //date = dateFormat.parse("25.02.2015");
-        date = dateFormat.parse("02.02.2015");
-        ArrayList<Store> list = (ArrayList)storeDao.findAllBySalesDay(date);
-        System.err.println(dateFormat.format(date));
-        System.out.println(list.size());
-        for(int i = 0; i < list.size(); i++ ){
-            Store store = list.get(i);
-            System.out.println(i);
-            System.err.println(" "+store.getId()+" "+store.getQuantity());
-        }
-        return map;
+    public Map<Notebook, Integer> getSalesByDays() {
+        return null;
     }
 
     @Override
@@ -120,7 +106,7 @@ public class NotebookServiceImpl implements NotebookService {
         return null;
     }
 
-    //------------CPU----------
+    //-----------CPU-----
 
     @Override
     public Long createCPU(CPU cpu) {
@@ -134,14 +120,12 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean updateCPU(CPU cpu) {
-        cpuDao.update(cpu);
-        return false;
+        return cpuDao.update(cpu);
     }
 
     @Override
     public boolean deleteCPU(CPU cpu) {
-        cpuDao.delete(cpu);
-        return false;
+        return cpuDao.delete(cpu);
     }
 
     @Override
@@ -149,7 +133,7 @@ public class NotebookServiceImpl implements NotebookService {
         return cpuDao.findAll();
     }
 
-    //----------MEMORY----------------
+    //-----------MEMORY-----------
 
     @Override
     public Long createMemory(Memory memory) {
@@ -163,14 +147,12 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean updateMemory(Memory memory) {
-        memoryDao.update(memory);
-        return false;
+        return memoryDao.update(memory);
     }
 
     @Override
     public boolean deleteMemory(Memory memory) {
-        memoryDao.delete(memory);
-        return false;
+        return memoryDao.delete(memory);
     }
 
     @Override
@@ -178,7 +160,7 @@ public class NotebookServiceImpl implements NotebookService {
         return memoryDao.findAll();
     }
 
-    //-------------VENDOR-------------
+    //-----------VENDOR------
 
     @Override
     public Long createVendor(Vendor vendor) {
@@ -192,14 +174,12 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean updateVendor(Vendor vendor) {
-        vendorDao.update(vendor);
-        return false;
+        return vendorDao.update(vendor);
     }
 
     @Override
     public boolean deleteVendor(Vendor vendor) {
-        vendorDao.delete(vendor);
-        return false;
+        return vendorDao.delete(vendor);
     }
 
     @Override
@@ -207,7 +187,7 @@ public class NotebookServiceImpl implements NotebookService {
         return vendorDao.findAll();
     }
 
-    //------------NOTEBOOK--------------
+    //---------------NOTEBOOK-----------
 
     @Override
     public Long createNotebook(Notebook notebook) {
@@ -221,14 +201,12 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean updateNotebook(Notebook notebook) {
-        notebookDao.update(notebook);
-        return false;
+        return notebookDao.update(notebook);
     }
 
     @Override
     public boolean deleteNotebook(Notebook notebook) {
-        notebookDao.delete(notebook);
-        return false;
+        return notebookDao.delete(notebook);
     }
 
     @Override
@@ -236,7 +214,7 @@ public class NotebookServiceImpl implements NotebookService {
         return notebookDao.findAll();
     }
 
-    //---------------STORE---------------
+    //-----------STORE--------------
 
     @Override
     public Long createStore(Store store) {
@@ -250,14 +228,12 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean updateStore(Store store) {
-        storeDao.update(store);
-        return false;
+        return storeDao.update(store);
     }
 
     @Override
     public boolean deleteStore(Store store) {
-        storeDao.update(store);
-        return false;
+        return storeDao.delete(store);
     }
 
     @Override
@@ -265,7 +241,7 @@ public class NotebookServiceImpl implements NotebookService {
         return storeDao.findAll();
     }
 
-    //-------------SALES-----------------
+    //-------------SALES------------
 
     @Override
     public Long create(Sales sales) {
@@ -279,18 +255,18 @@ public class NotebookServiceImpl implements NotebookService {
 
     @Override
     public boolean updateSales(Sales sales) {
-        salesDao.update(sales);
-        return false;
+        return salesDao.update(sales);
     }
 
     @Override
     public boolean deleteSales(Sales sales) {
-        salesDao.delete(sales);
-        return false;
+        return salesDao.delete(sales);
     }
 
     @Override
     public List<Sales> findAllSales() {
         return salesDao.findAll();
     }
+
+
 }

@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by vladimir on 23.02.2015.
+ * Created by vladimir on 17.02.2015.
  */
 public interface SalesDao {
     Long create(Sales sales);
-    Sales read(Long id);
+    Sales read(Long ig);
     boolean update(Sales sales);
     boolean delete(Sales sales);
     List<Sales> findAll();
+    Map<Notebook,Integer> getSalesByDays();
 
-    List<Sales> getSalesByDays();
+    void close();
 }
