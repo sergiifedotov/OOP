@@ -10,23 +10,22 @@
 http://www.springframework.org/schema/tx
  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="web" />
+    <context:component-scan base-package="hw9" />
 
     <context:property-placeholder location="classpath:conf.properties"/>
 
     <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${connection.driver_class}"/>
         <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-        <property name="username" value="Notebook"/>
-        <property name="password" value="Notebook"/>
+        <property name="username" value="taxi"/>
+        <property name="password" value="taxi"/>
     </bean>
 
     <bean id="factory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>web.domain</value>
-                <value>hw9.taxi</value>
+                <value>hw9</value>
             </list>
         </property>
         <property name="hibernateProperties">
