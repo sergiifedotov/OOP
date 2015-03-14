@@ -1,4 +1,4 @@
-package web.controller;
+package comandWork.controller;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,7 +20,7 @@ import java.util.List;
  * Date: 9/8/13
  */
 @WebServlet("/hello")
-public class HelloSpring extends HttpServlet {
+public class AuthenticationServlet extends HttpServlet {
     private WebApplicationContext context;
     UserService userService;
 //    UserDao userDao;
