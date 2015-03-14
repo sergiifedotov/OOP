@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page session="false" %>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/indexCss_dreamteam.css">
 <html>
 <head>
     <title></title>
@@ -19,12 +19,12 @@
                 <table width="22%">
                     <form method="post" action="/authenticationServlet" id="project">
                         <tr height="50px">
-                            <td width="60%" align="left"><p>Login</p></td>
-                            <td width="40%"><input id="login" type="text" name="login" value="${defaultLogin}"/><br/></td>
+                            <td class = "first_td"><p>Login</p></td>
+                            <td class = "second_td" ><input id="login" type="text" name="login" value="${defaultLogin}"/><br/></td>
                         </tr>
                         <tr height="50px">
-                            <td width="60%" align="left"><p>Password</p></td>
-                            <td width="40%"><input type="password" name="pass" value=""/><br/></td>
+                            <td class = "first_td"><p>Password</p></td>
+                            <td class = "second_td"><input type="password" name="pass" value=""/><br/></td>
                         </tr>
                         <tr height="50px" align="center">
                             <td colspan="2"><input class="button" type="submit" value="login"></td>
