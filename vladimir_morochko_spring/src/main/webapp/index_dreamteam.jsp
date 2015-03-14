@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <title>Zen Taxi iss da best</title>
+    <title></title>
 </head>
 <body>
 <%request.getSession().invalidate();%>
