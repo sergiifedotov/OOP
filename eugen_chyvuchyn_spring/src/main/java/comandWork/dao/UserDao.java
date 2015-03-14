@@ -1,5 +1,6 @@
-package web.dao;
+package comandWork.dao;
 
+import comandWork.domain.User;
 import web.domain.User;
 
 import java.util.List;
