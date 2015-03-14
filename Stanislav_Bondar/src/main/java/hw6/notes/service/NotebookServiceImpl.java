@@ -14,28 +14,32 @@ import java.util.List;
 
 public class NotebookServiceImpl implements NotebookService {
 
-private NotebookDaoImpl notebookDao;
+    private NotebookDaoImpl notebookDao;
 
-    public NotebookServiceImpl(NotebookDaoImpl noteDao){
+    public NotebookServiceImpl(){
+
+    }
+    public NotebookServiceImpl(NotebookDaoImpl noteDao) {
         notebookDao = noteDao;
     }
+
     @Override
     public List<Notebook> findAll() {
 
         return notebookDao.findAll();
-    } @Override
-      public void changePrice(Long id, double price) {
+    }
+
+    @Override
+    public void changePrice(Long id, double price) {
         Notebook temp = notebookDao.read(id);
         temp.setPrice(price);
     }
+
     @Override
     public Long add(Notebook notebook) {
 
         return notebookDao.create(notebook);
     }
-
-
-
 
 
     @Override
@@ -56,11 +60,11 @@ private NotebookDaoImpl notebookDao;
     public boolean deleteByModel(String model) {
         List<Notebook> templist = notebookDao.findByModel(model);
         boolean result = false;
-        for (Notebook temp:templist){
+        for (Notebook temp : templist) {
 
             result = notebookDao.delete(temp);
-            if (result ==false){
-                System.out.println("Не удаляется"+ temp.toString());
+            if (result == false) {
+                System.out.println("Не удаляется" + temp.toString());
                 return result;
             }
 
@@ -72,14 +76,16 @@ private NotebookDaoImpl notebookDao;
     public List<Notebook> findByVendor(String vendor) {
         return notebookDao.findByVendor(vendor);
     }
+
     @Override
     public List<Notebook> findBetweenPriceLtDateByVendor(Double priceFrom, Double priceTo, Date date, String vendor) {
-        return notebookDao.findBetweenPriceLtDateByVendor(priceFrom,priceTo,date,vendor);
+        return notebookDao.findBetweenPriceLtDateByVendor(priceFrom, priceTo, date, vendor);
     }
+
     @Override
     public List<Notebook> findByPriceManufDate(Double price, Date date) {
-        return notebookDao.findByPriceManufDate(price,date);
+        return notebookDao.findByPriceManufDate(price, date);
     }
+
+
 }
-
-
