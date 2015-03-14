@@ -1,5 +1,6 @@
-package web.dao;
+package comandWork.dao;
 
+import comandWork.domain.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -20,6 +21,7 @@ public class UserDaoImpl implements UserDao {
 
     public UserDaoImpl() {
     }
+    //don't care about this comment
 
     @Override
     public Long create(User user) {
@@ -51,7 +53,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> findByNameAndPass(String login, String pass) {
         Session session = factory.getCurrentSession();
-        return (List<User>)session.createCriteria(User.class).add(Restrictions.eq("login", login)).add(Restrictions.eq("pass",pass)).list();
+        return (List<User>)session.createCriteria(User.class).add(Restrictions.eq("login",
+                login)).add(Restrictions.eq("pass",pass)).list();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package web.domain;
+package comandWork.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
