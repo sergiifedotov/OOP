@@ -43,6 +43,7 @@ public class UserDaoImp implements UserDao {
         return (Long) factory.getCurrentSession().save(user);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User read(String login) {
         Session session = factory.getCurrentSession();
