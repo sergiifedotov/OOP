@@ -1,27 +1,20 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.CPU;
-import hw7.springnotes.util.HibernateUtil;
+import hw7.springnotes.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  *
  */
-@Repository
-@Transactional
 public class CPUDaoImpl implements CPUDao {
     private static Logger log = Logger.getLogger(CPUDaoImpl.class);
 
-    @Autowired
-    private SessionFactory factory;
 
     public static void main(String[] args) {
 
@@ -37,31 +30,111 @@ public class CPUDaoImpl implements CPUDao {
 
     @Override
     public Long create(CPU cpu) {
-        return (Long) factory.getCurrentSession().save(cpu);
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            Long id = (Long)session.save(cpu);
+            session.getTransaction().commit();
+            return id;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public CPU read(Long id) {
-        return (CPU) factory.getCurrentSession().get(CPU.class,id);
+
+        Session session = HibernateUtil.getSession();
+        try {
+            return (CPU) session.get(CPU.class,id);
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean update(CPU cpu) {
-        factory.getCurrentSession().update(cpu);
-        return true;
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            session.update(cpu);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+            return false;
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
     }
 
     @Override
     public boolean delete(CPU cpu) {
-        factory.getCurrentSession().delete(cpu);
-        return true;
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            session.delete(cpu);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+            return false;
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<CPU> findAll() {
-        return (List)factory.getCurrentSession().createCriteria(CPU.class).list();
+        Session session = HibernateUtil.getSession();
+        try {
+            return (List) session.createCriteria(CPU.class).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+
     }
 
 }

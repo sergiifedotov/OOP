@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by Chuvychin on 27.02.2015.
+ * Created by Chuvychin on 19.02.2015.
  */
 @Entity //defoult
 @Table(name = "NOTEBOOKS")

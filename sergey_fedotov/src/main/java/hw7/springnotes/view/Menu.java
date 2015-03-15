@@ -5,10 +5,6 @@ import hw7.springnotes.dao.NotebookDaoImpl;
 import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.service.NotebookService;
 import hw7.springnotes.service.NotebookServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,14 +15,12 @@ import java.util.Scanner;
 /**
  *
  */
-@Controller
 public class Menu {
 
     private static final int SHOW_ALL_NOTEBOOKS_ITEM = 1;
     private static final int EXIT_ITEM = 0;
     private static final int ADD_NEW_NOTEBOOK_ITEM = 2;
 
-    @Autowired
     private NotebookService notebookService;
     private Scanner scan;
 
@@ -36,9 +30,7 @@ public class Menu {
         NotebookDao notebookDao = new NotebookDaoImpl();
         NotebookService notebookService = new NotebookServiceImpl(notebookDao);
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("hw7/springnotes/context.xml");
-        Menu menu = context.getBean("menu", Menu.class);
-
+        Menu menu = new Menu(notebookService);
         menu.main();
     }
 

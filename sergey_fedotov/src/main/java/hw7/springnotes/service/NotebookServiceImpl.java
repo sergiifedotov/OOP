@@ -2,10 +2,6 @@ package hw7.springnotes.service;
 
 import hw7.springnotes.dao.*;
 import hw7.springnotes.domain.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Map;
 
@@ -13,26 +9,12 @@ import java.util.Map;
 /**
  *
  */
-@Service
-@Transactional
 public class NotebookServiceImpl implements NotebookService {
-
-    @Autowired
     private NotebookDao notebookDao;
-
-    @Autowired
     private StoreDao storeDao;
-
-    @Autowired
     private SalesDao salesDao;
-
-    @Autowired
     private CPUDao cpuDao;
-
-    @Autowired
     private MemoryDao memoryDao;
-
-    @Autowired
     private VendorDao vendorDao;
 
     public NotebookServiceImpl(NotebookDao dao) {
