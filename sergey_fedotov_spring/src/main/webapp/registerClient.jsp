@@ -7,7 +7,7 @@
 
 <body>
 
-<form action="/clientCreate" method="POST"/>
+<form action="/clientCreate" method="get"/>
 <table width="100%" style="height: 100%; ">
     <thead></thead>
 
