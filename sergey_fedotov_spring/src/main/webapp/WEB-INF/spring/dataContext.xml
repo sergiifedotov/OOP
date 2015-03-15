@@ -23,7 +23,7 @@
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>hw7.springnotes.domain</value>
+                <value>hw9.taxi</value>
             </list>
         </property>
         <property name="hibernateProperties">
