@@ -1,4 +1,4 @@
-package hw4.parallel.parallel.sorter;
+package hw4.parallel.sorter;
 
 /**
  * Created by illia_naumov
