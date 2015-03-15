@@ -1,9 +1,9 @@
 package comandWork.controller;
 
+import comandWork.domain.User;
+import comandWork.service.UserService;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import web.domain.User;
-import web.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +45,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
         if (context !=null){
@@ -54,17 +54,15 @@ public class AuthenticationServlet extends HttpServlet {
 
             Map<String,String[]> parametrs = req.getParameterMap();
             String login = parametrs.get("login")[0];
-            String pass = parametrs.get("pass")[0];
+            String pass = parametrs.get("password")[0];
 
             List<User> list = userService.findByNameAndPass(login, pass);
 
             if ( list.size()!= 0){
-                resp.getWriter().print(message + " old " + req.getParameter("login"));
+
                 req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
             } else{
-                //User tempBase = new User(req.getParameter("login"), req.getParameter("pass"));
-                //userService.add(tempBase);
-                //resp.getWriter().print(message + " new " + req.getParameter("login"));
+
                 req.getRequestDispatcher("index.jsp").forward(req, resp);
             }
 

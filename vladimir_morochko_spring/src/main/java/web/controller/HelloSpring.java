@@ -42,7 +42,7 @@ public class HelloSpring extends HttpServlet {
 //                session.setMaxInactiveInterval(10);
 //                request.getRequestDispatcher("hello.jsp").forward(request, response);
 //            } else {
-//                request.getRequestDispatcher("index.jsp").forward(request, response);
+//                request.getRequestDispatcher("index_taxi.jsp").forward(request, response);
 //            }
 
             String message = (String) context.getBean("str");

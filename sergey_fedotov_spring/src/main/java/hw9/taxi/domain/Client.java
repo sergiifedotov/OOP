@@ -1,25 +1,37 @@
-package dreamteam.domain;
+package hw9.taxi.domain;
 
 import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by vladimir on 09.03.2015.
+ * клиента (имя, фамилия, телефон, адрес, сумма, дата последнего заказа)
  */
 @Entity
-@Table(name = "CLIENTS")
+@Table(name="CLIENTS")
 public class Client {
-    @SequenceGenerator(name = "sequence", sequenceName = "SEQ_CLIENTS_ID",
-            allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+
     @Id
-    @Column (name = "CLIENT_ID")
+    @SequenceGenerator(name = "auto", sequenceName = "CLIENT_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto")
+    @Column(name="CLIENT_ID")
     private Long id;
+
+    @Column(name="NAME")
     private String name;
+
+    @Column(name="SURNAME")
     private String surname;
+
+    @Column(name="PHONE")
     private String phone;
+
+    @Column(name="ADRESS")
     private String address;
-    private Integer sum;
+
+    @Column(name="SUM")
+    private int sum;
+
+    @Column(name="LAST_ORDER_DATE")
     private Date lastOrderDate;
 
     public Client() {
@@ -72,11 +84,11 @@ public class Client {
         this.address = address;
     }
 
-    public Integer getSum() {
+    public int getSum() {
         return sum;
     }
 
-    public void setSum(Integer sum) {
+    public void setSum(int sum) {
         this.sum = sum;
     }
 
@@ -90,13 +102,14 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{id=" + id
-                + ", name=" + "'" + name + "'"
-                + ", surname=" + "'" + surname + "'"
-                + ", phone=" + "'" + phone + "'"
-                + ", address=" + "'" + address + "'"
-                + ", sum=" + sum
-                + ", lastOrderDate=" + String.format("%tF", lastOrderDate)
-                + "}";
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", sum=" + sum +
+                ", lastOrderDate=" + lastOrderDate +
+                '}';
     }
+
 }

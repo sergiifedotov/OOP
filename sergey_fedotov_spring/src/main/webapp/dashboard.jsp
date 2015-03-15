@@ -1,10 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: al1
-  Date: 05.10.14
---%>
+
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -34,6 +28,33 @@
         </td>
         <td width="85%"></td>
     </tr>
+    <form action="/clientShowPortion" method="GET"/>
+    <tr style="height: 75%">
+        <td width="5%"></td>
+        <td width="10%">
+            <input type="submit" value="showClientsByPortion"/>
+        </td>
+        <td width="85%"></td>
+    </tr>
+    </form>
+    <form action="/clientShowSumServlet" method="GET"/>
+    <tr style="height: 75%">
+        <td width="5%"></td>
+        <td width="10%">
+            <input type="submit" value="showClientsGtSum"/>
+        </td>
+        <td width="85%"></td>
+    </tr>
+    </form>
+    <form action="/clientShowMonthServlet" method="GET"/>
+    <tr style="height: 75%">
+        <td width="5%"></td>
+        <td width="10%">
+            <input type="submit" value="showClientsLastMonth"/>
+        </td>
+        <td width="85%"></td>
+    </tr>
+    </form>
     <tr style="height: 5%">
         <td colspan="3" width="100%">© 2015 sergey fedotov</td>
     </tr>

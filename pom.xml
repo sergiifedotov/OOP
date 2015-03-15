@@ -13,7 +13,7 @@
         <module>proff21_examples</module>
         <module>proff21_examples_web</module>
         <module>proff21_examples_spring</module>
-        <module>vladimir_morochko</module>
+        <!--<module>vladimir_morochko</module>-->
         <module>vladimir_morochko_web</module>
         <module>alexandr_lapada</module>
         <module>alexandr_lapada_web</module>
