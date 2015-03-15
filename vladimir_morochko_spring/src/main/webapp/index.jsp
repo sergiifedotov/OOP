@@ -3,22 +3,12 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <title>Zen Taxi iss da best</title>
+    <title></title>
 </head>
 <body>
 <%request.getSession().invalidate();%>
-<div class="board" align="center">
-    <img src="img/header.jpg" height="100" width="100">
-    <h3>Zen Taxi</h3>
-    <h4>${authenticationResultMessage}</h4>
-    <form method="post" action="/authenticationServlet" id="project">
-        <input id="login" class="board" type="text" name="login" value="${defaultLogin}" size="30"/><br/>
-        <input type="password" name="password" value="" size="30"/><br/>
-        <input id="button" type="submit" value="Войти" size="40">
-        <p class='silvertext'> или <a href="registerOperator.jsp">зарегистрироваться</a></p>
-    </form>
-</div>
-<p class='silvertext' align="center">На самом деле нет никакого такси (c)</p>
+<p> Перейти на <a href="index_taxi.jsp">index_taxi.jsp</a></p>
+<p> или на <a href="index_js.jsp">index_js.jsp</a></p>
 
 </body>
 </html>

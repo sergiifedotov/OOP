@@ -9,7 +9,7 @@
 
 <%
     if (request.getSession(false) == null) {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("index_taxi.jsp").forward(request, response);
     }
 %>
 

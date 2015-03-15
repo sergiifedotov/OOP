@@ -14,7 +14,7 @@
 </head>
 <body>
 <h4>${registerResultMessage}</h4>
-<p><a href="index.jsp"><<< залогиниться</a></p>
+<p><a href="index_taxi.jsp"><<< залогиниться</a></p>
 <form action="/registerServlet" method="post">
     <input type="hidden" name="oldPassword" value="${oldPassword}"/>
     <p>Логин:</p>
