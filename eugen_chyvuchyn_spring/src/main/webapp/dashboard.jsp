@@ -23,28 +23,28 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div>
+<div class="footer">
   <h3>
     <h2>Welcome, ${login}!</h2>
   </h3>
 
   <form action="/getUsersList" method="post">
-    <table border=0>
+    <table>
       <tr>
-        <td>LIST</td>
+        <td class="footer">LIST</td>
       </tr>
       <tr>
-        <td>
+        <td class="footer">
           ${list}
         </td>
       </tr>
     </table>
   </form>
 
-  <table border="0">
+  <table>
     <thead>
     <tr>
-      <th>Users List</th>
+      <th class="footer" >Users List</th>
       <%--<th>CatTwo</th>--%>
       <%--<th>CatThree</th>--%>
       <%--<th>CatFour</th>--%>
@@ -63,12 +63,16 @@
     </tbody>
   </table>
 </div>
-<form id="logout" method="post" action="/LogOutServlet">
+<form id="logout" method="post" action="/index.jsp">
   <label class="logoutLblPos">
     <input name="submit2" type="submit" id="submit2" value="log out">
   </label>
 </form>
-<p class="center"><a href="index.jsp"> <img src="img/header.jpg"></a></p>
+<%--<p class="center"><a href="index.jsp"> <img src="img/header.jpg"></a></p>--%>
+<br>
+<br>
+<br>
+<br>
 <footer class = "footer">made by command 2 © 2015</footer>
 </body>
 </html>

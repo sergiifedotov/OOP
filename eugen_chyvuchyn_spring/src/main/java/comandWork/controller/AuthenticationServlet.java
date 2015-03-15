@@ -19,7 +19,7 @@ import java.util.Map;
  * User: al1
  * Date: 9/8/13
  */
-@WebServlet("/Hello")
+@WebServlet("/hello")
 public class AuthenticationServlet extends HttpServlet {
     private WebApplicationContext context;
     UserService userService;
@@ -45,7 +45,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
         if (context !=null){

@@ -19,6 +19,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="footer">
+    <script>
+
+    </script>
+</div>
 
 <%--<div class="board">--%>
     <%--<form method="get" action="/hello" id="project">--%>
@@ -28,15 +33,15 @@
     <%--</form>--%>
 <%--</div>--%>
 <div class="board">
-    <form method="post" action="/Hello" class="login">
+    <form method="post" action="/hello" class="login">
         <p>
             <label for="login">Логин:</label>
-            <input type="text" name="login" id="login" value="login">
+            <input type="text" name="login" id="login" >
         </p>
 
         <p>
             <label for="password">Пароль:</label>
-            <input type="password" name="password" id="password" value="">
+            <input type="password" name="password" id="password">
         </p>
 
         <p class="login-submit">
