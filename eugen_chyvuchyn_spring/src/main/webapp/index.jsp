@@ -4,10 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Просто закажи такси</title>
+    <title>CommandProject</title>
     <style>
         .fig {
             text-align: center; /* Выравнивание по центру */
+        }
+        .footer {
+            text-align: center;
+            color: aliceblue;
         }
     </style>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -15,6 +19,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="footer">
+    <script>
+
+    </script>
+</div>
 
 <%--<div class="board">--%>
     <%--<form method="get" action="/hello" id="project">--%>
@@ -24,29 +33,26 @@
     <%--</form>--%>
 <%--</div>--%>
 <div class="board">
-    <form method="post" action="" class="login">
+    <form method="post" action="/hello" class="login">
         <p>
             <label for="login">Логин:</label>
-            <input type="text" name="login" id="login" value="name@example.com">
+            <input type="text" name="login" id="login" >
         </p>
 
         <p>
             <label for="password">Пароль:</label>
-            <input type="password" name="password" id="password" value="4815162342">
+            <input type="password" name="password" id="password">
         </p>
 
         <p class="login-submit">
-            <button type="submit" class="login-button">Войти</button>
+            <button type="submit" class="login-button" >Войти</button>
         </p>
-
-        <p class="forgot-password"><a href="index.html">Забыл пароль?</a></p>
-        <p class="register"><a href="register.jsp">Регистрация</a></p>
         <br>
         <br>
-        <p class="fig"><a href="index.jsp"> <img src="img/header.jpg"></a></p>
+        <p class="fig"><a href="index.jsp"> <img src=""></a></p>
     </form>
 </div>
 
-<footer class = "fig"><a href="http://www.facebook.com/chuvendoil">made by Eugen Chyvuchyn © 2015</a></footer>
+<footer class = "footer">made by command 2 © 2015</footer>
 </body>
 </html>
