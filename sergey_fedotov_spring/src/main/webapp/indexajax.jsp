@@ -7,21 +7,7 @@
 </head>
 <body>
 
-<script>
-    var vector = new Array(1,2,3,4,5,6)
-    console.log('Исходный массив')
-    for(i=0;i<vector.length;i++){
-        console.log(vector[i])
-    }
-    for(i=0;i<vector.length;i++){
-        if(vector[i]%2===0){
-            vector[i]=0
-        }
-    }
-    console.log('Новый массив')
-    for(i=0;i<vector.length;i++){
-        console.log(vector[i])
-    }
+<%--<script>
 
     function check(){
         var login = document.getElementById('login').valueOf();
@@ -35,7 +21,23 @@
         return true
     }
 
-</script>
+    function auth(){
+        var login = document.getElementById('login').valueOf();
+        var pass = document.getElementById('pass').valueOf();
+
+        var ajax = new XMLHttpRequest();
+        ajax.open('GET','/ajax?login=login&pass=pass', true)
+        ajax.send();
+        ajax.onreadystatechange = function(){
+            if (ajax.readyState==4 && ajax.status==200){
+                alert(xmlhttp.responseText)
+            }else{
+                alert('error')
+            }
+        };
+    }
+
+</script>--%>
 
 <div class="wrapper">
 
@@ -46,7 +48,7 @@
     <div class="header">
         <img src="img/header.jpg"/>
     </div>
-    <form onsubmit='return check();' action="/auth" method="POST"/>
+    <form onsubmit='return check();auth();'/>
     <table width="100%" style="height: 5%;" >
         <thead></thead>
         <tbody>

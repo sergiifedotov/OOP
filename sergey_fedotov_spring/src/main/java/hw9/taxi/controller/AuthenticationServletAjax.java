@@ -17,8 +17,8 @@ import java.util.Map;
 /**
  * Created by warit on 01.03.2015.
  */
-@WebServlet("/auth")
-public class AuthenticationServlet extends HttpServlet {
+@WebServlet("/ajax")
+public class AuthenticationServletAjax extends HttpServlet {
     private WebApplicationContext context;
 
     @Override
@@ -37,8 +37,7 @@ public class AuthenticationServlet extends HttpServlet {
                 Map<String,String[]> parametrs = req.getParameterMap();
                 String login = parametrs.get("login")[0];
                 String pass = parametrs.get("pass")[0];
-                AuthenticationService authenticationService = context.getBean("authenticationServiceImpl", AuthenticationService.class);
-                //AuthenticationService authenticationService = (AuthenticationService) context.getBean("authenticationServiceImp");
+                AuthenticationService authenticationService = (AuthenticationService) context.getBean("authenticationServiceImp");
 
                 boolean loginOK = false;
                 try {
@@ -49,19 +48,13 @@ public class AuthenticationServlet extends HttpServlet {
 
                 if (loginOK) {
                     resp.getWriter().print("Hello " + req.getParameter("log"));
-                    HttpSession newsession = req.getSession();
-                    newsession.setAttribute("login", login);
-                    newsession.setAttribute("pass", pass);
-                    req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
 
                 } else {
-                    req.setAttribute("errLogin", new String("error login or pass!!!"));
-                    req.getRequestDispatcher("index.jsp").forward(req, resp);
+                    resp.getWriter().print("error " + req.getParameter("log"));
                 }
             }
         } else {
-            req.setAttribute("errLogin", new String("error login or pass!!!"));
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            resp.getWriter().print("errLogin error login or pass!!!");
         }
 
 
