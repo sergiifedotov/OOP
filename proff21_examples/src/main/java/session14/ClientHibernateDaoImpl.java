@@ -7,8 +7,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import session16.Client;
-import session16.ClientDao;
 
 import java.util.List;
 
@@ -20,7 +18,7 @@ import java.util.List;
 @Repository
 @Transactional
 public class ClientHibernateDaoImpl implements ClientDao {
-    private static Logger log = Logger.getLogger(session16.ClientHibernateDaoImpl.class);
+    private static Logger log = Logger.getLogger(ClientHibernateDaoImpl.class);
 
     @Autowired
     private SessionFactory factory;

@@ -9,7 +9,7 @@
     <title></title>
 </head>
 <body>
-<h>${authenticationResultMessage}</h>
+<h4>${authenticationResultMessage}</h4>
 <form action="/AuthenticationServlet" method="post">
     <p>Логин (111 для теста):</p>
     <input type="text" name="login" value="${defaultLogin}"/>

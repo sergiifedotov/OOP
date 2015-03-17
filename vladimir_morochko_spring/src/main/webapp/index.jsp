@@ -1,19 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page session="false" %>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title></title>
 </head>
 <body>
-
-<div class="board">
-    <form method="get" action="/hello" id="project">
-        <input id="login" class="board" type="text" name="login" value="" size="50"/><br/>
-        <input type="password" name="pass" value="" size="50"/><br/>
-        <input id="button1" type="submit" value="Send Numbers" size="40"><br/>
-    </form>
-</div>
-
+<%request.getSession().invalidate();%>
+<p> Перейти на <a href="index_taxi.jsp">index_taxi.jsp</a></p>
+<p> или на <a href="index_js.jsp">index_js.jsp</a></p>
 
 </body>
 </html>

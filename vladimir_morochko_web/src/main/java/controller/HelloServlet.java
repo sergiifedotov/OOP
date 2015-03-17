@@ -1,7 +1,5 @@
 package controller;
 
-import hw8.taxi.domain.Client;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +16,7 @@ import java.util.Map;
  */
 @WebServlet("/serv")
 public class HelloServlet extends HttpServlet {
-    Map<Client> userMap = new HashMap<>();
+    Map<String, String> userMap = new HashMap<>();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         userMap.put("Vasya", "111");

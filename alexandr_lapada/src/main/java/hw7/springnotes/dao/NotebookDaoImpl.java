@@ -2,85 +2,202 @@ package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.domain.Vendor;
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
-@Repository
-@Transactional
 public class NotebookDaoImpl implements NotebookDao {
 
-    @Autowired
+    private Logger log = Logger.getLogger(NotebookDaoImpl.class);
     private SessionFactory factory;
 
     public NotebookDaoImpl(){
 
     }
 
+    public NotebookDaoImpl(SessionFactory factory){
+        this.factory = factory;
+    }
+
     @Override
     public Long create(Notebook notebook) {
-        Session session = factory.getCurrentSession();
-        Long id = (long)session.save(notebook);
+        Session session = null;
+        Long id = null;
+        try{
+            session = factory.openSession();
+            session.beginTransaction();
+            id = (Long)session.save(notebook);
+            session.getTransaction().commit();
+        } catch (HibernateException e){
+            log.error(e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null){
+                session.close();
+            }
+        }
         return id;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Notebook read(Long id) {
-        Session session = factory.getCurrentSession();
-        return (Notebook)session.get(Notebook.class,id);
+        Notebook notebook = null;
+        Session session = null;
+        try{
+            session = factory.openSession();
+            notebook = (Notebook)session.get(Notebook.class,id);
+        } catch(HibernateException e){
+            log.error(e);
+        } finally{
+            if (session != null){
+                session.close();
+            }
+        }
+        return notebook;
     }
 
     @Override
     public boolean update(Notebook notebook) {
-        Session session = factory.getCurrentSession();
-        session.update(notebook);
-        return false;
+        Session session = null;
+        boolean rez = false;
+        try{
+            session = factory.openSession();
+            session.beginTransaction();
+            session.update(notebook);
+            session.getTransaction().commit();
+            rez = true;
+        } catch (HibernateException e){
+            log.error(e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null){
+                session.close();
+            }
+        }
+        return rez;
     }
 
     @Override
     public boolean delete(Notebook notebook) {
-        Session session = factory.getCurrentSession();
-        session.delete(notebook);
-        return false;
+        Session session = null;
+        boolean rez = false;
+        try{
+            session = factory.openSession();
+            session.beginTransaction();
+            session.delete(notebook);
+            session.getTransaction().commit();
+            rez = true;
+        } catch (HibernateException e){
+            log.error(e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null){
+                session.close();
+            }
+        }
+        return rez;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<Notebook> findAll() {
-        Session session = factory.getCurrentSession();
-        List<Notebook> list = session.createCriteria(Notebook.class).list();
+        List<Notebook> list = null;
+        Session session = null;
+        try{
+            session = factory.openSession();
+            list = session.createCriteria(Notebook.class).list();
+        } catch(HibernateException e){
+            log.error(e);
+        }finally {
+            if (session != null){
+                session.close();
+            }
+        }
+
         return list;
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Notebook> getPortion(Integer first, Integer result) {
-        Session session = factory.getCurrentSession();
-        List<Notebook> list = session.createCriteria(Notebook.class).setFirstResult(first).setMaxResults(result).list();
+    public List<Notebook> getPortion(Integer firstResult, Integer maxResult) {
+        Session session = null;
+        List<Notebook> list = null;
+        try{
+            session = factory.openSession();
+            list = session.createCriteria(Notebook.class).setFirstResult(firstResult).setMaxResults(maxResult).list();
+        } catch (HibernateException e){
+            log.error(e);
+        } finally {
+            if (session != null){
+                session.close();
+            }
+        }
         return list;
     }
 
     @Override
     public List<Notebook> getNotebooksGtAmount(int amount) {
-        Session session = factory.getCurrentSession();
-        List<Notebook> list = session.createCriteria(Notebook.class).createCriteria("stores").add(Restrictions.gt("quantity",amount)).list();
+        Session session = null;
+        List<Notebook> list = null;
+        try{
+            session = factory.openSession();
+            list = session.createCriteria(Notebook.class).createCriteria("stores").add(Restrictions.gt("quantity",amount)).list();
+        } catch (HibernateException e){
+            log.error(e);
+        } finally {
+            if(session != null){
+                session.close();
+            }
+        }
         return list;
     }
 
     @Override
     public List<Notebook> getNotebooksByCpuVendor(Vendor cpuVendor) {
-        Session session = factory.getCurrentSession();
-        System.out.println("*******"+cpuVendor.getName()+"*********");
-        List<Notebook> list = session.createCriteria(Notebook.class).createCriteria("cpu").add(Restrictions.eq("vendor",cpuVendor.getName())).list();
+        Session session = null;
+        List<Notebook> list = null;
+        try{
+            session = factory.openSession();
+            list = session.createCriteria(Notebook.class).createCriteria("cpu").add(Restrictions.eq("vendor", cpuVendor.getName())).list();
+        } catch (HibernateException e){
+            log.error(e);
+        } finally {
+            if(session != null){
+                session.close();
+            }
+        }
         return list;
     }
+
+    @Override
+    public List<Notebook> getNotebooksStorePresent() {
+        Session session = null;
+        List<Notebook> list = null;
+        try{
+            session = factory.openSession();
+            list = session.createCriteria(Notebook.class).createCriteria("stores").list();
+            //setProjection(Projections.property("vendor"))
+        } catch (HibernateException e){
+            log.error(e);
+        } finally {
+            if(session != null){
+                session.close();
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public Map<Notebook, Integer> getSalesByDays() {
+        //createCriteria("sales").setProjection(Projections.property("salesDate"))
+        return null;
+    }
+
+
 }

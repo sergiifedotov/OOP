@@ -3,15 +3,12 @@ package hw7.springnotes.dao;
 import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.domain.Sales;
 import hw7.springnotes.domain.Store;
-import hw7.springnotes.util.HibernateUtil;
+import hw7.springnotes.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,13 +18,8 @@ import java.util.Map;
 /**
  *
  */
-@Repository
-@Transactional
 public class SalesDaoImpl implements SalesDao {
     private static Logger log = Logger.getLogger(SalesDaoImpl.class);
-
-    @Autowired
-    private SessionFactory factory;
 
 
     public static void main(String[] args) {
@@ -44,49 +36,144 @@ public class SalesDaoImpl implements SalesDao {
 
     @Override
     public Long create(Sales sales) {
-        return (Long) factory.getCurrentSession().save(sales);
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            Long id = (Long)session.save(sales);
+            session.getTransaction().commit();
+            return id;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Sales read(Long id) {
-        return (Sales) factory.getCurrentSession().get(Sales.class,id);
+
+        Session session = HibernateUtil.getSession();
+        try {
+            return (Sales) session.get(Sales.class,id);
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean update(Sales sales) {
-        factory.getCurrentSession().update(sales);
-        return true;
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            session.update(sales);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+            return false;
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
     }
 
     @Override
     public boolean delete(Sales sales) {
-        factory.getCurrentSession().delete(sales);
-        return true;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Sales> findAll() {
-        return (List)factory.getCurrentSession().createCriteria(Sales.class).list();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Map<Notebook, Integer> getSalesByDays() {
-        Map<Notebook, Integer> map = new HashMap<>();
-        List list = factory.getCurrentSession().createCriteria(Sales.class).list();
-        if (list != null) {
-            Iterator<Sales> iterator = list.iterator();
-            while (iterator.hasNext()) {
-                Sales sales = iterator.next();
-                Integer amount = sales.getAmount();
-                Store store = sales.getStore();
-                Notebook notebook = store.getNotebook();
-                map.put(notebook, amount);
+        Session session = HibernateUtil.getSession();
+        try {
+            session.beginTransaction();
+            session.delete(sales);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+            return false;
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
             }
         }
-        return map;
+    }
+
+    @Override
+    public List<Sales> findAll() {
+        Session session = HibernateUtil.getSession();
+        try {
+            return (List) session.createCriteria(Sales.class).list();
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
+
+    }
+
+    @Override
+    public Map<Notebook, Integer> getSalesByDays() {
+        Session session = HibernateUtil.getSession();
+        try {
+            Map<Notebook, Integer> map = new HashMap<>();
+            List list = session.createCriteria(Sales.class)
+                    .addOrder(Order.asc("date")).list();
+
+            if (list != null) {
+                Iterator<Sales> iterator = list.iterator();
+                while (iterator.hasNext()) {
+                    Sales sales = iterator.next();
+                    Integer amount = sales.getAmount();
+                    Store store = sales.getStore();
+                    Notebook notebook = store.getNotebook();
+                    map.put(notebook, amount);
+                }
+            }
+            return map;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                sessionFactory.close();
+            }
+        }
+        return null;
     }
 
 }

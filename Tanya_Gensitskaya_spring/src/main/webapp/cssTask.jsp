@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Задание на каскадные таблицы</title>
 </head>
 <body>
-  <h3>Покрасьте меня в розовый цвет (color:pink).</h3>
+  <h3 style="color:pink">Покрасьте меня в розовый цвет (color:pink).</h3>
   <p>Данный элемент должен остаться неоформленным.</p>
   <p id='greycol'>Покрасьте меня в серый цвет (color:grey).</p>
   <div>Данный элемент должен остаться неоформленным.</div>

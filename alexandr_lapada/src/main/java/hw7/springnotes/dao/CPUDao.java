@@ -1,14 +1,12 @@
 package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.CPU;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
-
 public interface CPUDao {
 
     Long create(CPU cpu);

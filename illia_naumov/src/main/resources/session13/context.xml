@@ -3,28 +3,24 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <!-- services -->
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
     <context:property-placeholder location="classpath:session13/conf.properties"/>
-    <context:component-scan base-package="session13"/>
-    <!--bean id="man1" class="session13.Man">
-        <constructor-arg value = "${name}"/>
-        <constructor-arg value = "3"/>
 
-
-        <property name="itemDao" ref="itemDao"/>
-        < additional collaborators and configuration for this bean go here >
+    <bean id="man1" class="session13.Man">
+        <constructor-arg value="3"/>
+        <property name="name" ref="nameBean"/>
     </bean>
 
-    <bean id= "company" class = "session13.Company">
-        <constructor-arg value = "${companyName}"/>
-        <constructor-arg ref = "car"/>
-        <constructor-arg  value = "man1"/>
-        <property  name = "capital" value = "${fond}"/>
+    <bean id="man2" class="session13.Man">
+        <constructor-arg value="7"/>
+        <constructor-arg value="${metalo}"/>
+        <property name="age" value="12"/>
     </bean>
-    <bean id= "car" class = "session13.Car">
-        <constructor-arg value = "${color}"/>
-        <constructor-arg ref = "man1"/>
 
-    </bean-->
+    <bean id="nameBean" class="java.lang.String">
+        <constructor-arg value="Benedikt"/>
+    </bean>
 </beans>
