@@ -2,190 +2,77 @@ package hw7.springnotes.dao;
 
 import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.domain.Store;
-import hw7.springnotes.notes.util.HibernateUtil;
-import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * Created by vladimir on 17.02.2015.
+ * Created by vladimir on 23.02.2015.
  */
+@Repository
+@Transactional
 public class StoreDaoImpl implements StoreDao {
-    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
+    @Qualifier("mySessionFactoryHW7")
+    @Autowired(required = true)
+    private SessionFactory sessionFactory; // фабрика берется из контекста
 
     public StoreDaoImpl() {
     }
 
-    public StoreDaoImpl(SessionFactory sessionFactory) {
-        this();
-        this.sessionFactory = sessionFactory;
-    }
-
     @Override
     public Long create(Store store) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            Long id = (Long)session.save(store);
-            session.getTransaction().commit();
-            return id;
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        return (Long) sessionFactory.getCurrentSession().save(store);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Store read(Long id) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            return (Store) session.get(Store.class, id);
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        return (Store) sessionFactory.getCurrentSession().get(Store.class, id);
     }
 
     @Override
     public boolean update(Store store) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.update(store);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return false;
+        sessionFactory.getCurrentSession().update(store);
+        return true;
     }
 
     @Override
     public boolean delete(Store store) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.delete(store);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return false;
+        sessionFactory.getCurrentSession().delete(store);
+        return true;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Store> findAll() {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Store.class);
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Store.class);
+        return criteria.list();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Notebook> getNotebooksGtAmount(int amount) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Store.class)
-                    .add(Restrictions.gt("amount", amount))
-                    .setProjection(Projections.property("notebook"));
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Store.class)
+                .add(Restrictions.gt("amount", amount))
+                .setProjection(Projections.property("notebook"));
+        return criteria.list();
     }
 
     @Override
     public List<Notebook> getNotebooksFromStore() {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Store.class)
-                    .setProjection(Projections.property("notebook"));
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public List<Notebook> getNotebooksStorePresent() {
-        int amount = 0;
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Store.class)
-                    .add(Restrictions.gt("amount", amount))
-                    .setProjection(Projections.property("notebook"));
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void close() {
-        sessionFactory.close();
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Store.class)
+                .setProjection(Projections.property("notebook"));
+        return criteria.list();
     }
 }

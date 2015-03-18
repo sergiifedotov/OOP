@@ -37,7 +37,8 @@ public class AuthenticationServlet extends HttpServlet {
                 Map<String,String[]> parametrs = req.getParameterMap();
                 String login = parametrs.get("login")[0];
                 String pass = parametrs.get("pass")[0];
-                AuthenticationService authenticationService = (AuthenticationService) context.getBean("authenticationServiceImp");
+                AuthenticationService authenticationService = context.getBean("authenticationServiceImpl", AuthenticationService.class);
+                //AuthenticationService authenticationService = (AuthenticationService) context.getBean("authenticationServiceImp");
 
                 boolean loginOK = false;
                 try {

@@ -19,7 +19,7 @@ import java.util.List;
 @Transactional
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
+    @Autowired(required = true)
     private OrderDao orderDao;
 
     public OrderServiceImpl() {

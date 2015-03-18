@@ -16,7 +16,7 @@ import java.util.List;
 /**
  *
  */
-@WebServlet("/clientShowSumServlet")
+@WebServlet("/clientShowSumServlet2")
 public class SumClientServlet extends HttpServlet {
 
     private WebApplicationContext context;

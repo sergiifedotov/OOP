@@ -1,8 +1,7 @@
-package hw7.springnotes.dao;
+package hw7.notes.dao;
 
-
-import hw7.springnotes.domain.Notebook;
-import hw7.springnotes.notes.util.HibernateUtil;
+import hw7.notes.domain.Memory;
+import hw7.notes.util.HibernateUtil;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -14,21 +13,23 @@ import java.util.List;
 /**
  * Created by Tanya on 19.02.2015.
  */
-public class NotebookDaoImpl implements NotebookDao {
-    private static Logger log = Logger.getLogger(NotebookDaoImpl.class);
+public class MemoryDaoImpl implements MemoryDao {
+
+    private static Logger log = Logger.getLogger(MemoryDaoImpl.class);
     private SessionFactory factory = new HibernateUtil().buildSessionFactory();
 
-    public NotebookDaoImpl() {
+    public MemoryDaoImpl() {
     }
 
+
     @Override
-    public Long create(Notebook notebook) {
+    public Long create(Memory memory) {
         Session session = null;
         Long id = null;
         try {
             session = factory.openSession();
             session.beginTransaction();
-            id = (Long) session.save(notebook);
+            id = (Long) session.save(memory);
             session.getTransaction().commit();
             return id;
         } catch (HibernateException e) {
@@ -43,15 +44,15 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public Notebook read(Long ig) {
+    public Memory read(Long ig) {
         Session session = null;
-        Notebook notebook = new Notebook();
+        Memory memory = new Memory();
         try {
             session = factory.openSession();
             session.beginTransaction();
-            notebook = (Notebook)session.get(Notebook.class, ig);
+            memory = (Memory)session.get(Memory.class, ig);
             session.getTransaction().commit();
-            return notebook;
+            return memory;
         } catch (HibernateException e) {
             log.error("Open session failed", e);
             session.getTransaction().rollback();
@@ -60,36 +61,16 @@ public class NotebookDaoImpl implements NotebookDao {
                 session.close();
             }
         }
-        return notebook;
+        return memory;
     }
 
     @Override
-    public boolean update(Notebook notebook) {
+    public boolean update(Memory memory) {
         Session session = null;
         try {
             session = factory.openSession();
             session.beginTransaction();
-            session.update(notebook);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            log.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean delete(Notebook notebook) {
-        Session session = null;
-        try {
-            session = factory.openSession();
-            session.beginTransaction();
-            session.delete(notebook);
+            session.update(memory);
             session.getTransaction().commit();
             return true;
         } catch (HibernateException e) {
@@ -104,14 +85,34 @@ public class NotebookDaoImpl implements NotebookDao {
     }
 
     @Override
-    public List<Notebook> findAll() {
-        List<Notebook> list = new ArrayList<>();
+    public boolean delete(Memory memory) {
+        Session session = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            session.delete(memory);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public List<Memory> findAll() {
+        List<Memory> list = new ArrayList<>();
 
         Session session = null;
         try {
             session = factory.openSession();
             session.beginTransaction();
-            list = session.createCriteria(Notebook.class).list();
+            list = session.createCriteria(Memory.class).list();
             session.getTransaction().commit();
         } catch (HibernateException e) {
             log.error("Open session failed", e);
