@@ -31,6 +31,6 @@
 </form>
 
 <br>
-<p><a href="index.jsp">Выйти</a></p>
+<p><a href="index_taxi.jsp">Выйти</a></p>
 </body>
 </html>

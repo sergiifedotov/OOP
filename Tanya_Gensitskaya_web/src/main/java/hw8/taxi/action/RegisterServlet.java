@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("dashboard.jsp").forward(request, response);
             } else {
                 request.setAttribute("register", new String("Error!!!"));
-                request.getRequestDispatcher("register.jsp").forward(request, response);
+                request.getRequestDispatcher("registerOperator.jsp").forward(request, response);
             }
         } catch (AuthenticationException e) {
             e.printStackTrace();

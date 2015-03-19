@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AuthorizationServiceImpl implements AuthorizationService {
 
-    @Autowired
+    @Autowired(required = true)
     private UserDao userDao;
 
     public AuthorizationServiceImpl() {

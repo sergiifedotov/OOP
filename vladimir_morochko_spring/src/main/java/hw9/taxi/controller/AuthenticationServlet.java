@@ -50,11 +50,23 @@ public class AuthenticationServlet extends HttpServlet {
         } else {
             request.setAttribute("authenticationResultMessage", authenticationResultMessage);
             request.setAttribute("defaultLogin", login);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("index_taxi.jsp").forward(request, response);
         }
 
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        String authenticationResultMessage = null;
+        boolean authenticationResult = false;
+        try {
+            authenticationResult = authenticationService.authenticate(login, password);
+        } catch (AuthenticationException e) {
+            //e.printStackTrace();
+            authenticationResultMessage = e.getMessage();
+        }
+        response.getWriter().println(authenticationResult);
+//        request.getSession().setAttribute("authenticationResult", authenticationResult);
     }
 }

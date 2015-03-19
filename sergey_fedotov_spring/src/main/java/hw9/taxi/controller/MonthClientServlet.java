@@ -16,7 +16,7 @@ import java.util.List;
 /**
  *
  */
-@WebServlet("/clientShowMonthServlet")
+@WebServlet("/clientShowMonthServlet2")
 public class MonthClientServlet extends HttpServlet {
 
     private WebApplicationContext context;

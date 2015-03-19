@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  *
  */
-@WebServlet("/clientCreate")
+@WebServlet("/clientCreate2")
 public class CreateClientServlet extends HttpServlet {
 
     private WebApplicationContext context;

@@ -16,10 +16,10 @@ public class Order {
     @Column(name="ORDER_ID")
     private Long id;
 
-    @Column(name="DATE")
+    @Column(name="DATE_ORDER")
     private Date date;
 
-    @Column(name="CLIENT")
+    @ManyToOne
     private Client client;
 
     @Column(name="AMOUNT")
