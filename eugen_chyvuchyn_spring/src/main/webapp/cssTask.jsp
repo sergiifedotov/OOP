@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="css/tusk.css"/>
     <title>Задание на каскадные таблицы</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
   <div>
     <p>Покрасьте меня в красный цвет (color:red).</p>
     <span><p>Покрасьте меня в коричневый цвет (color:brown).</p></span>
-    <div style="">Покрасьте меня в серебряный цвет (color:silver)</div>
+    <div style="color: silver">Покрасьте меня в серебряный цвет (color:silver)</div>
   </div>
   <h4>Данный элемент должен остаться неоформленным.</h4>
   <p>Покрасьте меня в зеленый цвет (color:green).</p>
