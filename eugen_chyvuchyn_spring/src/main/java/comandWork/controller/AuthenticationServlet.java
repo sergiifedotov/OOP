@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +46,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
         if (context !=null){
@@ -57,14 +58,19 @@ public class AuthenticationServlet extends HttpServlet {
             String pass = parametrs.get("password")[0];
 
             List<User> list = userService.findByNameAndPass(login, pass);
-
-            if ( list.size()!= 0){
-
-                req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
-            } else{
-
-                req.getRequestDispatcher("index.jsp").forward(req, resp);
+            List<User> listAll = userService.getAll();
+            ArrayList<String> logins = new ArrayList<>();
+            for (User user:listAll){
+                logins.add(user.getLogin());
             }
+            String loginAll = logins.toString();
+
+                if (list.size() !=0) {
+                    resp.getWriter().println(loginAll);
+
+                } else{
+                    resp.getWriter().println("Fuck OFF");
+                }
 
 
 

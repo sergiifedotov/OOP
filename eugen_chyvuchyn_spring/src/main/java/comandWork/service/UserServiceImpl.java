@@ -21,7 +21,10 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl() {
     }
-
+    @Override
+    public void create(User user){
+        userDao.create(user);
+    }
     @Override
     public Long add(User user) {
         return userDao.create(user);

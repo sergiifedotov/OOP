@@ -16,9 +16,9 @@
       text-align: center; /* Выравнивание по центру */
     }
   </style>
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="../../../../../vladimir_morochko_spring/src/main/webapp/css/style.css">
+  <link rel="icon" href="hw9/img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="hw9/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="hw9/css/style.css">
 </head>
 <body>
 <div class="board">
@@ -37,10 +37,10 @@
       <label for="password">Пароль:</label>
       <input type="password" name="passwordRepeat" id="passwordRepeat" value="">
     </p>
-    <p class="register"><a href="../../../../../vladimir_morochko_spring/src/main/webapp/dashboard.jsp">Зарегистрироваться</a></p>
+    <p class="register"><a href="dashboard.jsp">Зарегистрироваться</a></p>
     <br>
     <br>
-    <p class="fig"><img src="../../../../../sergey_fedotov_spring/src/main/webapp/img/header.jpg"></p>
+    <p class="fig"><a href="index.jsp"> <img src="hw9/img/header.jpg"></a></p>
   </form>
 </div>
 <footer class = "fig"><a href="http://www.facebook.com/chuvendoil">made by Eugen Chyvuchyn © 2015</a></footer>
