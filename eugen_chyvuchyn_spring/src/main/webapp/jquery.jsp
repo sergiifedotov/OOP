@@ -8,8 +8,8 @@
 <html>
 <head>
     <title></title>
-    <script src="../../../../../sergey_fedotov_spring/src/main/webapp/js/jquery-1.11.2.min.js"></script>
-    <script src="../../../../../sergey_tsimbalyuk_spring/src/main/webapp/js/script.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body onload="show()">
 <div id="main">

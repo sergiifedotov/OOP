@@ -10,8 +10,8 @@
 <html>
 <head>
     <title>Layout</title>
-    <link href="../../../../../vladimir_morochko_spring/src/main/webapp/css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="../../../../../sergey_tsimbalyuk_spring/src/main/webapp/js/script.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
