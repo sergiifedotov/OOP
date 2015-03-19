@@ -10,8 +10,8 @@
 <html>
 <head>
     <title>Layout</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/script.js"></script>
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="../js/script.js"></script>
 </head>
 
 <body>

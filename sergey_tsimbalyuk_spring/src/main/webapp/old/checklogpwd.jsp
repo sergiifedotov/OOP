@@ -9,7 +9,7 @@
 <html>
 <head>
     <title></title>
-    <script src="js/loginCheck.js"></script>
+    <script src="../js/loginCheck.js"></script>
     <meta http-equiv="content-type" content="text/html;" />
 </head>
 <body  onload="document.testForm.content.value = theElement.innerHTML;">
