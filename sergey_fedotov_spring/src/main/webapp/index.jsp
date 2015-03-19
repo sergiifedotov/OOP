@@ -7,6 +7,35 @@
 </head>
 <body>
 
+<script>
+    var vector = new Array(1,2,3,4,5,6)
+    console.log('Исходный массив')
+    for(i=0;i<vector.length;i++){
+        console.log(vector[i])
+    }
+    for(i=0;i<vector.length;i++){
+        if(vector[i]%2===0){
+            vector[i]=0
+        }
+    }
+    console.log('Новый массив')
+    for(i=0;i<vector.length;i++){
+        console.log(vector[i])
+    }
+
+    function check(){
+        var login = document.getElementById('login').valueOf();
+        var pass = document.getElementById('pass').valueOf();
+
+        if(login===pass){
+            alert('error login=pass')
+            return false
+        }
+
+        return true
+    }
+
+</script>
 
 <div class="wrapper">
 
@@ -17,21 +46,21 @@
     <div class="header">
         <img src="img/header.jpg"/>
     </div>
-    <form action="/auth" method="POST"/>
+    <form onsubmit='return check();' action="/auth" method="POST"/>
     <table width="100%" style="height: 5%;" >
         <thead></thead>
         <tbody>
         <tr>
             <td width="5%">login</td>
             <td width="10%">
-                <input type="text" name="login"/>
+                <input id="login" type="text" name="login"/>
             </td>
             <td width="85%"></td>
         </tr>
         <tr>
             <td width="5%">pass</td>
             <td width="10%">
-                <input type="password" name="pass"/>
+                <input id="pass" type="password" name="pass"/>
             </td>
             <td width="85%">
                 ${errLogin}
@@ -67,7 +96,6 @@
 
         Мы гордимся нашей командой профессионалов, наши операторы никогда не оставят Ваш заказ без внимания, а водители доставят Вас по нужному адресу в четко установленные сроки.</br>
     </div>
-
 </div>
 
 <div class="footer">

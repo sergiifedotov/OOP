@@ -8,7 +8,7 @@ import java.util.List;
  * User: al1
  * Date: 8/18/13
  */
-//public interface GenericDao<T, PK extends Serializable> {
+public interface GenericDao<T, PK extends Serializable> {
 //    PK create(T persistentObject);
 //
 //    T get(PK id);
@@ -20,4 +20,4 @@ import java.util.List;
 //    void createOrUpdate(T persistentObject);
 //
 //    void delete(T persistentObject);
-//}
+}

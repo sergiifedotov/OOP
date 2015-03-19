@@ -1,0 +1,25 @@
+body {
+    background: url(background.jpg);
+}
+#img_2 {
+    width: 1150px;
+    height: 140px;
+    position: absolute;
+    left: 230px;
+    top: 10px;
+    z-index: 3;
+}
+.img_wrapper {
+    width: 10000px;
+    height: 10000px;
+    position: relative;
+    padding-top: 75%;
+    overflow: hidden;
+}
+
+.img_wrapper img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+}

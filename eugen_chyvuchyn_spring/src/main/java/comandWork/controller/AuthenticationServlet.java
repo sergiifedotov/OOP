@@ -1,9 +1,9 @@
 package comandWork.controller;
 
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import comandWork.domain.User;
 import comandWork.service.UserService;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,7 +19,7 @@ import java.util.Map;
  * User: al1
  * Date: 9/8/13
  */
-@WebServlet("/getUsersList")
+@WebServlet("/hello")
 public class AuthenticationServlet extends HttpServlet {
     private WebApplicationContext context;
     UserService userService;
@@ -45,7 +45,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
         if (context !=null){
@@ -54,7 +54,7 @@ public class AuthenticationServlet extends HttpServlet {
 
             Map<String,String[]> parametrs = req.getParameterMap();
             String login = parametrs.get("login")[0];
-            String pass = parametrs.get("pass")[0];
+            String pass = parametrs.get("password")[0];
 
             List<User> list = userService.findByNameAndPass(login, pass);
 

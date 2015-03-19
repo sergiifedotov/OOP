@@ -14,11 +14,11 @@ import java.util.List;
 /**
  *
  */
-@Repository
+//@Repository
 public class UserDaoImp implements UserDao {
     private static Logger log = Logger.getLogger(UserDaoImp.class);
 
-    @Autowired
+    @Autowired(required = true)
     private SessionFactory factory;
 
     @Transactional(readOnly = true)
@@ -43,6 +43,7 @@ public class UserDaoImp implements UserDao {
         return (Long) factory.getCurrentSession().save(user);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User read(String login) {
         Session session = factory.getCurrentSession();
