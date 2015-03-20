@@ -1,6 +1,6 @@
-package hw7.springnotes.dao;
+package hw7.notes.dao;
 
-import hw7.springnotes.domain.CPU;
+import hw7.notes.domain.CPU;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +25,7 @@ public class CPUDaoImpl implements CPUDao {
         return (Long) sessionFactory.getCurrentSession().save(cpu);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public CPU read(Long id) {
         return (CPU) sessionFactory.getCurrentSession().get(CPU.class, id);
