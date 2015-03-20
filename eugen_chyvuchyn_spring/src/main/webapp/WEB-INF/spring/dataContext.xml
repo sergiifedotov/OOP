@@ -25,7 +25,8 @@ http://www.springframework.org/schema/tx
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>web</value>
+                <value>web.domain</value>
+                <value>hw9.taxi</value>
             </list>
         </property>
         <property name="hibernateProperties">
