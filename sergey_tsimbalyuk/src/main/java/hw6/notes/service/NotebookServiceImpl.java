@@ -21,7 +21,6 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
 
-
     @Override
     public void add(Notebook notebook) {
         notebookDao.create(notebook);
@@ -57,9 +56,24 @@ public class NotebookServiceImpl implements NotebookService {
         notebookDao.update(note);
     }
 
+    //    @Override
+//    public void deleteByModel(String model) {
+//        notebookDao.findByModel(model).forEach(this::deleteNtb);
+//    }
     @Override
-    public void deleteByModel(String model) {
-        notebookDao.findByModel(model).forEach(this::deleteNtb);
+    public boolean deleteByModel(String model) {
+        List<Notebook> templist = notebookDao.findByModel(model);
+        boolean result = false;
+        for (Notebook temp : templist) {
+
+            result = notebookDao.delete(temp);
+            if (result == false) {
+                System.out.println("Не удаляется" + temp.toString());
+                return result;
+            }
+
+        }
+        return result;
     }
 
     @Override

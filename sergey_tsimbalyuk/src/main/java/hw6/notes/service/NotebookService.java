@@ -14,7 +14,7 @@ public interface NotebookService {
     void deleteNtb(Notebook ntb);
     void changePrice(Long id, double price);
     void changeSerialVendor(Long id, String serial, String vendor);
-    void deleteByModel(String model);
+    boolean deleteByModel(String model);
 
     List<Notebook> findByVendor(String vendor);
     List<Notebook> findByPriceManufDate(Double price, Date date);
