@@ -21,6 +21,7 @@ public class Operator {
     private Date expireDate;
     private int loginAttempts = 0;
     private boolean locked;
+    private boolean admin;
 
     public Operator() {
     }
@@ -87,6 +88,14 @@ public class Operator {
 
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override
