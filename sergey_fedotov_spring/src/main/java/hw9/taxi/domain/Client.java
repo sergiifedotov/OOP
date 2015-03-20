@@ -1,7 +1,12 @@
 package hw9.taxi.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * клиента (имя, фамилия, телефон, адрес, сумма, дата последнего заказа)
@@ -33,6 +38,15 @@ public class Client {
 
     @Column(name="LAST_ORDER_DATE")
     private Date lastOrderDate;
+
+    @Fetch(FetchMode.SELECT)
+    @OneToMany
+            (
+                    fetch = FetchType.EAGER, // подргужать все сразу
+                    mappedBy = "client", // включить двунаправленность
+                    cascade = CascadeType.ALL // каскадирование
+            )
+    private List<Order> orders = new LinkedList<>();
 
     public Client() {
     }

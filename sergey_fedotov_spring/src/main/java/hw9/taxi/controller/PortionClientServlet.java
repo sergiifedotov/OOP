@@ -16,7 +16,7 @@ import java.util.List;
 /**
  *
  */
-@WebServlet("/clientShowPortion")
+@WebServlet("/clientShowPortion2")
 public class PortionClientServlet extends HttpServlet {
 
     private WebApplicationContext context;

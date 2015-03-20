@@ -8,13 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>CommandProject</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Просто закажи такси</title>
   <style>
     .fig {
       text-align: center; /* Выравнивание по центру */
+      color: aliceblue;
+      height: 280px;
     }
-    .footer {
-      text-align: center;
+    .center {
+      text-align: center; /* Выравнивание по центру */
       color: aliceblue;
     }
   </style>
@@ -23,56 +27,20 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div class="footer">
-  <h3>
-    <h2>Welcome, ${login}!</h2>
-  </h3>
+<div>
+    <form method="get" class="fig">
+  <br> Здравствуйте, "LOGIN ОПЕРАТОРА"
+  <br> Ваш идентификационный номер ########## (должен вытягиваться из БД)
+  <br> в случае если пользователь пришел со ссылки register.jsp (только что зарегистрировался - написать приветствие о регистрации)
+    </form>
 
-  <form action="/getUsersList" method="post">
-    <table>
-      <tr>
-        <td class="footer">LIST</td>
-      </tr>
-      <tr>
-        <td class="footer">
-          ${list}
-        </td>
-      </tr>
-    </table>
-  </form>
+  <p class="center"><a href="index.jsp"> <img src="img/header.jpg"></a></p>
 
-  <table>
-    <thead>
-    <tr>
-      <th class="footer" >Users List</th>
-      <%--<th>CatTwo</th>--%>
-      <%--<th>CatThree</th>--%>
-      <%--<th>CatFour</th>--%>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="list" items="${list}">
-      <tr>
-        ${list}
-        <%--<td><c:out value="${list.one}"  /></td>--%>
-        <%--<td><c:out value="${list.two}" /></td>--%>
-        <%--<td><c:out value="${list.three}" /></td>--%>
-        <%--<td><c:out value="${list.four}"  /></td>--%>
-      </tr>
-    </c:forEach>
-    </tbody>
-  </table>
 </div>
-<form id="logout" method="post" action="/index.jsp">
-  <label class="logoutLblPos">
-    <input name="submit2" type="submit" id="submit2" value="log out">
-  </label>
-</form>
-<%--<p class="center"><a href="index.jsp"> <img src="img/header.jpg"></a></p>--%>
 <br>
 <br>
-<br>
-<br>
-<footer class = "footer">made by command 2 © 2015</footer>
+
 </body>
+
+<footer class = "center"><a href="http://www.facebook.com/chuvendoil">made by Eugen Chyvuchyn © 2015</a></footer>
 </html>

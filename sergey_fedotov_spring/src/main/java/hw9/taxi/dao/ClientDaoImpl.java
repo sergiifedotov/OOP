@@ -21,7 +21,7 @@ import java.util.List;
 public class ClientDaoImpl implements ClientDao {
     private static Logger log = Logger.getLogger(ClientDaoImpl.class);
 
-    @Autowired
+    @Autowired(required = true)
     private SessionFactory factory;
 
     @Override
