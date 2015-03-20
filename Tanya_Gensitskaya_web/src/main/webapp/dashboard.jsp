@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Hello</title>
+    <script src="index.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
 
 
 
-<p>Функции:</p>
+<h2>Меню оператора:</h2>
 
 
 <form action = "registerClient.jsp" method="get">
@@ -41,6 +42,11 @@
 <form action = "registerClient.jsp" method="get">
     <input type = "submit" value =  "вывести всех клиентов, делавших заказы за последний месяц"/>
 </form>
+
+
+<button onclick="show_all_client()">show_all_client</button>
+<button onclick="show_all_client_name()">show_all_client_name</button>
+<p id='mess.show_all_client'>mess.show_all_client </p>
 
 
 

@@ -48,9 +48,10 @@
 <p><a href="registerOperator.jsp">Регистрация оператора</a></p>
 
 
-<button onclick="myFunction()">Try it</button>
-<button onclick="show_all_client()">show_all_client</button>
-<p id='mess.show_all_client'>mess.show_all_client </p>
+
+
+
+
 
 
 </body>
