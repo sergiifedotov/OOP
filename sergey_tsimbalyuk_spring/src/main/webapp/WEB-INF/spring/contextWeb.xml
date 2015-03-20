@@ -15,7 +15,7 @@ http://www.springframework.org/schema/tx
 
     <import resource="dataContext.xml"/>
 
-    <context:component-scan base-package="hw9.taxi" />
+    <context:component-scan base-package="web.controller" />
 
     <mvc:annotation-driven />
 
