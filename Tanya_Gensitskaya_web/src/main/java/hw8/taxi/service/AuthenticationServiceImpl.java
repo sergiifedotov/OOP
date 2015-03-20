@@ -13,6 +13,23 @@ import java.util.Properties;
  * Created by Tanya on 04.03.2015.
  */
 public class AuthenticationServiceImpl implements AuthenticationService {
+    public static void main(String[] args) {
+//        AuthenticationServiceImpl authenticationService = new AuthenticationServiceImpl();
+//        try {
+//
+//            System.out.println(authenticationService.authenticate("tanyuwa","qqqqqqqqqqqqq"));
+//        } catch (AuthenticationException e) {
+//            e.printStackTrace();
+//        }
+//        OperatorDaoImpl operatorDaoImpl = new OperatorDaoImpl();
+//        List<Operator> list = operatorDaoImpl.findAll();
+//        for (Operator i: list){
+//            System.out.println(i);
+//        }
+
+        String  str = "login=" + "privet" + "\npassword=" + "pass";
+        System.out.println(str);
+    }
 
 
     public AuthenticationServiceImpl() {

@@ -1,7 +1,7 @@
 package hw7.springnotes.service;
 
-import hw7.notes.domain.CPU;
-import hw7.notes.domain.Notebook;
+import hw7.springnotes.domain.CPU;
+import hw7.springnotes.domain.Notebook;
 
 import java.util.List;
 

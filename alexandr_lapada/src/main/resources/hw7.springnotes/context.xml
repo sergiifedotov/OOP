@@ -9,8 +9,8 @@
     http://www.springframework.org/schema/tx
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder location="classpath:hw7.springnotes/conf.properties"/>
-    <context:component-scan base-package="hw7.springnotes"/>
+    <context:property-placeholder location="classpath:Weekend_6_2.springnotes/conf.properties"/>
+    <context:component-scan base-package="Weekend_6_2.springnotes"/>
 
     <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${driver}"/>
@@ -23,7 +23,7 @@
         <property name="dataSource" ref="myDataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>hw7.springnotes</value>
+                <value>Weekend_6_2.springnotes</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -1,6 +1,6 @@
 package hw6.notes.util;
 
-import hw7.notes.dao.NotebookDaoImpl;
+import hw7.springnotes.dao.NotebookDaoImpl;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

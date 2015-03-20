@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,74 +16,59 @@ import java.util.List;
 /**
  * Created by Sergey Tsimbalyuk on 10.03.15.
  */
-@Repository
-@Transactional
-public class UserDaoImp implements UserDao {
 
+
+public class UserDaoImp implements UserDao {
+//    private static Logger log = Logger.getLogger(UserDaoImp.class);
     @Autowired
     SessionFactory factory;
 
-    private static Logger log = Logger.getLogger(UserDaoImp.class);
+    public UserDaoImp(final SessionFactory factory) {
+        this.factory = factory;
+    }
 
-    @Override
-    @Transactional
-    public User read(String login) {
-        return (User)factory.getCurrentSession().get(User.class, login);
+    public UserDaoImp() {
     }
 
     @Override
-    public List<User> findAll() {
-        Session session = null;
-        List <User> list = new ArrayList<>();
-        try {
-            session = factory.openSession();
-            return session.createCriteria(User.class).list();
-        } catch (HibernateException e) {
-            log.error("error");
-            session.getTransaction().rollback();
-        }finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return null;
+    public Long create(User user) {
+        Session session = factory.getCurrentSession();
+        Long id = (long)session.save(user);
+        return id;
     }
 
     @Override
-    public boolean add(User user) {
-        Session session = null;
-        try {
-            session = factory.openSession();
-            session.update(user);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            log.error("Add failed");
-            session.getTransaction().rollback();
-        }finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return false;
+    public User read(Long id) {
+        Session session = factory.getCurrentSession();
+        return (User)session.get(User.class,id);
+    }
+
+    @Override
+    public User readByLogin(final String login) {
+        Session session = factory.getCurrentSession();
+        return (User)session.get(User.class,login);
+//        final List<User> users = factory.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("login", login)).list();
+//        return null == users || users.isEmpty() ? null : users.get(0);
+    }
+
+    @Override
+    public boolean update(User user) {
+        Session session = factory.getCurrentSession();
+        session.update(user);
+        return true;
     }
 
     @Override
     public boolean delete(User user) {
-        Session session = null;
-        try {
-            session = factory.openSession();
-            session.delete(user);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            log.error("Delete failed");
-            session.getTransaction().rollback();
-        }finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return false;
+        Session session = factory.getCurrentSession();
+        session.delete(user);
+        return true;
+    }
+
+    @Override
+    public List<User> findAll() {
+        Session session = factory.getCurrentSession();
+        return session.createCriteria(User.class).list();
+        // без Session session = **** return factory.getCurrentSession().createCriteria(User.class).list();
     }
 }

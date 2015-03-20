@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
 @Entity
 public class Memory {
@@ -40,16 +40,16 @@ public class Memory {
     public void setVendor(String vendor){
         this.vendor = vendor;
     }
-    public String getVendor(){
-        return vendor;
-    }
+        public String getVendor(){
+            return vendor;
+        }
 
     public void setSize(Integer size){
         this.memorySize = size;
     }
-    public Integer getSize(){
-        return memorySize;
-    }
+        public Integer getSize(){
+            return memorySize;
+        }
 
     public Long getId() {
         return id;
@@ -59,4 +59,3 @@ public class Memory {
         this.id = id;
     }
 }
-

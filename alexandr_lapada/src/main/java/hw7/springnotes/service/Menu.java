@@ -1,30 +1,20 @@
 package hw7.springnotes.service;
 
-import hw7.springnotes.domain.*;
-import hw7.springnotes.domain.CPU;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
+import hw7.springnotes.domain.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by sanya on 24.02.2015.
+ * Created by sanya on 17.02.2015.
  */
-@Controller
 public class Menu {
-
     private Integer choose = null;
     private Scanner scan = new Scanner(System.in);
-
-    @Autowired
-    private NotebookService notebookService;
-
+    private NotebookServiceImpl notebookService = null;
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
 
     public Menu() {
@@ -92,9 +82,7 @@ public class Menu {
                 removeFromStore();
             } else if (choose == 26) {
                 saleNotebookFromStore();
-            } else if (choose == 27) {
-                getSalesByDays();
-            }else {
+            } else {
                 System.out.println("Wrong number!!!");
             }
         }
@@ -127,17 +115,8 @@ public class Menu {
         System.out.println("24 - Show portion notebooks");
         System.out.println("25 - Remove from store notebook");
         System.out.println("26 - (Create) Sale notebook from store");
-        System.out.println("27 - Show all notebooks by day");
         System.out.println("0 - Exit");
         System.out.println("-----------------------");
-    }
-
-    private void getSalesByDays(){
-        try {
-            notebookService.getSalesByDays();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
     }
 
     private void removeFromStore(){
@@ -179,10 +158,9 @@ public class Menu {
     }
 
     private void showAllNotebookByCPUVendor(){
-        showAllCPUs();
-        System.out.println("Enter cpu id please - ");
-        Vendor vendor = notebookService.readVendor(scan.nextLong());
-        ArrayList<Notebook> list = (ArrayList<Notebook>)notebookService.getNotebooksByCpuVendor(vendor);
+        showAllVendors();
+        System.out.println("Enter vendor id please - ");
+        ArrayList<Notebook> list = (ArrayList<Notebook>)notebookService.getNotebooksByCpuVendor(notebookService.readVendor(scan.nextLong()));
         System.err.println(" ID "+" Vendor "+" Model "+"Date"+" CPU "+" Memory ");
         for (int i = 0; i < list.size(); i++){
             Notebook notebook = list.get(i);
@@ -399,7 +377,7 @@ public class Menu {
     }
 
     private void showAllCPUs() {
-        List<CPU> list = (ArrayList<CPU>) notebookService.findAllCPU();
+        ArrayList<CPU> list = (ArrayList<CPU>) notebookService.findAllCPU();
         System.err.println("------------------CPU------------------");
         System.err.println("ID" + "    " + "VENDOR" + "    " + "MODEL" + "    " + "FREQUENCY");
         for (int i = 0; i < list.size(); i++) {
@@ -437,4 +415,5 @@ public class Menu {
             System.err.println(" "+store.getId()+" "+store.getQuantity());
         }
     }
+
 }

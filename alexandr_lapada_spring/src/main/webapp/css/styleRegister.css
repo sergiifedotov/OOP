@@ -1,0 +1,25 @@
+.divStr {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 6px;
+    width: 180px;
+    height: 15px;
+    margin: 2px;
+}
+input {
+    tab-size: 35;
+    border: 2 solid #000000;
+    height: 27px;
+    margin: 3px;
+}
+img {
+    width: 300;
+    height: 150;
+}
+.button {
+    width: 60;
+    height: 25;
+}
+p {
+    font-size: 22;
+}
