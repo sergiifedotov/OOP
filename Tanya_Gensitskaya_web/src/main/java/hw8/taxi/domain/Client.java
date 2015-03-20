@@ -34,6 +34,8 @@ public class Client {
     @Column(name = "DATE_REGIST")
     private String date;
 
+
+
     public Client() {
     }
 

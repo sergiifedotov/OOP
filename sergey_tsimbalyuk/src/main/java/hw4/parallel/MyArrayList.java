@@ -21,6 +21,11 @@ import java.util.Arrays;
  * Класс теста:
  * MyArrayListTest
  */
+
+public class MyArrayList {
+
+}
+/*
 public class MyArrayList<E> {
 
     private E[] array;
@@ -112,9 +117,12 @@ public class MyArrayList<E> {
 
     }
 
-}
+    }
+    */
 
-class ArrayMain {
+
+
+/*class ArrayMain {
     public static void main(String[] args) {
         MyArrayList list = new MyArrayList();
         for (int i = 0; i < 100; i++) {
@@ -123,4 +131,4 @@ class ArrayMain {
         System.out.println(list.parallelIndexOf(90));
 
     }
-}
+}*/

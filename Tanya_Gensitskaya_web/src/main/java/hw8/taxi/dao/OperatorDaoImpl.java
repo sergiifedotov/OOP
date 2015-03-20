@@ -43,7 +43,23 @@ public class OperatorDaoImpl implements OperatorDao {
 
     @Override
     public Operator read(Long id) {
-        return null;
+        Session session = null;
+        Operator operator = new Operator();
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            operator = (Operator)session.get(Operator.class, id);
+            session.getTransaction().commit();
+            return operator;
+        } catch (HibernateException e) {
+            log.error("Open session failed", e);
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return operator;
     }
 
     @Override

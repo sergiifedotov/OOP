@@ -7,14 +7,14 @@ import java.util.List;
  * Created by tsv on 14.02.15.
  */
 public interface NotebookService {
-    void add(Notebook notebook);
+    Long add(Notebook notebook);
     List<Notebook> findAll();
     Notebook read(Long id);
 
     void deleteNtb(Notebook ntb);
     void changePrice(Long id, double price);
     void changeSerialVendor(Long id, String serial, String vendor);
-    void deleteByModel(String model);
+    boolean deleteByModel(String model);
 
     List<Notebook> findByVendor(String vendor);
     List<Notebook> findByPriceManufDate(Double price, Date date);
