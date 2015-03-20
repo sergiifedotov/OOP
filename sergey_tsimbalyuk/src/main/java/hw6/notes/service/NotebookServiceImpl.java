@@ -1,6 +1,7 @@
 package hw6.notes.service;
 
 import hw6.notes.dao.NotebookDao;
+import hw6.notes.dao.NotebookDaoImpl;
 import hw6.notes.domain.Notebook;
 
 import java.util.Date;
@@ -13,17 +14,25 @@ import java.util.List;
 public class NotebookServiceImpl implements NotebookService {
     private NotebookDao notebookDao;
 
-    public NotebookServiceImpl() {
-    }
-
-    public NotebookServiceImpl(NotebookDao dao) {
+//    public NotebookServiceImpl(NotebookDao dao) {
+//        notebookDao = dao;
+//    }
+    public NotebookServiceImpl(NotebookDaoImpl dao){
         notebookDao = dao;
     }
 
 
+//    @Override
+//    public void add(Notebook notebook) {
+//        notebookDao.create(notebook);
+//    }
+
     @Override
-    public void add(Notebook notebook) {
-        notebookDao.create(notebook);
+    public Long add(Notebook notebook) {
+        return notebookDao.create(notebook);
+    }
+
+    public NotebookServiceImpl() {
     }
 
     @Override

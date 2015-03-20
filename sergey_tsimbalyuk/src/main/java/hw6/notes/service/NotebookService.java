@@ -7,7 +7,7 @@ import java.util.List;
  * Created by tsv on 14.02.15.
  */
 public interface NotebookService {
-    void add(Notebook notebook);
+    Long add(Notebook notebook);
     List<Notebook> findAll();
     Notebook read(Long id);
 
