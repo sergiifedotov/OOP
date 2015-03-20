@@ -17,6 +17,10 @@ import java.util.List;
  */
 public class RegionHibernateDaoImpl implements RegionDao {
 
+    public RegionHibernateDaoImpl(SessionFactory factory) {
+
+    }
+
     @Override
     public Long create(Region region) {
         return null;
