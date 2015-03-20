@@ -7,7 +7,7 @@ package hw4.parallel;
  */
 public class MyArrayListTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    /*public static void main(String[] args) throws InterruptedException {
 
         MyArrayList<String> list = new MyArrayList<String>();
         list.add("bind");
@@ -40,6 +40,6 @@ public class MyArrayListTest {
         System.out.println(list.parallelIndexOf(null));
 
 
-    }
+    }*/
 
 }
