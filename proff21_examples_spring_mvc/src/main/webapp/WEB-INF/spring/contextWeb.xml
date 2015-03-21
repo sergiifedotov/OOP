@@ -13,6 +13,7 @@
 
     <import resource="dataContext.xml"/>
     <import resource="mvc-dispatcher-servlet.xml"/>
+    <import resource="security.xml"/>
 
     <context:component-scan base-package="web"/>
 
