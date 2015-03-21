@@ -34,6 +34,8 @@
         <module>Tanya_Gensitskaya</module>
         <module>sergey_fedotov</module>
         <module>sergey_fedotov_web</module>
+        <module>sergey_fedotov_spring</module>
+        <module>sergey_fedotov_spring_mvc</module>
         <module>sergey_tsimbalyuk</module>
         <module>sergey_tsimbalyuk_web</module>
         <module>sergey_tsimbalyuk_spring</module>
