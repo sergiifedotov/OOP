@@ -14,6 +14,8 @@
     </form>
 </div>
 
-
+<script>
+    console.log("Hello script");
+    </script>
 </body>
 </html>
