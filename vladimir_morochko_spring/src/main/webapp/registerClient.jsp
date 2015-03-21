@@ -13,8 +13,8 @@
 
 </head>
 <body>
-<h4>${clientMessage}</h4>
 <p><a href="dashboard.jsp"><<< dashboard</a></p>
+<h4>${clientMessage}</h4>
 <form action="/clientCreateServlet">
     <p>Имя клиента:</p>
     <input type="text" name="name" value=""/>

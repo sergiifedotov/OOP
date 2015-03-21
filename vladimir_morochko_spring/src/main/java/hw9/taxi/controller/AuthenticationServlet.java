@@ -50,7 +50,7 @@ public class AuthenticationServlet extends HttpServlet {
         } else {
             request.setAttribute("authenticationResultMessage", authenticationResultMessage);
             request.setAttribute("defaultLogin", login);
-            request.getRequestDispatcher("index_taxi.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
 
     }
