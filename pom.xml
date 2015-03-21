@@ -16,17 +16,20 @@
         <module>proff21_examples_spring_mvc</module>
         <module>vladimir_morochko</module>
         <module>vladimir_morochko_web</module>
+        <module>vladimir_morochko_spring</module>
+        <module>vladimir_morochko_spring_mvc</module>
         <module>alexandr_lapada</module>
         <module>alexandr_lapada_web</module>
         <module>Stanislav_Bondar</module>
         <module>Stanislav_Bondar_web</module>
         <module>Stanislav_Bondar_spring</module>
         <module>eugen_chyvuchyn</module>
-        <module>eugen_chyvuchyn</module>
         <module>eugen_chyvuchyn_web</module>
         <module>eugen_chyvuchyn_spring</module>
         <module>Yaroslav_Syrota</module>
         <module>Yaroslav_Syrota_web</module>
+        <module>Yaroslav_Syrota_spring</module>
+        <module>Yaroslav_Syrota_spring_mvc</module>
         <module>illia_naumov</module>
         <module>Tanya_Gensitskaya</module>
         <module>Tanya_Gensitskaya_spring</module>
@@ -36,7 +39,8 @@
         <module>sergey_fedotov_web</module>
         <module>sergey_tsimbalyuk</module>
         <module>sergey_tsimbalyuk_web</module>
-        <module>Maksim_Kuzmenyuk</module>
+        <module>sergey_tsimbalyuk_spring</module>
+        <module>sergey_tsimbalyuk_spring_mvc</module>
         <module>konstantin_krivous</module>
         <module>alexandr_lapada_spring</module>
         <module>konstantin_krivous_web</module>

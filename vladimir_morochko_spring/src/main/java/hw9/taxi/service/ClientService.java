@@ -14,5 +14,9 @@ public interface ClientService {
     List getClientsByPortion(int portionSize);
     List getClientsGtSum(int sum);
     List getClientsLastMonth();
+
+    List findAll();
+
+    Client getClient(Long clientId);
 }
 

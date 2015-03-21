@@ -27,17 +27,14 @@ import java.util.Locale;
 public class OrderEditServlet extends HttpServlet {
 
     private OrderService orderService;
-    private ClientDao clientDao;
-    private OrderDao orderDao;
-
+    private ClientService clientService;
 
     @Override
     public void init() {
         Locale.setDefault(Locale.ENGLISH);
         WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
         orderService = webApplicationContext.getBean("orderServiceImpl", OrderService.class);
-        clientDao = webApplicationContext.getBean("clientDaoImpl", ClientDao.class);
-        orderDao = webApplicationContext.getBean("orderDaoImpl", OrderDao.class);
+        clientService = webApplicationContext.getBean("clientServiceImpl", ClientService.class);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -65,11 +62,7 @@ public class OrderEditServlet extends HttpServlet {
                 amount = Integer.parseInt(request.getParameter("amount"));
             } catch (NumberFormatException ignored) {
             }
-            Client client = clientDao.read(clientId);
-            // update client info
-            client.setSum(amount);
-            client.setLastOrderDate(new Date());
-            clientDao.update(client);
+            Client client = clientService.getClient(clientId);
 
             try {
                 orderService.editOrder(orderId, client, amount, addressFrom, addressTo);
@@ -81,14 +74,14 @@ public class OrderEditServlet extends HttpServlet {
             }
         }
         if (action != null && action.equals("editOrder")) {
-            List list = orderDao.findAll();
+            List list = orderService.findAll();
             request.getSession().setAttribute("orderList", list);
             request.setAttribute("orderMessage", "Выберте интересующий вас заказ");
             request.getSession().setAttribute("action", "editOrder");
             request.getRequestDispatcher("orders.jsp").forward(request, response);
         }
-        List list = clientDao.findAll();
-        Order order = orderDao.read(orderId);
+        List list = clientService.findAll();
+        Order order = orderService.getOrder(orderId);
         System.out.println(order);
         request.getSession().setAttribute("clientList", list);
         request.getSession().setAttribute("defaultClientId", order.getClient().getId());
