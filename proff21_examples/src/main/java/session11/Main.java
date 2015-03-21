@@ -25,53 +25,9 @@ import java.util.Scanner;
  * User: al1
  * Date: 21.09.14
  */
+/*
 public class Main {
     public static void main(String[] args) throws IOException {
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import session9.HiberConnect;
-
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-
-public class Main {
-    private static Logger log = Logger.getLogger(HiberConnect.class);
-
-    public static void main(String[] args) {
-        Locale.setDefault(Locale.ENGLISH);
-        Configuration cfg = new Configuration().configure("session11/hibernate.cfg.xml");
-        StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
-        sb.applySettings(cfg.getProperties());
-        StandardServiceRegistry standardServiceRegistry = sb.build();
-        SessionFactory factory = cfg.buildSessionFactory(standardServiceRegistry);
-        Session session = factory.openSession();
-
-        Company company1 = new Company("Roga");
-        Company company2 = new Company("Kopyta");
-
-        Employee emp1 = new Employee("Ostap Bender");
-        Employee emp2 = new Employee("Robot Bender");
-        Employee emp3 = new Employee("Lila Bender");
-        Employee emp4 = new Employee("Shura Balaganov");
-        Employee emp5 = new Employee("Mikael Samuilovich Panikovskiy");
-
-        company1.getEmps().add(emp1);
-        company1.getEmps().add(emp2);
-        company1.getEmps().add(emp3);
-
-        company2.getEmps().add(emp4);
-        company2.getEmps().add(emp5);
-
-/*        session.beginTransaction();
-        session.save(company1);
-        session.save(company2);
-        session.save(emp1);
-        session.save(emp2);
-        session.save(emp3);
-        session.save(emp4);
-        session.save(emp5);
-        session.getTransaction().commit();*/
         ReadableByteChannel in = Channels.newChannel(System.in);
         ByteBuffer buffer = ByteBuffer.allocate(40);
         CharBuffer buffer1 = CharBuffer.allocate(3);
@@ -159,3 +115,4 @@ public class Main {
 
     }
 }
+*/
