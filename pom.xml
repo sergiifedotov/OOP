@@ -43,6 +43,7 @@
         <module>alexandr_lapada_spring</module>
         <module>konstantin_krivous_web</module>
         <module>konstantin_krivous_spring</module>
+        <module>konstantin_krivous_spring_mvc</module>
 
 
     </modules>
