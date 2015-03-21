@@ -9,6 +9,7 @@ import hw8.taxi.exception.AuthenticationException;
 public interface AuthenticationService {
 
     public boolean authenticate(String login, String pass) throws AuthenticationException;
+    public boolean authenticateAdmin(String login, String pass) throws AuthenticationException;
     public Long create(Operator operator);
     public boolean findLoginInBase(String login);
 }

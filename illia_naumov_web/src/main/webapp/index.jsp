@@ -1,19 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 06.03.2015
-  Time: 0:40
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>vigilant8 taxi</title>
 </head>
 <body>
+<%
+    String authMessage = (String) request.getAttribute("authAnswer");
+    if(authMessage != null) {
+        response.getWriter().print(authMessage);
+    }
+%>
     <form action = "/authenticator" method = "POST"/>
-    <input type = "text" name = "login" /><br/>
-    <input type = "text" name = "password" /><br/>
-    <input type = "submit" value = "send"/> </form>
+    <input id="login" type="text" name="login" value="${defaultLogin}" size="30"/><br/>
+    <input id="password" type="password" name="password" value="" size="30"/><br/>
+    <input id="button" type="submit" value="Войти" size="40">
 </body>
 </html>

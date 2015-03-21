@@ -10,15 +10,7 @@ import java.util.List;
 /**
  * Created by Sergey Tsimbalyuk on 10.03.15.
  */
-@Repository
-@Transactional
+
 public interface AuthenticationService {
-    @Transactional
     boolean authenticate(String login, String pass) throws AuthenticationException;
-
-    @Transactional
-    User getUser(String login);
-
-    @Transactional
-    public List<User> findAll();
 }
