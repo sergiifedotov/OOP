@@ -8,7 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Задание на каскадные таблицы</title>
+
 </head>
 <body>
   <h3>Покрасьте меня в розовый цвет (color:pink).</h3>

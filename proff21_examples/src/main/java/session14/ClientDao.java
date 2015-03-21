@@ -1,6 +1,6 @@
 package session14;
 
-import session16.Client;
+//import session16.Client;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import java.util.List;
  * User: al1
  * Date: 4/7/13
  */
-public interface ClientDao {
+/*public interface ClientDao {
     void create(Client user);
     Client read(Long id);
     void update(Client client);
     void delete(Client client);
     List<Client> findAll();
     List<Client> findMonyGT(long amount);
-}
+}*/
