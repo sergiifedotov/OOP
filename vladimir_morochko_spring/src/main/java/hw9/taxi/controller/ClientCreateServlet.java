@@ -21,7 +21,6 @@ public class ClientCreateServlet extends HttpServlet {
 
     private ClientService clientService;
 
-
     @Override
     public void init() {
         Locale.setDefault(Locale.ENGLISH);
@@ -46,7 +45,7 @@ public class ClientCreateServlet extends HttpServlet {
             //e.printStackTrace();
             clientMessage = e.getMessage();
         }
-        request.setAttribute("registerResultMessage", clientMessage);
+        request.setAttribute("clientMessage", clientMessage);
         request.getRequestDispatcher("registerClient.jsp").forward(request, response);
     }
 }
