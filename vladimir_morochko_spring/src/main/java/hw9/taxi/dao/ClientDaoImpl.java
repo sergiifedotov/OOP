@@ -16,7 +16,6 @@ import java.util.List;
  * Created by vladimir on 09.03.2015.
  */
 @Repository
-@Transactional
 public class ClientDaoImpl implements ClientDao {
     @Autowired(required = true)
     private SessionFactory sessionFactory;

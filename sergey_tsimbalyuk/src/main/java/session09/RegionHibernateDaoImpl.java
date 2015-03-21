@@ -16,6 +16,38 @@ import java.util.List;
  * Date: 20.09.14
  */
 public class RegionHibernateDaoImpl implements RegionDao {
+
+    public RegionHibernateDaoImpl(SessionFactory factory) {
+
+    }
+
+    @Override
+    public Long create(Region region) {
+        return null;
+    }
+
+    @Override
+    public Region read(Long id) {
+        return null;
+    }
+
+    @Override
+    public void update(Region region) {
+
+    }
+
+    @Override
+    public void delete(Region region) {
+
+    }
+
+    @Override
+    public List<Region> findAll() {
+        return null;
+    }
+}
+/*
+public class RegionHibernateDaoImpl implements RegionDao {
     private static Logger log = Logger.getLogger(RegionHibernateDaoImpl.class);
     private static SessionFactory factory;
     private List<Region> regionList = new ArrayList<Region>();
@@ -105,3 +137,4 @@ public class RegionHibernateDaoImpl implements RegionDao {
         }
     }
 }
+*/

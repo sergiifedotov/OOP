@@ -12,6 +12,43 @@
 </head>
 
 <body>
+<!-- comment -->
+<%-- JSP comment--%>
+<%!
+    private String secret;
+    private void clear() {
+
+    }
+%>
+
+<%
+    request.getParameter("list");
+    int kaka = 12;
+    out.println(kaka);
+    out.println(++kaka);
+    clear();
+%>
+
+<%= kaka + " плохой!"%>
+
+<form action="/form">
+    <table>
+        <tr>
+            <td>Въведете горния логин</td>
+            <td>
+                <select name="login">
+                    <option value="Kaka">Kaka</option>
+                    <option value="Sheva">Sheva</option>
+                    <option selected="selected" value="family">Женский</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Login"/></td>
+        </tr>
+    </table>
+</form>
     <h3>Hello Web</h3>
     <p>Parag</p>
     text<br/>

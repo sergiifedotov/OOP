@@ -3,6 +3,7 @@ package session14.hi.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import session14.hi.domain.Company;
@@ -12,6 +13,7 @@ import java.util.List;
 @Repository
 public class CompanyDaoImpl implements CompanyDao {
 
+    @Qualifier("mySessionFactory")
     @Autowired(required = true)
     private SessionFactory sessionFactory;
 

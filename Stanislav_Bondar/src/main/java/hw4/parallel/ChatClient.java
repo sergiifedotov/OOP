@@ -16,6 +16,7 @@ public class ChatClient implements Runnable {
 
     public static void main(String[] args) throws Exception {
         new ChatClient();
+        //kkj
     }
 
 

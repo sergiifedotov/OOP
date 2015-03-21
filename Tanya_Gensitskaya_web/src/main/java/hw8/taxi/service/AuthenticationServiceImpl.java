@@ -37,15 +37,38 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 
     public boolean authenticate(String login, String pass) throws AuthenticationException {
-        String loginInBase = null;
-        String passInBase = null;
+        String loginInBase;
+        String passInBase;
+        String isBlocked;
+
         OperatorDaoImpl operatorDaoImpl = new OperatorDaoImpl();
         List<Operator> list = operatorDaoImpl.findAll();
 
         for(int i=0; i<list.size(); i++){
             loginInBase = list.get(i).getLogin();
             passInBase = list.get(i).getPassword();
-            if(loginInBase.equals(login) && passInBase.equals(pass)){
+            isBlocked = list.get(i).getIsBlocked();
+
+
+            if(loginInBase.equals(login) && passInBase.equals(pass) && isBlocked.equals("false")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean authenticateAdmin(String login, String pass) throws AuthenticationException {
+        String loginInBase;
+        String passInBase;
+        String adminInBase;
+        OperatorDaoImpl operatorDaoImpl = new OperatorDaoImpl();
+        List<Operator> list = operatorDaoImpl.findAll();
+        for(int i=0; i<list.size(); i++){
+            loginInBase = list.get(i).getLogin();
+            passInBase = list.get(i).getPassword();
+            adminInBase = list.get(i).getIsAdministrator();
+            if(loginInBase.equals(login) && passInBase.equals(pass) && adminInBase.equals("true")){
                 return true;
             }
         }
@@ -70,9 +93,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         for(int i=0; i<list.size(); i++){
             loginInBase = list.get(i).getLogin();
             if(loginInBase.equals(login)){
-                String loginBlocked = login+" blocked";
+                String isBlocked = "true";
                 Operator operator = list.get(i);
-                operator.setLogin(loginBlocked);
+                operator.setIsBlocked(isBlocked);
                 operatorDaoImpl.update(operator);
             }
         }

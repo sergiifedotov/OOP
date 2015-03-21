@@ -6,6 +6,7 @@ import hw9.taxi.exception.ClientException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by vladimir on 09.03.2015.
  */
 @Service
+@Transactional
 public class ClientServiceImpl implements ClientService {
     @Autowired(required = true)
     private ClientDao clientDao;
@@ -32,16 +34,19 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List getClientsByPortion(int portionSize) {
         return clientDao.getClientsByPortion(portionSize);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List getClientsGtSum(int sum) {
         return clientDao.getClientsGtSum(sum);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List getClientsLastMonth() {
         return clientDao.getClientsLastMonth();
     }

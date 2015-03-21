@@ -43,7 +43,7 @@ public class OrderServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Map<String,String[]> parametrs = req.getParameterMap();
 
