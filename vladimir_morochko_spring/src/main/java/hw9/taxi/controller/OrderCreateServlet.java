@@ -3,6 +3,7 @@ package hw9.taxi.controller;
 import hw9.taxi.dao.ClientDao;
 import hw9.taxi.domain.Client;
 import hw9.taxi.exception.OrderException;
+import hw9.taxi.service.ClientService;
 import hw9.taxi.service.OrderService;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -23,7 +24,7 @@ import java.util.Locale;
 @WebServlet("/orderCreateServlet")
 public class OrderCreateServlet extends HttpServlet {
 
-    private ClientDao clientDao;
+    private ClientService clientService;
     private OrderService orderService;
 
     @Override
@@ -31,7 +32,7 @@ public class OrderCreateServlet extends HttpServlet {
         Locale.setDefault(Locale.ENGLISH);
         WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
         orderService = webApplicationContext.getBean("orderServiceImpl", OrderService.class);
-        clientDao = webApplicationContext.getBean("clientDaoImpl", ClientDao.class);
+        clientService = webApplicationContext.getBean("clientServiceImpl", ClientService.class);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,25 +51,19 @@ public class OrderCreateServlet extends HttpServlet {
         }
 
         if (action != null && action.equals("saveOrder")) {
-            Client client = clientDao.read(clientId);
-
-            // update client info
-            client.setSum(amount);
-            client.setLastOrderDate(new Date());
-            clientDao.update(client);
 
             String addressFrom = request.getParameter("addressFrom");
             String addressTo = request.getParameter("addressTo");
             Long orderId;
             try {
-                orderId = orderService.createOrder(client, amount, addressFrom, addressTo);
+                orderId = orderService.createOrder(clientId, amount, addressFrom, addressTo);
                 orderMessage = "Создан заказ с id=" + orderId;
             } catch (OrderException e) {
                 orderMessage = e.getMessage();
             }
         }
 
-        List list = clientDao.findAll();
+        List list = clientService.findAll();
         request.getSession().setAttribute("clientList", list);
         request.getSession().setAttribute("defaultClientId", clientId);
         request.setAttribute("defaultAmount", 0);
