@@ -19,9 +19,13 @@ import java.util.Properties;
  */
 @WebServlet("/auth")
 public class AuthenticationServlet extends HttpServlet {
+
     private AuthenticationService authenticationService;
     private int loginTryCount;
     private Properties properties;
+
+    public AuthenticationServlet() {
+    }
 
     public AuthenticationServlet(Properties properties) {
         this.properties = properties;

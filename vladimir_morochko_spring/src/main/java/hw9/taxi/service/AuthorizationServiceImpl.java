@@ -5,6 +5,7 @@ import hw9.taxi.domain.Operator;
 import hw9.taxi.exception.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
  * Created by vladimir on 09.03.2015.
  */
 @Service
+@Transactional
 public class AuthorizationServiceImpl implements AuthorizationService {
     @Autowired(required = true)
     private OperatorDao operatorDao;

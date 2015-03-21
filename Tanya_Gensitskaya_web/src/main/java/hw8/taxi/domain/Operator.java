@@ -28,6 +28,12 @@ public class Operator {
     @Column(name = "CONF_PASSWORD")
     private String confirmPassword;
 
+    @Column(name = "IS_BLOCKED")
+    private String isBlocked;
+
+    @Column(name = "IS_ADMINISTRATOR")
+    private String isAdministrator;
+
     public Operator() {
     }
 
@@ -87,6 +93,24 @@ public class Operator {
                 ", idNumber='" + idNumber + '\'' +
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
+                ", isBlocked='" + password + '\'' +
+                ", isAdministrator='" + confirmPassword + '\'' +
                 '}';
+    }
+
+    public String getIsBlocked() {
+        return isBlocked;
+    }
+
+    public void setIsBlocked(String isBlocked) {
+        this.isBlocked = isBlocked;
+    }
+
+    public String getIsAdministrator() {
+        return isAdministrator;
+    }
+
+    public void setIsAdministrator(String isAdministrator) {
+        this.isAdministrator = isAdministrator;
     }
 }

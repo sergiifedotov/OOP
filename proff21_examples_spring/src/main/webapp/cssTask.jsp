@@ -23,7 +23,7 @@
   <h4>Данный элемент должен остаться неоформленным.</h4>
   <p>Покрасьте меня в зеленый цвет (color:green).</p>
   <p class='yellowcol'>Покрасьте меня в желтый цвет (color:yellow).</p>
-  <div class='yellowcol'>Покрасьте меня в синий цвет (color:yellow).</div>
+  <div class='yellowcol'>Покрасьте меня в синий цвет (color:blue).</div>
   <div style="border: dashed">Покрасьте меня в оливковый цвет (color:olive)</div>
 </body>
 </html>

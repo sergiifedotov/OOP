@@ -15,7 +15,6 @@ import java.util.List;
  * Created by vladimir on 09.03.2015.
  */
 @Repository
-@Transactional
 public class OperatorDaoImpl implements OperatorDao {
     @Autowired(required = true)
     private SessionFactory sessionFactory;

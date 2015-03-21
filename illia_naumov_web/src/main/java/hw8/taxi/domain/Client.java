@@ -1,16 +1,32 @@
 package hw8.taxi.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by illia_naumov on 10.03.2015.
  */
+@Entity
+@Table(name = "CLIENTS")
 public class Client {
+    @Id
+    @Column(name = "CLIENT_ID")
+    @SequenceGenerator(name = "sequence", sequenceName = "client_id",
+            allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+    private long id;
+
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private String phone;
+    @Column
     private String adress;
+    @Column
     private int sum;
+    @Column(name = "DATE_OF_LAST_ORDER")
     private Date dateOfLastOrder;
 
     public Client() {
@@ -21,6 +37,15 @@ public class Client {
         this.lastName = lastName;
         this.phone = phone;
         this.adress = adress;
+    }
+
+    public Client(String firstName, String lastName, String phone, String adress, int sum, Date dateOfLastOrder) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.adress = adress;
+        this.sum = sum;
+        this.dateOfLastOrder = dateOfLastOrder;
     }
 
     public String getFirstName() {
@@ -69,5 +94,18 @@ public class Client {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + firstName + " " + lastName + " " + phone + " " + adress;
     }
 }
