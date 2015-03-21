@@ -24,7 +24,7 @@
     <%--</form>--%>
 <%--</div>--%>
 <div class="board">
-    <form method="post" action="" class="login">
+    <form method="post" action="/login" class="login">
         <p>
             <label for="login">Логин:</label>
             <input type="text" name="login" id="login" value="name@example.com">
@@ -39,7 +39,7 @@
             <button type="submit" class="login-button">Войти</button>
         </p>
 
-        <p class="forgot-password"><a href="index.html">Забыл пароль?</a></p>
+        <p class="forgot-password"><a href="index.jsp">Забыл пароль?</a></p>
         <p class="register"><a href="register.jsp">Регистрация</a></p>
         <br>
         <br>
