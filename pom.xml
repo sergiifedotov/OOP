@@ -23,6 +23,8 @@
         <module>Stanislav_Bondar_spring</module>
         <module>eugen_chyvuchyn</module>
         <module>eugen_chyvuchyn</module>
+        <module>eugen_chyvuchyn_web</module>
+        <module>eugen_chyvuchyn_spring</module>
         <module>Yaroslav_Syrota</module>
         <module>Yaroslav_Syrota_web</module>
         <module>illia_naumov</module>
@@ -35,11 +37,9 @@
         <module>sergey_tsimbalyuk_spring_mvc</module>
         <module>Maksim_Kuzmenyuk</module>
         <module>konstantin_krivous</module>
+        <module>alexandr_lapada_spring</module>
         <module>konstantin_krivous_web</module>
         <module>konstantin_krivous_spring</module>
-        <module>konstantin_krivous_spring_mvc</module>
-        <module>alexandr_lapada_spring</module>
-
 
 
     </modules>

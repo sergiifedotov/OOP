@@ -26,8 +26,8 @@ public class ClientServiceImpl implements ClientService {
     public Long createClient(String name, String surname, String phone, String address) throws ClientException {
         if (name != null && address != null) {
             Client client = new Client(name, surname, phone, address);
-            Long id = clientDao.create(client);
-            return id;
+            Long clientId = clientDao.create(client);
+            return clientId;
         } else {
             throw new ClientException("Заполните имя и фамилию клиента");
         }
@@ -49,5 +49,17 @@ public class ClientServiceImpl implements ClientService {
     @Transactional(readOnly = true)
     public List getClientsLastMonth() {
         return clientDao.getClientsLastMonth();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List findAll() {
+        return clientDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Client getClient(Long clientId) {
+        return clientDao.read(clientId);
     }
 }
