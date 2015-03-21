@@ -8,9 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>Регистрация клиента</title>
 </head>
 <body>
-
+<form action="/authorization" method="POST">
+    <p id = "answer"></p>
+    <input id="login" type="text" name="login"/> Логин<br/>
+    <input id="id" type="text" name="id"/> ID<br/>
+    <input id="password" type="password" name="password"/> Пароль<br/>
+    <input id="confirm" type="password" name="confirmPassword"/> Подтверждение пароля<br/>
+    <input type = "submot" value = "Register Client"/>
+    <%--<input type = "submit" value = "Register"/>--%>
+</form>
 </body>
 </html>

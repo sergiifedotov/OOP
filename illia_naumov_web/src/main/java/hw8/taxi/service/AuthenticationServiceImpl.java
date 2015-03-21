@@ -1,38 +1,61 @@
 package hw8.taxi.service;
 
+import hw8.taxi.dao.OperatorDao;
 import hw8.taxi.domain.User;
-import java.io.IOException;
-import java.util.HashMap;
+import hw8.taxi.exception.AuthenticationException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by illia_naumov on 06.03.2015.
  */
+@Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    public static HashMap<String, User> usersMap = new HashMap<String, User>();
-    int attempts;
+    @Autowired(required = true)
+    private OperatorDao operatorDao;
+    @Value("${allowedLoginAttempts}")
+    private Integer allowedLoginAttempts;
 
-    public AuthenticationServiceImpl() throws IOException {
-        attempts = Integer.parseInt((new PropertiesValueGetter()).getAttempts());
-        AuthenticationServiceImpl.usersMap.put("dima", new User(1, "dima"));
-        AuthenticationServiceImpl.usersMap.put("vano", new User(2, "vano"));
-    }
+    private Date expireDate;
 
-    public static void main(String[] args) {
-
+    public AuthenticationServiceImpl() throws ParseException {
+        expireDate = new SimpleDateFormat("DD/MM/YYYY").parse("20/03/2015");
     }
 
     @Override
-    public boolean authenticate(String login, String pass) {
-        User user = usersMap.get(login);
-        if (usersMap.containsKey("dima") && user.getPassword().equals(pass) && user.isBlocked() == false) {
-            user.setAuthTries(0);
-            return true;
-        } else {
-            user.setAuthTries(user.getAuthTries() + 1);
-            if (user.getAuthTries() >= attempts) {
-                user.setBlocked(true);
-            }
-            return false;
+    public boolean authenticate(String login, String pass) throws AuthenticationException {
+        User operator = operatorDao.getOperatorByLogin(login);
+        System.out.println(operator);
+        if (operator == null) {
+            throw new AuthenticationException("Пользователь \"" + login + "\" не существует");
         }
+        if (operator.isBlocked()) {
+            throw new AuthenticationException("Пользователь \"" + login + "\" заблокирован");
+        }
+
+        if (!operator.getPassword().equals(pass)) {
+            operator.setAuthTries(operator.getAuthTries() + 1);
+            operatorDao.update(operator);
+            if (operator.getAuthTries() > allowedLoginAttempts) {
+                operator.setBlocked(true);
+                operatorDao.update(operator);
+                throw new AuthenticationException("Превышено число ошибок входа, пользователь \"" + login + "\"  заблокирован");
+            }
+            throw new AuthenticationException("Неправильный пароль");
+        }
+        if (operator.getPassDate().before(expireDate)) {
+            throw new AuthenticationException("Password expired");
+        }
+        operator.setAuthTries(0); // при логине неудачные попытки обнуляются
+        operatorDao.update(operator);
+        return true;
     }
+
+
 }
