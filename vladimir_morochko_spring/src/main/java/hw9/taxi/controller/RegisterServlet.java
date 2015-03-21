@@ -50,7 +50,7 @@ public class RegisterServlet extends HttpServlet {
                 registerResultMessage = "Operator created successfully";
                 request.setAttribute("authenticationResultMessage", registerResultMessage);
                 request.setAttribute("defaultLogin", login);
-                request.getRequestDispatcher("index_taxi.jsp").forward(request, response);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         }
         request.setAttribute("defaultLogin", login);
