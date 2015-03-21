@@ -29,4 +29,10 @@ public class HelloController {
         model.addAttribute("name", name);
         return "hello";
     }
+
+    @RequestMapping(value = "/great.html", method = RequestMethod.GET)
+    public String success(Model model) {
+        log.info("/success.html controller");
+        return "dashboard";
+    }
 }
