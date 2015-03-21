@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>proff21_examples_spring_mvc</artifactId>
+    <artifactId>Tanya_Gensitskaya_spring_mvc</artifactId>
     <packaging>war</packaging>
     <name>Tanya_Gensitskaya_spring_mvc</name>
 
