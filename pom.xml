@@ -13,6 +13,7 @@
         <module>proff21_examples</module>
         <module>proff21_examples_web</module>
         <module>proff21_examples_spring</module>
+        <module>proff21_examples_spring_mvc</module>
         <module>vladimir_morochko</module>
         <module>vladimir_morochko_web</module>
         <module>vladimir_morochko_spring</module>
@@ -50,6 +51,7 @@
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.2</slf4j.version>
         <spring.version>4.0.5.RELEASE</spring.version>
+        <spring.security.version>3.2.6.RELEASE</spring.security.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <mysql.connector.version>5.1.21</mysql.connector.version>
         <platform.version>2.3.3</platform.version>
@@ -239,13 +241,19 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>3.2.5.RELEASE</version>
+            <version>${spring.security.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>3.2.5.RELEASE</version>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
         </dependency>
 
         <!-- Servlet dependency -->
