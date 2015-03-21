@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -14,6 +15,7 @@ import java.util.Date;
  * Created by vladimir on 09.03.2015.
  */
 @Service
+@Transactional
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Autowired(required = true)
     private OperatorDao operatorDao;

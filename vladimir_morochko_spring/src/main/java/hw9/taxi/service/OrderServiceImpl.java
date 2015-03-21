@@ -6,6 +6,7 @@ import hw9.taxi.domain.Order;
 import hw9.taxi.exception.OrderException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by vladimir on 09.03.2015.
  */
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
     @Autowired(required = true)
     private OrderDao orderDao;
@@ -48,11 +50,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List getOrders(Integer orderAmountLowerLimit, Integer orderAmountUpperLimit) {
         return orderDao.getOrders(orderAmountLowerLimit, orderAmountUpperLimit);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List getOrdersByPortion(Integer portionSize) {
         return orderDao.getOrdersByPortion(portionSize);
     }

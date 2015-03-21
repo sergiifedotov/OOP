@@ -1,162 +1,66 @@
 package hw7.springnotes.dao;
 
-import hw7.springnotes.domain.Notebook;
 import hw7.springnotes.domain.Sales;
-import hw7.springnotes.domain.Store;
-import hw7.springnotes.notes.util.HibernateUtil;
-import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
 
 /**
- * Created by vladimir on 17.02.2015.
+ * Created by vladimir on 23.02.2015.
  */
+@Repository
+@Transactional
 public class SalesDaoImpl implements SalesDao {
-    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    private static Logger logger = Logger.getLogger(NotebookDaoImpl.class);
+    @Qualifier("mySessionFactoryHW7")
+    @Autowired(required = true)
+    private SessionFactory sessionFactory; // фабрика берется из контекста
 
     public SalesDaoImpl() {
     }
 
-    public SalesDaoImpl(SessionFactory sessionFactory) {
-        this();
-        this.sessionFactory = sessionFactory;
-    }
-
     @Override
     public Long create(Sales sales) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            Long id = (Long)session.save(sales);
-            session.getTransaction().commit();
-            return id;
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        return (Long) sessionFactory.getCurrentSession().save(sales);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Sales read(Long id) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            return (Sales) session.get(Sales.class, id);
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        return (Sales) sessionFactory.getCurrentSession().get(Sales.class, id);
     }
 
     @Override
     public boolean update(Sales sales) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.update(sales);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return false;
+        sessionFactory.getCurrentSession().update(sales);
+        return true;
     }
 
     @Override
     public boolean delete(Sales sales) {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.delete(sales);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return false;
+        sessionFactory.getCurrentSession().delete(sales);
+        return true;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Sales> findAll() {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Criteria criteria = session.createCriteria(Sales.class);
-            return criteria.list();
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Sales.class);
+        return criteria.list();
     }
 
     @Override
-    public Map<Notebook, Integer> getSalesByDays() {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            Map<Notebook, Integer> map = new HashMap<>();
-            Criteria criteria = session.createCriteria(Sales.class)
-                    .addOrder(Order.asc("date"));
-            List list = criteria.list();
-            if (list != null) {
-                Iterator<Sales> iterator = list.iterator();
-                while (iterator.hasNext()) {
-                    Sales sales = iterator.next();
-                    Integer amount = sales.getAmount();
-                    Store store = sales.getStore();
-                    Notebook notebook = store.getNotebook();
-                    map.put(notebook, amount);
-                }
-            }
-            return map;
-        } catch (HibernateException e) {
-            logger.error("Open session failed", e);
-            session.getTransaction().rollback();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void close() {
-        sessionFactory.close();
+    public List<Sales> getSalesByDays() {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Sales.class)
+                .addOrder(Order.asc("date"));
+        return criteria.list();
     }
 }

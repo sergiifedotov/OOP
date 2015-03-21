@@ -56,5 +56,17 @@ public class AuthenticationServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        String authenticationResultMessage = null;
+        boolean authenticationResult = false;
+        try {
+            authenticationResult = authenticationService.authenticate(login, password);
+        } catch (AuthenticationException e) {
+            //e.printStackTrace();
+            authenticationResultMessage = e.getMessage();
+        }
+        response.getWriter().println(authenticationResult);
+//        request.getSession().setAttribute("authenticationResult", authenticationResult);
     }
 }
