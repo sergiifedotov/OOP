@@ -4,16 +4,12 @@
 function getxmlHttpRequest(servletName,formname,responsediv,responsemsg) {
     var xmlhttp = false;
     var x = this;
-// For the browsers Mozilla/Safari/Ie7
     if (window.XMLHttpRequest) {
         x.xmlhttp = new XMLHttpRequest();
     }
-// for the lower version of IE
-    else if (window.ActiveXObject) {
-        x.xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+
     x.xmlhttp.open('POST', servletName, true);
-    x.xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    x.xmlhttp.setRequestHeader('Content-Type', 'application');
     x.xmlhttp.onreadystatechange = function() {
         if (x.xmlhttp.readyState == 4)
         {
@@ -36,7 +32,6 @@ function getquerystring(formname) {
         qstr += (qstr.length > 0 ? "&" : "")
         + escape(name).replace(/\+/g, "%2B") + "="
         + escape(value ? value : "").replace(/\+/g, "%2B");
-//+ escape(value ? value : "").replace(/\n/g, "%0D");
     }
 
     var elemArray = form.elements;
