@@ -32,8 +32,13 @@
         <module>Yaroslav_Syrota_spring_mvc</module>
         <module>illia_naumov</module>
         <module>Tanya_Gensitskaya</module>
+        <module>Tanya_Gensitskaya_spring</module>
+        <module>Tanya_Gensitskaya_web</module>
+        <module>Tanya_Gensitskaya_spring_mvc</module>
         <module>sergey_fedotov</module>
         <module>sergey_fedotov_web</module>
+        <module>sergey_fedotov_spring</module>
+        <module>sergey_fedotov_spring_mvc</module>
         <module>sergey_tsimbalyuk</module>
         <module>sergey_tsimbalyuk_web</module>
         <module>sergey_tsimbalyuk_spring</module>
