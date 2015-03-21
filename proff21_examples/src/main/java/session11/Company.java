@@ -21,47 +21,18 @@ public class Company {
     private String name;
 
 
-
     @Column(name = "ustavnoi_fond")
     private Integer fond;
 
-    @OneToMany(mappedBy="company", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private Set<Employee> employees;
-
-    public Company() {}
-
-
-
-    public Long getId() {
-        return id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * Created with IntelliJ IDEA.
- * User: al1
- * Date: 14.02.15
- */
-@Entity
-public class Company {
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String name;
-
-    @OneToMany
-    private Set<Employee> emps = new HashSet<>();
 
     public Company() {
     }
 
-    public Company(String name) {
-        this.name = name;
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -76,20 +47,6 @@ public class Company {
         this.name = name;
     }
 
-    public Set<Employee> getEmps() {
-        return emps;
-    }
-
-    public void setEmps(Set<Employee> emps) {
-        this.emps = emps;
-    }
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
-    }
     public Integer getFond() {
         return fond;
     }
@@ -98,4 +55,11 @@ public class Company {
         this.fond = fond;
     }
 
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
 }

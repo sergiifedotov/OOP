@@ -14,6 +14,7 @@ import java.util.List;
  * User: al1
  * Date: 20.09.14
  */
+/*
 public class RegionHibernateDaoImpl implements RegionDao {
     private static Logger log = Logger.getLogger(RegionHibernateDaoImpl.class);
     private SessionFactory factory;
@@ -110,3 +111,4 @@ public class RegionHibernateDaoImpl implements RegionDao {
         }
     }
 }
+*/
