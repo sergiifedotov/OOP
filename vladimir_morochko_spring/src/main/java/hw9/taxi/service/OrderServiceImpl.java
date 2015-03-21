@@ -1,5 +1,6 @@
 package hw9.taxi.service;
 
+import hw9.taxi.dao.ClientDao;
 import hw9.taxi.dao.OrderDao;
 import hw9.taxi.domain.Client;
 import hw9.taxi.domain.Order;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,28 +21,36 @@ public class OrderServiceImpl implements OrderService {
     @Autowired(required = true)
     private OrderDao orderDao;
 
+    @Autowired(required = true)
+    private ClientDao clientDao;
+
     public OrderServiceImpl() {
     }
 
     @Override
-    public Long createOrder(Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
-        if (client == null) {
+    public Long createOrder(Long clientId, Integer amount, String addressFrom, String addressTo) throws OrderException {
+        if (clientId == null) {
             throw new OrderException("Не выбран клиент");
         }
+
+        // update client info
+        Client client = clientDao.read(clientId);
+        client.setSum(amount);
+        client.setLastOrderDate(new Date());
+        clientDao.update(client);
+
+        // create order
         Order order = new Order(client, amount, addressFrom, addressTo);
         return orderDao.create(order);
     }
 
     @Override
-    public void editOrder(Long id, Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
+    public void editOrder(Long orderId, Client client, Integer amount, String addressFrom, String addressTo) throws OrderException {
         if (client == null) {
             throw new OrderException("Не выбран клиент");
         }
-        System.out.println(id);
-        System.out.println(client);
 
-        Order order = orderDao.read(id);
-        System.out.println(order);
+        Order order = orderDao.read(orderId);
 
         order.setClient(client);
         order.setAmount(amount);
@@ -59,5 +69,17 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(readOnly = true)
     public List getOrdersByPortion(Integer portionSize) {
         return orderDao.getOrdersByPortion(portionSize);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List findAll() {
+        return orderDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Order getOrder(Long orderId) {
+        return orderDao.read(orderId);
     }
 }

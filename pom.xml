@@ -16,6 +16,8 @@
         <module>proff21_examples_spring_mvc</module>
         <module>vladimir_morochko</module>
         <module>vladimir_morochko_web</module>
+        <module>vladimir_morochko_spring</module>
+        <module>vladimir_morochko_spring_mvc</module>
         <module>alexandr_lapada</module>
         <module>alexandr_lapada_web</module>
         <module>Stanislav_Bondar</module>
